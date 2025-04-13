@@ -60,15 +60,16 @@ p {
 
 .toggle{
   position: absolute;
-  padding-top: 50px;
-  padding-left: 20px;
-  z-index: 1;
+  top: 60px;
+  left: 20px;
+  z-index: 999;
 }
 
 .toggleLanguage{
   position: absolute;
-  padding-top: 110px;
-  padding-left: 20px;
+  top: 115px;
+  left: 20px;
+  z-index: 999;
 }
 
 #language-switch{
@@ -128,6 +129,8 @@ a:hover {
 .logo {
   font-size: 2rem;
   position: relative;
+  z-index: 1;
+  padding-left: 10px;
 }
 
 .logo:hover {
@@ -367,7 +370,7 @@ section {
 article {
   display: flex;
   width: 20rem;
-  justify-content: space-around;
+  justify-content: left;
   gap: 0.5rem;
 }
 
