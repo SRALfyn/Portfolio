@@ -231,10 +231,11 @@ a:hover {
 
 section {
   padding-top: 4vh;
-  min-height: 100vh;
   margin: 0 10rem;
   box-sizing: border-box;
-  min-height: fit-content;
+  padding: 5rem 0rem;
+  margin-bottom: 5rem;
+  height: auto;
 }
 
 .section-container {
@@ -247,7 +248,7 @@ section {
   display: flex;
   justify-content: center;
   gap: 5rem;
-  height: 70vh;
+
 }
 
 .section__pic-container {
@@ -300,7 +301,6 @@ section {
 
 #about {
   position: relative;
-  height: 75vh;
 }
 
 .about-containers {
@@ -354,7 +354,6 @@ section {
 
 #experience {
   position: relative;
-  height: 55vh;
 }
 
 .experience-sub-title {
@@ -395,7 +394,6 @@ article .icon {
 
 #projects {
   position: relative;
-  height: 65vh;
 }
 
 .color-container {
@@ -417,9 +415,8 @@ article .icon {
 
 #contact {
   display: flex;
-  justify-content: top;
+  justify-content: flex-start;
   flex-direction: column;
-  height: 30vh;
 }
 
 .contact-info-upper-container {
@@ -455,7 +452,9 @@ article .icon {
 /* FOOTER SECTION */
 
 footer {
-  height: 26vh;
+  padding: 5rem 0rem;
+  margin-bottom: 5rem;
+  height: auto;
   margin: 0 1rem;
 }
 
@@ -509,3 +508,4 @@ footer p {
 .btn-container {
   gap: 1rem;
 }
+
