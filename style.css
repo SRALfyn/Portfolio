@@ -30,6 +30,17 @@ html {
   scroll-behavior: smooth;
 }
 
+html, body {
+  height: 100%;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+
 p {
   color: var(--text-color);
 }
@@ -60,16 +71,18 @@ p {
 
 .toggle{
   position: absolute;
-  top: 60px;
-  left: 20px;
+  left: 1rem;
   z-index: 999;
+  display: flex;
+  align-items: center;
+  height: 17vh;
 }
 
 .toggleLanguage{
   position: absolute;
-  top: 115px;
-  left: 20px;
-  z-index: 999;
+  top: 7rem;
+  left: 1rem;
+  z-index: 998;
 }
 
 #language-switch{
@@ -218,7 +231,7 @@ a:hover {
 
 section {
   padding-top: 4vh;
-  height: 96vh;
+  min-height: 100vh;
   margin: 0 10rem;
   box-sizing: border-box;
   min-height: fit-content;
