@@ -101,8 +101,5 @@
       text-align: justify;
     }
     
-section + section {
-  margin-top: 2rem;
-}
   }
   
