@@ -156,7 +156,7 @@
           </div>
           <div class="text-container">
             <p id="Longtext">
-              I’m a Game Development student specializing in Unreal Engine and Game Design, passionate about creating engaging gameplay experiences. I actively explore Unreal Engine’s powerful tools to bring the games I work on to life. As I continue my studies, I’m eager to learn more about integrating complex systems and refining my design skills to create games that are both fun and memorable. I’m excited to grow in this field, pushing the limits of what’s possible with each project, while learning and improving every step of the way.
+              I’m primarily a gameplay programmer in Unreal Engine, I also wear the tech-art hat for shader development. I’m excited to grow in this field!
             </p>
           </div>
         </div>
@@ -182,11 +182,58 @@
                   class="icon"
                 />
                 <div>
+                  <h3 id="E1">Studying abroad in Summer 2026</h3>
+                  <p id="E2">At Kanagawa University, Japan</p>
+                </div>
+              </article>
+              
+              <article>
+                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
+                <div>
+                  <h3 id="EE1">Participating at Gamescom 2025</h3> <!-- ID BEREITS VORHANDEN -->
+                  <p id="EE2">Game: FLOAT</p> <!-- ID BEREITS VORHANDEN -->
+                </div>
+              </article>
+              
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Support for FLOAT by Varjo</h3>
+                  <a id="Link" href="https://www.linkedin.com/posts/varjo_meet-one-of-the-winners-of-our-academic-giveaway-activity-7334126257871175680-ojUd/" target="_blank"> Click here to see the post</a>
+                </div>
+              </article>
+
+
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 id="AE1">Participated at GermanDevDays 2025</h3>
+                  <p id="AE2">Game: FLOAT</p>
+                </div>
+              </article>
+              
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
                   <h3>HNU Winter GameJam 2024</h3>
                   <p id="A1"> Winner In the categories best game and best sound </p>
                 </div>
               </article>
-              <article>
+
+    
+                <article>
                 <img
                   src="./assets/checkmark.png"
                   alt="Experience icon"
@@ -197,6 +244,7 @@
                   <p id="B1">Winner In the categorie best sound</p>
                 </div>
               </article>
+              
               <article>
                 <img
                   src="./assets/checkmark.png"
@@ -208,6 +256,7 @@
                   <p id="C1">Winner in the categorie best sound</p>
                 </div>
               </article>
+              
               <article>
                 <img
                   src="./assets/checkmark.png"
@@ -219,28 +268,8 @@
                   <p id="D1">Winner</p>
                 </div>
               </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3 id="E1">Studying abroad in Summer 2026</h3>
-                  <p id="E2">At Kanagawa University, Japan</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3 id="F1">Currently in the Process of Founding</h3>
-                  <p id="F2">Studio: LAKS</p>
-                </div>
-              </article>
+
+
             </div>
           </div>
         </div>
@@ -257,57 +286,147 @@
       <h1 id="Projects" class="title">Recent Projects</h1>
       <div class="experience-details-container">
         <div class="about-containers">
+          
+
+
+
+          <!-- Float Karte -->
           <div class="details-container color-container">
-            <div class="article-container">
-              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/N_UJ025W4sI?si=qdwp1thLbyTaJWy5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-            <h2 class="experience-sub-title project-title">NEO TOKYO</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="window.open('https://luigi-zone.itch.io/akimbovr', '_blank');"
-              >
-                Itch.io
-              </button>
+            <div class="flip-card">
+              <button id="floatDetailsBtn" class="flip-toggle-btn" onclick="event.stopPropagation(); this.parentElement.classList.toggle('flipped');">Details</button>
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="article-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/aXk69t6TwXs?si=tb7IZBi3uWZnPc58" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                  </div>
+                  <div class="project-title-container">
+                    <h2 class="experience-sub-title project-title">FLOAT</h2>
+                  </div>
+                  <div class="btn-container">
+                    <button class="btn btn-color-2 project-btn" onclick="window.open('https://www.meta.com/de-de/experiences/float-a-mixed-reality-experience/24099813506309823/', '_blank');">Meta Horizon</button>
+                  </div>
+                </div>
+                <div class="flip-card-back">   
+                  <h1 id="P1">Project Scope</h1>
+                  <p id="P2">- 3rd Semester Project <br /> - Extended by one month for Gamescom</p>
+                  <h1 id="RoleTitle">My Role</h1> <!-- NEUE ID -->
+                  <p id="RoleDescription">- Main Programmer <br /> - Shader <br /> - Effects</p>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <iframe
-                width="100%"
-                height="100%"
-                src="https://www.youtube.com/embed/NEOmSe0rErI?si=KfeONueuu-29fbM_"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-              ></iframe>
-            </div>
-            <h2 class="experience-sub-title project-title">God Of a Cult</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="window.open('https://gohde-games.itch.io/god-of-a-cult', '_blank');"
-              >
-                Itch.io
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/UZw2thtgZzE?si=G_3vQS7bpTWvy-2z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-            <h2 class="experience-sub-title project-title">UMBRA</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="window.open('https://laks-hnu.itch.io/umbra', '_blank');"
-              >
-                Itch.io
-              </button>
-            </div>
-          </div>
+
+
+          <!-- NEO TOKYO Karte -->
+<div class="details-container color-container">
+  <div class="flip-card">
+    <button id="neoTokyoDetailsBtn" class="flip-toggle-btn" onclick="event.stopPropagation(); this.parentElement.classList.toggle('flipped');">Details</button>
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <div class="article-container">
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/N_UJ025W4sI?si=qdwp1thLbyTaJWy5" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="project-title-container">
+          <h2 class="experience-sub-title project-title">NEO TOKYO</h2>
+        </div>
+        <div class="btn-container">
+          <button class="btn btn-color-2 project-btn" onclick="window.open('https://luigi-zone.itch.io/akimbovr', '_blank');">Itch.io</button>
+        </div>
+      </div>
+      <div class="flip-card-back">
+        <h1 id="neoScopeTitle">Project Scope</h1>
+        <p id="neoScopeDesc">- 48-Hour Game Jam</p>
+        <h1 id="neoRoleTitle">My Role</h1>
+        <p id="neoRoleDesc">- Main Programmer</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GOD OF A CULT Karte -->
+<div class="details-container color-container">
+  <div class="flip-card">
+    <button id="cultDetailsBtn" class="flip-toggle-btn" onclick="event.stopPropagation(); this.parentElement.classList.toggle('flipped');">Details</button>
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <div class="article-container">
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/NEOmSe0rErI?si=KfeONueuu-29fbM_"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="project-title-container">
+          <h2 class="experience-sub-title project-title">God Of a Cult</h2>
+        </div>
+        <div class="btn-container">
+          <button
+            class="btn btn-color-2 project-btn"
+            onclick="window.open('https://gohde-games.itch.io/god-of-a-cult', '_blank');"
+          >
+            Itch.io
+          </button>
+        </div>
+      </div>
+      <div class="flip-card-back">
+        <h1 id="cultScopeTitle">Project Scope</h1>
+        <p id="cultScopeDesc">- 2nd Semester Project</p>
+        <h1 id="cultRoleTitle">My Role</h1>
+        <p id="cultRoleDesc">- Solo Project</p>
+        <h1 id="cultVoiceTitle">Voice Acting</h1>
+        <p id="cultVoiceDesc">- By Thorben Gohde th.gohde@gmail.com</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UMBRA Karte -->
+<div class="details-container color-container">
+  <div class="flip-card">
+    <button id="umbraDetailsBtn" class="flip-toggle-btn" onclick="event.stopPropagation(); this.parentElement.classList.toggle('flipped');">Details</button>
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <div class="article-container">
+          <iframe 
+            width="100%" 
+            height="100%" 
+            src="https://www.youtube.com/embed/UZw2thtgZzE?si=G_3vQS7bpTWvy-2z" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="project-title-container">
+          <h2 class="experience-sub-title project-title">UMBRA</h2>
+        </div>
+        <div class="btn-container">
+          <button
+            class="btn btn-color-2 project-btn"
+            onclick="window.open('https://laks-hnu.itch.io/umbra', '_blank');"
+          >
+            Itch.io
+          </button>
+        </div>
+      </div>
+      <div class="flip-card-back">
+        <h1 id="umbraScopeTitle">Project Scope</h1>
+        <p id="umbraScopeDesc">- 48-Hour Game Jam <br /> - Extended</p>
+        <h1 id="umbraRoleTitle">My Role</h1>
+        <p id="umbraRoleDesc">- Programmer <br /> - Shader</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
         </div>
       </div>
       <img

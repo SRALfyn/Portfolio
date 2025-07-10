@@ -39,6 +39,28 @@ let about3 = document.getElementById('about3');
 let experience3 = document.getElementById('experience3');
 let projects3 = document.getElementById('projects3');
 let contact3 = document.getElementById('contact3');
+let RoleTitle = document.getElementById('RoleTitle');
+let RoleDescription = document.getElementById('RoleDescription');
+let EE1 = document.getElementById('EE1');
+let EE2 = document.getElementById('EE2');
+let neoScopeTitle = document.getElementById('neoScopeTitle');
+let neoScopeDesc = document.getElementById('neoScopeDesc');
+let neoRoleTitle = document.getElementById('neoRoleTitle');
+let neoRoleDesc = document.getElementById('neoRoleDesc');
+let cultScopeTitle = document.getElementById('cultScopeTitle');
+let cultScopeDesc = document.getElementById('cultScopeDesc');
+let cultRoleTitle = document.getElementById('cultRoleTitle');
+let cultRoleDesc = document.getElementById('cultRoleDesc');
+let cultVoiceTitle = document.getElementById('cultVoiceTitle');
+let cultVoiceDesc = document.getElementById('cultVoiceDesc');
+let umbraScopeTitle = document.getElementById('umbraScopeTitle');
+let umbraScopeDesc = document.getElementById('umbraScopeDesc');
+let umbraRoleTitle = document.getElementById('umbraRoleTitle');
+let umbraRoleDesc = document.getElementById('umbraRoleDesc');
+let floatDetailsBtn = document.getElementById('floatDetailsBtn');
+let neoTokyoDetailsBtn = document.getElementById('neoTokyoDetailsBtn');
+let cultDetailsBtn = document.getElementById('cultDetailsBtn');
+let umbraDetailsBtn = document.getElementById('umbraDetailsBtn');
 
 const enableLanguage = () => {
     localStorage.setItem('language', 'active')
@@ -61,7 +83,7 @@ const enableLanguage = () => {
     Outline.innerText = "概要"
     years.innerText = "20歳"
     bavaria.innerText = "ドイツ・バイエルン"
-    Longtext.innerText = "私はアンリアルエンジンとゲームデザインを専門とするゲーム開発の学生で、魅力的なゲーム体験を作ることに情熱を持っています。アンリアルエンジ の強力なツールを積極的に活用し、開発中のゲームに命を吹き込んでいます。学びを続けながら、複雑なシステムの統合やデザインスキルの向上にも力を入れており、楽しく、記憶に残るゲームを作りたいと考えています。この分野で成長し、毎回のプロジェクトで可能性の限界に挑戦しながら、常に学び、進化していきたいと思っています。"
+    Longtext.innerText = "私は主にUnreal Engineのゲームプレイプログラマーとして活動しており、シェーダー開発においてはテクニカルアーティストの役割も担っております。この分野でのさらなる成長を楽しみにしております。"
     Explore.innerText = ""
     Achivements.innerText = "実績を見る"
     A1.innerText = "最優秀ゲーム賞・最優秀サウンド賞 受賞"
@@ -70,8 +92,15 @@ const enableLanguage = () => {
     D1.innerText = "受賞"
     E1.innerText = "2026年夏に留学予定"
     E2.innerText = "神奈川大学（日本）にて"
-    F1.innerText = "設立準備中"
-    F2.innerText = "スタジオ：LAKS"
+    Link.innerText ="投稿を見るにはこちらをクリック"
+    EE1.innerText = "Gamescom 2025 に参加"
+    EE2.innerText = "ゲーム: FLOAT"
+    AE1.innerText = "GermanDevDays 2025 に参加"
+    AE2.innerText = "ゲーム: FLOAT"
+    P1.innerText = "プロジェクト概要"
+    P2.innerHTML = "- 第3セメスター課題<br>- Gamescom出展のため1ヶ月延長"
+    RoleTitle.innerText = "担当役割";
+    RoleDescription.innerHTML = "- メインプログラマー<br>- シェーダー開発<br>- エフェクト開発";
     Browse.innerText = "最近の"
     Projects.innerText = "プロジェクトを見る"
     Contact.innerText = "ご連絡ください"
@@ -79,6 +108,24 @@ const enableLanguage = () => {
     experience3.innerText = "経験"
     projects3.innerText = "プロジェクト"
     contact3.innerText = "お問い合わせ"
+    neoScopeTitle.innerText = "プロジェクト概要";
+    neoScopeDesc.innerText = "- 48時間ゲームジャム";
+    neoRoleTitle.innerText = "担当役割";
+    neoRoleDesc.innerText = "- メインプログラマー";
+    cultScopeTitle.innerText = "プロジェクト概要";
+    cultScopeDesc.innerText = "- 第2セメスター課題";
+    cultRoleTitle.innerText = "担当役割";
+    cultRoleDesc.innerText = "- ソロプロジェクト";
+    cultVoiceTitle.innerText = "ボイスアクティング";
+    cultVoiceDesc.innerText = "- Thorben Gohde th.gohde@gmail.com による";
+    umbraScopeTitle.innerText = "プロジェクト概要";
+    umbraScopeDesc.innerHTML = "- 48時間ゲームジャム<br>- その後拡張";
+    umbraRoleTitle.innerText = "担当役割";
+    umbraRoleDesc.innerHTML = "- プログラマー<br>- シェーダー開発";
+    floatDetailsBtn.innerText = "詳細"
+    neoTokyoDetailsBtn.innerText = "詳細"
+    cultDetailsBtn.innerText = "詳細"
+    umbraDetailsBtn.innerText = "詳細"
 }
 
 const disableLanguage = () => {
@@ -102,7 +149,7 @@ const disableLanguage = () => {
     Outline.innerText = "Outline"
     years.innerText = "20 years old"
     bavaria.innerText = "Bavaria, Germany"
-    Longtext.innerText = "I’m a Game Development student specializing in Unreal Engine and Game Design, passionate about creating engaging gameplay experiences. I actively explore Unreal Engine’s powerful tools to bring the games I work on to life. As I continue my studies, I’m eager to learn more about integrating complex systems and refining my design skills to create games that are both fun and memorable. I’m excited to grow in this field, pushing the limits of what’s possible with each project, while learning and improving every step of the way."
+    Longtext.innerText = "I’m primarily a gameplay programmer in Unreal Engine, I also wear the tech-art hat for shader development. I’m excited to grow in this field!"
     Explore.innerText = "Explore My"
     Achivements.innerText = "Achievements"
     A1.innerText = "Winner In the categories best game and best sound"
@@ -120,9 +167,38 @@ const disableLanguage = () => {
     experience3.innerText = "Experience"
     projects3.innerText = "Projects"
     contact3.innerText = "Contact"
+    EE1.innerText = "Participating at Gamescom 2025";
+    EE2.innerText = "Game: FLOAT";
+    RoleTitle.innerText = "My Role";
+    RoleDescription.innerHTML = "- Main Programmer<br>- Shader<br>- Effects";
+    P2.innerText = "- 3rd Semester Project<br>- Extended by one month for Gamescom";
+    AE2.innerText = "Game: FLOAT"
+    EE2.innerText = "Game: FLOAT"
+    Link.innerText ="Click here to see the post"
+    neoScopeTitle.innerText = "Project Scope";
+    neoScopeDesc.innerText = "- 48-Hour Game Jam";
+    neoRoleTitle.innerText = "My Role";
+    neoRoleDesc.innerText = "- Main Programmer";
+    cultScopeTitle.innerText = "Project Scope";
+    cultScopeDesc.innerText = "- 2nd Semester Project";
+    cultRoleTitle.innerText = "My Role";
+    cultRoleDesc.innerText = "- Solo Project";
+    cultVoiceTitle.innerText = "Voice Acting";
+    cultVoiceDesc.innerText = "- By Thorben Gohde th.gohde@gmail.com";
+    umbraScopeTitle.innerText = "Project Scope";
+    umbraScopeDesc.innerHTML = "- 48-Hour Game Jam<br>- Extended";
+    umbraRoleTitle.innerText = "My Role";
+    umbraRoleDesc.innerHTML = "- Programmer<br>- Shader";
+    floatDetailsBtn.innerText = "Details"
+    neoTokyoDetailsBtn.innerText = "Details"
+    cultDetailsBtn.innerText = "Details"
+    umbraDetailsBtn.innerText = "Details"
+    
 }
 
-if(language === "active") enableLanguage()
+if(language === "active") {
+    enableLanguage();
+  } 
 
 languageToggle.addEventListener("click", () =>{
     language = localStorage.getItem('language')
