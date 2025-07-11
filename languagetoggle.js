@@ -61,6 +61,7 @@ let floatDetailsBtn = document.getElementById('floatDetailsBtn');
 let neoTokyoDetailsBtn = document.getElementById('neoTokyoDetailsBtn');
 let cultDetailsBtn = document.getElementById('cultDetailsBtn');
 let umbraDetailsBtn = document.getElementById('umbraDetailsBtn');
+let Support = document.getElementById('Support');
 
 const enableLanguage = () => {
     localStorage.setItem('language', 'active')
@@ -126,6 +127,7 @@ const enableLanguage = () => {
     neoTokyoDetailsBtn.innerText = "詳細"
     cultDetailsBtn.innerText = "詳細"
     umbraDetailsBtn.innerText = "詳細"
+    Support.innerText = "VarjoによるFLOATのサポート"
 }
 
 const disableLanguage = () => {
@@ -191,7 +193,7 @@ const disableLanguage = () => {
     neoTokyoDetailsBtn.innerText = "Details"
     cultDetailsBtn.innerText = "Details"
     umbraDetailsBtn.innerText = "Details"
-    
+    Support.innerText = "Support for FLOAT by Varjo"
 }
 
 if(language === "active") {
