@@ -808,3 +808,74 @@ footer p {
 .flip-card.flipped .flip-card-back {
   z-index: 2; /* Geflippt: Rückseite nach oben */
 }
+
+/* Aktualisierte Flip-Card Styles für Firefox-Kompatibilität */
+.flip-card {
+  perspective: 1000px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transform-style: preserve-3d; /* Wichtig für konsistente 3D-Darstellung */
+  -webkit-transform-style: preserve-3d; /* Safari Support */
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d; /* Safari Support */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; /* Safari Support */
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Verbesserte Backface-Visibility mit Browser-Präfixen */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; /* Safari */
+  -moz-backface-visibility: hidden;    /* Firefox */
+  border-radius: 2rem;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  transform: rotateY(0deg); /* Explizite 0-Grad-Transformation */
+}
+
+.flip-card-front {
+  background-color: var(--base-color);
+  color: var(--text-color);
+  z-index: 2;
+}
+
+.flip-card-back {
+  background-color: var(--base-color);
+  color: var(--text-color);
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+/* Firefox-spezifisches Fix für frühe Sichtbarkeit */
+@-moz-document url-prefix() {
+  .flip-card-inner {
+    transform: translate3d(0, 0, 0); /* Erzwingt Hardware-Beschleunigung */
+  }
+  
+  .flip-card-back {
+    opacity: 0; /* Startet unsichtbar */
+    transition: opacity 0.01s 0.4s; /* Wird nach 40% der Animation sichtbar */
+  }
+  
+  .flip-card.flipped .flip-card-back {
+    opacity: 1; /* Voll sichtbar wenn geflippt */
+  }
+}
