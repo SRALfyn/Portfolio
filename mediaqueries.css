@@ -103,3 +103,26 @@
     
   }
   
+
+  @media screen and (max-width: 900px) {
+  .details-container.color-container {
+    flex: 1 1 100%; /* Volle Breite bei kleinen Bildschirmen */
+    max-width: 100%;
+  }
+}
+
+
+
+/* Mobile Anpassungen */
+@media screen and (max-width: 900px) {
+  .details-container.color-container {
+    flex: 1 1 100%;
+    max-width: 100%;
+    min-height: 350px; /* Kleinere Höhe auf Mobilgeräten */
+  }
+  
+  .flip-card-front {
+    display: flex;
+    flex-direction: column;
+  }
+}

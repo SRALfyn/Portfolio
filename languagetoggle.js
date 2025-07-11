@@ -158,8 +158,6 @@ const disableLanguage = () => {
     D1.innerText = "Winner"
     E1.innerText = "Studying abroad in Summer 2026"
     E2.innerText = "At Kanagawa University, Japan"
-    F1.innerText = "Currently in the Process of Founding"
-    F2.innerText = "Studio: LAKS"
     Browse.innerText = "Browse My"
     Projects.innerText = "Recent Projects"
     Contact.innerText = "Contact Me"

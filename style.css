@@ -306,9 +306,8 @@ section {
 }
 
 .about-containers {
-  gap: 2rem;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
+  flex-wrap: wrap; /* Umbruch erlauben */
+  justify-content: center; /* Zentrieren der Karten */
 }
 
 .about-details-container {
@@ -582,9 +581,11 @@ footer p {
 
 
 
-/* Feste Höhe für die Projektcontainer */
 .details-container.color-container {
-  height: 500px; /* Feste Höhe für alle Projektkarten */
+  flex: 1 1 300px; /* Flex-Eigenschaften für responsives Verhalten */
+  max-width: 500px; /* Maximale Breite der Karten */
+  min-width: 300px; /* Minimale Breite bevor Umbruch */
+  margin: 1rem; /* Abstand zwischen Karten */
 }
 
 /* Höhe für Flip-Card anpassen */
@@ -592,11 +593,6 @@ footer p {
   height: 100%;
 }
 
-/* Video-Container anpassen */
-.flip-card-front .article-container {
-  height: 70%; /* 70% der Kartenhöhe für das Video */
-  min-height: 0; /* Wichtig für Flexbox */
-}
 
 /* Titel und Button-Container */
 .project-title-container {
@@ -613,12 +609,7 @@ footer p {
   justify-content: center;
 }
 
-/* Video responsive halten */
-.flip-card-front .article-container iframe {
-  width: 100%;
-  height: 100%;
-  border-radius: 2rem;
-}
+
 
 .flip-card-back {
   background-color: var(--base-color);
@@ -643,3 +634,120 @@ footer p {
 .flip-card-back p {
   margin-bottom: 1rem;
 }
+
+
+/* Änderungen für responsive Projektkarten */
+.about-containers {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.details-container.color-container {
+  flex: 1 1 300px;
+  max-width: 500px;
+  min-width: 300px;
+  margin: 1rem;
+  height: auto; /* Feste Höhe entfernen */
+  min-height: 400px; /* Minimale Höhe statt fester Höhe */
+}
+
+/* Anpassungen für Titel und Button */
+.project-title-container {
+  height: auto;
+  padding: 1rem 0;
+}
+
+.flip-card-front .btn-container {
+  height: auto;
+  padding: 1rem 0;
+}
+
+/* Flip Card Container */
+.details-container.color-container {
+  flex: 1 1 300px;
+  max-width: 500px;
+  min-width: 300px;
+  margin: 1rem;
+  height: auto;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Verhindert, dass Inhalte überlaufen */
+}
+
+/* Flip Card Inner Layout */
+.flip-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.flip-card-front {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+/* Video Container mit fester Aspect Ratio */
+.flip-card-front .article-container {
+  position: relative;
+
+  height: 50%;
+  flex-shrink: 0; /* Verhindert Schrumpfen */
+  margin-bottom: 1rem;
+}
+
+.flip-card-front .article-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+}
+
+/* Titel Container */
+.project-title-container {
+  flex-shrink: 0;
+  padding: 0.5rem 0;
+  min-height: 60px; /* Feste Mindesthöhe für Titel */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-title {
+  margin: 0;
+  font-size: 1.3rem;
+  text-align: center;
+  word-break: break-word; /* Verhindert Textüberlauf */
+}
+
+/* Button Container */
+.btn-container {
+  flex-shrink: 0;
+  padding: 1rem 0;
+  min-height: 60px; /* Feste Mindesthöhe für Button */
+}
+
+/* Flip Card Back */
+.flip-card-back {
+  padding: 1.5rem;
+  overflow-y: auto; /* Scrollbar falls Inhalt zu lang */
+  flex: 1;
+}
+
+
+  
+  .project-title {
+    font-size: 1.1rem;
+  }
+  
+  .btn {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+
+
