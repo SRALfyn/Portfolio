@@ -62,6 +62,8 @@ let neoTokyoDetailsBtn = document.getElementById('neoTokyoDetailsBtn');
 let cultDetailsBtn = document.getElementById('cultDetailsBtn');
 let umbraDetailsBtn = document.getElementById('umbraDetailsBtn');
 let Support = document.getElementById('Support');
+let P1 = document.getElementById('P1');
+let P2 = document.getElementById('P2');
 
 const enableLanguage = () => {
     localStorage.setItem('language', 'active')
@@ -171,7 +173,8 @@ const disableLanguage = () => {
     EE2.innerText = "Game: FLOAT";
     RoleTitle.innerText = "My Role";
     RoleDescription.innerHTML = "- Main Programmer<br>- Shader<br>- Effects";
-    P2.innerText = "- 3rd Semester Project<br>- Extended by one month for Gamescom";
+    P1.innerText = "Project Scope"
+    P2.innerHTML = "- 3rd Semester Project<br>- Extended by one month for Gamescom";
     AE2.innerText = "Game: FLOAT"
     EE2.innerText = "Game: FLOAT"
     Link.innerText ="Click here to see the post"
