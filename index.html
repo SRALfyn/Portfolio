@@ -73,9 +73,9 @@
       <div class="logo">Lars Gohde</div>
       <div>
         <ul class="nav-links">
+          <li><a id="projectsS" href="#projects">Projects</a></li>
           <li><a id="aboutT" href="#about">About</a></li>
           <li><a id="experienceE" href="#experience">Experience</a></li>
-          <li><a id="projectsS" href="#projects">Projects</a></li>
           <li><a id="contactT" href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -89,9 +89,9 @@
           <span></span>
         </div>
         <div class="menu-links">
+          <li><a id="projectsSS" href="#projects" onclick="toggleMenu()">Projects</a></li>
           <li><a id="aboutTT" href="#about" onclick="toggleMenu()">About</a></li>
           <li><a id="experienceEE" href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a id="projectsSS" href="#projects" onclick="toggleMenu()">Projects</a></li>
           <li><a id="contactTT" href="#contact" onclick="toggleMenu()">Contact</a></li>
         </div>
       </div>
@@ -120,6 +120,163 @@
         </div>
       </div>
     </section>
+    
+    <section id="projects">
+      <p id="Browse" class="section__text__p1">Browse My</p>
+      <h1 id="Projects" class="title">Recent Projects</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          
+
+
+
+          <!-- Float Karte -->
+          <div class="details-container color-container">
+            <div class="flip-card">
+              <button id="floatDetailsBtn" class="flip-toggle-btn" onclick="event.stopPropagation(); this.parentElement.classList.toggle('flipped');">Details</button>
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="article-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/aXk69t6TwXs?si=tb7IZBi3uWZnPc58" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                  </div>
+                  <div class="project-title-container">
+                    <h2 class="experience-sub-title project-title">FLOAT</h2>
+                  </div>
+                  <div class="btn-container">
+                    <button class="btn btn-color-2 project-btn" onclick="window.open('https://www.meta.com/de-de/experiences/float-a-mixed-reality-experience/24099813506309823/', '_blank');">Meta Horizon</button>
+                  </div>
+                </div>
+                <div class="flip-card-back">   
+                  <h1 id="P1">Project Scope</h1>
+                  <p id="P2">- 3rd Semester Project <br /> - Extended by one month for Gamescom</p>
+                  <h1 id="RoleTitle">My Role</h1> <!-- NEUE ID -->
+                  <p id="RoleDescription">- Main Programmer <br /> - Shader <br /> - Effects</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- NEO TOKYO Karte -->
+<div class="details-container color-container">
+  <div class="flip-card">
+    <button id="neoTokyoDetailsBtn" class="flip-toggle-btn" onclick="event.stopPropagation(); this.parentElement.classList.toggle('flipped');">Details</button>
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <div class="article-container">
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/N_UJ025W4sI?si=qdwp1thLbyTaJWy5" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="project-title-container">
+          <h2 class="experience-sub-title project-title">NEO TOKYO</h2>
+        </div>
+        <div class="btn-container">
+          <button class="btn btn-color-2 project-btn" onclick="window.open('https://luigi-zone.itch.io/akimbovr', '_blank');">Itch.io</button>
+        </div>
+      </div>
+      <div class="flip-card-back">
+        <h1 id="neoScopeTitle">Project Scope</h1>
+        <p id="neoScopeDesc">- 48-Hour Game Jam</p>
+        <h1 id="neoRoleTitle">My Role</h1>
+        <p id="neoRoleDesc">- Main Programmer</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GOD OF A CULT Karte -->
+<div class="details-container color-container">
+  <div class="flip-card">
+    <button id="cultDetailsBtn" class="flip-toggle-btn" onclick="event.stopPropagation(); this.parentElement.classList.toggle('flipped');">Details</button>
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <div class="article-container">
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/NEOmSe0rErI?si=KfeONueuu-29fbM_"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="project-title-container">
+          <h2 class="experience-sub-title project-title">God Of a Cult</h2>
+        </div>
+        <div class="btn-container">
+          <button
+            class="btn btn-color-2 project-btn"
+            onclick="window.open('https://gohde-games.itch.io/god-of-a-cult', '_blank');"
+          >
+            Itch.io
+          </button>
+        </div>
+      </div>
+      <div class="flip-card-back">
+        <h1 id="cultScopeTitle">Project Scope</h1>
+        <p id="cultScopeDesc">- 2nd Semester Project</p>
+        <h1 id="cultRoleTitle">My Role</h1>
+        <p id="cultRoleDesc">- Solo Project</p>
+        <h1 id="cultVoiceTitle">Voice Acting</h1>
+        <p id="cultVoiceDesc">- By Thorben Gohde th.gohde@gmail.com</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UMBRA Karte -->
+<div class="details-container color-container">
+  <div class="flip-card">
+    <button id="umbraDetailsBtn" class="flip-toggle-btn" onclick="event.stopPropagation(); this.parentElement.classList.toggle('flipped');">Details</button>
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <div class="article-container">
+          <iframe 
+            width="100%" 
+            height="100%" 
+            src="https://www.youtube.com/embed/UZw2thtgZzE?si=G_3vQS7bpTWvy-2z" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="project-title-container">
+          <h2 class="experience-sub-title project-title">UMBRA</h2>
+        </div>
+        <div class="btn-container">
+          <button
+            class="btn btn-color-2 project-btn"
+            onclick="window.open('https://laks-hnu.itch.io/umbra', '_blank');"
+          >
+            Itch.io
+          </button>
+        </div>
+      </div>
+      <div class="flip-card-back">
+        <h1 id="umbraScopeTitle">Project Scope</h1>
+        <p id="umbraScopeDesc">- 48-Hour Game Jam <br /> - Extended</p>
+        <h1 id="umbraRoleTitle">My Role</h1>
+        <p id="umbraRoleDesc">- Programmer <br /> - Shader</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#contact'"
+      />
+    </section>
+    
     <section id="about">
       <p id="GetTo" class="section__text__p1">Get To Know More</p>
       <h1 id="AboutMe" class="title">About Me</h1>
@@ -281,161 +438,7 @@
         onclick="location.href='./#projects'"
       />
     </section>
-    <section id="projects">
-      <p id="Browse" class="section__text__p1">Browse My</p>
-      <h1 id="Projects" class="title">Recent Projects</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          
-
-
-
-          <!-- Float Karte -->
-          <div class="details-container color-container">
-            <div class="flip-card">
-              <button id="floatDetailsBtn" class="flip-toggle-btn" onclick="event.stopPropagation(); this.parentElement.classList.toggle('flipped');">Details</button>
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <div class="article-container">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/aXk69t6TwXs?si=tb7IZBi3uWZnPc58" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                  </div>
-                  <div class="project-title-container">
-                    <h2 class="experience-sub-title project-title">FLOAT</h2>
-                  </div>
-                  <div class="btn-container">
-                    <button class="btn btn-color-2 project-btn" onclick="window.open('https://www.meta.com/de-de/experiences/float-a-mixed-reality-experience/24099813506309823/', '_blank');">Meta Horizon</button>
-                  </div>
-                </div>
-                <div class="flip-card-back">   
-                  <h1 id="P1">Project Scope</h1>
-                  <p id="P2">- 3rd Semester Project <br /> - Extended by one month for Gamescom</p>
-                  <h1 id="RoleTitle">My Role</h1> <!-- NEUE ID -->
-                  <p id="RoleDescription">- Main Programmer <br /> - Shader <br /> - Effects</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <!-- NEO TOKYO Karte -->
-<div class="details-container color-container">
-  <div class="flip-card">
-    <button id="neoTokyoDetailsBtn" class="flip-toggle-btn" onclick="event.stopPropagation(); this.parentElement.classList.toggle('flipped');">Details</button>
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <div class="article-container">
-          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/N_UJ025W4sI?si=qdwp1thLbyTaJWy5" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <div class="project-title-container">
-          <h2 class="experience-sub-title project-title">NEO TOKYO</h2>
-        </div>
-        <div class="btn-container">
-          <button class="btn btn-color-2 project-btn" onclick="window.open('https://luigi-zone.itch.io/akimbovr', '_blank');">Itch.io</button>
-        </div>
-      </div>
-      <div class="flip-card-back">
-        <h1 id="neoScopeTitle">Project Scope</h1>
-        <p id="neoScopeDesc">- 48-Hour Game Jam</p>
-        <h1 id="neoRoleTitle">My Role</h1>
-        <p id="neoRoleDesc">- Main Programmer</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- GOD OF A CULT Karte -->
-<div class="details-container color-container">
-  <div class="flip-card">
-    <button id="cultDetailsBtn" class="flip-toggle-btn" onclick="event.stopPropagation(); this.parentElement.classList.toggle('flipped');">Details</button>
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <div class="article-container">
-          <iframe
-            width="100%"
-            height="100%"
-            src="https://www.youtube.com/embed/NEOmSe0rErI?si=KfeONueuu-29fbM_"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
-        </div>
-        <div class="project-title-container">
-          <h2 class="experience-sub-title project-title">God Of a Cult</h2>
-        </div>
-        <div class="btn-container">
-          <button
-            class="btn btn-color-2 project-btn"
-            onclick="window.open('https://gohde-games.itch.io/god-of-a-cult', '_blank');"
-          >
-            Itch.io
-          </button>
-        </div>
-      </div>
-      <div class="flip-card-back">
-        <h1 id="cultScopeTitle">Project Scope</h1>
-        <p id="cultScopeDesc">- 2nd Semester Project</p>
-        <h1 id="cultRoleTitle">My Role</h1>
-        <p id="cultRoleDesc">- Solo Project</p>
-        <h1 id="cultVoiceTitle">Voice Acting</h1>
-        <p id="cultVoiceDesc">- By Thorben Gohde th.gohde@gmail.com</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- UMBRA Karte -->
-<div class="details-container color-container">
-  <div class="flip-card">
-    <button id="umbraDetailsBtn" class="flip-toggle-btn" onclick="event.stopPropagation(); this.parentElement.classList.toggle('flipped');">Details</button>
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <div class="article-container">
-          <iframe 
-            width="100%" 
-            height="100%" 
-            src="https://www.youtube.com/embed/UZw2thtgZzE?si=G_3vQS7bpTWvy-2z" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-            allowfullscreen
-          ></iframe>
-        </div>
-        <div class="project-title-container">
-          <h2 class="experience-sub-title project-title">UMBRA</h2>
-        </div>
-        <div class="btn-container">
-          <button
-            class="btn btn-color-2 project-btn"
-            onclick="window.open('https://laks-hnu.itch.io/umbra', '_blank');"
-          >
-            Itch.io
-          </button>
-        </div>
-      </div>
-      <div class="flip-card-back">
-        <h1 id="umbraScopeTitle">Project Scope</h1>
-        <p id="umbraScopeDesc">- 48-Hour Game Jam <br /> - Extended</p>
-        <h1 id="umbraRoleTitle">My Role</h1>
-        <p id="umbraRoleDesc">- Programmer <br /> - Shader</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-        </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#contact'"
-      />
-    </section>
+    
     <section id="contact">
       <h1 id="Contact" class="title">Contact Me</h1>
       <div class="contact-info-upper-container">
@@ -469,9 +472,9 @@
       <nav>
         <div class="nav-links-container">
           <ul class="nav-links">
+            <li><a id="projects3" href="#projects">Projects</a></li>
             <li><a id="about3" href="#about">About</a></li>
             <li><a id="experience3" href="#experience">Experience</a></li>
-            <li><a id="projects3" href="#projects">Projects</a></li>
             <li><a id="contact3" href="#contact">Contact</a></li>
           </ul>
         </div>
