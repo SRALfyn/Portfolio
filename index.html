@@ -68,6 +68,7 @@
           />
         </svg>
       </button>
+
     </div>
     <nav id="desktop-nav">
       <div class="logo">Lars Gohde</div>
@@ -132,61 +133,92 @@
 
           <!-- Float Karte -->
           <div class="details-container color-container">
-            <div class="flip-card">
-              <button id="floatDetailsBtn" class="flip-toggle-btn" onclick="event.stopPropagation(); this.parentElement.classList.toggle('flipped');">Details</button>
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <div class="article-container">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/aXk69t6TwXs?si=tb7IZBi3uWZnPc58" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                  </div>
-                  <div class="project-title-container">
-                    <h2 class="experience-sub-title project-title">FLOAT</h2>
-                  </div>
-                  <div class="btn-container">
-                    <button class="btn btn-color-2 project-btn" onclick="window.open('https://www.meta.com/de-de/experiences/float-a-mixed-reality-experience/24099813506309823/', '_blank');">Meta Horizon</button>
-                  </div>
-                </div>
-                <div class="flip-card-back">   
-                  <h1 id="P1">Project Scope</h1>
-                  <p id="P2">- 3rd Semester Project <br /> - Extended by one month for Gamescom</p>
-                  <h1 id="RoleTitle">My Role</h1> <!-- NEUE ID -->
-                  <p id="RoleDescription">- Main Programmer <br /> - Shader <br /> - Effects</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <!-- NEO TOKYO Karte -->
-<div class="details-container color-container">
   <div class="flip-card">
-    <button id="neoTokyoDetailsBtn" class="flip-toggle-btn" onclick="event.stopPropagation(); this.parentElement.classList.toggle('flipped');">Details</button>
+    <button class="flip-toggle-btn exit-btn"
+      onclick="event.stopPropagation(); this.closest('.flip-card').classList.remove('flipped'); return false;">
+      X
+    </button>
     <div class="flip-card-inner">
       <div class="flip-card-front">
         <div class="article-container">
-          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/N_UJ025W4sI?si=qdwp1thLbyTaJWy5" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/aXk69t6TwXs?si=tb7IZBi3uWZnPc58" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <div class="project-title-container">
-          <h2 class="experience-sub-title project-title">NEO TOKYO</h2>
+          <h2 class="experience-sub-title project-title">FLOAT</h2>
         </div>
         <div class="btn-container">
-          <button class="btn btn-color-2 project-btn" onclick="window.open('https://luigi-zone.itch.io/akimbovr', '_blank');">Itch.io</button>
+          <button class="btn btn-color-2 project-btn meta-btn"
+            onclick="event.stopPropagation(); window.open('https://www.meta.com/de-de/experiences/float-a-mixed-reality-experience/24099813506309823/', '_blank');">
+            Meta Horizon
+          </button>
+          <button id="floatDetailsBtn" class="btn btn-color-2 project-btn"
+            onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
+            Details
+          </button>
         </div>
       </div>
-      <div class="flip-card-back">
-        <h1 id="neoScopeTitle">Project Scope</h1>
-        <p id="neoScopeDesc">- 48-Hour Game Jam</p>
-        <h1 id="neoRoleTitle">My Role</h1>
-        <p id="neoRoleDesc">- Main Programmer</p>
+      <div class="flip-card-back">   
+  <div style="display: flex; flex-direction: column; width: 100%; max-width: 700px; margin: 0 auto 0 auto; gap: 0; align-items: stretch; justify-content: flex-start; padding-top: 0;">
+          <div style="flex: 2 1 0; text-align: left; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; margin-top: 0; width: 100%;">
+            <div class="float-back-info-box">
+              <div class="float-back-info-col">
+                <h1 id="P1">Project Scope</h1>
+                <p id="P2">- 3rd Semester Project <br /> - Extended by one month for Gamescom <br /> - Team of 6 People</p>
+              </div>
+              <div class="float-back-info-col">
+                <h1 id="RoleTitle">My Role</h1>
+                <p id="RoleDescription">- Main Programmer <br /> - Shader <br /> - Effects</p>
+              </div>
+            </div>
+            <div class="float-problem-section">
+              <h1 id="ProblemTitle">The Context of the Code</h1>
+              <p id="ProblemDesc" style="word-break: break-word; white-space: pre-line;"> We needed to place the Foliage as Instance Static Meshes and our Game Designer asked me if there is a way so he does't has to manipulate each Mesh individualy. So I build him a simple Editor Utility Widget.</p>
+            </div>
+          </div>
+          <div style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
+            <img src="./assets/FLOAT_Solution.gif" alt="Solution in action" style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;" />
+          </div>
+        </div>
+  <div style="width: 100%; display: flex; justify-content: center;">
+          <iframe 
+            src="https://blueprintue.com/render/zp_ydxfg/"
+            class="blueprint-frame"
+            height="10%"
+            style="margin-top:0;"
+            allowfullscreen>
+          </iframe>
+        </div>
+          <div class="float-problem-section" style="max-width: 700px; margin: 0 auto; text-align: left;">
+            <h1 id="EmbedTitle">The Context of the Code</h1>
+            <p id="EmbedDesc" style="word-break: break-word; white-space: pre-line;"> To create different types of obstacles in the game we decided to use Water. It had various requirements that needed to be met, like a form of interaction with the player.</p>
+            <div style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
+            <img src="./assets/FLOAT_Solution2.gif" alt="Solution in action" style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:1.5rem; margin-bottom:0rem;" />
+          </div>
+            <div style="width: 100%; display: flex; justify-content: center;">
+              <iframe 
+                src="https://blueprintue.com/render/cx-yye7d/"
+                class="blueprint-frame"
+                height="10%"
+                style="margin-top:0;"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
       </div>
     </div>
   </div>
 </div>
 
+
+         
+
 <!-- GOD OF A CULT Karte -->
 <div class="details-container color-container">
   <div class="flip-card">
-    <button id="cultDetailsBtn" class="flip-toggle-btn" onclick="event.stopPropagation(); this.parentElement.classList.toggle('flipped');">Details</button>
+    <button class="flip-toggle-btn exit-btn"
+      onclick="event.stopPropagation(); this.closest('.flip-card').classList.remove('flipped'); return false;">
+      X
+    </button>
     <div class="flip-card-inner">
       <div class="flip-card-front">
         <div class="article-container">
@@ -211,15 +243,44 @@
           >
             Itch.io
           </button>
+          <button id="cultDetailsBtn" class="btn btn-color-2 project-btn"
+            onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
+            Details
+          </button>
         </div>
       </div>
-      <div class="flip-card-back">
-        <h1 id="cultScopeTitle">Project Scope</h1>
-        <p id="cultScopeDesc">- 2nd Semester Project</p>
-        <h1 id="cultRoleTitle">My Role</h1>
-        <p id="cultRoleDesc">- Solo Project</p>
-        <h1 id="cultVoiceTitle">Voice Acting</h1>
-        <p id="cultVoiceDesc">- By Thorben Gohde th.gohde@gmail.com</p>
+      <div class="flip-card-back">   
+        <div style="display: flex; flex-direction: column; width: 100%; max-width: 700px; margin: 0 auto 0 auto; gap: 0; align-items: stretch; justify-content: flex-start; padding-top: 0;">
+          <div style="flex: 2 1 0; text-align: left; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; margin-top: 0; width: 100%;">
+            <div class="float-back-info-box">
+              <div class="float-back-info-col">
+                <h1 id="cultScopeTitle">Project Scope</h1>
+                <p id="cultScopeDesc">- 2nd Semester Project <br /> - Voiced by Thorben Gohde <br /> th.gohde@gmail.com</p>
+              </div>
+              <div class="float-back-info-col">
+                <h1 id="cultRoleTitle">My Role</h1>
+                <p id="cultRoleDesc">- Solo Project</p>
+              </div>
+            </div>
+            <div class="float-problem-section">
+              <h1 id="cultProblemTitle">The Context of the Code</h1>
+              <p id="cultProblemDesc" style="word-break: break-word; white-space: pre-line;">To be able to create levels as fast as possible I created a System that works with only Datatables. The Game is fully voiced which is also implemented in a simple System.</p>
+            </div>
+          </div>
+          <div style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
+            <img src="./assets/GodOfACult_Solution.gif" alt="God Of a Cult Solution gif" style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;" />
+            <img src="./assets/GodOfACult_DT.png" alt="God Of a Cult Design Thumbnail" style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0.5rem; margin-bottom:0;" />
+          </div>
+        </div>
+        <div style="width: 100%; display: flex; justify-content: center;">
+          <iframe 
+            src="https://blueprintue.com/render/s-gbgfb-/"
+            class="blueprint-frame"
+            height="10%"
+            style="margin-top:0;"
+            allowfullscreen>
+          </iframe>
+        </div>
       </div>
     </div>
   </div>
@@ -228,7 +289,10 @@
 <!-- UMBRA Karte -->
 <div class="details-container color-container">
   <div class="flip-card">
-    <button id="umbraDetailsBtn" class="flip-toggle-btn" onclick="event.stopPropagation(); this.parentElement.classList.toggle('flipped');">Details</button>
+    <button class="flip-toggle-btn exit-btn"
+      onclick="event.stopPropagation(); this.closest('.flip-card').classList.remove('flipped'); return false;">
+      X
+    </button>
     <div class="flip-card-inner">
       <div class="flip-card-front">
         <div class="article-container">
@@ -253,17 +317,111 @@
           >
             Itch.io
           </button>
+          <button id="umbraDetailsBtn" class="btn btn-color-2 project-btn"
+            onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
+            Details
+          </button>
         </div>
       </div>
-      <div class="flip-card-back">
-        <h1 id="umbraScopeTitle">Project Scope</h1>
-        <p id="umbraScopeDesc">- 48-Hour Game Jam <br /> - Extended</p>
-        <h1 id="umbraRoleTitle">My Role</h1>
-        <p id="umbraRoleDesc">- Programmer <br /> - Shader</p>
+      <div class="flip-card-back">   
+        <div style="display: flex; flex-direction: column; width: 100%; max-width: 700px; margin: 0 auto 0 auto; gap: 0; align-items: stretch; justify-content: flex-start; padding-top: 0;">
+          <div style="flex: 2 1 0; text-align: left; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; margin-top: 0; width: 100%;">
+            <div class="float-back-info-box">
+              <div class="float-back-info-col">
+                <h1 id="umbraScopeTitle">Project Scope</h1>
+                <p id="umbraScopeDesc">- 48-Hour Game Jam <br /> - Extended <br /> - Team of 4 People</p>
+              </div>
+              <div class="float-back-info-col">
+                <h1 id="umbraRoleTitle">My Role</h1>
+                <p id="umbraRoleDesc">- Only Programmer <br /> - Shader</p>
+              </div>
+            </div>
+            <div class="float-problem-section">
+              <h1 id="umbraProblemTitle">The Context of the Code</h1>
+              <p id="umbraProblemDesc" style="word-break: break-word; white-space: pre-line;">For this Main Menu I created multiple Widgets so I could use them in diffrent Projects. A Macro handles the opening of the diffrent Sub-Widgets. The Main Menu is placed in a 3D Space and on the Materials is a basic Panner to create the Illusion of the Camera moving constantly.</p>
+            </div>
+          </div>
+          <div style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
+            <img src="./assets/UMBRA_Solution.gif" alt="Umbra Solution gif" style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;" />
+            <img src="./assets/UMBRA_UI.png" alt="God Of a Cult Design Thumbnail" style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0.5rem; margin-bottom:0;" />
+          </div>
+        </div>
+        <div style="width: 100%; display: flex; justify-content: center;">
+          <iframe 
+            src="https://blueprintue.com/render/8y2_fflx/"
+            class="blueprint-frame"
+            height="10%"
+            style="margin-top:0;"
+            allowfullscreen>
+          </iframe>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+ <!-- NEO TOKYO Karte -->
+<div class="details-container color-container">
+  <div class="flip-card">
+    <button class="flip-toggle-btn exit-btn"
+      onclick="event.stopPropagation(); this.closest('.flip-card').classList.remove('flipped'); return false;">
+      X
+    </button>
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <div class="article-container">
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/N_UJ025W4sI?si=qdwp1thLbyTaJWy5" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="project-title-container">
+          <h2 class="experience-sub-title project-title">NEO TOKYO</h2>
+        </div>
+        <div class="btn-container">
+          <button class="btn btn-color-2 project-btn" onclick="window.open('https://luigi-zone.itch.io/akimbovr', '_blank');">Itch.io</button>
+          <button id="neoTokyoDetailsBtn" class="btn btn-color-2 project-btn"
+            onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
+            Details
+          </button>
+        </div>
+      </div>
+      <div class="flip-card-back">   
+        <div style="display: flex; flex-direction: column; width: 100%; max-width: 700px; margin: 0 auto 0 auto; gap: 0; align-items: stretch; justify-content: flex-start; padding-top: 0;">
+          <div style="flex: 2 1 0; text-align: left; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; margin-top: 0; width: 100%;">
+            <div class="float-back-info-box">
+              <div class="float-back-info-col">
+                <h1 id="neoScopeTitle">Project Scope</h1>
+                <p id="neoScopeDesc">- 48-Hour Game Jam <br /> - Team of 6 People</p>
+              </div>
+              <div class="float-back-info-col">
+                <h1 id="neoRoleTitle">My Role</h1>
+                <p id="neoRoleDesc">- Main Programmer</p>
+              </div>
+            </div>
+            <div class="float-problem-section">
+              <div style="margin-top: 2rem;">
+              <h1 id="neoProblemTitle">What’s in the Box?</h1>
+              </div>
+              <p id="neoProblemDesc" style="word-break: break-word; white-space: pre-line;">Core systems first: wave system, between-round shop, intro sequence. For VR we focused on fast, fun mechanics like procedural katana slicing.</p>
+              <div style="margin-top: 2rem;">
+              <h1 id="neoProblemTitle">Compromises</h1>
+              </div>
+              <p id="neoProblemDesc" style="word-break: break-word; white-space: pre-line;">Skipped complex features like a currency system to keep scope realistic.</p>
+              <div style="margin-top: 2rem;">
+              <h1 id="neoProblemTitle">In hindsight</h1>
+              </div>
+              <p id="neoProblemDesc" style="word-break: break-word; white-space: pre-line;">No revision control → higher workload on one person, fewer features shipped.</p>
+            </div>
+          </div>
+          <div style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
+            <img src="./assets/NEOTOKYO_Solution.gif" alt="Neo Tokyo Solution gif" style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 
 
@@ -313,7 +471,7 @@
           </div>
           <div class="text-container">
             <p id="Longtext">
-              I’m primarily a gameplay programmer in Unreal Engine, I also wear the tech-art hat for shader development. I’m excited to grow in this field!
+              I’m primarily a gameplay programmer in Unreal Engine, I also wear the tech-art hat for shader development. I first discovered game development in school through a class project. Seeing others play and enjoy what I had created sparked a feeling I never wanted to lose. In 2023 I visited Japan and developed a strong connection to the country, which continues to inspire me every day. Today, my motivation to create games is closely tied to my long-term ambition of building a career and life in Japan.
             </p>
           </div>
         </div>
@@ -339,15 +497,15 @@
                   class="icon"
                 />
                 <div>
-                  <h3 id="E1">Studying abroad in Summer 2026</h3>
-                  <p id="E2">At Kanagawa University, Japan</p>
+                  <h3 id="E1">Studying at Kanagawa University, Japan</h3>
+                  <p id="E2">Summer 2026</p>
                 </div>
               </article>
               
               <article>
                 <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
                 <div>
-                  <h3 id="EE1">Participating at Gamescom 2025</h3> <!-- ID BEREITS VORHANDEN -->
+                  <h3 id="EE1">Participated at Gamescom 2025</h3> <!-- ID BEREITS VORHANDEN -->
                   <p id="EE2">Game: FLOAT</p> <!-- ID BEREITS VORHANDEN -->
                 </div>
               </article>
@@ -363,7 +521,6 @@
                   <a id="Link" href="https://www.linkedin.com/posts/varjo_meet-one-of-the-winners-of-our-academic-giveaway-activity-7334126257871175680-ojUd/" target="_blank"> Click here to see the post</a>
                 </div>
               </article>
-
 
               <article>
                 <img
@@ -384,47 +541,12 @@
                   class="icon"
                 />
                 <div>
-                  <h3>HNU Winter GameJam 2024</h3>
-                  <p id="A1"> Winner In the categories best game and best sound </p>
+                  <h3>Winner of multiple Game Jams and University Exhibitions</h3>
+                  <p id="C1">2024 until now</p>
                 </div>
               </article>
+              
 
-    
-                <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>University Ulm Hackathon X GameJam</h3>
-                  <p id="B1">Winner In the categorie best sound</p>
-                </div>
-              </article>
-              
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>HNU Games.Kickstart 2025</h3>
-                  <p id="C1">Winner in the categorie best sound</p>
-                </div>
-              </article>
-              
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>HNU Summer GameJam 2025</h3>
-                  <p id="D1">Winner</p>
-                </div>
-              </article>
 
 
             </div>
