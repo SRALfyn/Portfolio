@@ -1,3 +1,7 @@
+/* Remove underline on hover for All my Games button */
+.all-games-btn:hover {
+  text-decoration: none !important;
+}
 /* Add a small gap above the gif on FLOAT card back */
 .flip-card-back img[alt="Solution in action"] {
   margin-top: 1.2rem;

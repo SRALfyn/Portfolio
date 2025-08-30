@@ -27,8 +27,9 @@ function unlockScrollFromLockedPosition() {
   }
 }
 
-// Listen for flip toggles
+// Listen for flip toggles, but exclude the All my Games button
 document.querySelectorAll('.btn.btn-color-2').forEach(btn => {
+  if (btn.id === 'allGamesBtn') return;
   btn.addEventListener('mousedown', function () {
     window._lastScrollY = window.scrollY;
     window._cardWasFlipped = true;

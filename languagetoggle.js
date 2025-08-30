@@ -52,6 +52,9 @@ const enableLanguage = () => {
     const neoProblemDescs = document.querySelectorAll('#neoProblemDesc');
     if (neoProblemTitles.length > 0) neoProblemTitles[0].innerText = "内容";
     if (neoProblemDescs.length > 0) neoProblemDescs[0].innerText = "コアシステムを最初に実装：ウェーブシステム、ラウンド間ショップ、イントロシーケンス。VRでは、プロシージャルな刀のスライスなど、速くて楽しいメカニクスに注力しました。";
+        // All my Games button
+        const allGamesBtn = document.getElementById('allGamesBtn');
+        if (allGamesBtn) allGamesBtn.innerText = "全てのゲーム";
     if (neoProblemTitles.length > 1) neoProblemTitles[1].innerText = "妥協点";
     if (neoProblemDescs.length > 1) neoProblemDescs[1].innerText = "スコープを現実的に保つため、通貨システムなどの複雑な機能は省略しました。";
     if (neoProblemTitles.length > 2) neoProblemTitles[2].innerText = "振り返って";
@@ -177,6 +180,9 @@ const disableLanguage = () => {
     const neoProblemDescs = document.querySelectorAll('#neoProblemDesc');
     if (neoProblemTitles.length > 0) neoProblemTitles[0].innerText = "What’s in the Box?";
     if (neoProblemDescs.length > 0) neoProblemDescs[0].innerText = "Core systems first: wave system, between-round shop, intro sequence. For VR we focused on fast, fun mechanics like procedural katana slicing.";
+        // All my Games button
+        const allGamesBtn = document.getElementById('allGamesBtn');
+        if (allGamesBtn) allGamesBtn.innerText = "All my Games";
     if (neoProblemTitles.length > 1) neoProblemTitles[1].innerText = "Compromises";
     if (neoProblemDescs.length > 1) neoProblemDescs[1].innerText = "Skipped complex features like a currency system to keep scope realistic.";
     if (neoProblemTitles.length > 2) neoProblemTitles[2].innerText = "In hindsight";
