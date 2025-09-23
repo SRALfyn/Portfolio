@@ -45,8 +45,14 @@ let Support = document.getElementById('Support');
 let Link = document.getElementById('Link');
 let AE1 = document.getElementById('AE1');
 let AE2 = document.getElementById('AE2');
+let NominatedA = document.getElementById('NominatedA');
+let LinkAward = document.getElementById('LinkAward');
+let WinnerG = document.getElementById('WinnerG');
 
 const enableLanguage = () => {
+    if (WinnerG) WinnerG.innerText = "複数のゲームジャムと大学展示会で受賞";
+    if (NominatedA) NominatedA.innerText = "ベスト学生ゲーム賞2025ノミネート";
+    if (LinkAward) LinkAward.innerText = "ノミネート一覧を見る";
     // NEO TOKYO card back - multiple sections
     const neoProblemTitles = document.querySelectorAll('#neoProblemTitle');
     const neoProblemDescs = document.querySelectorAll('#neoProblemDesc');
@@ -175,6 +181,9 @@ const enableLanguage = () => {
 }
 
 const disableLanguage = () => {
+    if (WinnerG) WinnerG.innerText = "Winner of multiple Game Jams and University Exhibitions";
+    if (NominatedA) NominatedA.innerText = "Nominated for Best Student Game Award 2025";
+    if (LinkAward) LinkAward.innerText = "Click here to see the Nominees";
     // NEO TOKYO card back - multiple sections
     const neoProblemTitles = document.querySelectorAll('#neoProblemTitle');
     const neoProblemDescs = document.querySelectorAll('#neoProblemDesc');
