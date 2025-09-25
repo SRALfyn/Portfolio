@@ -251,7 +251,7 @@ const disableLanguage = () => {
     if (RoleTitle) RoleTitle.innerText = "My Role";
     if (RoleDescription) RoleDescription.innerHTML = "- Main Programmer <br /> - Shader <br /> - Effects";
     if (ProblemTitle) ProblemTitle.innerText = "The Context of the Code";
-    if (ProblemDesc) ProblemDesc.innerText = "We needed to place the Foliage as Instance Static Meshes and our Game Designer asked me if there is a way so he doesn’t has to manipulate each Mesh individually. So I build him a simple Editor Utility Widget.";
+    if (ProblemDesc) ProblemDesc.innerText = "We needed to place the Foliage as Instance Static Meshes and our Game Designer asked me if there is a way so he doesn’t have to manipulate each mesh individually. So I build him a simple Editor Utility Widget.";
     if (EmbedTitle) EmbedTitle.innerText = "The Context of the Code";
     if (EmbedDesc) EmbedDesc.innerText = "To create different types of obstacles in the game we decided to use Water. It had various requirements that needed to be met, like a form of interaction with the player.";
     // Details buttons
