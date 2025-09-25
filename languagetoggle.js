@@ -222,7 +222,7 @@ const disableLanguage = () => {
     if (umbraRoleTitle) umbraRoleTitle.innerText = "My Role";
     if (umbraRoleDesc) umbraRoleDesc.innerHTML = "- Only Programmer <br /> - Shader";
     if (umbraProblemTitle) umbraProblemTitle.innerText = "The Context of the Code";
-    if (umbraProblemDesc) umbraProblemDesc.innerText = "For this Main Menu I created multiple Widgets so I could use them in diffrent Projects. A Macro handles the opening of the diffrent Sub-Widgets. The Main Menu is placed in a 3D Space and on the Materials is a basic Panner to create the Illusion of the Camera moving constantly.";
+    if (umbraProblemDesc) umbraProblemDesc.innerText = "For this Main Menu I created multiple Widgets so I could use them in different Projects. A Macro handles the opening of the different Sub-Widgets. The Main Menu is placed in a 3D Space and on the Materials is a basic Panner to create the Illusion of the Camera moving constantly.";
 
     // NEO TOKYO card back content
     const neoScopeTitle = document.getElementById('neoScopeTitle');
@@ -251,7 +251,7 @@ const disableLanguage = () => {
     if (RoleTitle) RoleTitle.innerText = "My Role";
     if (RoleDescription) RoleDescription.innerHTML = "- Main Programmer <br /> - Shader <br /> - Effects";
     if (ProblemTitle) ProblemTitle.innerText = "The Context of the Code";
-    if (ProblemDesc) ProblemDesc.innerText = "We needed to place the Foliage as Instance Static Meshes and our Game Designer asked me if there is a way so he does't has to manipulate each Mesh individually. So I build him a simple Editor Utility Widget.";
+    if (ProblemDesc) ProblemDesc.innerText = "We needed to place the Foliage as Instance Static Meshes and our Game Designer asked me if there is a way so he doesn’t has to manipulate each Mesh individually. So I build him a simple Editor Utility Widget.";
     if (EmbedTitle) EmbedTitle.innerText = "The Context of the Code";
     if (EmbedDesc) EmbedDesc.innerText = "To create different types of obstacles in the game we decided to use Water. It had various requirements that needed to be met, like a form of interaction with the player.";
     // Details buttons
