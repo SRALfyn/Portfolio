@@ -2,14 +2,17 @@
 .all-games-btn:hover {
   text-decoration: none !important;
 }
+
 /* Add a small gap above the gif on FLOAT card back */
 .flip-card-back img[alt="Solution in action"] {
   margin-top: 1.2rem;
 }
+
 /* Only add margin-top to the first h1 (Project Scope) on the back of each card */
 .flip-card-back h1:first-of-type {
   margin-top: 4rem;
 }
+
 /* Remove top padding from flipped card back, handled by parent */
 .flip-card.flipped .flip-card-back {
   overflow-y: auto !important;
@@ -19,6 +22,7 @@
   margin-bottom: 0 !important;
   max-height: 90vh;
 }
+
 /* FLOAT card back: remove all margin/padding from Problem section on all screens */
 .float-problem-section {
   margin: 0 0 1.2rem 0 !important;
@@ -26,43 +30,51 @@
   text-align: left !important;
   width: 100% !important;
 }
+
 .float-problem-section h1,
 .float-problem-section p {
   margin: 0 !important;
   padding: 0 !important;
 }
+
 .float-problem-row {
   margin-top: 0;
   margin-bottom: 0;
   padding: 0;
 }
+
 .float-problem-row h1,
 .float-problem-row p {
   margin-top: 0;
   margin-bottom: 0;
   padding: 0;
 }
+
 @media (max-width: 700px) {
   .float-problem-row {
     margin-top: 1rem;
     margin-bottom: 1.5rem;
     padding: 0;
   }
+
   .float-problem-row h1,
   .float-problem-row p {
     margin-bottom: 0.5rem;
   }
 }
+
 /* FLOAT card back: remove margin around problem text on wide screens, keep small margin on small screens */
 .float-problem-row {
   margin-top: 0;
 }
+
 @media (max-width: 700px) {
   .float-problem-row {
     margin-top: 1rem;
     margin-bottom: 1.5rem;
   }
 }
+
 /* FLOAT card back info box matches front card style */
 .float-back-info-box {
   background: none;
@@ -78,11 +90,13 @@
   margin-top: 4rem;
   justify-content: center;
 }
+
 .float-back-info-col {
   flex: 1 1 0;
   min-width: 0;
   text-align: left;
 }
+
 @media (max-width: 700px) {
   .float-back-info-box {
     flex-direction: column;
@@ -90,6 +104,7 @@
     padding: 1rem;
   }
 }
+
 /* FLOAT card back: make the problem row full width below text/gif on large screens, above gif on small screens */
 @media (max-width: 900px) {
   .float-problem-row {
@@ -98,6 +113,7 @@
     margin-bottom: 2.5rem;
   }
 }
+
 /* GENERAL */
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
@@ -130,13 +146,16 @@ html {
   scroll-behavior: smooth;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   scroll-behavior: smooth;
   box-sizing: border-box;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -346,9 +365,10 @@ section {
 }
 
 .section__pic-container {
-  display: flex;
-  height: 400px;
-  width: 400px;
+  /* keep a fixed square so the image cannot be stretched into an oval */
+  flex: 0 0 200px;
+  width: 200px;
+  height: 200px;
   margin: auto 0;
 }
 
@@ -394,6 +414,11 @@ section {
 
 #about {
   position: relative;
+  margin-bottom: 1.5rem !important;
+  padding-bottom: 3rem !important;
+  border-bottom: 2px solid var(--text-color);
+  margin-top: 1rem !important;
+  padding-top: 2rem !important;
 }
 
 .about-containers {
@@ -472,6 +497,8 @@ article .icon {
 
 #projects {
   position: relative;
+  border-bottom: 2px solid var(--text-color);
+
 }
 
 .color-container {
@@ -506,6 +533,11 @@ article .icon {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
+  /* reduce space between contact section and footer */
+  margin-bottom: 0rem !important;
+  padding-bottom: 0rem !important;
+  margin-top: 1.5rem !important;
+  padding-top: 1.5rem !important;
 }
 
 .contact-info-upper-container {
@@ -545,6 +577,10 @@ footer {
   margin-bottom: 5rem;
   height: auto;
   margin: 0 1rem;
+  margin-top: 0rem !important;
+  padding-top: 0rem !important;
+  margin-bottom: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
 }
 
 footer p {
@@ -613,6 +649,7 @@ footer p {
     height: 0 !important;
   }
 }
+
 @media (max-width: 700px) {
   .flip-card-back {
     padding: 1.2rem;
@@ -621,7 +658,8 @@ footer p {
     justify-content: flex-start !important;
     text-align: center !important;
   }
-  .flip-card-back > div {
+
+  .flip-card-back>div {
     flex-direction: column !important;
     gap: 1.2rem !important;
     align-items: center !important;
@@ -629,6 +667,7 @@ footer p {
     width: 100% !important;
     margin: 0 !important;
   }
+
   .flip-card-back {
     background-color: var(--base-color);
     color: var(--text-color);
@@ -657,7 +696,9 @@ footer p {
     display: block;
     padding-top: 0 !important;
   }
-  .flip-card-back h1, .flip-card-back #P1 {
+
+  .flip-card-back h1,
+  .flip-card-back #P1 {
     margin-top: 0 !important;
   }
 }
@@ -764,6 +805,7 @@ footer p {
   overflow-y: auto !important;
   padding: 0;
 }
+
 /* Add a scrollable wrapper for card content */
 .flip-card-back .flip-card-back-inner {
   width: 100%;
@@ -862,9 +904,10 @@ footer p {
   border-radius: 1rem;
 }
 
-.flip-card .meta-btn { display: block; }
-.flip-card .exit-btn { 
-  display: none;  
+
+
+.flip-card .exit-btn {
+  display: none;
   top: 2rem;
   right: 2rem;
   width: 3.5rem;
@@ -872,10 +915,16 @@ footer p {
   padding: 0;
   font-size: 1.2rem;
   border-radius: 2rem;
-  z-index: 10; }
+  z-index: 10;
+}
 
-.flip-card.flipped .meta-btn { display: none; }
-.flip-card.flipped .exit-btn { display: block; }
+.flip-card.flipped .meta-btn {
+  display: none;
+}
+
+.flip-card.flipped .exit-btn {
+  display: block;
+}
 
 body.noscroll,
 html.noscroll {
@@ -883,4 +932,325 @@ html.noscroll {
   height: 100% !important;
   position: static !important;
   width: auto !important;
+}
+
+@media (max-width: 480px) {
+
+  /* allow details panel to shrink on very narrow screens */
+  .details-container.color-container {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    flex: 1 1 auto !important;
+    margin: 0.5rem !important;
+  }
+
+  /* make regular buttons more compact so they don't overflow */
+  .btn {
+    width: auto !important;
+    padding: 0.45rem 0.6rem !important;
+    font-size: 0.85rem !important;
+  }
+
+  /* keep the details/exit/meta toggles always visible */
+  .flip-toggle-btn,
+  .meta-btn,
+  .exit-btn {
+    position: fixed !important;
+    top: 0.6rem !important;
+    right: 0.6rem !important;
+    z-index: 2000 !important;
+  }
+
+  /* ensure flipped state's exit button sits above the card */
+  .flip-card.flipped .exit-btn {
+    display: block !important;
+    right: 0.6rem !important;
+    top: 0.6rem !important;
+  }
+
+
+}
+
+/* Fix: allow problem text to use full width (override inline pre-line/newlines) */
+.float-problem-section p,
+#ProblemDesc {
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  text-align: left !important;
+}
+
+/* Ensure the problem column stretches instead of aligning everything to the right */
+.flip-card-back>div>div[style*="align-items: flex-end"],
+.flip-card-back>div>div {
+  align-items: stretch !important;
+}
+
+/* Reduce vertical gap between Profile and Projects */
+#profile {
+  gap: 2rem;
+  /* less space between picture and text */
+  padding-bottom: 6rem;
+  /* reduce bottom padding of profile section */
+  margin-bottom: 4rem;
+  /* reduce space before next section */
+
+  border-bottom: 2px solid var(--text-color);
+}
+
+/* Reduce top spacing for Projects so it sits closer to Profile */
+#projects {
+  margin-top: 0 !important;
+  padding-top: 0rem !important;
+  margin-bottom: 1rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+@media (min-width: 1200px) {
+
+  /* Theme toggle: left edge of content, higher z so it's visible */
+  .toggle {
+    left: 10rem;
+    top: 3.5rem;
+    margin-top: 0;
+    z-index: 1001;
+    /* above most content */
+  }
+
+  /* Language toggle: same left edge, a bit lower so they don't overlap */
+  .toggleLanguage {
+    left: 10rem;
+    top: 7rem;
+    margin-top: 0;
+    z-index: 1000;
+  }
+}
+
+/* Make video/iframe content fully responsive so one fixed-size iframe doesn't squeeze others */
+.flip-card-front .article-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  /* keeps correct video ratio */
+  min-height: 140px;
+  /* fallback for very small screens */
+  height: auto;
+  overflow: hidden;
+}
+
+/* Override any hard-coded width/height attributes on iframes/videos */
+.flip-card-front .article-container iframe,
+.flip-card-front .article-container video {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  display: block;
+  border-radius: 1rem;
+}
+
+/* Ensure card boxes can wrap and shrink on narrow screens */
+.about-containers {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Allow detail cards to shrink below their previous min-width on small screens */
+@media (max-width: 700px) {
+  .details-container.color-container {
+    flex: 1 1 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin: 0.5rem !important;
+  }
+
+  .flip-card-front .article-container {
+    aspect-ratio: 16/9;
+    min-height: 120px;
+  }
+}
+
+/* Make video/iframe content fully responsive so one fixed-size iframe doesn't squeeze others */
+.flip-card-front .article-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  /* keeps correct video ratio */
+  min-height: 140px;
+  /* fallback for very small screens */
+  height: auto;
+  overflow: hidden;
+}
+
+/* Override any hard-coded width/height attributes on iframes/videos */
+.flip-card-front .article-container iframe,
+.flip-card-front .article-container video {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  display: block;
+  border-radius: 1rem;
+}
+
+/* Ensure card boxes can wrap and shrink on narrow screens */
+.about-containers {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Allow detail cards to shrink below their previous min-width on small screens */
+@media (max-width: 700px) {
+  .details-container.color-container {
+    flex: 1 1 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin: 0.5rem !important;
+  }
+
+  .flip-card-front .article-container {
+    aspect-ratio: 16/9;
+    min-height: 120px;
+  }
+}
+
+/* Keep 16:9 ratio but cap iframe height on medium/wide screens so buttons stay visible */
+@media screen and (min-width: 701px) and (max-width: 1400px) {
+  .flip-card-front {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .flip-card-front .article-container {
+    width: 100%;
+    aspect-ratio: 16/9;
+    /* preserve ratio */
+    max-height: min(45vh, 420px) !important;
+    /* cap height so it won't push buttons off */
+    height: auto !important;
+    flex: 0 0 auto;
+    /* don't grow to fill card */
+    overflow: hidden;
+  }
+
+  .flip-card-front .article-container iframe,
+  .flip-card-front .article-container video {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    display: block;
+    object-fit: cover;
+    /* keep thumbnail filling container without distortion */
+  }
+
+  /* Ensure btn area remains visible and not overlapped */
+  .flip-card-front .btn-container {
+    flex: 0 0 auto;
+    z-index: 4;
+    padding-bottom: 1rem;
+  }
+}
+
+/* Make YouTube/video take exactly half the card height on medium/wide screens */
+@media screen and (min-width: 701px) and (max-width: 1400px) {
+  .flip-card-front {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  /* video area = 50% of the card front */
+  .flip-card-front .article-container {
+    flex: 0 0 50% !important;
+    height: 50% !important;
+    max-height: 50% !important;
+    min-height: 0 !important;
+    overflow: hidden;
+  }
+
+  /* remaining content (title / buttons) takes the other half */
+  .flip-card-front .btn-container,
+  .flip-card-front .project-title-container,
+  .flip-card-front .project-meta {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+  }
+
+  .flip-card-front .article-container iframe,
+  .flip-card-front .article-container video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block;
+  }
+}
+
+.details-container.color-container {
+  flex: 0 0 320px !important;
+  min-width: 320px !important;
+  max-width: 320px !important;
+  margin: 1rem;
+}
+
+/* Keep theme & language toggles above the flipped full-screen card */
+.toggle,
+.toggleLanguage {
+  z-index: 2001 !important;
+}
+
+/* Ensure same on narrow screens */
+@media (max-width: 480px) {
+
+  .toggle,
+  .toggleLanguage {
+    z-index: 2001 !important;
+  }
+}
+
+.section__pic-container {
+  /* keep a fixed square so the image cannot be stretched into an oval */
+  flex: 0 0 200px;
+  width: 200px;
+  height: 200px;
+  margin: auto 0;
+}
+
+/* replaced: ensure profile/about image is always a perfect circle */
+.about-pic {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* About section: place picture above the text and center contents */
+#about .section-container {
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Limit text width and center-align it under the image */
+#about .about-details-container {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Add some horizontal padding so long lines don't touch edges */
+#about .text-container {
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+/* Keep about image centered above text */
+#about .section__pic-container {
+  margin: 0 auto;
 }

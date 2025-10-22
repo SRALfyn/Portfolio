@@ -1,112 +1,138 @@
 @media screen and (max-width: 1400px) {
-    #profile {
-      height: 83vh;
-      margin-bottom: 6rem;
-    }
-    .about-containers {
-      flex-wrap: wrap;
-    }
-    #contact,
-    #projects {
-      height: auto;
-    }
+  #profile {
+    height: 83vh;
+    margin-bottom: 6rem;
   }
-  
-  @media screen and (max-width: 1200px) {
-    #desktop-nav {
-      display: none;
-    }
-    #hamburger-nav {
-      display: flex;
-    }
-    #experience,
-    .experience-details-container {
-      margin-top: 2rem;
-    }
-    #profile,
-    .section-container {
-      display: block;
-    }
-    .arrow {
-      display: none;
-    }
-    section,
-    .section-container {
-      height: auto;
-    }
-    section {
-      margin: 0 5%;
-    }
-    .section__pic-container {
-      width: 275px;
-      height: 275px;
-      margin: 0 auto 2rem;
-    }
-    .about-containers {
-      margin-top: 0;
-    }
-  }
-  
-  @media screen and (max-width: 600px) {
-    #contact,
-    footer {
-      height: 40vh;
-    }
-    #profile {
-      height: 83vh;
-      margin-bottom: 0;
-    }
-    article {
-      font-size: 1rem;
-    }
-    footer nav {
-      height: auto;
-      margin-bottom: 2rem;
-    }
-    .about-containers,
-    .contact-info-upper-container,
-    .btn-container {
-      flex-wrap: wrap;
-    }
-    .contact-info-container {
-      margin: 0;
-    }
-    .contact-info-container p,
-    .nav-links li a {
-      font-size: 1rem;
-    }
-    .experience-sub-title {
-      font-size: 1.25rem;
-    }
-    .logo {
-      font-size: 1.5rem;
-    }
-    .nav-links {
-      flex-direction: column;
-      gap: 0.5rem;
-      text-align: center;
-    }
-    .section__pic-container {
-      width: auto;
-      height: 46vw;
-      justify-content: center;
-    }
-    .section__text__p2 {
-      font-size: 1.25rem;
-    }
-    .title {
-      font-size: 2rem;
-    }
-    .text-container {
-      text-align: justify;
-    }
-    
-  }
-  
 
-  @media screen and (max-width: 900px) {
+  .about-containers {
+    flex-wrap: wrap;
+  }
+
+  #contact,
+  #projects {
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #desktop-nav {
+    display: none;
+  }
+
+  #hamburger-nav {
+    display: flex;
+  }
+
+  #experience,
+  .experience-details-container {
+    margin-top: 2rem;
+  }
+
+  #profile,
+  .section-container {
+    display: block;
+  }
+
+  .arrow {
+    display: none;
+  }
+
+  section,
+  .section-container {
+    height: auto;
+  }
+
+  section {
+    margin: 0 5%;
+  }
+
+  .section__pic-container {
+    /* keep a fixed square so the image cannot be stretched into an oval */
+    flex: 0 0 200px;
+    width: 200px;
+    height: 200px;
+    margin: auto 0;
+  }
+
+  .about-containers {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+
+
+  #profile {
+    height: 83vh;
+    margin-bottom: 0;
+  }
+
+  article {
+    font-size: 1rem;
+  }
+
+  footer nav {
+    height: auto;
+    margin-bottom: 2rem;
+  }
+
+  .about-containers,
+  .contact-info-upper-container,
+  .btn-container {
+    flex-wrap: wrap;
+  }
+
+  .contact-info-container {
+    margin: 0;
+  }
+
+  .contact-info-container p,
+  .nav-links li a {
+    font-size: 1rem;
+  }
+
+  .experience-sub-title {
+    font-size: 1.25rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .section__pic-container {
+    /* keep a fixed square so the image cannot be stretched into an oval */
+    flex: 0 0 200px;
+    width: 200px;
+    height: 200px;
+    margin: auto 0;
+  }
+
+  .section__text__p2 {
+    font-size: 1.25rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .text-container {
+    text-align: justify;
+  }
+
+}
+
+
+@media screen and (max-width: 900px) {
   .details-container.color-container {
-    flex: 1 1 100%; /* Volle Breite bei kleinen Bildschirmen */
+    flex: 1 1 100%;
+    /* Volle Breite bei kleinen Bildschirmen */
     max-width: 100%;
   }
 }
@@ -118,11 +144,105 @@
   .details-container.color-container {
     flex: 1 1 100%;
     max-width: 100%;
-    min-height: 350px; /* Kleinere Höhe auf Mobilgeräten */
+    min-height: 350px;
+    /* Kleinere Höhe auf Mobilgeräten */
   }
-  
+
   .flip-card-front {
     display: flex;
     flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 700px) {
+
+  /* Ensure profile flows naturally so the bottom border/underline sits directly under the text */
+  #profile {
+    height: auto !important;
+    /* stop using tall fixed height */
+    display: flex !important;
+    flex-direction: column !important;
+    /* stack picture above text */
+    align-items: center !important;
+    /* keep content centered horizontally */
+    gap: 1rem !important;
+    /* smaller gap between pic and text */
+    padding-bottom: 3rem !important;
+    /* reduce bottom padding so underline is close */
+    margin-bottom: 2rem !important;
+    /* sensible spacing before next section */
+  }
+
+  /* keep the text block near the top of the profile column */
+  .section__text {
+    align-self: center !important;
+    margin-bottom: 0 !important;
+  }
+
+  .section__pic-container {
+    /* keep a fixed square so the image cannot be stretched into an oval */
+    flex: 0 0 200px;
+    width: 200px;
+    height: 200px;
+    margin: auto 0;
+  }
+}
+
+/* Make Profile section flow naturally for screens >700px and <=1400px
+   so the underline sits immediately under the text (prevents large gap) */
+@media screen and (min-width: 701px) and (max-width: 1400px) {
+  #profile {
+    height: auto !important;
+    display: flex !important;
+    flex-direction: row !important;
+    /* keep picture and text side-by-side */
+    align-items: center !important;
+    gap: 2.5rem !important;
+    /* smaller gap between picture and text */
+    padding-bottom: 1rem !important;
+    /* keeps underline close to text */
+    margin-bottom: 2rem !important;
+    /* spacing before next section */
+  }
+
+  .section__text {
+    align-self: center !important;
+    margin-bottom: 0 !important;
+  }
+
+  .section__pic-container {
+    /* keep a fixed square so the image cannot be stretched into an oval */
+    flex: 0 0 200px;
+    width: 200px;
+    height: 200px;
+    margin: auto 0;
+  }
+
+  @media screen and (max-width: 700px) {
+
+    /* Ensure profile flows naturally so the bottom border/underline sits directly under the text */
+    #profile {
+      height: auto !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 1rem !important;
+      padding-bottom: 3rem !important;
+      margin-bottom: 2rem !important;
+    }
+
+    /* keep the text block near the top of the profile column */
+    .section__text {
+      align-self: center !important;
+      margin-bottom: 0 !important;
+    }
+
+    .section__pic-container {
+      /* keep a fixed square so the image cannot be stretched into an oval */
+      flex: 0 0 200px;
+      width: 200px;
+      height: 200px;
+      margin: auto 0;
+    }
   }
 }

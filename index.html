@@ -1,622 +1,538 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lars Gohde | Digital Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
-    <script type="text/javascript" src="darkmode.js" defer></script>
-    <script type="text/javascript" src="languagetoggle.js" defer></script>
-    <link rel="icon" type="image/png" href="https://lars-goh.de/assets/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="https://lars-goh.de/assets/favicon.svg" />
-    <link rel="shortcut icon" href="https://lars-goh.de/assets/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="https://lars-goh.de/assets/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Portfolio" />
-    <link rel="manifest" href="https://lars-goh.de/assets/site.webmanifest" />
-  </head>
-  <body>
-    <div class="toggle">
-      <button id="theme-switch" class="switch">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="24px"
-          viewBox="0 -960 960 960"
-          width="24px"
-          fill="#000000"
-        >
-          <path
-            d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z"
-          />
-        </svg>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="24px"
-          viewBox="0 -960 960 960"
-          width="24px"
-          fill="#FFFFFF"
-        >
-          <path
-            d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z"
-          />
-        </svg>
-      </button>
-    </div>
-    <div class="toggleLanguage">
-      <button id="language-switch" class="languageswitch">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="24px"
-          viewBox="0 -960 960 960"
-          width="24px"
-          fill="#FFFFFF"
-        >
-          <path
-            d="m326-240-30-48q80-8 125-43t45-90q0-30-20.5-55T392-512q-23 57-54.5 102T268-332q3 12 6.5 24t7.5 24l-50 15q-3-10-5-17.5t-4-13.5q-26 14-49 21.5t-45 7.5q-32 0-52-21t-20-56q0-53 40-105t103-82q1-19 2-37.5t3-37.5q-28 1-59-.5T79-615l-1-53q26 5 56 6.5t77 1.5q2-18 4.5-35.5t.5-35.5l60 1q-7 17-10 34.5t-6 34.5q58-3 107-9t92-16l1 52q-53 8-103.5 13.5T255-612q-2 14-2.5 29t-2.5 29q28-8 54.5-11t52.5-1q3-10 4.5-20t2.5-20l57 14q-3 8-6.5 16t-6.5 19q51 14 81.5 52t30.5 85q0 70-51.5 117.5T326-240Zm-188-85q17 0 35-7t38-21q-7-38-10-69t-3-59q-38 24-63 59t-25 66q0 13 8.5 22t19.5 9Zm118-65q29-28 50.5-60.5T342-520q-23 0-46.5 4T248-504q-2 26 .5 54t7.5 60Zm446 56q28 0 54.5-13t48.5-37v-106q-23 3-42.5 7t-36.5 9q-45 14-67.5 35T636-390q0 26 18 41t48 15Zm-23 68q-57 0-90-32.5T556-387q0-52 33-85t106-53q23-6 50.5-11t59.5-9q-2-47-22-68.5T721-635q-26 0-51.5 9.5T604-592l-32-56q33-25 77.5-40.5T740-704q71 0 108 44t37 128v257h-67l-6-45q-28 25-61.5 39.5T679-266Z"
-          />
-        </svg>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="24px"
-          viewBox="0 -960 960 960"
-          width="24px"
-          fill="#000000"
-        >
-          <path
-            d="m326-240-30-48q80-8 125-43t45-90q0-30-20.5-55T392-512q-23 57-54.5 102T268-332q3 12 6.5 24t7.5 24l-50 15q-3-10-5-17.5t-4-13.5q-26 14-49 21.5t-45 7.5q-32 0-52-21t-20-56q0-53 40-105t103-82q1-19 2-37.5t3-37.5q-28 1-59-.5T79-615l-1-53q26 5 56 6.5t77 1.5q2-18 4.5-35.5t.5-35.5l60 1q-7 17-10 34.5t-6 34.5q58-3 107-9t92-16l1 52q-53 8-103.5 13.5T255-612q-2 14-2.5 29t-2.5 29q28-8 54.5-11t52.5-1q3-10 4.5-20t2.5-20l57 14q-3 8-6.5 16t-6.5 19q51 14 81.5 52t30.5 85q0 70-51.5 117.5T326-240Zm-188-85q17 0 35-7t38-21q-7-38-10-69t-3-59q-38 24-63 59t-25 66q0 13 8.5 22t19.5 9Zm118-65q29-28 50.5-60.5T342-520q-23 0-46.5 4T248-504q-2 26 .5 54t7.5 60Zm446 56q28 0 54.5-13t48.5-37v-106q-23 3-42.5 7t-36.5 9q-45 14-67.5 35T636-390q0 26 18 41t48 15Zm-23 68q-57 0-90-32.5T556-387q0-52 33-85t106-53q23-6 50.5-11t59.5-9q-2-47-22-68.5T721-635q-26 0-51.5 9.5T604-592l-32-56q33-25 77.5-40.5T740-704q71 0 108 44t37 128v257h-67l-6-45q-28 25-61.5 39.5T679-266Z"
-          />
-        </svg>
-      </button>
 
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lars Gohde | Digital Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="mediaqueries.css" />
+  <script type="text/javascript" src="darkmode.js" defer></script>
+  <script type="text/javascript" src="languagetoggle.js" defer></script>
+  <link rel="icon" type="image/png" href="https://lars-goh.de/assets/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="https://lars-goh.de/assets/favicon.svg" />
+  <link rel="shortcut icon" href="https://lars-goh.de/assets/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://lars-goh.de/assets/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Portfolio" />
+  <link rel="manifest" href="https://lars-goh.de/assets/site.webmanifest" />
+</head>
+
+<body>
+  <div class="toggle">
+    <button id="theme-switch" class="switch">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
+        <path
+          d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z" />
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+        <path
+          d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z" />
+      </svg>
+    </button>
+  </div>
+  <div class="toggleLanguage">
+    <button id="language-switch" class="languageswitch">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+        <path
+          d="m326-240-30-48q80-8 125-43t45-90q0-30-20.5-55T392-512q-23 57-54.5 102T268-332q3 12 6.5 24t7.5 24l-50 15q-3-10-5-17.5t-4-13.5q-26 14-49 21.5t-45 7.5q-32 0-52-21t-20-56q0-53 40-105t103-82q1-19 2-37.5t3-37.5q-28 1-59-.5T79-615l-1-53q26 5 56 6.5t77 1.5q2-18 4.5-35.5t.5-35.5l60 1q-7 17-10 34.5t-6 34.5q58-3 107-9t92-16l1 52q-53 8-103.5 13.5T255-612q-2 14-2.5 29t-2.5 29q28-8 54.5-11t52.5-1q3-10 4.5-20t2.5-20l57 14q-3 8-6.5 16t-6.5 19q51 14 81.5 52t30.5 85q0 70-51.5 117.5T326-240Zm-188-85q17 0 35-7t38-21q-7-38-10-69t-3-59q-38 24-63 59t-25 66q0 13 8.5 22t19.5 9Zm118-65q29-28 50.5-60.5T342-520q-23 0-46.5 4T248-504q-2 26 .5 54t7.5 60Zm446 56q28 0 54.5-13t48.5-37v-106q-23 3-42.5 7t-36.5 9q-45 14-67.5 35T636-390q0 26 18 41t48 15Zm-23 68q-57 0-90-32.5T556-387q0-52 33-85t106-53q23-6 50.5-11t59.5-9q-2-47-22-68.5T721-635q-26 0-51.5 9.5T604-592l-32-56q33-25 77.5-40.5T740-704q71 0 108 44t37 128v257h-67l-6-45q-28 25-61.5 39.5T679-266Z" />
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
+        <path
+          d="m326-240-30-48q80-8 125-43t45-90q0-30-20.5-55T392-512q-23 57-54.5 102T268-332q3 12 6.5 24t7.5 24l-50 15q-3-10-5-17.5t-4-13.5q-26 14-49 21.5t-45 7.5q-32 0-52-21t-20-56q0-53 40-105t103-82q1-19 2-37.5t3-37.5q-28 1-59-.5T79-615l-1-53q26 5 56 6.5t77 1.5q2-18 4.5-35.5t.5-35.5l60 1q-7 17-10 34.5t-6 34.5q58-3 107-9t92-16l1 52q-53 8-103.5 13.5T255-612q-2 14-2.5 29t-2.5 29q28-8 54.5-11t52.5-1q3-10 4.5-20t2.5-20l57 14q-3 8-6.5 16t-6.5 19q51 14 81.5 52t30.5 85q0 70-51.5 117.5T326-240Zm-188-85q17 0 35-7t38-21q-7-38-10-69t-3-59q-38 24-63 59t-25 66q0 13 8.5 22t19.5 9Zm118-65q29-28 50.5-60.5T342-520q-23 0-46.5 4T248-504q-2 26 .5 54t7.5 60Zm446 56q28 0 54.5-13t48.5-37v-106q-23 3-42.5 7t-36.5 9q-45 14-67.5 35T636-390q0 26 18 41t48 15Zm-23 68q-57 0-90-32.5T556-387q0-52 33-85t106-53q23-6 50.5-11t59.5-9q-2-47-22-68.5T721-635q-26 0-51.5 9.5T604-592l-32-56q33-25 77.5-40.5T740-704q71 0 108 44t37 128v257h-67l-6-45q-28 25-61.5 39.5T679-266Z" />
+      </svg>
+    </button>
+
+  </div>
+  <nav id="desktop-nav">
+    <div class="logo"></div>
+    <div>
+      <ul class="nav-links">
+        <li><a id="projectsS" href="#projects">Projects</a></li>
+        <li><a id="aboutT" href="#about">About</a></li>
+        <li><a id="experienceE" href="#experience">Experience</a></li>
+        <li><a id="contactT" href="#contact">Contact</a></li>
+      </ul>
     </div>
-    <nav id="desktop-nav">
-      <div class="logo">Lars Gohde</div>
-      <div>
+  </nav>
+  <nav id="hamburger-nav">
+    <div class="logo"></div>
+    <div class="hamburger-menu">
+      <div class="hamburger-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="menu-links">
+        <li><a id="projectsSS" href="#projects" onclick="toggleMenu()">Projects</a></li>
+        <li><a id="aboutTT" href="#about" onclick="toggleMenu()">About</a></li>
+        <li><a id="experienceEE" href="#experience" onclick="toggleMenu()">Experience</a></li>
+        <li><a id="contactTT" href="#contact" onclick="toggleMenu()">Contact</a></li>
+      </div>
+    </div>
+  </nav>
+  <section id="profile">
+    <div class="section__pic-container">
+      <img src="./assets/profile-pic.png" alt="Profile picture" class="about-pic" />
+    </div>
+    <div class="section__text">
+      <p id="Hello" class="section__text__p1">Hello, I'm</p>
+      <h1 id="Name" class="title">Lars Gohde</h1>
+      <p id="Developer" class="section__text__p2">Game and Shader Programmer</p>
+      <div id="socials-container">
+        <img src="./assets/linkedin.png" alt="My LinkedIn profile" class="icon"
+          onclick="window.open('https://www.linkedin.com/in/lars-gohde', '_blank');" />
+        <img src="./assets/github.png" alt="My Itch.io profile" class="icon"
+          onclick="window.open('https://gohde-games.itch.io', '_blank');" />
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <p id="Browse" class="section__text__p1">Browse My</p>
+    <h1 id="Projects" class="title">Recent Projects</h1>
+    <div class="experience-details-container">
+      <div class="about-containers">
+
+
+
+
+        <!-- Float Karte -->
+        <div class="details-container color-container">
+          <div class="flip-card">
+            <button class="flip-toggle-btn exit-btn"
+              onclick="event.stopPropagation(); this.closest('.flip-card').classList.remove('flipped'); return false;">
+              X
+            </button>
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="article-container">
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/aXk69t6TwXs?si=tb7IZBi3uWZnPc58"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="project-title-container">
+                  <h2 class="experience-sub-title project-title">FLOAT</h2>
+                </div>
+                <div class="btn-container">
+                  <button class="btn btn-color-2 project-btn"
+                    onclick="event.stopPropagation(); window.open('https://www.meta.com/de-de/experiences/float-a-mixed-reality-experience/24099813506309823/', '_blank');">
+                    Meta Horizon
+                  </button>
+                  <button id="floatDetailsBtn" class="btn btn-color-2 project-btn"
+                    onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
+                    Details
+                  </button>
+                </div>
+              </div>
+              <div class="flip-card-back">
+                <div
+                  style="display: flex; flex-direction: column; width: 100%; max-width: 700px; margin: 0 auto 0 auto; gap: 0; align-items: stretch; justify-content: flex-start; padding-top: 0;">
+                  <div
+                    style="flex: 2 1 0; text-align: left; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; margin-top: 0; width: 100%;">
+                    <div class="float-back-info-box">
+                      <div class="float-back-info-col">
+                        <h1 id="P1">Project Scope</h1>
+                        <p id="P2">- 3rd Semester Project <br /> - Extended by one month for Gamescom <br /> - Team of 6
+                          People</p>
+                      </div>
+                      <div class="float-back-info-col">
+                        <h1 id="RoleTitle">My Role</h1>
+                        <p id="RoleDescription">- Main Programmer <br /> - Shader <br /> - Effects</p>
+                      </div>
+                    </div>
+
+                    <div class="float-problem-section">
+                      <h1 id="ProblemTitle">The Context of the Code</h1>
+                      <p id="ProblemDesc" style="word-break: break-word; white-space: pre-line;"> We needed to place the
+                        Foliage as Instance Static Meshes and our Game Designer asked me if there is a way so he doesn't
+                        have to manipulate each mesh individually. So I build him a simple Editor Utility Widget.
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
+                    <img src="./assets/FLOAT_Solution.gif" alt="Solution in action"
+                      style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;" />
+                  </div>
+                </div>
+                <div style="width: 100%; display: flex; justify-content: center;">
+                  <iframe src="https://blueprintue.com/render/zp_ydxfg/" class="blueprint-frame" height="10%"
+                    style="margin-top:0;" allowfullscreen>
+                  </iframe>
+                </div>
+                <div class="float-problem-section" style="max-width: 700px; margin: 0 auto; text-align: left;">
+                  <h1 id="EmbedTitle">The Context of the Code</h1>
+                  <p id="EmbedDesc" style="word-break: break-word; white-space: pre-line;"> To create different types of
+                    obstacles in the game we decided to use Water. It had various requirements that needed to be met,
+                    like a form of interaction with the player.</p>
+                  <div
+                    style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
+                    <img src="./assets/FLOAT_Solution2.gif" alt="Solution in action"
+                      style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:1.5rem; margin-bottom:0rem;" />
+                  </div>
+                  <div style="width: 100%; display: flex; justify-content: center;">
+                    <iframe src="https://blueprintue.com/render/cx-yye7d/" class="blueprint-frame" height="10%"
+                      style="margin-top:0;" allowfullscreen>
+                    </iframe>
+                  </div>
+                </div>
+                +<div class="float-problem-section"
+                  style="max-width:700px; margin: 1rem auto 0 auto; text-align:left; margin-top: auto;">
+                  <h1 id="AchievementsTitle">Achievements</h1>
+                  <div id="AchievementsDesc" style="word-break: break-word; white-space: pre-line;">
+                    <ul>
+                      <li>Exhibitor: Gamescom 2025 | Bussiness- and Indie-Area</li>
+                      <li>Exhibitor: GermanDevDays 2025</li>
+                      <li>Exhibitor: Play! Con 2025</li>
+                      <li>Exhibitor: Hackerkiste Augsburg 2025</li>
+                      <li>Winner: Varjo Academic Giveaway Campaign</li>
+                      <li>Winner: Best Student Games Award | Meaningful Game</li>
+                      <li>Winner: HNU Werkschau | Best Game-Award</li>
+                      <li>Nominee: XRC25 | Young Talent</li>
+                      <li>Nominee: XRC25 | Community Award</li>
+                      <li>Nominee: Deutscher Multimediapreis mb21</li>
+                      <li>Member: Meta Horizon Start Community</li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <!-- GOD OF A CULT Karte -->
+        <div class="details-container color-container">
+          <div class="flip-card">
+            <button class="flip-toggle-btn exit-btn"
+              onclick="event.stopPropagation(); this.closest('.flip-card').classList.remove('flipped'); return false;">
+              X
+            </button>
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="article-container">
+                  <iframe width="100%" height="100%" src="https://www.youtube.com/embed/NEOmSe0rErI?si=KfeONueuu-29fbM_"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="project-title-container">
+                  <h2 class="experience-sub-title project-title">God Of a Cult</h2>
+                </div>
+                <div class="btn-container">
+                  <button class="btn btn-color-2 project-btn"
+                    onclick="window.open('https://gohde-games.itch.io/god-of-a-cult', '_blank');">
+                    Itch.io
+                  </button>
+                  <button id="cultDetailsBtn" class="btn btn-color-2 project-btn"
+                    onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
+                    Details
+                  </button>
+                </div>
+              </div>
+              <div class="flip-card-back">
+                <div
+                  style="display: flex; flex-direction: column; width: 100%; max-width: 700px; margin: 0 auto 0 auto; gap: 0; align-items: stretch; justify-content: flex-start; padding-top: 0;">
+                  <div
+                    style="flex: 2 1 0; text-align: left; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; margin-top: 0; width: 100%;">
+                    <div class="float-back-info-box">
+                      <div class="float-back-info-col">
+                        <h1 id="cultScopeTitle">Project Scope</h1>
+                        <p id="cultScopeDesc">- 2nd Semester Project <br /> - Voiced by Thorben Gohde <br />
+                          th.gohde@gmail.com</p>
+                      </div>
+                      <div class="float-back-info-col">
+                        <h1 id="cultRoleTitle">My Role</h1>
+                        <p id="cultRoleDesc">- Solo Project</p>
+                      </div>
+                    </div>
+                    <div class="float-problem-section">
+                      <h1 id="cultProblemTitle">The Context of the Code</h1>
+                      <p id="cultProblemDesc" style="word-break: break-word; white-space: pre-line;">To be able to
+                        create levels as fast as possible I created a System that works with only Datatables. The Game
+                        is fully voiced which is also implemented in a simple System.</p>
+                    </div>
+                  </div>
+                  <div
+                    style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
+                    <img src="./assets/GodOfACult_Solution.gif" alt="God Of a Cult Solution gif"
+                      style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;" />
+                    <img src="./assets/GodOfACult_DT.png" alt="God Of a Cult Design Thumbnail"
+                      style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0.5rem; margin-bottom:0;" />
+                  </div>
+                </div>
+                <div style="width: 100%; display: flex; justify-content: center;">
+                  <iframe src="https://blueprintue.com/render/s-gbgfb-/" class="blueprint-frame" height="10%"
+                    style="margin-top:0;" allowfullscreen>
+                  </iframe>
+                </div>
+                <!-- God Of a Cult Achievements (aligned like other cards) -->
+                <div class="float-problem-section"
+                  style="max-width:700px; margin: 1rem auto 0 auto; text-align:left; margin-top: auto;">
+                  <h1 id="CultAchievementsTitle">Achievements</h1>
+                  <div id="CultAchievementsDesc" style="word-break: break-word; white-space: pre-line;">
+                    <ul>
+                      <li>Exhibitor: HNU Werkschau</li>
+                      <li>Showcase project for new semester</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- UMBRA Karte -->
+        <div class="details-container color-container">
+          <div class="flip-card">
+            <button class="flip-toggle-btn exit-btn"
+              onclick="event.stopPropagation(); this.closest('.flip-card').classList.remove('flipped'); return false;">
+              X
+            </button>
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="article-container">
+                  <iframe width="100%" height="100%" src="https://www.youtube.com/embed/UZw2thtgZzE?si=G_3vQS7bpTWvy-2z"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="project-title-container">
+                  <h2 class="experience-sub-title project-title">UMBRA</h2>
+                </div>
+                <div class="btn-container">
+                  <button class="btn btn-color-2 project-btn"
+                    onclick="window.open('https://laks-hnu.itch.io/umbra', '_blank');">
+                    Itch.io
+                  </button>
+                  <button id="umbraDetailsBtn" class="btn btn-color-2 project-btn"
+                    onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
+                    Details
+                  </button>
+                </div>
+              </div>
+              <div class="flip-card-back">
+                <div
+                  style="display: flex; flex-direction: column; width: 100%; max-width: 700px; margin: 0 auto 0 auto; gap: 0; align-items: stretch; justify-content: flex-start; padding-top: 0;">
+                  <div
+                    style="flex: 2 1 0; text-align: left; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; margin-top: 0; width: 100%;">
+                    <div class="float-back-info-box">
+                      <div class="float-back-info-col">
+                        <h1 id="umbraScopeTitle">Project Scope</h1>
+                        <p id="umbraScopeDesc">- 48-Hour Game Jam <br /> - Extended <br /> - Team of 4 People</p>
+                      </div>
+                      <div class="float-back-info-col">
+                        <h1 id="umbraRoleTitle">My Role</h1>
+                        <p id="umbraRoleDesc">- Only Programmer <br /> - Shader</p>
+                      </div>
+                    </div>
+                    <div class="float-problem-section">
+                      <h1 id="umbraProblemTitle">The Context of the Code</h1>
+                      <p id="umbraProblemDesc" style="word-break: break-word; white-space: pre-line;">For this Main Menu
+                        I created multiple Widgets so I could use them in different Projects. A Macro handles the
+                        opening of the different Sub-Widgets. The Main Menu is placed in a 3D Space and on the Materials
+                        is a basic Panner to create the Illusion of the Camera moving constantly.</p>
+                    </div>
+                  </div>
+                  <div
+                    style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
+                    <img src="./assets/UMBRA_Solution.gif" alt="Umbra Solution gif"
+                      style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;" />
+                    <img src="./assets/UMBRA_UI.png" alt="God Of a Cult Design Thumbnail"
+                      style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0.5rem; margin-bottom:0;" />
+                  </div>
+                </div>
+                <div style="width: 100%; display: flex; justify-content: center;">
+                  <iframe src="https://blueprintue.com/render/8y2_fflx/" class="blueprint-frame" height="10%"
+                    style="margin-top:0;" allowfullscreen>
+                  </iframe>
+                </div>
+                <!-- Umbra Milestones & Achievements (aligned like FLOAT) -->
+                <div class="float-problem-section"
+                  style="max-width:700px; margin: 1rem auto 0 auto; text-align:left; margin-top: auto;">
+                  <h1 id="UmbraAchievementsTitle">Achievements</h1>
+                  <div id="UmbraAchievementsDesc" style="word-break: break-word; white-space: pre-line;">
+                    <ul>
+                      <li>Exhibitor: HNU Werkschau</li>
+                      <li>Exhibitor: Game Connect 2025 - Bayern meets Hessen</li>
+                      <li>Winner: 1. HNU Game Jam</li>
+                      <li>Winner: HNU Werkschau | Best Sound</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NEO TOKYO Karte -->
+        <div class="details-container color-container">
+          <div class="flip-card">
+            <button class="flip-toggle-btn exit-btn"
+              onclick="event.stopPropagation(); this.closest('.flip-card').classList.remove('flipped'); return false;">
+              X
+            </button>
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="article-container">
+                  <iframe width="100%" height="100%" src="https://www.youtube.com/embed/N_UJ025W4sI?si=qdwp1thLbyTaJWy5"
+                    title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="project-title-container">
+                  <h2 class="experience-sub-title project-title">NEO TOKYO</h2>
+                </div>
+                <div class="btn-container">
+                  <button class="btn btn-color-2 project-btn"
+                    onclick="window.open('https://luigi-zone.itch.io/akimbovr', '_blank');">Itch.io</button>
+                  <button id="neoTokyoDetailsBtn" class="btn btn-color-2 project-btn"
+                    onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
+                    Details
+                  </button>
+                </div>
+              </div>
+              <div class="flip-card-back">
+                <div
+                  style="display: flex; flex-direction: column; width: 100%; max-width: 700px; margin: 0 auto 0 auto; gap: 0; align-items: stretch; justify-content: flex-start; padding-top: 0;">
+                  <div
+                    style="flex: 2 1 0; text-align: left; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; margin-top: 0; width: 100%;">
+                    <div class="float-back-info-box">
+                      <div class="float-back-info-col">
+                        <h1 id="neoScopeTitle">Project Scope</h1>
+                        <p id="neoScopeDesc">- 48-Hour Game Jam <br /> - Team of 6 People</p>
+                      </div>
+                      <div class="float-back-info-col">
+                        <h1 id="neoRoleTitle">My Role</h1>
+                        <p id="neoRoleDesc">- Main Programmer</p>
+                      </div>
+                    </div>
+                    <div class="float-problem-section">
+                      <div style="margin-top: 2rem;">
+                        <h1 id="neoProblemTitle">What’s in the Box?</h1>
+                      </div>
+                      <p id="neoProblemDesc" style="word-break: break-word; white-space: pre-line;">Core systems first:
+                        wave system, between-round shop, intro sequence. For VR we focused on fast, fun mechanics like
+                        procedural katana slicing.</p>
+                      <div style="margin-top: 2rem;">
+                        <h1 id="neoProblemTitle">Compromises</h1>
+                      </div>
+                      <p id="neoProblemDesc" style="word-break: break-word; white-space: pre-line;">Skipped complex
+                        features like a currency system to keep scope realistic.</p>
+                      <div style="margin-top: 2rem;">
+                        <h1 id="neoProblemTitle">In hindsight</h1>
+                      </div>
+                      <p id="neoProblemDesc" style="word-break: break-word; white-space: pre-line;">No revision control
+                        → higher workload on one person, fewer features shipped.</p>
+                    </div>
+                  </div>
+                  <div
+                    style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
+                    <img src="./assets/NeoTokyo_Solution.gif" alt="Neo Tokyo Solution gif"
+                      style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:2rem;" />
+                  </div>
+                  <!-- Neo Tokyo Achievements (aligned like FLOAT) -->
+                  <div class="float-problem-section"
+                    style="max-width:700px; margin: 1rem auto 0 auto; text-align:left; margin-top: auto;">
+                    <h1 id="NeoAchievementsTitle">Achievements</h1>
+                    <div id="NeoAchievementsDesc" style="word-break: break-word; white-space: pre-line;">
+                      <ul>
+                        <li>Exhibitor: HNU Werkschau</li>
+                        <li>Exhibitor: Game Connect 2025 - Bayern meets Hessen</li>
+                        <li>Winner: 2. HNU Game Jam</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+      </div>
+    </div>
+
+
+    <!-- All My Games Button -->
+    <div style="width:100%;display:flex;justify-content:center;margin:2rem 0;">
+      <a id="allGamesBtn" href="https://gohde-games.itch.io" target="_blank" rel="noopener noreferrer"
+        class="btn btn-color-2 all-games-btn" style="font-size:1.2rem;min-width:200px;text-align:center;">
+        All my Games
+      </a>
+    </div>
+
+  </section>
+
+
+
+  <section id="about">
+    <p id="GetTo" class="section__text__p1">Get To Know More</p>
+    <h1 id="AboutMe" class="title">About Me</h1>
+    <div class="section-container">
+      <div class="section__pic-container">
+        <img src="./assets/about-pic.png" alt="Profile picture" class="about-pic" />
+      </div>
+      <div class="about-details-container">
+        <div class="about-containers">
+
+        </div>
+        <div class="text-container">
+          <p id="Longtext">
+            I first discovered game development in school through a class project. Seeing others play and enjoy what I
+            had
+            created sparked a feeling I never wanted to lose. In 2023 I visited Japan and developed a strong connection
+            to the country, which continues to inspire me every day. Today, my motivation to create games is closely
+            tied to my long-term ambition of building a career and life in Japan.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="contact">
+    <h1 id="Contact" class="title">Contact Me</h1>
+    <div class="contact-info-upper-container">
+      <div class="contact-info-container">
+        <img src="./assets/email.png" alt="Email icon" class="icon contact-icon email-icon" />
+        <p>
+          <a href="mailto:gohde.lars@outlook.com" target="_blank">
+            gohde.lars@outlook.com
+          </a>
+        </p>
+      </div>
+      <div class="contact-info-container">
+        <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon contact-icon" />
+        <p>
+          <a href="https://www.linkedin.com/in/lars-gohde" target="_blank">
+            LinkedIn
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <nav>
+      <div class="nav-links-container">
         <ul class="nav-links">
-          <li><a id="projectsS" href="#projects">Projects</a></li>
-          <li><a id="aboutT" href="#about">About</a></li>
-          <li><a id="experienceE" href="#experience">Experience</a></li>
-          <li><a id="contactT" href="#contact">Contact</a></li>
+          <li><a id="projects3" href="#projects">Projects</a></li>
+          <li><a id="about3" href="#about">About</a></li>
+          <li><a id="experience3" href="#experience">Experience</a></li>
+          <li><a id="contact3" href="#contact">Contact</a></li>
         </ul>
       </div>
     </nav>
-    <nav id="hamburger-nav">
-      <div class="logo">Lars Gohde</div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="menu-links">
-          <li><a id="projectsSS" href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a id="aboutTT" href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a id="experienceEE" href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a id="contactTT" href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
-      </div>
-    </nav>
-    <section id="profile">
-      <div class="section__pic-container">
-        <img src="./assets/profile-pic.png" alt="Lars Gohde profile picture" />
-      </div>
-      <div class="section__text">
-        <p id="Hello" class="section__text__p1">Hello, I'm</p>
-        <h1 id="Name" class="title">Lars Gohde</h1>
-        <p id="Developer" class="section__text__p2">Game Developer</p>
-        <div id="socials-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="window.open('https://www.linkedin.com/in/lars-gohde', '_blank');"
-          />
-          <img
-            src="./assets/github.png"
-            alt="My Itch.io profile"
-            class="icon"
-            onclick="window.open('https://gohde-games.itch.io', '_blank');"
-          />
-        </div>
-      </div>
-    </section>
-    
-    <section id="projects">
-      <p id="Browse" class="section__text__p1">Browse My</p>
-      <h1 id="Projects" class="title">Recent Projects</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          
+    <p>@ 2025 by Lars Gohde</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
 
-
-
-          <!-- Float Karte -->
-          <div class="details-container color-container">
-  <div class="flip-card">
-    <button class="flip-toggle-btn exit-btn"
-      onclick="event.stopPropagation(); this.closest('.flip-card').classList.remove('flipped'); return false;">
-      X
-    </button>
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <div class="article-container">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/aXk69t6TwXs?si=tb7IZBi3uWZnPc58" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-        <div class="project-title-container">
-          <h2 class="experience-sub-title project-title">FLOAT</h2>
-        </div>
-        <div class="btn-container">
-          <button class="btn btn-color-2 project-btn meta-btn"
-            onclick="event.stopPropagation(); window.open('https://www.meta.com/de-de/experiences/float-a-mixed-reality-experience/24099813506309823/', '_blank');">
-            Meta Horizon
-          </button>
-          <button id="floatDetailsBtn" class="btn btn-color-2 project-btn"
-            onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
-            Details
-          </button>
-        </div>
-      </div>
-      <div class="flip-card-back">   
-  <div style="display: flex; flex-direction: column; width: 100%; max-width: 700px; margin: 0 auto 0 auto; gap: 0; align-items: stretch; justify-content: flex-start; padding-top: 0;">
-          <div style="flex: 2 1 0; text-align: left; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; margin-top: 0; width: 100%;">
-            <div class="float-back-info-box">
-              <div class="float-back-info-col">
-                <h1 id="P1">Project Scope</h1>
-                <p id="P2">- 3rd Semester Project <br /> - Extended by one month for Gamescom <br /> - Team of 6 People</p>
-              </div>
-              <div class="float-back-info-col">
-                <h1 id="RoleTitle">My Role</h1>
-                <p id="RoleDescription">- Main Programmer <br /> - Shader <br /> - Effects</p>
-              </div>
-            </div>
-            <div class="float-problem-section">
-              <h1 id="ProblemTitle">The Context of the Code</h1>
-              <p id="ProblemDesc" style="word-break: break-word; white-space: pre-line;"> We needed to place the Foliage as Instance Static Meshes and our Game Designer asked me if there is a way so he doesn’t have to manipulate each mesh individually. So I build him a simple Editor Utility Widget.</p>
-            </div>
-          </div>
-          <div style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
-            <img src="./assets/FLOAT_Solution.gif" alt="Solution in action" style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;" />
-          </div>
-        </div>
-  <div style="width: 100%; display: flex; justify-content: center;">
-          <iframe 
-            src="https://blueprintue.com/render/zp_ydxfg/"
-            class="blueprint-frame"
-            height="10%"
-            style="margin-top:0;"
-            allowfullscreen>
-          </iframe>
-        </div>
-          <div class="float-problem-section" style="max-width: 700px; margin: 0 auto; text-align: left;">
-            <h1 id="EmbedTitle">The Context of the Code</h1>
-            <p id="EmbedDesc" style="word-break: break-word; white-space: pre-line;"> To create different types of obstacles in the game we decided to use Water. It had various requirements that needed to be met, like a form of interaction with the player.</p>
-            <div style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
-            <img src="./assets/FLOAT_Solution2.gif" alt="Solution in action" style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:1.5rem; margin-bottom:0rem;" />
-          </div>
-            <div style="width: 100%; display: flex; justify-content: center;">
-              <iframe 
-                src="https://blueprintue.com/render/cx-yye7d/"
-                class="blueprint-frame"
-                height="10%"
-                style="margin-top:0;"
-                allowfullscreen>
-              </iframe>
-            </div>
-          </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-         
-
-<!-- GOD OF A CULT Karte -->
-<div class="details-container color-container">
-  <div class="flip-card">
-    <button class="flip-toggle-btn exit-btn"
-      onclick="event.stopPropagation(); this.closest('.flip-card').classList.remove('flipped'); return false;">
-      X
-    </button>
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <div class="article-container">
-          <iframe
-            width="100%"
-            height="100%"
-            src="https://www.youtube.com/embed/NEOmSe0rErI?si=KfeONueuu-29fbM_"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
-        </div>
-        <div class="project-title-container">
-          <h2 class="experience-sub-title project-title">God Of a Cult</h2>
-        </div>
-        <div class="btn-container">
-          <button
-            class="btn btn-color-2 project-btn"
-            onclick="window.open('https://gohde-games.itch.io/god-of-a-cult', '_blank');"
-          >
-            Itch.io
-          </button>
-          <button id="cultDetailsBtn" class="btn btn-color-2 project-btn"
-            onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
-            Details
-          </button>
-        </div>
-      </div>
-      <div class="flip-card-back">   
-        <div style="display: flex; flex-direction: column; width: 100%; max-width: 700px; margin: 0 auto 0 auto; gap: 0; align-items: stretch; justify-content: flex-start; padding-top: 0;">
-          <div style="flex: 2 1 0; text-align: left; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; margin-top: 0; width: 100%;">
-            <div class="float-back-info-box">
-              <div class="float-back-info-col">
-                <h1 id="cultScopeTitle">Project Scope</h1>
-                <p id="cultScopeDesc">- 2nd Semester Project <br /> - Voiced by Thorben Gohde <br /> th.gohde@gmail.com</p>
-              </div>
-              <div class="float-back-info-col">
-                <h1 id="cultRoleTitle">My Role</h1>
-                <p id="cultRoleDesc">- Solo Project</p>
-              </div>
-            </div>
-            <div class="float-problem-section">
-              <h1 id="cultProblemTitle">The Context of the Code</h1>
-              <p id="cultProblemDesc" style="word-break: break-word; white-space: pre-line;">To be able to create levels as fast as possible I created a System that works with only Datatables. The Game is fully voiced which is also implemented in a simple System.</p>
-            </div>
-          </div>
-          <div style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
-            <img src="./assets/GodOfACult_Solution.gif" alt="God Of a Cult Solution gif" style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;" />
-            <img src="./assets/GodOfACult_DT.png" alt="God Of a Cult Design Thumbnail" style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0.5rem; margin-bottom:0;" />
-          </div>
-        </div>
-        <div style="width: 100%; display: flex; justify-content: center;">
-          <iframe 
-            src="https://blueprintue.com/render/s-gbgfb-/"
-            class="blueprint-frame"
-            height="10%"
-            style="margin-top:0;"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- UMBRA Karte -->
-<div class="details-container color-container">
-  <div class="flip-card">
-    <button class="flip-toggle-btn exit-btn"
-      onclick="event.stopPropagation(); this.closest('.flip-card').classList.remove('flipped'); return false;">
-      X
-    </button>
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <div class="article-container">
-          <iframe 
-            width="100%" 
-            height="100%" 
-            src="https://www.youtube.com/embed/UZw2thtgZzE?si=G_3vQS7bpTWvy-2z" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-            allowfullscreen
-          ></iframe>
-        </div>
-        <div class="project-title-container">
-          <h2 class="experience-sub-title project-title">UMBRA</h2>
-        </div>
-        <div class="btn-container">
-          <button
-            class="btn btn-color-2 project-btn"
-            onclick="window.open('https://laks-hnu.itch.io/umbra', '_blank');"
-          >
-            Itch.io
-          </button>
-          <button id="umbraDetailsBtn" class="btn btn-color-2 project-btn"
-            onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
-            Details
-          </button>
-        </div>
-      </div>
-      <div class="flip-card-back">   
-        <div style="display: flex; flex-direction: column; width: 100%; max-width: 700px; margin: 0 auto 0 auto; gap: 0; align-items: stretch; justify-content: flex-start; padding-top: 0;">
-          <div style="flex: 2 1 0; text-align: left; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; margin-top: 0; width: 100%;">
-            <div class="float-back-info-box">
-              <div class="float-back-info-col">
-                <h1 id="umbraScopeTitle">Project Scope</h1>
-                <p id="umbraScopeDesc">- 48-Hour Game Jam <br /> - Extended <br /> - Team of 4 People</p>
-              </div>
-              <div class="float-back-info-col">
-                <h1 id="umbraRoleTitle">My Role</h1>
-                <p id="umbraRoleDesc">- Only Programmer <br /> - Shader</p>
-              </div>
-            </div>
-            <div class="float-problem-section">
-              <h1 id="umbraProblemTitle">The Context of the Code</h1>
-              <p id="umbraProblemDesc" style="word-break: break-word; white-space: pre-line;">For this Main Menu I created multiple Widgets so I could use them in different Projects. A Macro handles the opening of the different Sub-Widgets. The Main Menu is placed in a 3D Space and on the Materials is a basic Panner to create the Illusion of the Camera moving constantly.</p>
-            </div>
-          </div>
-          <div style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
-            <img src="./assets/UMBRA_Solution.gif" alt="Umbra Solution gif" style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;" />
-            <img src="./assets/UMBRA_UI.png" alt="God Of a Cult Design Thumbnail" style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0.5rem; margin-bottom:0;" />
-          </div>
-        </div>
-        <div style="width: 100%; display: flex; justify-content: center;">
-          <iframe 
-            src="https://blueprintue.com/render/8y2_fflx/"
-            class="blueprint-frame"
-            height="10%"
-            style="margin-top:0;"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
- <!-- NEO TOKYO Karte -->
-<div class="details-container color-container">
-  <div class="flip-card">
-    <button class="flip-toggle-btn exit-btn"
-      onclick="event.stopPropagation(); this.closest('.flip-card').classList.remove('flipped'); return false;">
-      X
-    </button>
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <div class="article-container">
-          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/N_UJ025W4sI?si=qdwp1thLbyTaJWy5" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <div class="project-title-container">
-          <h2 class="experience-sub-title project-title">NEO TOKYO</h2>
-        </div>
-        <div class="btn-container">
-          <button class="btn btn-color-2 project-btn" onclick="window.open('https://luigi-zone.itch.io/akimbovr', '_blank');">Itch.io</button>
-          <button id="neoTokyoDetailsBtn" class="btn btn-color-2 project-btn"
-            onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
-            Details
-          </button>
-        </div>
-      </div>
-      <div class="flip-card-back">   
-        <div style="display: flex; flex-direction: column; width: 100%; max-width: 700px; margin: 0 auto 0 auto; gap: 0; align-items: stretch; justify-content: flex-start; padding-top: 0;">
-          <div style="flex: 2 1 0; text-align: left; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; margin-top: 0; width: 100%;">
-            <div class="float-back-info-box">
-              <div class="float-back-info-col">
-                <h1 id="neoScopeTitle">Project Scope</h1>
-                <p id="neoScopeDesc">- 48-Hour Game Jam <br /> - Team of 6 People</p>
-              </div>
-              <div class="float-back-info-col">
-                <h1 id="neoRoleTitle">My Role</h1>
-                <p id="neoRoleDesc">- Main Programmer</p>
-              </div>
-            </div>
-            <div class="float-problem-section">
-              <div style="margin-top: 2rem;">
-              <h1 id="neoProblemTitle">What’s in the Box?</h1>
-              </div>
-              <p id="neoProblemDesc" style="word-break: break-word; white-space: pre-line;">Core systems first: wave system, between-round shop, intro sequence. For VR we focused on fast, fun mechanics like procedural katana slicing.</p>
-              <div style="margin-top: 2rem;">
-              <h1 id="neoProblemTitle">Compromises</h1>
-              </div>
-              <p id="neoProblemDesc" style="word-break: break-word; white-space: pre-line;">Skipped complex features like a currency system to keep scope realistic.</p>
-              <div style="margin-top: 2rem;">
-              <h1 id="neoProblemTitle">In hindsight</h1>
-              </div>
-              <p id="neoProblemDesc" style="word-break: break-word; white-space: pre-line;">No revision control → higher workload on one person, fewer features shipped.</p>
-            </div>
-          </div>
-          <div style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
-            <img src="./assets/NeoTokyo_Solution.gif" alt="Neo Tokyo Solution gif" style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-        </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#contact'"
-      />
-    </section>
-
-      <!-- All My Games Button -->
-      <div style="width:100%;display:flex;justify-content:center;margin:2rem 0;">
-        <a id="allGamesBtn" href="https://gohde-games.itch.io" target="_blank" rel="noopener noreferrer" class="btn btn-color-2 all-games-btn" style="font-size:1.2rem;min-width:200px;text-align:center;">
-          All my Games
-        </a>
-      </div>
-    
-    <section id="about">
-      <p id="GetTo" class="section__text__p1">Get To Know More</p>
-      <h1 id="AboutMe" class="title">About Me</h1>
-      <div class="section-container">
-        <div class="section__pic-container">
-          <img
-            src="./assets/about-pic.png"
-            alt="Profile picture"
-            class="about-pic"
-          />
-        </div>
-        <div class="about-details-container">
-          <div class="about-containers">
-            <div class="details-container">
-              <img
-                src="./assets/experience.png"
-                alt="Experience icon"
-                class="icon"
-              />
-              <h3 id="experienceEEE">Experience</h3>
-              <p id="Inall">In all Areas of indie Development</p>
-              <p id="Started">Started Developing at 17</p>
-            </div>
-            <div class="details-container">
-              <img
-                src="./assets/education.png"
-                alt="Education icon"
-                class="icon"
-              />
-              <h3 id="Outline">Outline</h3>
-              <p id="years">20 years old</p>
-              <p id="Bavaria">Bavaria, Germany</p>
-            </div>
-          </div>
-          <div class="text-container">
-            <p id="Longtext">
-              I’m primarily a gameplay programmer in Unreal Engine, I also wear the tech-art hat for shader development. I first discovered game development in school through a class project. Seeing others play and enjoy what I had created sparked a feeling I never wanted to lose. In 2023 I visited Japan and developed a strong connection to the country, which continues to inspire me every day. Today, my motivation to create games is closely tied to my long-term ambition of building a career and life in Japan.
-            </p>
-          </div>
-        </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#experience'"
-      />
-    </section>
-    <section id="experience">
-      <p id="Explore" class="section__text__p1">Explore My</p>
-      <h1 id="Achivements" class="title">Achievements</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3 id="E1">Studying at Kanagawa University, Japan</h3>
-                  <p id="E2">Summer 2026</p>
-                </div>
-              </article>
-              
-              <article>
-                <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                <div>
-                  <h3 id="EE1">Participated at Gamescom 2025</h3> <!-- ID BEREITS VORHANDEN -->
-                  <p id="EE2">Game: FLOAT</p> <!-- ID BEREITS VORHANDEN -->
-                </div>
-              </article>
-                <article>
-                  <img src="./assets/checkmark.png" alt="Experience icon" class="icon" />
-                  <div>
-                    <h3 id="NominatedA">Nominated for Best Student Game Award 2025</h3>
-                    <a id="LinkAward" href="https://www.studentgamesfestival.com/2025nominees" target="_blank"> Click here to see the Nominees</a>
-                  </div>
-                </article>
-              
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3 id="Support">Support for FLOAT by Varjo</h3>
-                  <a id="Link" href="https://www.linkedin.com/posts/varjo_meet-one-of-the-winners-of-our-academic-giveaway-activity-7334126257871175680-ojUd/" target="_blank"> Click here to see the post</a>
-                </div>
-              </article>
-
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3 id="AE1">Participated at GermanDevDays 2025</h3>
-                  <p id="AE2">Game: FLOAT</p>
-                </div>
-              </article>
-              
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3 id="WinnerG">Winner of multiple Game Jams and University Exhibitions</h3>
-                  <p id="C1">2024 until now</p>
-                </div>
-              </article>
-              
-
-
-
-            </div>
-          </div>
-        </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#projects'"
-      />
-    </section>
-    
-    <section id="contact">
-      <h1 id="Contact" class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img
-            src="./assets/email.png"
-            alt="Email icon"
-            class="icon contact-icon email-icon"
-          />
-          <p>
-            <a href="mailto:gohde.lars@outlook.com" target="_blank">
-              gohde.lars@outlook.com
-            </a>
-          </p>
-        </div>
-        <div class="contact-info-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="LinkedIn icon"
-            class="icon contact-icon"
-          />
-          <p>
-            <a href="https://www.linkedin.com/in/lars-gohde" target="_blank">
-              LinkedIn
-            </a>
-          </p>
-        </div>
-      </div>
-    </section>
-    <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a id="projects3" href="#projects">Projects</a></li>
-            <li><a id="about3" href="#about">About</a></li>
-            <li><a id="experience3" href="#experience">Experience</a></li>
-            <li><a id="contact3" href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-      <p>@ 2025 by Lars Gohde</p>
-    </footer>
-    <script src="script.js"></script>
-  </body>
 </html>
