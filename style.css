@@ -1256,3 +1256,18 @@ html.noscroll {
 #about .section__pic-container {
   margin: 0 auto;
 }
+
+@media (max-width: 700px) {
+
+  /* Keep comfortable breathing room when a card is expanded to full-screen */
+  .flip-card.flipped .flip-card-back {
+    padding: 1.2rem 1rem 2rem 1rem !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Ensure the inner scrollable wrapper keeps sensible horizontal padding */
+  .flip-card-back .flip-card-back-inner {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
