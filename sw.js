@@ -1,4 +1,4 @@
-const CACHE_NAME = 'portfolio-cache-v1';
+const CACHE_NAME = 'portfolio-cache-v2';
 const TS_CACHE = CACHE_NAME + '-ts';
 const MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
 
@@ -11,72 +11,69 @@ const PRECACHE_URLS = [
 ];
 
 self.addEventListener('install', event => {
+    console.log('[sw] install:', CACHE_NAME);
     self.skipWaiting();
-    event.waitUntil(
-        (async () => {
-            const cache = await caches.open(CACHE_NAME);
-            await cache.addAll(PRECACHE_URLS).catch(() => { });
-            const tsCache = await caches.open(TS_CACHE);
-            const now = String(Date.now());
-            for (const url of PRECACHE_URLS) {
-                // store a timestamp entry (use URL string as key)
-                await tsCache.put(url, new Response(now));
-            }
-        })()
-    );
+    event.waitUntil((async () => {
+        const cache = await caches.open(CACHE_NAME);
+        await cache.addAll(PRECACHE_URLS).catch(() => { });
+        const tsCache = await caches.open(TS_CACHE);
+        const now = String(Date.now());
+        // store timestamps using Request objects to keep keys consistent
+        for (const url of PRECACHE_URLS) {
+            await tsCache.put(new Request(url), new Response(now)).catch(() => { });
+        }
+    })());
 });
 
 self.addEventListener('activate', event => {
-    event.waitUntil(
-        (async () => {
-            // remove old caches if you change CACHE_NAME in future
-            const keys = await caches.keys();
-            await Promise.all(keys.map(k => {
-                if (k !== CACHE_NAME && k !== TS_CACHE) return caches.delete(k);
-            }));
-            await self.clients.claim();
-        })()
-    );
+    console.log('[sw] activate:', CACHE_NAME);
+    event.waitUntil((async () => {
+        const keys = await caches.keys();
+        await Promise.all(keys.map(k => {
+            if (k !== CACHE_NAME && k !== TS_CACHE) return caches.delete(k);
+        }));
+        await self.clients.claim();
+    })());
 });
 
 self.addEventListener('fetch', event => {
     if (event.request.method !== 'GET') return;
-    // Do not try to handle browser extension or chrome internal requests
-    const reqUrl = new URL(event.request.url);
-
-    // Only handle same-origin requests for caching control (network allowed for cross-origin)
+    const req = event.request;
+    const reqUrl = new URL(req.url);
     const isSameOrigin = reqUrl.origin === self.location.origin;
+
+    // small log to confirm fetch handling (can be noisy)
+    console.log('[sw] fetch', req.method, req.url, isSameOrigin ? 'same-origin' : 'cross-origin');
 
     event.respondWith((async () => {
         const cache = await caches.open(CACHE_NAME);
         const tsCache = await caches.open(TS_CACHE);
 
-        // Try cached response first (fast), but check timestamp
-        const cached = await cache.match(event.request);
+        const cached = await cache.match(req);
         if (cached && isSameOrigin) {
-            const tsEntry = await tsCache.match(event.request.url);
+            // use consistent Request key for timestamp lookup
+            const tsEntry = await tsCache.match(req);
             if (tsEntry) {
                 const stored = parseInt(await tsEntry.text(), 10);
                 if (!isNaN(stored) && (Date.now() - stored) <= MAX_AGE_MS) {
-                    return cached; // fresh within 7 days
+                    return cached; // within 7 days -> serve cached
                 }
             } else {
-                // no timestamp -> treat as fresh
+                // no timestamp -> treat as fresh (precache)
                 return cached;
             }
         }
 
-        // Try network, fall back to cached if network fails
         try {
-            const response = await fetch(event.request);
-            // only cache same-origin, successful, non-opaque GET responses
-            if (isSameOrigin && response && response.status === 200 && response.type !== 'opaque') {
-                cache.put(event.request, response.clone()).catch(() => { });
-                tsCache.put(event.request.url, new Response(String(Date.now()))).catch(() => { });
+            const networkResponse = await fetch(req);
+            // cache same-origin successful responses and record timestamp
+            if (isSameOrigin && networkResponse && networkResponse.status === 200 && networkResponse.type !== 'opaque') {
+                cache.put(req, networkResponse.clone()).catch(() => { });
+                tsCache.put(req, new Response(String(Date.now()))).catch(() => { });
             }
-            return response;
+            return networkResponse;
         } catch (err) {
-            // on failure return cached (even if stale) or a fallback
+            // network failed -> return cached (even if stale) or simple offline response
             if (cached) return cached;
             return new Response('Offline', { status: 503, statusText: 'Offline' });
         }
