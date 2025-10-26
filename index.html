@@ -551,6 +551,13 @@
     <p>@ 2025 by Lars Gohde</p>
   </footer>
   <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      // register from project root
+      navigator.serviceWorker.register('/sw.js')
+        .catch(() => { /* ignore registration failures during dev */ });
+    }
+  </script>
 </body>
 
 </html>
