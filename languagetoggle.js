@@ -232,7 +232,7 @@ const disableLanguage = () => {
     if (EmbedTitle) EmbedTitle.innerText = "The Context of the Code";
     if (EmbedDesc) EmbedDesc.innerText = "To create different types of obstacles in the game we decided to use Water. It had various requirements that needed to be met, like a form of interaction with the player.";
     if (AchievementsTitle) AchievementsTitle.innerText = "Achievements";
-    if (AchievementsDesc) AchievementsDesc.innerHTML = "<ul><li>Exhibitor: Gamescom 2025 | Bussiness- and Indie-Area</li><li>Exhibitor: GermanDevDays 2025</li><li>Exhibitor: Play! Con 2025</li><li>Exhibitor: Hackerkiste Augsburg 2025</li><li>Winner: Varjo Academic Giveaway Campaign</li><li>Winner: Best Student Games Award | Meaningful Game</li><li>Winner: HNU Werkschau | Best Game-Award</li><li>Nominee: XRC25 | Young Talent</li><li>Nominee: XRC25 | Community Award</li><li>Nominee: Deutscher Multimediapreis mb21</li><li>Member: Meta Horizon Start Community</li></ul>";
+    if (AchievementsDesc) AchievementsDesc.innerHTML = "<ul><li>Exhibitor: Gamescom 2025 | Business- and Indie-Area</li><li>Exhibitor: GermanDevDays 2025</li><li>Exhibitor: Play! Con 2025</li><li>Exhibitor: Hackerkiste Augsburg 2025</li><li>Winner: Varjo Academic Giveaway Campaign</li><li>Winner: Best Student Games Award | Meaningful Game</li><li>Winner: HNU Werkschau | Best Game-Award</li><li>Nominee: XRC25 | Young Talent</li><li>Nominee: XRC25 | Community Award</li><li>Nominee: Deutscher Multimediapreis mb21</li><li>Member: Meta Horizon Start Community</li></ul>";
 
     // Details buttons
     if (floatDetailsBtn) floatDetailsBtn.innerText = "Details";
