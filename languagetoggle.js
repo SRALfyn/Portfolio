@@ -97,7 +97,7 @@ const enableLanguage = () => {
 
     // God Of a Cult card back content
     if (cultScopeTitle) cultScopeTitle.innerText = "プロジェクト概要";
-    if (cultScopeDesc) cultScopeDesc.innerHTML = "・2学期プロジェクト<br />・Thorben Gohdeによるボイス<br />th.gohde@gmail.com";
+    if (cultScopeDesc) cultScopeDesc.innerHTML = "- 第2セメスターのプロジェクト <br /> <a href='https://www.filmmakers.eu/en/actors/thorben-gohde' target='_blank' rel='noopener noreferrer'> - 声：Thorben Gohde <img src='./assets/hyperlink_icon.png' alt='外部リンク' class='link-icon' /></a>";
     if (cultRoleTitle) cultRoleTitle.innerText = "私の役割";
     if (cultRoleDesc) cultRoleDesc.innerHTML = "・ソロプロジェクト";
     if (cultProblemTitle) cultProblemTitle.innerText = "コードの背景";
@@ -195,7 +195,7 @@ const disableLanguage = () => {
 
     // God Of a Cult card back content
     if (cultScopeTitle) cultScopeTitle.innerText = "Project Scope";
-    if (cultScopeDesc) cultScopeDesc.innerHTML = "- 2nd Semester Project <br /> - Voiced by Thorben Gohde <br /> th.gohde@gmail.com";
+    if (cultScopeDesc) cultScopeDesc.innerHTML = "- 2nd Semester Project <br /> <a href='https://www.filmmakers.eu/en/actors/thorben-gohde' target='_blank' rel='noopener noreferrer'> - Voiced by Thorben Gohde <img src='./assets/hyperlink_icon.png' alt='External link' class='link-icon' /></a>";
     if (cultRoleTitle) cultRoleTitle.innerText = "My Role";
     if (cultRoleDesc) cultRoleDesc.innerHTML = "- Solo Project";
     if (cultProblemTitle) cultProblemTitle.innerText = "The Context of the Code";

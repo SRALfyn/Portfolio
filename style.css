@@ -119,16 +119,12 @@
 
 
 :root {
-  --base-color: white;
-  --text-color: black;
-  --icon-color: 100%;
-}
-
-.darkmode {
   --base-color: black;
   --text-color: white;
   --icon-color: 0%;
 }
+
+
 
 * {
   margin: 0;
@@ -199,7 +195,7 @@ p {
 .toggleLanguage {
   position: fixed;
   left: 1rem;
-  margin-top: 7rem;
+  margin-top: 3.5rem;
   z-index: 998;
   display: flex;
   align-items: center;
@@ -409,7 +405,7 @@ section {
 .icon {
   cursor: pointer;
   height: 2rem;
-  filter: invert(var(--icon-color));
+  filter: 100%;
 }
 
 /* ABOUT SECTION */
@@ -930,7 +926,7 @@ footer p {
 
 body.noscroll,
 html.noscroll {
-  overflow: hidden !important;
+  overflow: scroll !important;
   height: 100% !important;
   position: static !important;
   width: auto !important;
@@ -1022,7 +1018,7 @@ html.noscroll {
   /* Language toggle: same left edge, a bit lower so they don't overlap */
   .toggleLanguage {
     left: 10rem;
-    top: 7rem;
+    top: 3.5rem;
     margin-top: 0;
     z-index: 1000;
   }
@@ -1270,4 +1266,112 @@ html.noscroll {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
+}
+
+body {
+  overflow-y: scroll;
+}
+
+body {
+  scrollbar-width: 10px;
+}
+
+body {
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Make underline on hover goldrod for projects/about/contact links and mailto/linkedin anchors */
+a[href="#projects"]:hover,
+a[href="#about"]:hover,
+a[href="#contact"]:hover,
+a[href^="mailto:"]:hover,
+a[href*="linkedin"]:hover {
+  text-decoration-color: goldenrod !important;
+}
+
+/* Also ensure nav links and typical project/contact buttons use gold underline on hover */
+.nav-links a:hover,
+.btn-color-1:hover,
+.btn-color-2:hover {
+  text-decoration-color: goldenrod !important;
+}
+
+/* Top social icons (itch.png / linkedin.png) hover -> ring around icon instead of color tint */
+#socials-container img[src$="itch.png"],
+#socials-container img[src$="linkedin.png"] {
+  transition: box-shadow 0.22s ease, transform 0.12s ease;
+  border-radius: 50%;
+  display: inline-block;
+  /* ensure ring doesn't shift layout */
+  box-sizing: border-box;
+}
+
+/* Hover: add a goldenrod ring and a subtle scale */
+#socials-container img[src$="itch.png"]:hover,
+#socials-container img[src$="linkedin.png"]:hover {
+  box-shadow: 0 0 0 4px goldenrod;
+  cursor: pointer;
+}
+
+/* Language toggle: match nav/social hover behavior (goldrod text/underline + icon tint) */
+.toggleLanguage:hover,
+#language-switch:hover {
+  color: goldenrod !important;
+  text-decoration: underline;
+  text-decoration-color: goldenrod !important;
+  text-underline-offset: 1rem;
+  cursor: pointer;
+}
+
+/* Tint inline SVGs inside the language switch */
+#language-switch:hover svg,
+#language-switch:hover svg * {
+  fill: goldenrod !important;
+  stroke: goldenrod !important;
+}
+
+/* Approximate goldenrod for raster images used in the language switch */
+#language-switch:hover img {
+  filter: brightness(0) saturate(100%) invert(72%) sepia(61%) saturate(1073%) hue-rotate(359deg) brightness(91%) contrast(90%) !important;
+}
+
+/* Remove rounded corners when a card is expanded to full screen */
+.flip-card.flipped,
+.flip-card.flipped .flip-card-front,
+.flip-card.flipped .flip-card-back,
+.flip-card.flipped .flip-card-inner,
+.flip-card.flipped .flip-card-back-inner,
+.flip-card.flipped .blueprint-frame {
+  border-radius: 0 !important;
+}
+
+/* Apply scrolling / scrollbar rules to the flipped card back only */
+.flip-card.flipped .flip-card-back {
+  overflow-y: scroll;
+  /* allow inner scrolling on the card back */
+  scrollbar-width: 10px;
+  /* Firefox: use 'thin' (numeric values not supported) */
+  -ms-overflow-style: none;
+  /* IE/Edge: hide native scrollbar visuals */
+}
+
+/* WebKit browsers: set a 10px track (or hide if you prefer) */
+.flip-card.flipped .flip-card-back::-webkit-scrollbar {
+  width: 10px;
+}
+
+.flip-card.flipped .flip-card-back::-webkit-scrollbar {
+  display: none;
+}
+
+.link-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  margin-left: 0.35rem;
+  vertical-align: middle;
 }

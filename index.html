@@ -50,9 +50,9 @@
     }
 
     :root {
-      --base-color: white;
-      --text-color: black;
-      --icon-color: 100%
+      --base-color: black;
+      --text-color: white;
+      --icon-color: 0%
     }
 
     * {
@@ -819,7 +819,6 @@
   <title>Lars Gohde | Digital Portfolio</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="mediaqueries.css" />
-  <script type="text/javascript" src="darkmode.js" defer></script>
   <script type="text/javascript" src="languagetoggle.js" defer></script>
   <link rel="icon" type="image/png" href="https://lars-goh.de/assets/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="https://lars-goh.de/assets/favicon.svg" />
@@ -838,25 +837,13 @@
 </head>
 
 <body>
-  <div class="toggle">
-    <button id="theme-switch" class="switch">
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
-        <path
-          d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z" />
-      </svg>
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
-        <path
-          d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z" />
-      </svg>
-    </button>
-  </div>
   <div class="toggleLanguage">
     <button id="language-switch" class="languageswitch">
       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
         <path
           d="m326-240-30-48q80-8 125-43t45-90q0-30-20.5-55T392-512q-23 57-54.5 102T268-332q3 12 6.5 24t7.5 24l-50 15q-3-10-5-17.5t-4-13.5q-26 14-49 21.5t-45 7.5q-32 0-52-21t-20-56q0-53 40-105t103-82q1-19 2-37.5t3-37.5q-28 1-59-.5T79-615l-1-53q26 5 56 6.5t77 1.5q2-18 4.5-35.5t.5-35.5l60 1q-7 17-10 34.5t-6 34.5q58-3 107-9t92-16l1 52q-53 8-103.5 13.5T255-612q-2 14-2.5 29t-2.5 29q28-8 54.5-11t52.5-1q3-10 4.5-20t2.5-20l57 14q-3 8-6.5 16t-6.5 19q51 14 81.5 52t30.5 85q0 70-51.5 117.5T326-240Zm-188-85q17 0 35-7t38-21q-7-38-10-69t-3-59q-38 24-63 59t-25 66q0 13 8.5 22t19.5 9Zm118-65q29-28 50.5-60.5T342-520q-23 0-46.5 4T248-504q-2 26 .5 54t7.5 60Zm446 56q28 0 54.5-13t48.5-37v-106q-23 3-42.5 7t-36.5 9q-45 14-67.5 35T636-390q0 26 18 41t48 15Zm-23 68q-57 0-90-32.5T556-387q0-52 33-85t106-53q23-6 50.5-11t59.5-9q-2-47-22-68.5T721-635q-26 0-51.5 9.5T604-592l-32-56q33-25 77.5-40.5T740-704q71 0 108 44t37 128v257h-67l-6-45q-28 25-61.5 39.5T679-266Z" />
       </svg>
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFFFF">
         <path
           d="m326-240-30-48q80-8 125-43t45-90q0-30-20.5-55T392-512q-23 57-54.5 102T268-332q3 12 6.5 24t7.5 24l-50 15q-3-10-5-17.5t-4-13.5q-26 14-49 21.5t-45 7.5q-32 0-52-21t-20-56q0-53 40-105t103-82q1-19 2-37.5t3-37.5q-28 1-59-.5T79-615l-1-53q26 5 56 6.5t77 1.5q2-18 4.5-35.5t.5-35.5l60 1q-7 17-10 34.5t-6 34.5q58-3 107-9t92-16l1 52q-53 8-103.5 13.5T255-612q-2 14-2.5 29t-2.5 29q28-8 54.5-11t52.5-1q3-10 4.5-20t2.5-20l57 14q-3 8-6.5 16t-6.5 19q51 14 81.5 52t30.5 85q0 70-51.5 117.5T326-240Zm-188-85q17 0 35-7t38-21q-7-38-10-69t-3-59q-38 24-63 59t-25 66q0 13 8.5 22t19.5 9Zm118-65q29-28 50.5-60.5T342-520q-23 0-46.5 4T248-504q-2 26 .5 54t7.5 60Zm446 56q28 0 54.5-13t48.5-37v-106q-23 3-42.5 7t-36.5 9q-45 14-67.5 35T636-390q0 26 18 41t48 15Zm-23 68q-57 0-90-32.5T556-387q0-52 33-85t106-53q23-6 50.5-11t59.5-9q-2-47-22-68.5T721-635q-26 0-51.5 9.5T604-592l-32-56q33-25 77.5-40.5T740-704q71 0 108 44t37 128v257h-67l-6-45q-28 25-61.5 39.5T679-266Z" />
       </svg>
@@ -899,7 +886,7 @@
       <div id="socials-container">
         <img src="./assets/linkedin.png" alt="My LinkedIn profile" class="icon"
           onclick="window.open('https://www.linkedin.com/in/lars-gohde', '_blank');" />
-        <img src="./assets/github.png" alt="My Itch.io profile" class="icon"
+        <img src="./assets/itch.png" alt="My Itch.io profile" class="icon"
           onclick="window.open('https://gohde-games.itch.io', '_blank');" />
       </div>
     </div>
@@ -937,7 +924,7 @@
                     onclick="event.stopPropagation(); window.open('https://www.meta.com/de-de/experiences/float-a-mixed-reality-experience/24099813506309823/', '_blank');">
                     Meta Horizon
                   </button>
-                  <button id="floatDetailsBtn" class="btn btn-color-2 project-btn"
+                  <button id="floatDetailsBtn" class="btn btn-color-2 project-btn details-btn"
                     onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
                     Details
                   </button>
@@ -1054,7 +1041,7 @@
                     onclick="window.open('https://gohde-games.itch.io/god-of-a-cult', '_blank');">
                     Itch.io
                   </button>
-                  <button id="cultDetailsBtn" class="btn btn-color-2 project-btn"
+                  <button id="cultDetailsBtn" class="btn btn-color-2 project-btn details-btn"
                     onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
                     Details
                   </button>
@@ -1068,8 +1055,14 @@
                     <div class="float-back-info-box">
                       <div class="float-back-info-col">
                         <h1 id="cultScopeTitle">Project Scope</h1>
-                        <p id="cultScopeDesc">- 2nd Semester Project <br /> - Voiced by Thorben Gohde <br />
-                          th.gohde@gmail.com</p>
+                        <p id="cultScopeDesc">
+                          - 2nd Semester Project <br />
+                          <a href="https://www.filmmakers.eu/en/actors/thorben-gohde" target="_blank"
+                            rel="noopener noreferrer">
+                            - Voiced by Thorben Gohde
+                            <img src="./assets/hyperlink_icon.png" alt="External link" class="link-icon" />
+                          </a>
+                        </p>
                       </div>
                       <div class="float-back-info-col">
                         <h1 id="cultRoleTitle">My Role</h1>
@@ -1139,7 +1132,7 @@
                     onclick="window.open('https://laks-hnu.itch.io/umbra', '_blank');">
                     Itch.io
                   </button>
-                  <button id="umbraDetailsBtn" class="btn btn-color-2 project-btn"
+                  <button id="umbraDetailsBtn" class="btn btn-color-2 project-btn details-btn"
                     onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
                     Details
                   </button>
@@ -1222,7 +1215,7 @@
                 <div class="btn-container">
                   <button class="btn btn-color-2 project-btn"
                     onclick="window.open('https://luigi-zone.itch.io/akimbovr', '_blank');">Itch.io</button>
-                  <button id="neoTokyoDetailsBtn" class="btn btn-color-2 project-btn"
+                  <button id="neoTokyoDetailsBtn" class="btn btn-color-2 project-btn details-btn"
                     onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
                     Details
                   </button>
