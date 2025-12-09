@@ -910,22 +910,26 @@
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <div class="article-container">
-  <video controls playsinline preload="metadata" poster="./assets/FLOAT_Poster.jpg"
-    style="width: 100%; max-width: 560px; height: auto; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; display: block; margin: 0 auto;">
-    
-    <source src="./assets/FLOAT_Showcase.webm" type="video/webm">
-    <source src="./assets/FLOAT_Showcase.mp4" type="video/mp4">
-    
-    Dein Browser unterstützt keine Videos.
-  </video>
+                  <video controls playsinline preload="metadata" controlsList="nodownload noplaybackrate"
+                    disablepictureinpicture poster="./assets/FLOAT_Poster.jpg"
+                    style="width: 100%; max-width: 560px; height: auto; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; display: block; margin: 0 auto;">
+
+                    <source src="./assets/FLOAT_Showcase.webm" type="video/webm">
+                    <source src="./assets/FLOAT_Showcase.mp4" type="video/mp4">
+
+                    Dein Browser unterstützt keine Videos.
+                  </video>
                 </div>
-                <div class="project-title-container">
-                  <h2 class="experience-sub-title project-title">FLOAT</h2>
-                </div>
+                <h2 id="floattitle" class="experience-sub-title project-title">
+                  FLOAT
+                  <span style="display: block; font-size: 0.7em; line-height: 1.1; margin-top: 5px;">
+                    Award-winning MR for prosthetics research
+                  </span>
+                </h2>
                 <div class="btn-container">
                   <button class="btn btn-color-2 project-btn"
                     onclick="event.stopPropagation(); window.open('https://www.meta.com/de-de/experiences/float-a-mixed-reality-experience/24099813506309823/', '_blank');">
-                    Meta Horizon
+                    Meta
                   </button>
                   <button id="floatDetailsBtn" class="btn btn-color-2 project-btn details-btn"
                     onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
@@ -937,7 +941,11 @@
                 <div
                   style="display: flex; flex-direction: column; width: 100%; max-width: 700px; margin: 0 auto 0 auto; gap: 0; align-items: stretch; justify-content: flex-start; padding-top: 0;">
                   <div
-                    style="flex: 2 1 0; text-align: left; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; margin-top: 0; width: 100%;">
+                    style="flex: 2 1 0; text-align: left; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; margin-top: 0; width: 100%; margin-top: 6rem;">
+                    <div style="width: 100%; display: flex; justify-content: center;">
+                      <img src="assets/FLOAT_Awards.png" alt="FLOAT Awards"
+                        style="max-width: 100%; height: auto; margin-top: 0;">
+                    </div>
                     <div class="float-back-info-box">
                       <div class="float-back-info-col">
                         <h1 id="P1">Project Scope</h1>
@@ -996,19 +1004,23 @@
                 <div class="float-problem-section"
                   style="max-width:700px; margin: 1rem auto 0 auto; text-align:left; margin-top: auto;">
                   <h1 id="AchievementsTitle">Achievements</h1>
-                  <div id="AchievementsDesc" style="word-break: break-word; white-space: pre-line;">
+                  <div id="AchievementsDesc" style="word-break: break-word;">
                     <ul>
-                      <li>Exhibitor: Gamescom 2025 | Business- and Indie-Area</li>
+                      <li>Winner: Deutscher Multimediapreis mb21</li>
+                      <li>Winner: Best Student Games Award | Meaningful Game</li>
+                      <li>Winner: Varjo Academic Giveaway Campaign</li>
+                      <li>Winner: HNU Werkschau | Best Game-Award</li>
+
+                      <li style="margin-top: 20px;">Nominee: XRC25 | Young Talent</li>
+                      <li>Nominee: XRC25 | Community Award</li>
+
+                      <li style="margin-top: 20px;">Exhibitor: Gamescom 2025 | Business- and Indie-Area</li>
                       <li>Exhibitor: GermanDevDays 2025</li>
                       <li>Exhibitor: Play! Con 2025</li>
                       <li>Exhibitor: Hackerkiste Augsburg 2025</li>
-                      <li>Winner: Varjo Academic Giveaway Campaign</li>
-                      <li>Winner: Best Student Games Award | Meaningful Game</li>
-                      <li>Winner: HNU Werkschau | Best Game-Award</li>
-                      <li>Nominee: XRC25 | Young Talent</li>
-                      <li>Nominee: XRC25 | Community Award</li>
-                      <li>Nominee: Deutscher Multimediapreis mb21</li>
-                      <li>Member: Meta Horizon Start Community</li>
+                      <li>Exhibitor: TINCON 2025</li>
+
+                      <li style="margin-top: 20px;">Member: Meta Horizon Start Community</li>
                     </ul>
                   </div>
                 </div>
@@ -1018,8 +1030,129 @@
           </div>
         </div>
 
+        <!-- Mercury Karte -->
+        <div class="details-container color-container">
+          <div class="flip-card">
+            <button class="flip-toggle-btn exit-btn"
+              onclick="event.stopPropagation(); this.closest('.flip-card').classList.remove('flipped'); return false;">
+              X
+            </button>
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="article-container">
+                  <video controls playsinline preload="metadata" controlsList="nodownload noplaybackrate"
+                    disablepictureinpicture poster="./assets/MERCURY_Poster.jpg"
+                    style="width: 100%; max-width: 560px; height: auto; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; display: block; margin: 0 auto;">
 
+                    <source src="./assets/MERCURY_Showcase.webm" type="video/webm">
+                    <source src="./assets/MERCURY_Showcase.mp4" type="video/mp4">
 
+                    Dein Browser unterstützt keine Videos.
+                  </video>
+                </div>
+                <div class="project-title-container">
+                  <h2 id="mercurytitle" class="experience-sub-title project-title">
+                    MERCURY
+                    <span style="display: block; font-size: 0.7em; line-height: 1.1; margin-top: 5px;">
+                      World's first fast-paced hand-tracking brawler
+                    </span>
+                  </h2>
+                </div>
+                <div class="btn-container">
+
+                  <button id="mercuryDetailsBtn" class="btn btn-color-2 project-btn details-btn"
+                    onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
+                    Details
+                  </button>
+                </div>
+              </div>
+              <div class="flip-card-back">
+                <div
+                  style="display: flex; flex-direction: column; width: 100%; max-width: 700px; margin: 0 auto 0 auto; gap: 0; align-items: stretch; justify-content: flex-start; padding-top: 0;">
+                  <div
+                    style="flex: 2 1 0; text-align: left; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; margin-top: 0; width: 100%;">
+                    <div class="float-back-info-box">
+                      <div class="float-back-info-col">
+                        <h1 id="mercuryScopeTitle">Project Scope</h1>
+                        <p id="mercuryScopeDesc">
+                          - 4th Semester Project <br />
+                          - Team of 6 People <br />
+                        </p>
+                      </div>
+                      <div class="float-back-info-col">
+                        <h1 id="mercuryRoleTitle">My Role</h1>
+                        <p id="mercuryRoleDesc">- Player Mechanics</p>
+                      </div>
+                    </div>
+                    <div class="float-problem-section">
+                      <h1 id="mercuryProblemTitle">The Context of the Code</h1>
+                      <p id="mercuryProblemDesc" style="word-break: break-word; white-space: pre-line;">Mercury is the
+                        first VR mecha brawler with pure hand-gesture controls. It utilizes controller-free gorilla
+                        locomotion, pushing hand tracking to its limits with fast-paced combat. Developed in just five
+                        weeks, the project required extensive iteration to solve the challenges of the unique movement
+                        system in the city environment.</p>
+                    </div>
+                  </div>
+                  <div
+                    style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
+                    <video autoplay loop muted playsinline preload="metadata"
+                      style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;">
+                      <source src="./assets/MERCURY_Solution.webm" type="video/webm">
+                      <source src="./assets/MERCURY_Solution.mp4" type="video/mp4">
+                      Dein Browser unterstützt keine Videos.
+                    </video>
+                  </div>
+                </div>
+                <div
+                  style="display: flex; flex-direction: column; width: 100%; max-width: 700px; margin: 0 auto 0 auto; gap: 0; align-items: stretch; justify-content: flex-start; padding-top: 0;">
+                  <div
+                    style="flex: 2 1 0; text-align: left; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; margin-top: 0; width: 100%;">
+                    <div class="float-problem-section">
+                      <h1 id="mercuryProblemTitle" style="margin-bottom: 20px;">Mecha Locomotion System</h1>
+
+                      <div id="mercuryProblemDesc">
+
+                        <h3 style="margin-bottom: 2px; font-size: 1.1em;">Hand-Surface Interaction</h3>
+                        <p style="margin-top: 0; margin-bottom: 15px;">
+                          Linetraces position the mecha hands directly on surfaces for consistent contact and clear
+                          player feedback
+                        </p>
+
+                        <h3 style="margin-bottom: 2px; margin-top: 15px; font-size: 1.1em;">Grab Recognition</h3>
+                        <ul style="margin-top: 0; margin-bottom: 15px; padding-left: 20px;">
+                          <li>Pose-based detection with safeguards against unintended grabs/releases</li>
+                          <li>Context-aware checks for floors vs. vertical surfaces</li>
+                        </ul>
+
+                        <h3 style="margin-bottom: 2px; margin-top: 15px; font-size: 1.1em;">Surface Validation</h3>
+                        <p style="margin-top: 0; margin-bottom: 15px;">
+                          Sphere traces identify grab components and validate intent through hand-direction vs.
+                          surface-normal alignment
+                        </p>
+
+                        <h3 style="margin-bottom: 2px; margin-top: 15px; font-size: 1.1em;">Climbing & Movement Response
+                        </h3>
+                        <ul style="margin-top: 0; margin-bottom: 15px; padding-left: 20px;">
+                          <li>Player movement is derived from relative hand motion with weighted recent input for high
+                            responsiveness</li>
+                          <li>Adaptive transitions handle gravity, capsule scaling, and movement offsets during grabs
+                          </li>
+                        </ul>
+
+                        <h3 style="margin-bottom: 2px; font-size: 1.1em;">Release Dynamics</h3>
+                        <ul style="margin-top: 0; margin-bottom: 0; padding-left: 20px;">
+                          <li>Final launch velocity blends camera aim, movement intent, and surface type.</li>
+                          <li>Short lockouts prevent accidental re-grabs and maintain fluid momentum.</li>
+                        </ul>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- GOD OF A CULT Karte -->
         <div class="details-container color-container">
@@ -1031,17 +1164,23 @@
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <div class="article-container">
-                    <video controls playsinline preload="metadata" poster="./assets/God_Of_A_Cult_Poster.jpg"
-    style="width: 100%; max-width: 560px; height: auto; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; display: block; margin: 0 auto;">
-    
-    <source src="./assets/God_Of_A_Cult_Showcase.webm" type="video/webm">
-    <source src="./assets/God_Of_A_Cult_Showcase.mp4" type="video/mp4">
-    
-    Dein Browser unterstützt keine Videos.
-  </video>
+                  <video controls playsinline preload="metadata" controlsList="nodownload noplaybackrate"
+                    disablepictureinpicture poster="./assets/God_Of_A_Cult_Poster.jpg"
+                    style="width: 100%; max-width: 560px; height: auto; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; display: block; margin: 0 auto;">
+
+                    <source src="./assets/God_Of_A_Cult_Showcase.webm" type="video/webm">
+                    <source src="./assets/God_Of_A_Cult_Showcase.mp4" type="video/mp4">
+
+                    Dein Browser unterstützt keine Videos.
+                  </video>
                 </div>
                 <div class="project-title-container">
-                  <h2 class="experience-sub-title project-title">God Of a Cult</h2>
+                  <h2 id="godofaculttitle" class="experience-sub-title project-title">
+                    GOD OF A CULT
+                    <span style="display: block; font-size: 0.7em; line-height: 1.1; margin-top: 5px;">
+                      Expandable comedic point-and-click
+                    </span>
+                  </h2>
                 </div>
                 <div class="btn-container">
                   <button class="btn btn-color-2 project-btn"
@@ -1104,7 +1243,7 @@
                 <div class="float-problem-section"
                   style="max-width:700px; margin: 1rem auto 0 auto; text-align:left; margin-top: auto;">
                   <h1 id="CultAchievementsTitle">Achievements</h1>
-                  <div id="CultAchievementsDesc" style="word-break: break-word; white-space: pre-line;">
+                  <div id="CultAchievementsDesc" style="word-break: break-word;">
                     <ul>
                       <li>Exhibitor: HNU Werkschau</li>
                       <li>Showcase project for new semester</li>
@@ -1126,17 +1265,23 @@
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <div class="article-container">
-                    <video controls playsinline preload="metadata" poster="./assets/UMBRA_Poster.jpg"
-    style="width: 100%; max-width: 560px; height: auto; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; display: block; margin: 0 auto;">
-    
-    <source src="./assets/UMBRA_Showcase.webm" type="video/webm">
-    <source src="./assets/UMBRA_Showcase.mp4" type="video/mp4">
-    
-    Dein Browser unterstützt keine Videos.
-  </video>
+                  <video controls playsinline preload="metadata" controlsList="nodownload noplaybackrate"
+                    disablepictureinpicture poster="./assets/UMBRA_Poster.jpg"
+                    style="width: 100%; max-width: 560px; height: auto; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; display: block; margin: 0 auto;">
+
+                    <source src="./assets/UMBRA_Showcase.webm" type="video/webm">
+                    <source src="./assets/UMBRA_Showcase.mp4" type="video/mp4">
+
+                    Dein Browser unterstützt keine Videos.
+                  </video>
                 </div>
                 <div class="project-title-container">
-                  <h2 class="experience-sub-title project-title">UMBRA</h2>
+                  <h2 id="umbratitle" class="experience-sub-title project-title">
+                    UMBRA
+                    <span style="display: block; font-size: 0.7em; line-height: 1.1; margin-top: 5px;">
+                      Atmospheric, unforgiving speedrun
+                    </span>
+                  </h2>
                 </div>
                 <div class="btn-container">
                   <button class="btn btn-color-2 project-btn"
@@ -1193,7 +1338,7 @@
                 <div class="float-problem-section"
                   style="max-width:700px; margin: 1rem auto 0 auto; text-align:left; margin-top: auto;">
                   <h1 id="UmbraAchievementsTitle">Achievements</h1>
-                  <div id="UmbraAchievementsDesc" style="word-break: break-word; white-space: pre-line;">
+                  <div id="UmbraAchievementsDesc" style="word-break: break-word;">
                     <ul>
                       <li>Exhibitor: HNU Werkschau</li>
                       <li>Exhibitor: Game Connect 2025 - Bayern meets Hessen</li>
@@ -1217,17 +1362,23 @@
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <div class="article-container">
-                    <video controls playsinline preload="metadata" poster="./assets/NEO_TOKYO_Poster.jpg"
-    style="width: 100%; max-width: 560px; height: auto; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; display: block; margin: 0 auto;">
-    
-    <source src="./assets/NEO_TOKYO_ Showcase.webm" type="video/webm">
-    <source src="./assets/NEO_TOKYO_ Showcase.mp4" type="video/mp4">
-    
-    Dein Browser unterstützt keine Videos.
-  </video>
+                  <video controls playsinline preload="metadata" controlsList="nodownload noplaybackrate"
+                    disablepictureinpicture poster="./assets/NEO_TOKYO_Poster.jpg"
+                    style="width: 100%; max-width: 560px; height: auto; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; display: block; margin: 0 auto;">
+
+                    <source src="./assets/NEO_TOKYO_ Showcase.webm" type="video/webm">
+                    <source src="./assets/NEO_TOKYO_ Showcase.mp4" type="video/mp4">
+
+                    Dein Browser unterstützt keine Videos.
+                  </video>
                 </div>
                 <div class="project-title-container">
-                  <h2 class="experience-sub-title project-title">NEO TOKYO</h2>
+                  <h2 id="neotokyotitle" class="experience-sub-title project-title">
+                    NEO TOKYO
+                    <span style="display: block; font-size: 0.7em; line-height: 1.1; margin-top: 5px;">
+                      Endless wave-based action
+                    </span>
+                  </h2>
                 </div>
                 <div class="btn-container">
                   <button class="btn btn-color-2 project-btn"
@@ -1285,7 +1436,7 @@
                   <div class="float-problem-section"
                     style="max-width:700px; margin: 1rem auto 0 auto; text-align:left; margin-top: auto;">
                     <h1 id="NeoAchievementsTitle">Achievements</h1>
-                    <div id="NeoAchievementsDesc" style="word-break: break-word; white-space: pre-line;">
+                    <div id="NeoAchievementsDesc" style="word-break: break-word;">
                       <ul>
                         <li>Exhibitor: HNU Werkschau</li>
                         <li>Exhibitor: Game Connect 2025 - Bayern meets Hessen</li>
