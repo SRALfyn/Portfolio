@@ -118,7 +118,7 @@ const enableLanguage = () => {
 
     // --- MERCURY ---
     if (mercuryScopeTitle) mercuryScopeTitle.innerText = "プロジェクト概要";
-    if (mercuryScopeDesc) mercuryScopeDesc.innerHTML = "- 第4セメスタープロジェクト <br /> - 6人チーム";
+    if (mercuryScopeDesc) mercuryScopeDesc.innerHTML = "- 開発中 <br />- 6人のチーム <br />";
     if (mercuryRoleTitle) mercuryRoleTitle.innerText = "担当";
     if (mercuryRoleDesc) mercuryRoleDesc.innerText = "- プレイヤーメカニクス";
 
@@ -281,7 +281,7 @@ const disableLanguage = () => {
 
     // --- MERCURY ---
     if (mercuryScopeTitle) mercuryScopeTitle.innerText = "Project Scope";
-    if (mercuryScopeDesc) mercuryScopeDesc.innerHTML = "- 4th Semester Project <br /> - Team of 6 People";
+    if (mercuryScopeDesc) mercuryScopeDesc.innerHTML = "- Under Development <br />- Team of 6 People <br />";
     if (mercuryRoleTitle) mercuryRoleTitle.innerText = "My Role";
     if (mercuryRoleDesc) mercuryRoleDesc.innerText = "- Player Mechanics";
 
