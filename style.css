@@ -702,6 +702,8 @@ footer p {
   }
 }
 
+
+
 .details-container.color-container {
   flex: 1 1 300px;
   max-width: 500px;
@@ -1563,11 +1565,25 @@ video::-webkit-media-controls-time-remaining-display {
   opacity: 1;
 }
 
-/* 4. SPEZIAL: Entfernt den Punkt (Bullet Point) nur bei Mercury */
-#MercuryAchDesc ul {
-  list-style-type: none !important;
-  /* Kein Punkt */
-  padding-left: 0 !important;
-  /* Kein Einzug nach rechts */
-  margin: 0 !important;
+/* --- ULTIMATE BLUEPRINT FIX --- */
+@media (max-width: 700px) {
+
+  /* "body" davor erzwingt höhere Priorität als die alten Regeln */
+  body .flip-card-back .blueprint-frame {
+    /* Aber mindestens 500px, damit man was sieht */
+    width: 400px !important;
+    min-width: 300px !important;
+    margin-top: 2rem !important;
+    padding-top: 0 !important;
+  }
+}
+
+/* --- FIX SOLUTION VIDEOS ON MOBILE --- */
+.flip-card-back video {
+  width: 100% !important;
+  /* Zwingt das Video, sich der Breite anzupassen */
+  max-width: 500px !important;
+  /* Behält deine gewünschte Grenze auf dem Desktop */
+  height: auto !important;
+  /* Behält das Seitenverhältnis bei */
 }
