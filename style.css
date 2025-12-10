@@ -1606,3 +1606,36 @@ video::-webkit-media-controls-time-remaining-display {
   width: 0.8em !important;
   max-width: none !important;
 }
+
+/* --- HAMBURGER MENU FIX (REPAIRED) --- */
+
+/* 1. Positionierung: Weniger Abstand zum Rand */
+#hamburger-nav {
+  justify-content: space-between !important;
+  padding: 0 1rem !important;
+  /* War 1.5rem -> Jetzt 1rem (näher am Rand) */
+  margin: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* 2. Basis-Style des Menüs (geschlossen) */
+.menu-links {
+  background-color: black !important;
+  z-index: 9999 !important;
+
+  /* WICHTIG: Hier KEINEN Rahmen setzen, sonst sieht man die Linie! */
+  border: none !important;
+}
+
+/* 3. Style des Menüs (GEÖFFNET) */
+.menu-links.open {
+  /* Der Rahmen erscheint erst, wenn das Menü aufklappt */
+  border: 1px solid var(--text-color) !important;
+  border-top: none !important;
+}
+
+/* Korrektur für das Logo auf dem Handy */
+#hamburger-nav .logo {
+  padding-left: 0 !important;
+}
