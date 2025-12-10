@@ -202,17 +202,33 @@ const enableLanguage = () => {
     if (EmbedDesc) EmbedDesc.innerText = "ゲーム内でさまざまな種類の障害物を作成するために水を使うことにしました。プレイヤーとのインタラクションなど、満たすべきさまざまな要件がありました。";
     if (AchievementsTitle) AchievementsTitle.innerText = "実績";
     if (AchievementsDesc) AchievementsDesc.innerHTML = "<ul>" +
-        "<li>受賞: Deutscher Multimediapreis mb21</li>" +
-        "<li>受賞: Best Student Games Award | Meaningful Game</li>" +
-        "<li>受賞: Varjoアカデミック・ギブアウェイ・キャンペーン</li>" +
-        "<li>受賞: HNU Werkschau | ベストゲーム賞</li>" +
-        "<li style='margin-top: 20px;'>ノミネート: XRC25 | ヤングタレント</li>" +
-        "<li>ノミネート: XRC25 | コミュニティアワード</li>" +
-        "<li style='margin-top: 20px;'>出展: Gamescom 2025 | ビジネス・インディーエリア</li>" +
-        "<li>出展: GermanDevDays 2025</li>" +
-        "<li>出展: Play! Con 2025</li>" +
-        "<li>出展: Hackerkiste Augsburg 2025</li>" +
-        "<li>出展: TINCON 2025</li>" +
+        // Winners
+        "<li><a href='https://www.mb21.de/wettbewerbsjahr_2025.html?articles=float' target='_blank' rel='noopener noreferrer'>受賞者: Deutscher Multimediapreis mb21<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
+
+        "<li><a href='https://www.studentgamesfestival.com/2025-winners' target='_blank' rel='noopener noreferrer'>受賞者: Best Student Games Award | Meaningful Game<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
+
+        "<li><a href='https://www.linkedin.com/feed/update/urn:li:activity:7334126257871175680/' target='_blank' rel='noopener noreferrer'>受賞者: Varjoアカデミックギブアウェイキャンペーン<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
+
+        "<li>受賞者: HNU Werkschau | ベストゲーム賞</li>" +
+
+        // Nominees (mit margin-top)
+        "<li style='margin-top: 20px;'><a href='https://nextrealitycontest.de/de/nominierte/nominierte-2025/' target='_blank' rel='noopener noreferrer'>ノミネート: XRC25 | ヤングタレント<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
+
+        "<li><a href='https://nextrealitycontest.de/de/nominierte/nominierte-2025/' target='_blank' rel='noopener noreferrer'>ノミネート: XRC25 | コミュニティアワード<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
+
+        // Exhibitors (mit margin-top bei Business Area)
+        "<li style='margin-top: 20px;'><a href='https://www.games-bavaria.com/gamescom-2025/' target='_blank' rel='noopener noreferrer'>出展者: Gamescom 2025 | ビジネスエリア<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
+
+        "<li><a href='https://rawtalentbooth.com' target='_blank' rel='noopener noreferrer'>出展者: Gamescom 2025 | エンターテインメントエリア<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
+
+        "<li><a href='https://germandevdays.com/exhibitors' target='_blank' rel='noopener noreferrer'>出展者: GermanDevDays 2025<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
+
+        "<li><a href='https://play-con.de/ausstellerinnen-2025-neuulm/' target='_blank' rel='noopener noreferrer'>出展者: Play! Con 2025<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
+
+        "<li>出展者: Hackerkiste Augsburg 2025</li>" +
+        "<li>出展者: TINCON 2025</li>" +
+
+        // Member (mit margin-top)
         "<li style='margin-top: 20px;'>メンバー: Meta Horizonスタートコミュニティ</li>" +
         "</ul>";
 
@@ -349,17 +365,33 @@ const disableLanguage = () => {
     if (EmbedDesc) EmbedDesc.innerText = "To create different types of obstacles in the game we decided to use Water. It had various requirements that needed to be met, like a form of interaction with the player.";
     if (AchievementsTitle) AchievementsTitle.innerText = "Achievements";
     if (AchievementsDesc) AchievementsDesc.innerHTML = "<ul>" +
-        "<li>Winner: Deutscher Multimediapreis mb21</li>" +
-        "<li>Winner: Best Student Games Award | Meaningful Game</li>" +
-        "<li>Winner: Varjo Academic Giveaway Campaign</li>" +
+        // Winners
+        "<li><a href='https://www.mb21.de/wettbewerbsjahr_2025.html?articles=float' target='_blank' rel='noopener noreferrer'>Winner: Deutscher Multimediapreis mb21<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
+
+        "<li><a href='https://www.studentgamesfestival.com/2025-winners' target='_blank' rel='noopener noreferrer'>Winner: Best Student Games Award | Meaningful Game<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
+
+        "<li><a href='https://www.linkedin.com/feed/update/urn:li:activity:7334126257871175680/' target='_blank' rel='noopener noreferrer'>Winner: Varjo Academic Giveaway Campaign<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
+
         "<li>Winner: HNU Werkschau | Best Game-Award</li>" +
-        "<li style='margin-top: 20px;'>Nominee: XRC25 | Young Talent</li>" +
-        "<li>Nominee: XRC25 | Community Award</li>" +
-        "<li style='margin-top: 20px;'>Exhibitor: Gamescom 2025 | Business- and Indie-Area</li>" +
-        "<li>Exhibitor: GermanDevDays 2025</li>" +
-        "<li>Exhibitor: Play! Con 2025</li>" +
+
+        // Nominees (mit margin-top)
+        "<li style='margin-top: 20px;'><a href='https://nextrealitycontest.de/de/nominierte/nominierte-2025/' target='_blank' rel='noopener noreferrer'>Nominee: XRC25 | Young Talent<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
+
+        "<li><a href='https://nextrealitycontest.de/de/nominierte/nominierte-2025/' target='_blank' rel='noopener noreferrer'>Nominee: XRC25 | Community Award<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
+
+        // Exhibitors (mit margin-top bei Business Area)
+        "<li style='margin-top: 20px;'><a href='https://www.games-bavaria.com/gamescom-2025/' target='_blank' rel='noopener noreferrer'>Exhibitor: Gamescom 2025 | Business Area<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
+
+        "<li><a href='https://rawtalentbooth.com' target='_blank' rel='noopener noreferrer'>Exhibitor: Gamescom 2025 | Entertainment Area<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
+
+        "<li><a href='https://germandevdays.com/exhibitors' target='_blank' rel='noopener noreferrer'>Exhibitor: GermanDevDays 2025<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
+
+        "<li><a href='https://play-con.de/ausstellerinnen-2025-neuulm/' target='_blank' rel='noopener noreferrer'>Exhibitor: Play! Con 2025<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
+
         "<li>Exhibitor: Hackerkiste Augsburg 2025</li>" +
         "<li>Exhibitor: TINCON 2025</li>" +
+
+        // Member (mit margin-top)
         "<li style='margin-top: 20px;'>Member: Meta Horizon Start Community</li>" +
         "</ul>";
 
