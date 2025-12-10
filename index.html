@@ -857,10 +857,12 @@
       <ul class="nav-links">
         <li><a id="projectsS" href="#projects">Projects</a></li>
         <li><a id="aboutT" href="#about">About</a></li>
+        <li><a id="insightsS" href="#insights">Insights</a></li>
         <li><a id="contactT" href="#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
+
   <nav id="hamburger-nav">
     <div class="logo"></div>
     <div class="hamburger-menu">
@@ -872,6 +874,7 @@
       <div class="menu-links">
         <li><a id="projectsSS" href="#projects" onclick="toggleMenu()">Projects</a></li>
         <li><a id="aboutTT" href="#about" onclick="toggleMenu()">About</a></li>
+        <li><a id="insightsSS" href="#insights" onclick="toggleMenu()">Insights</a></li>
         <li><a id="contactTT" href="#contact" onclick="toggleMenu()">Contact</a></li>
       </div>
     </div>
@@ -1169,7 +1172,7 @@
                   <div
                     style="flex: 2 1 0; text-align: left; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; margin-top: 0; width: 100%;">
                     <div class="float-problem-section">
-                      <h1 id="mercuryProblemTitle" style="margin-bottom: 20px;">Mecha Locomotion System</h1>
+                      <h1 id="mercuryProblemTitle" style="margin-bottom: 20px;">Gorilla Locomotion System</h1>
 
                       <div id="mercuryProblemDesc">
 
@@ -1206,6 +1209,23 @@
                           <li>Short lockouts prevent accidental re-grabs and maintain fluid momentum.</li>
                         </ul>
 
+                      </div>
+                    </div>
+                    <div class="float-problem-section"
+                      style="max-width:700px; margin: 1rem auto 0 auto; text-align:left; margin-top: auto;">
+
+                      <h1 id="MercuryAchTitle">Achievements</h1>
+
+                      <div id="MercuryAchDesc" style="word-break: break-word;">
+                        <ul>
+                          <li>
+                            <a href="https://devpost.com/software/mercury-05i6ty" target="_blank"
+                              rel="noopener noreferrer">
+                              Participant: Meta Horizon Start Developer Competition
+                              <img src="./assets/hyperlink_icon.png" alt="Link" class="link-icon" />
+                            </a>
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -1410,7 +1430,13 @@
                   <div id="UmbraAchievementsDesc" style="word-break: break-word;">
                     <ul>
                       <li>Exhibitor: HNU Werkschau</li>
-                      <li>Exhibitor: Game Connect 2025 - Bayern meets Hessen</li>
+                      <li>
+                        <a href="https://events.games-bavaria.com/event/🎮-hessen-meets-bayern-game-connect-2025/"
+                          target="_blank" rel="noopener noreferrer">
+                          Exhibitor: Game Connect 2025 - Bayern meets Hessen
+                          <img src="./assets/hyperlink_icon.png" alt="Link" class="link-icon" />
+                        </a>
+                      </li>
                       <li>Winner: 1. HNU Game Jam</li>
                       <li>Winner: HNU Werkschau | Best Sound</li>
                     </ul>
@@ -1508,7 +1534,13 @@
                     <div id="NeoAchievementsDesc" style="word-break: break-word;">
                       <ul>
                         <li>Exhibitor: HNU Werkschau</li>
-                        <li>Exhibitor: Game Connect 2025 - Bayern meets Hessen</li>
+                        <li>
+                          <a href="https://events.games-bavaria.com/event/🎮-hessen-meets-bayern-game-connect-2025/"
+                            target="_blank" rel="noopener noreferrer">
+                            Exhibitor: Game Connect 2025 - Bayern meets Hessen
+                            <img src="./assets/hyperlink_icon.png" alt="Link" class="link-icon" />
+                          </a>
+                        </li>
                         <li>Winner: 2. HNU Game Jam</li>
                       </ul>
                     </div>
@@ -1562,6 +1594,76 @@
   </section>
 
 
+  <section id="insights">
+    <p id="InsightsSubtitle" class="section__text__p1">Technical Methodology</p>
+    <h1 id="InsightsTitle" class="title">Performance Guide</h1>
+
+    <div class="experience-details-container">
+
+      <div class="about-containers"
+        style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; width: 100%;">
+
+        <div class="details-container color-container"
+          style="flex: 1; min-width: 300px; text-align: left; padding: 2rem;">
+          <h3 id="cpuTitle" style="text-align: center; margin-bottom: 1rem;">Profiling & CPU</h3>
+          <ul id="cpuList" style="padding-left: 1.5rem; line-height: 1.6;">
+            <li style="margin-bottom: 0.5rem;"><strong>Profiling:</strong> Bottleneck-analysis using <em>stat unit</em>,
+              <em>stat scenerendering</em>, Unreal Insights
+            </li>
+            <li style="margin-bottom: 0.5rem;"><strong>Threads:</strong> Distinguishing Game Thread, Render Thread, and
+              GPU time</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Ticks:</strong> Conditional ticking and reduced update rates</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Logic:</strong> Simplified logic flow; high-frequency operations
+              moved to C++</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Pooling:</strong> Reuse of frequently spawned objects</li>
+          </ul>
+        </div>
+
+        <div class="details-container color-container"
+          style="flex: 1; min-width: 300px; text-align: left; padding: 2rem;">
+          <h3 id="gpuTitle" style="text-align: center; margin-bottom: 1rem;">GPU & Rendering</h3>
+          <ul id="gpuList" style="padding-left: 1.5rem; line-height: 1.6;">
+            <li style="margin-bottom: 0.5rem;"><strong>Draw Calls:</strong> Instancing (ISM/HISM) and Hierarchical LODs
+              (HLOD)</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Materials:</strong> Minimal slots, master-material workflow,
+              reduced shader cost</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Lighting:</strong> Controlled dynamic lights, shadow settings,
+              attenuation</li>
+            <li style="margin-bottom: 0.5rem;"><strong>VFX:</strong> GPU simulations with fixed bounds and pooled
+              effects</li>
+            <li style="margin-bottom: 0.5rem;"><strong>VR:</strong> Instanced Stereo, Multi-View, efficient forward
+              rendering</li>
+          </ul>
+        </div>
+
+        <div class="details-container color-container"
+          style="flex: 1; min-width: 300px; text-align: left; padding: 2rem;">
+          <h3 id="memTitle" style="text-align: center; margin-bottom: 1rem;">Workflow & Memory</h3>
+          <ul id="memList" style="padding-left: 1.5rem; line-height: 1.6;">
+            <li style="margin-bottom: 0.5rem;"><strong>References:</strong> Use of soft references and async loading
+            </li>
+            <li style="margin-bottom: 0.5rem;"><strong>Build Size:</strong> Removal of unused plugins; selective map
+              inclusion</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Planning:</strong> Early performance planning in game design</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Maintenance:</strong> Continuous profiling and documenting global
+              changes</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="btn-container" style="margin-top: 3rem; display: flex; justify-content: center;">
+        <button id="pdfBtn" class="btn btn-color-2 pdf-btn"
+          onclick="window.open('./assets/Gohde_Lars_Performance_Guide.pdf', '_blank');">
+          View Full PDF Guide (Only English)
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+
+
   <section id="contact">
     <h1 id="Contact" class="title">Contact Me</h1>
     <div class="contact-info-upper-container">
@@ -1589,6 +1691,7 @@
         <ul class="nav-links">
           <li><a id="projects3" href="#projects">Projects</a></li>
           <li><a id="about3" href="#about">About</a></li>
+          <li><a id="insights3" href="#insights">Insights</a></li>
           <li><a id="contact3" href="#contact">Contact</a></li>
         </ul>
       </div>

@@ -413,7 +413,7 @@ section {
 
 #about {
   position: relative;
-  margin-bottom: 3rem !important;
+  margin-bottom: 0rem !important;
   padding-bottom: 4rem !important;
   border-bottom: 2px solid var(--text-color);
   margin-top: 1rem !important;
@@ -535,7 +535,7 @@ article .icon {
   /* reduce space between contact section and footer */
   margin-bottom: 0rem !important;
   padding-bottom: 0rem !important;
-  margin-top: 1.5rem !important;
+  margin-top: 0rem !important;
   padding-top: 1.5rem !important;
 }
 
@@ -1419,4 +1419,155 @@ video::-webkit-media-controls-time-remaining-display {
 
 #AchievementsDesc a:hover .link-icon {
   opacity: 1;
+}
+
+/* Ab einer Breite von 1600px orientieren wir uns an der Mitte */
+@media (min-width: 1600px) {
+  .toggleLanguage {
+    left: 50% !important;
+    /* Startet genau in der Bildschirmmitte */
+    margin-left: -500px;
+    /* Zieht den Button nach links zurück */
+  }
+
+  .flip-card.flipped .exit-btn {
+    right: auto !important;
+    /* WICHTIG: Löst die Standard-Fixierung am rechten Rand */
+    left: 50% !important;
+    /* Startet in der Mitte */
+    margin-left: 500px;
+    top: 3.5rem !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .flip-card.flipped .exit-btn {
+    top: 3.5rem !important;
+  }
+}
+
+/* 1. Alten Border entfernen & Positionierung vorbereiten */
+#projects,
+#about,
+#insights,
+#profile {
+  border-bottom: none !important;
+  /* Den durchgehenden Strich entfernen */
+  position: relative;
+  /* Wichtig, damit die Linie sich an der Sektion orientiert */
+}
+
+/* 2. Die neue, kürzere Linie zeichnen */
+#projects::after,
+#about::after,
+#insights::after,
+#profile::after {
+  content: "";
+  display: block;
+
+  /* HIER kannst du die Breite steuern */
+  width: 70%;
+
+  height: 2px;
+  /* Dicke der Linie */
+  background-color: var(--text-color);
+
+  /* Zentrierung am unteren Rand */
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  /* Schiebt die Linie exakt in die Mitte */
+}
+
+.pdf-btn {
+  width: 14rem !important;
+  max-width: 90vw;
+  letter-spacing: 1px;
+
+  /* FIX: Erzwingt weiße Farbe im Normalzustand */
+  color: var(--text-color) !important;
+}
+
+/* Hover-Verhalten: Text wird Gold, Hintergrund bleibt dunkel */
+.pdf-btn:hover {
+  color: rgb(218, 165, 32) !important;
+  /* Goldenrod */
+  background-color: var(--base-color) !important;
+  border-color: var(--text-color) !important;
+  cursor: pointer;
+}
+
+/* --- Links für Achievements (Global & Mercury) --- */
+
+/* Erweitere deine bestehende Liste im CSS/Style-Block: */
+
+#AchievementsDesc a,
+#MercuryAchDesc a,
+#UmbraAchievementsDesc a,
+/* NEU */
+#NeoAchievementsDesc a
+
+/* NEU */
+  {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+#AchievementsDesc a:hover,
+#MercuryAchDesc a:hover,
+#UmbraAchievementsDesc a:hover,
+/* NEU */
+#NeoAchievementsDesc a:hover
+
+/* NEU */
+  {
+  text-decoration: underline;
+  text-decoration-color: rgb(218, 165, 32);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  opacity: 1;
+}
+
+/* Icon Style auch für die neuen IDs */
+#AchievementsDesc .link-icon,
+#MercuryAchDesc .link-icon,
+#UmbraAchievementsDesc .link-icon,
+/* NEU */
+#NeoAchievementsDesc .link-icon
+
+/* NEU */
+  {
+  width: 0.8em;
+  height: auto;
+  margin-left: 5px;
+  vertical-align: middle;
+  opacity: 0.7;
+  border: none;
+}
+
+#AchievementsDesc a:hover .link-icon,
+#MercuryAchDesc a:hover .link-icon,
+#UmbraAchievementsDesc a:hover .link-icon,
+/* NEU */
+#NeoAchievementsDesc a:hover .link-icon
+
+/* NEU */
+  {
+  opacity: 1;
+}
+
+#AchievementsDesc a:hover .link-icon,
+#MercuryAchDesc a:hover .link-icon {
+  opacity: 1;
+}
+
+/* 4. SPEZIAL: Entfernt den Punkt (Bullet Point) nur bei Mercury */
+#MercuryAchDesc ul {
+  list-style-type: none !important;
+  /* Kein Punkt */
+  padding-left: 0 !important;
+  /* Kein Einzug nach rechts */
+  margin: 0 !important;
 }

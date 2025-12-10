@@ -108,6 +108,39 @@ const subStyle = 'style="display: block; font-size: 0.7em; line-height: 1.1; mar
 
 // --- JAPANISCH AKTIVIEREN ---
 const enableLanguage = () => {
+    // Insights Section Titles
+    if (InsightsSubtitle) InsightsSubtitle.innerHTML = "技術的方法論"; // Technical Methodology
+    if (InsightsTitle) InsightsTitle.innerHTML = "パフォーマンスガイド"; // Performance Guide
+
+    // Card 1: Profiling & CPU
+    if (cpuTitle) cpuTitle.innerHTML = "プロファイリング & CPU";
+    if (cpuList) cpuList.innerHTML =
+        "<li style='margin-bottom: 0.5rem;'><strong>プロファイリング:</strong> <em>stat unit</em>、<em>stat scenerendering</em>、Unreal Insightsを用いたボトルネック分析</li>" +
+        "<li style='margin-bottom: 0.5rem;'><strong>スレッド:</strong> ゲームスレッド、レンダースレッド、GPU時間の明確な区別</li>" +
+        "<li style='margin-bottom: 0.5rem;'><strong>Tick処理:</strong> 条件付きTickの有効化と更新頻度の削減</li>" +
+        "<li style='margin-bottom: 0.5rem;'><strong>ロジック最適化:</strong> ロジックフローの簡略化、高頻度処理のC++化</li>" +
+        "<li style='margin-bottom: 0.5rem;'><strong>プーリング:</strong> 頻繁にスポーンされるオブジェクトの再利用</li>";
+
+    // Card 2: GPU & Rendering
+    if (gpuTitle) gpuTitle.innerHTML = "GPU & レンダリング";
+    if (gpuList) gpuList.innerHTML =
+        "<li style='margin-bottom: 0.5rem;'><strong>ドローコール:</strong> インスタンシング (ISM/HISM) と階層化LOD (HLOD)</li>" +
+        "<li style='margin-bottom: 0.5rem;'><strong>マテリアル:</strong> スロット数の最小化、マスターマテリアルの活用、シェーダーコストの削減</li>" +
+        "<li style='margin-bottom: 0.5rem;'><strong>ライティング:</strong> 動的ライトの抑制、影設定、減衰半径 (Attenuation) の調整</li>" +
+        "<li style='margin-bottom: 0.5rem;'><strong>VFX:</strong> 固定バウンズを用いたGPUシミュレーションとエフェクトのプール化</li>" +
+        "<li style='margin-bottom: 0.5rem;'><strong>VR:</strong> Instanced Stereo、Multi-View、効率的なフォワードレンダリング</li>";
+
+    // Card 3: Workflow & Memory
+    if (memTitle) memTitle.innerHTML = "ワークフロー & メモリ管理";
+    if (memList) memList.innerHTML =
+        "<li style='margin-bottom: 0.5rem;'><strong>参照関係:</strong> ソフト参照 (Soft References) と非同期ロードの活用</li>" +
+        "<li style='margin-bottom: 0.5rem;'><strong>ビルドサイズ:</strong> 未使用プラグインの削除、マップの選択的インクルード</li>" +
+        "<li style='margin-bottom: 0.5rem;'><strong>計画:</strong> ゲームデザイン段階からの早期パフォーマンス計画</li>" +
+        "<li style='margin-bottom: 0.5rem;'><strong>保守:</strong> 継続的なプロファイリングと全体的な変更の文書化</li>";
+
+    // PDF Button
+    if (pdfBtn) pdfBtn.innerHTML = "完全なPDFガイドを見る (英語のみ)";
+
 
     // --- TAGLINES ---
     if (floattitle) floattitle.innerHTML = `FLOAT <span ${subStyle}>義肢データを収集する、受賞歴のあるMR</span>`;
@@ -128,7 +161,7 @@ const enableLanguage = () => {
         mercuryDescs[0].innerText = "Mercuryは、純粋なハンドジェスチャー操作による初のVRメカ格闘ゲームです。コントローラー不要のゴリラ移動（ロコモーション）を採用し、ペースの速い戦闘でハンドトラッキングの限界に挑んでいます。わずか5週間で開発されたこのプロジェクトでは、独自の移動システムと都市環境における課題を解決するために、徹底的な反復実装が必要でした。";
     }
     // Mercury Locomotion (Index 1) - REIN JAPANISCH
-    if (mercuryTitles[1]) mercuryTitles[1].innerText = "メカ移動システム";
+    if (mercuryTitles[1]) mercuryTitles[1].innerText = "ゴリラロコモーションシステム";
     if (mercuryDescs[1]) {
         mercuryDescs[1].innerHTML = `
         <h3 style="margin-bottom: 2px; font-size: 1.1em;">手と表面のインタラクション</h3>
@@ -168,8 +201,21 @@ const enableLanguage = () => {
     if (neoScopeDesc) neoScopeDesc.innerHTML = "・48時間ゲームジャム<br />・6人チーム";
     if (neoRoleTitle) neoRoleTitle.innerText = "私の役割";
     if (neoRoleDesc) neoRoleDesc.innerHTML = "・メインプログラマー";
-    if (NeoAchievementsTitle) NeoAchievementsTitle.innerText = "実績";
-    if (NeoAchievementsDesc) NeoAchievementsDesc.innerHTML = "<ul><li>出展者: HNU Werkschau</li><li>出展者: Game Connect 2025 - Bayern meets Hessen</li><li>受賞者: 第2回 HNUゲームジャム</li></ul>";
+    if (NeoAchievementsTitle) NeoAchievementsTitle.innerHTML = "実績";
+    if (NeoAchievementsDesc) NeoAchievementsDesc.innerHTML = "<ul>" +
+        "<li>出展者: HNU Werkschau</li>" +
+        "<li><a href='https://events.games-bavaria.com/event/🎮-hessen-meets-bayern-game-connect-2025/' target='_blank' rel='noopener noreferrer'>出展者: Game Connect 2025 - Bayern meets Hessen<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
+        "<li>受賞者: 第2回 HNU Game Jam</li>" +
+        "</ul>";
+
+    // Mercury Achievements
+    if (MercuryAchTitle) MercuryAchTitle.innerHTML = "実績"; // Jisseki (Achievements)
+    if (MercuryAchDesc) MercuryAchDesc.innerHTML = "<ul><li>" +
+        "<a href='https://devpost.com/software/mercury-05i6ty' target='_blank' rel='noopener noreferrer'>" +
+        "参加者: Meta Horizon Start Developer Competition" +
+        "<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a>" +
+        "</li></ul>";
+
 
     // --- GOD OF A CULT ---
     if (cultScopeTitle) cultScopeTitle.innerText = "プロジェクト概要";
@@ -189,7 +235,12 @@ const enableLanguage = () => {
     if (umbraProblemTitle) umbraProblemTitle.innerText = "コードの背景";
     if (umbraProblemDesc) umbraProblemDesc.innerText = "このメインメニューのために複数のウィジェットを作成し、他のプロジェクトでも使えるようにしました。マクロで各サブウィジェットのオープンを管理しています。メインメニューは3D空間に配置され、マテリアルにはカメラが常に動いているような錯覚を生むための基本的なパナーを使用しています。";
     if (UmbraAchievementsTitle) UmbraAchievementsTitle.innerText = "実績";
-    if (UmbraAchievementsDesc) UmbraAchievementsDesc.innerHTML = "<ul><li>出展者: HNU Werkschau</li><li>出展者: Game Connect 2025 - Bayern meets Hessen</li><li>受賞者: 第1回 HNUゲームジャム</li><li>受賞者: HNU Werkschau | ベストサウンド賞</li></ul>";
+    if (UmbraAchievementsDesc) UmbraAchievementsDesc.innerHTML = "<ul>" +
+        "<li>出展者: HNU Werkschau</li>" +
+        "<li><a href='https://events.games-bavaria.com/event/🎮-hessen-meets-bayern-game-connect-2025/' target='_blank' rel='noopener noreferrer'>出展者: Game Connect 2025 - Bayern meets Hessen<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
+        "<li>受賞者: 第1回 HNU Game Jam</li>" +
+        "<li>受賞者: HNU Werkschau | ベストサウンド賞</li>" +
+        "</ul>";
 
     // --- FLOAT ---
     if (P1) P1.innerText = "プロジェクト概要";
@@ -250,6 +301,8 @@ const enableLanguage = () => {
     if (experienceEE) experienceEE.innerText = "経験";
     if (projectsSS) projectsSS.innerText = "プロジェクト";
     if (contactTT) contactTT.innerText = "お問い合わせ";
+    if (insightsS) insightsS.innerHTML = "技術的知見";
+    if (insightsSS) insightsSS.innerHTML = "技術的知見";
 
     if (Hello) Hello.innerText = "こんにちは、";
     if (Name) Name.innerText = "ラーズ・ゴーデです";
@@ -267,10 +320,44 @@ const enableLanguage = () => {
     if (experience3) experience3.innerText = "経験";
     if (projects3) projects3.innerText = "プロジェクト";
     if (contact3) contact3.innerText = "お問い合わせ";
+    if (insights3) insights3.innerHTML = "技術的知見";
 }
 
 // --- ENGLISCH AKTIVIEREN (Disable Japanese) ---
 const disableLanguage = () => {
+
+    // Insights Section Titles
+    if (InsightsSubtitle) InsightsSubtitle.innerHTML = "Technical Methodology";
+    if (InsightsTitle) InsightsTitle.innerHTML = "Performance Guide";
+
+    // Card 1: Profiling & CPU
+    if (cpuTitle) cpuTitle.innerHTML = "Profiling & CPU";
+    if (cpuList) cpuList.innerHTML =
+        "<li style='margin-bottom: 0.5rem;'><strong>Profiling:</strong> Bottleneck-analysis using <em>stat unit</em>, <em>stat scenerendering</em>, Unreal Insights</li>" +
+        "<li style='margin-bottom: 0.5rem;'><strong>Threads:</strong> Distinguishing Game Thread, Render Thread, and GPU time</li>" +
+        "<li style='margin-bottom: 0.5rem;'><strong>Ticks:</strong> Conditional ticking and reduced update rates</li>" +
+        "<li style='margin-bottom: 0.5rem;'><strong>Logic:</strong> Simplified logic flow; high-frequency operations moved to C++</li>" +
+        "<li style='margin-bottom: 0.5rem;'><strong>Pooling:</strong> Reuse of frequently spawned objects</li>";
+
+    // Card 2: GPU & Rendering
+    if (gpuTitle) gpuTitle.innerHTML = "GPU & Rendering";
+    if (gpuList) gpuList.innerHTML =
+        "<li style='margin-bottom: 0.5rem;'><strong>Draw Calls:</strong> Instancing (ISM/HISM) and Hierarchical LODs (HLOD)</li>" +
+        "<li style='margin-bottom: 0.5rem;'><strong>Materials:</strong> Minimal slots, master-material workflow, reduced shader cost</li>" +
+        "<li style='margin-bottom: 0.5rem;'><strong>Lighting:</strong> Controlled dynamic lights, shadow settings, attenuation</li>" +
+        "<li style='margin-bottom: 0.5rem;'><strong>VFX:</strong> GPU simulations with fixed bounds and pooled effects</li>" +
+        "<li style='margin-bottom: 0.5rem;'><strong>VR:</strong> Instanced Stereo, Multi-View, efficient forward rendering</li>";
+
+    // Card 3: Workflow & Memory
+    if (memTitle) memTitle.innerHTML = "Workflow & Memory";
+    if (memList) memList.innerHTML =
+        "<li style='margin-bottom: 0.5rem;'><strong>References:</strong> Use of soft references and async loading</li>" +
+        "<li style='margin-bottom: 0.5rem;'><strong>Build Size:</strong> Removal of unused plugins; selective map inclusion</li>" +
+        "<li style='margin-bottom: 0.5rem;'><strong>Planning:</strong> Early performance planning in game design</li>" +
+        "<li style='margin-bottom: 0.5rem;'><strong>Maintenance:</strong> Continuous profiling and documenting global changes</li>";
+
+    // PDF Button
+    if (pdfBtn) pdfBtn.innerHTML = "View Full PDF Guide (Only English)";
 
     // --- TAGLINES ---
     if (floattitle) floattitle.innerHTML = `FLOAT <span ${subStyle}>Award-winning MR for prosthetics research</span>`;
@@ -291,7 +378,7 @@ const disableLanguage = () => {
         mercuryDescs[0].innerText = "Mercury is the first VR mecha brawler with pure hand-gesture controls. It utilizes controller-free gorilla locomotion, pushing hand tracking to its limits with fast-paced combat. Developed in just five weeks, the project required extensive iteration to solve the challenges of the unique movement system in the city environment.";
     }
     // Mercury Locomotion (HTML Reset)
-    if (mercuryTitles[1]) mercuryTitles[1].innerText = "Mecha Locomotion System";
+    if (mercuryTitles[1]) mercuryTitles[1].innerText = "Gorilla Locomotion System";
     if (mercuryDescs[1]) {
         mercuryDescs[1].innerHTML = `
         <h3 style="margin-bottom: 2px; font-size: 1.1em;">Hand-Surface Interaction</h3>
@@ -331,8 +418,20 @@ const disableLanguage = () => {
     if (neoScopeDesc) neoScopeDesc.innerHTML = "- 48-Hour Game Jam <br /> - Team of 6 People";
     if (neoRoleTitle) neoRoleTitle.innerText = "My Role";
     if (neoRoleDesc) neoRoleDesc.innerHTML = "- Main Programmer";
-    if (NeoAchievementsTitle) NeoAchievementsTitle.innerText = "Achievements";
-    if (NeoAchievementsDesc) NeoAchievementsDesc.innerHTML = "<ul><li>Exhibitor: HNU Werkschau</li><li>Exhibitor: Game Connect 2025 - Bayern meets Hessen</li><li>Winner: 2. HNU Game Jam</li></ul>";
+    if (NeoAchievementsTitle) NeoAchievementsTitle.innerHTML = "Achievements";
+    if (NeoAchievementsDesc) NeoAchievementsDesc.innerHTML = "<ul>" +
+        "<li>Exhibitor: HNU Werkschau</li>" +
+        "<li><a href='https://events.games-bavaria.com/event/🎮-hessen-meets-bayern-game-connect-2025/' target='_blank' rel='noopener noreferrer'>Exhibitor: Game Connect 2025 - Bayern meets Hessen<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
+        "<li>Winner: 2. HNU Game Jam</li>" +
+        "</ul>";
+
+    // Mercury Achievements
+    if (MercuryAchTitle) MercuryAchTitle.innerHTML = "Achievements";
+    if (MercuryAchDesc) MercuryAchDesc.innerHTML = "<ul><li>" +
+        "<a href='https://devpost.com/software/mercury-05i6ty' target='_blank' rel='noopener noreferrer'>" +
+        "Participant: Meta Horizon Start Developer Competition" +
+        "<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a>" +
+        "</li></ul>";
 
     // --- GOD OF A CULT ---
     if (cultScopeTitle) cultScopeTitle.innerText = "Project Scope";
@@ -352,7 +451,12 @@ const disableLanguage = () => {
     if (umbraProblemTitle) umbraProblemTitle.innerText = "The Context of the Code";
     if (umbraProblemDesc) umbraProblemDesc.innerText = "For this Main Menu I created multiple Widgets so I could use them in different Projects. A Macro handles the opening of the different Sub-Widgets. The Main Menu is placed in a 3D Space and on the Materials is a basic Panner to create the Illusion of the Camera moving constantly.";
     if (UmbraAchievementsTitle) UmbraAchievementsTitle.innerText = "Achievements";
-    if (UmbraAchievementsDesc) UmbraAchievementsDesc.innerHTML = "<ul><li>Exhibitor: HNU Werkschau</li><li>Exhibitor: Game Connect 2025 - Bayern meets Hessen</li><li>Winner: 1. HNU Game Jam</li><li>Winner: HNU Werkschau | Best Sound</li></ul>";
+    if (UmbraAchievementsDesc) UmbraAchievementsDesc.innerHTML = "<ul>" +
+        "<li>Exhibitor: HNU Werkschau</li>" +
+        "<li><a href='https://events.games-bavaria.com/event/🎮-hessen-meets-bayern-game-connect-2025/' target='_blank' rel='noopener noreferrer'>Exhibitor: Game Connect 2025 - Bayern meets Hessen<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
+        "<li>Winner: 1. HNU Game Jam</li>" +
+        "<li>Winner: HNU Werkschau | Best Sound</li>" +
+        "</ul>";
 
     // --- FLOAT ---
     if (P1) P1.innerText = "Project Scope";
@@ -413,6 +517,9 @@ const disableLanguage = () => {
     if (experienceEE) experienceEE.innerText = "Experience";
     if (projectsSS) projectsSS.innerText = "Projects";
     if (contactTT) contactTT.innerText = "Contact";
+    if (insightsS) insightsS.innerHTML = "Insights";
+    if (insightsSS) insightsSS.innerHTML = "Insights";
+
 
     if (Hello) Hello.innerText = "Hello, I'm";
     if (Name) Name.innerText = "Lars Gohde";
@@ -427,6 +534,7 @@ const disableLanguage = () => {
     if (experience3) experience3.innerText = "Experience";
     if (projects3) projects3.innerText = "Projects";
     if (contact3) contact3.innerText = "Contact";
+    if (insights3) insights3.innerHTML = "Insights";
 }
 
 // --- INIT ---
