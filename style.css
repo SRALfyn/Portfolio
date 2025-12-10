@@ -1587,3 +1587,22 @@ video::-webkit-media-controls-time-remaining-display {
   height: auto !important;
   /* Behält das Seitenverhältnis bei */
 }
+
+/* --- FIX: MEDIA SCALING (Video & GIF) --- */
+/* Zwingt Videos UND Bilder auf der Rückseite, sich dem Handy anzupassen */
+.flip-card-back video,
+.flip-card-back img {
+  width: 100% !important;
+  /* Nimmt die volle Breite des Eltern-Containers */
+  max-width: 500px !important;
+  /* Aber maximal 500px (wie von dir gewünscht) */
+  height: auto !important;
+  /* Verhältnis beibehalten */
+  object-fit: contain;
+}
+
+/* Ausnahme: Kleine Icons (wie der Link-Pfeil) sollen klein bleiben */
+.flip-card-back .link-icon {
+  width: 0.8em !important;
+  max-width: none !important;
+}
