@@ -229,7 +229,7 @@ const enableLanguage = () => {
 
     // --- UMBRA ---
     if (umbraScopeTitle) umbraScopeTitle.innerText = "プロジェクト概要";
-    if (umbraScopeDesc) umbraScopeDesc.innerHTML = "・48時間ゲームジャム<br />・拡張<br />・4人チーム";
+    if (umbraScopeDesc) umbraScopeDesc.innerHTML = "- 48時間ゲームジャム <br /> - 2週間の延長 <br /> - 4人のチーム";
     if (umbraRoleTitle) umbraRoleTitle.innerText = "私の役割";
     if (umbraRoleDesc) umbraRoleDesc.innerHTML = "・唯一のプログラマー<br />・シェーダー";
     if (umbraProblemTitle) umbraProblemTitle.innerText = "コードの背景";
@@ -244,7 +244,7 @@ const enableLanguage = () => {
 
     // --- FLOAT ---
     if (P1) P1.innerText = "プロジェクト概要";
-    if (P2) P2.innerHTML = "・3学期プロジェクト<br />・Gamescomのために1ヶ月延長<br />・6人チーム";
+    if (P2) P2.innerHTML = "- 6ヶ月 <br /> - 6人のチーム";
     if (RoleTitle) RoleTitle.innerText = "私の役割";
     if (RoleDescription) RoleDescription.innerHTML = "・メインプログラマー<br />・シェーダー<br />・エフェクト";
     if (ProblemTitle) ProblemTitle.innerText = "コードの背景";
@@ -445,7 +445,7 @@ const disableLanguage = () => {
 
     // --- UMBRA ---
     if (umbraScopeTitle) umbraScopeTitle.innerText = "Project Scope";
-    if (umbraScopeDesc) umbraScopeDesc.innerHTML = "- 48-Hour Game Jam <br /> - Extended <br /> - Team of 4 People";
+    if (umbraScopeDesc) umbraScopeDesc.innerHTML = "- 48-Hour Game Jam <br /> - Extended by 2 Weeks <br /> - Team of 4 People";
     if (umbraRoleTitle) umbraRoleTitle.innerText = "My Role";
     if (umbraRoleDesc) umbraRoleDesc.innerHTML = "- Only Programmer <br /> - Shader";
     if (umbraProblemTitle) umbraProblemTitle.innerText = "The Context of the Code";
@@ -460,7 +460,7 @@ const disableLanguage = () => {
 
     // --- FLOAT ---
     if (P1) P1.innerText = "Project Scope";
-    if (P2) P2.innerHTML = "- 3rd Semester Project <br /> - Extended by one month for Gamescom <br /> - Team of 6 People";
+    if (P2) P2.innerHTML = "- 6 Months <br /> - Team of 6 People";
     if (RoleTitle) RoleTitle.innerText = "My Role";
     if (RoleDescription) RoleDescription.innerHTML = "- Main Programmer <br /> - Shader <br /> - Effects";
     if (ProblemTitle) ProblemTitle.innerText = "The Context of the Code";
