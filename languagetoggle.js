@@ -103,7 +103,7 @@ const neoProblemDescs = document.querySelectorAll('#neoProblemDesc');
 let Contact = document.getElementById('Contact');
 
 // Style-Definition Global verfügbar machen
-const subStyle = 'style="display: block; font-size: 0.7em; line-height: 1.1; margin-top: 5px;"';
+const subStyle = 'style="display: block; line-height: 1.1; margin-top: 5px;"';
 
 
 // --- JAPANISCH AKTIVIEREN ---
@@ -143,11 +143,11 @@ const enableLanguage = () => {
 
 
     // --- TAGLINES ---
-    if (floattitle) floattitle.innerHTML = `FLOAT <span ${subStyle}>義肢データを収集する、受賞歴のあるMR</span>`;
-    if (godofaculttitle) godofaculttitle.innerHTML = `GOD OF A CULT <span ${subStyle}>拡張型コミカル・ポイント＆クリック</span>`;
-    if (umbratitle) umbratitle.innerHTML = `UMBRA <span ${subStyle}>独特な雰囲気の、容赦ないスピードラン</span>`;
-    if (neotokyotitle) neotokyotitle.innerHTML = `NEO TOKYO <span ${subStyle}>エンドレスなウェーブ制アクション</span>`;
-    if (mercurytitle) mercurytitle.innerHTML = `MERCURY <span ${subStyle}>世界初、疾走感あるハンドトラッキング格闘ゲーム</span>`;
+    if (floattitle) floattitle.innerHTML = `<span ${subStyle}>義肢データを収集する、受賞歴のあるMR</span>`;
+    if (godofaculttitle) godofaculttitle.innerHTML = `<span ${subStyle}>拡張型コミカル・ポイント＆クリック</span>`;
+    if (umbratitle) umbratitle.innerHTML = `<span ${subStyle}>独特な雰囲気の、容赦ないスピードラン</span>`;
+    if (neotokyotitle) neotokyotitle.innerHTML = `<span ${subStyle}>エンドレスなウェーブ制アクション</span>`;
+    if (mercurytitle) mercurytitle.innerHTML = `<span ${subStyle}>世界初、疾走感あるハンドトラッキング格闘ゲーム</span>`;
 
     // --- MERCURY ---
     if (mercuryScopeTitle) mercuryScopeTitle.innerText = "プロジェクト概要";
@@ -360,11 +360,11 @@ const disableLanguage = () => {
     if (pdfBtn) pdfBtn.innerHTML = "View Full PDF Guide (Only English)";
 
     // --- TAGLINES ---
-    if (floattitle) floattitle.innerHTML = `FLOAT <span ${subStyle}>Award-winning MR for prosthetics research</span>`;
-    if (godofaculttitle) godofaculttitle.innerHTML = `GOD OF A CULT <span ${subStyle}>Expandable comedic point-and-click cult sim</span>`;
-    if (umbratitle) umbratitle.innerHTML = `UMBRA <span ${subStyle}>Atmospheric, unforgiving speedrun</span>`;
-    if (neotokyotitle) neotokyotitle.innerHTML = `NEO TOKYO <span ${subStyle}>Endless wave-based action</span>`;
-    if (mercurytitle) mercurytitle.innerHTML = `MERCURY <span ${subStyle}>World's first fast-paced hand-tracking brawler</span>`;
+    if (floattitle) floattitle.innerHTML = `<span ${subStyle}>Award-winning MR for prosthetics research</span>`;
+    if (godofaculttitle) godofaculttitle.innerHTML = `<span ${subStyle}>Expandable comedic point-and-click cult sim</span>`;
+    if (umbratitle) umbratitle.innerHTML = `<span ${subStyle}>Atmospheric, unforgiving speedrun</span>`;
+    if (neotokyotitle) neotokyotitle.innerHTML = `<span ${subStyle}>Endless wave-based action</span>`;
+    if (mercurytitle) mercurytitle.innerHTML = `<span ${subStyle}>World's first fast-paced hand-tracking brawler</span>`;
 
     // --- MERCURY ---
     if (mercuryScopeTitle) mercuryScopeTitle.innerText = "Project Scope";

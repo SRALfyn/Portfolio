@@ -36,6 +36,12 @@ function unlockScrollFromLockedPosition() {
 function lazyLoadCardMedia(card) {
   if (!card || card.dataset.mediaLoaded === 'true') return;
 
+  const iframes = card.querySelectorAll('iframe[data-src]');
+  iframes.forEach(iframe => {
+    iframe.src = iframe.getAttribute('data-src');
+    iframe.removeAttribute('data-src');
+  });
+
   const imgs = card.querySelectorAll('img[data-video-mp4], img[data-gif-src]');
   imgs.forEach(img => {
     const mp4 = img.getAttribute('data-video-mp4');
@@ -163,7 +169,7 @@ document.querySelectorAll('.project-btn').forEach(btn => {
     lazyLoadCardMedia(card);
 
     // Neuen History-Eintrag mit der Karten-ID (Index) erstellen
-    history.pushState({ cardOpen: true, cardIndex: cardIndex }, "", "#details");
+    history.pushState({ cardOpen: true, cardIndex: cardIndex }, "", null);
 
     card.classList.add('flipped');
     window._cardWasFlipped = true;
