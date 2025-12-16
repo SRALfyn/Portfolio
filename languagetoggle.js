@@ -545,5 +545,4 @@ if (language === "active") {
 languageToggle.addEventListener("click", () => {
     language = localStorage.getItem('language');
     language !== "active" ? enableLanguage() : disableLanguage();
-    console.log(language);
 });

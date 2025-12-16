@@ -50,7 +50,8 @@
   padding: 0;
 }
 
-@media (max-width: 700px) {
+/* 700px -> 43.75rem */
+@media (max-width: 43.75rem) {
   .float-problem-row {
     margin-top: 1rem;
     margin-bottom: 1.5rem;
@@ -68,7 +69,7 @@
   margin-top: 0;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 43.75rem) {
   .float-problem-row {
     margin-top: 1rem;
     margin-bottom: 1.5rem;
@@ -80,12 +81,13 @@
   background: none;
   border: none;
   border-radius: 0;
-  border-bottom: 2px solid var(--text-color);
+  /* 2px -> 0.125rem */
+  border-bottom: 0.125rem solid var(--text-color);
   padding: 0 0 0.7rem 0;
   display: flex;
   gap: 2rem;
   width: 100%;
-  max-width: 700px;
+  max-width: 43.75rem;
   margin-bottom: 1.2rem;
   margin-top: 0rem;
   justify-content: center;
@@ -97,7 +99,7 @@
   text-align: left;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 43.75rem) {
   .float-back-info-box {
     flex-direction: column;
     gap: 1rem;
@@ -107,7 +109,8 @@
 }
 
 /* FLOAT card back: make the problem row full width below text/gif on large screens, above gif on small screens */
-@media (max-width: 900px) {
+/* 900px -> 56.25rem */
+@media (max-width: 56.25rem) {
   .float-problem-row {
     order: -1;
     margin-top: 0 !important;
@@ -117,15 +120,11 @@
 
 /* GENERAL */
 
-
-
 :root {
   --base-color: black;
   --text-color: white;
   --icon-color: 0%;
 }
-
-
 
 * {
   margin: 0;
@@ -141,6 +140,8 @@ body {
 
 html {
   scroll-behavior: smooth;
+  /* 14px -> 0.875rem, 18px -> 1.125rem */
+  font-size: clamp(0.875rem, 1vw, 1.125rem);
 }
 
 html,
@@ -163,8 +164,9 @@ p {
 /* TOGGLE MODE */
 
 #theme-switch {
-  height: 50px;
-  width: 50px;
+  /* 50px -> 3.125rem */
+  height: 3.125rem;
+  width: 3.125rem;
   border-radius: 50%;
   background-color: var(--base-color);
   display: flex;
@@ -203,8 +205,9 @@ p {
 }
 
 #language-switch {
-  height: 50px;
-  width: 50px;
+  /* 50px -> 3.125rem */
+  height: 3.125rem;
+  width: 3.125rem;
   border-radius: 50%;
   background-color: var(--base-color);
   display: flex;
@@ -240,7 +243,7 @@ nav {
 .nav-links {
   gap: 2rem;
   list-style: none;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 a {
@@ -282,14 +285,17 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 24px;
-  width: 30px;
+  /* 24px -> 1.5rem */
+  height: 1.5rem;
+  /* 30px -> 1.875rem */
+  width: 1.875rem;
   cursor: pointer;
 }
 
 .hamburger-icon span {
   width: 100%;
-  height: 2px;
+  /* 2px -> 0.125rem */
+  height: 0.125rem;
   background-color: var(--text-color);
 }
 
@@ -298,14 +304,16 @@ a:hover {
   top: 100%;
   right: 0;
   background-color: var(--base-color);
-  width: 175px;
+  /* 175px -> 10.9375rem ~ 11rem */
+  width: 11rem;
   max-height: 0;
   overflow: hidden;
 }
 
 .menu-links a {
   display: block;
-  padding: 10px;
+  /* 10px -> 0.625rem */
+  padding: 0.625rem;
   text-align: center;
   font-size: 1.5rem;
   color: var(--text-color);
@@ -317,11 +325,13 @@ a:hover {
 }
 
 .menu-links.open {
-  max-height: 300px;
+  /* 300px -> 18.75rem */
+  max-height: 18.75rem;
 }
 
 .hamburger-icon.open span:first-child {
-  transform: rotate(45deg) translate(10px, 5px);
+  /* 10px -> 0.625rem, 5px -> 0.3125rem */
+  transform: rotate(45deg) translate(0.625rem, 0.3125rem);
 }
 
 .hamburger-icon.open span:nth-child(2) {
@@ -329,7 +339,8 @@ a:hover {
 }
 
 .hamburger-icon.open span:last-child {
-  transform: rotate(-45deg) translate(10px, -5px);
+  /* 10px -> 0.625rem, -5px -> -0.3125rem */
+  transform: rotate(-45deg) translate(0.625rem, -0.3125rem);
 }
 
 .hamburger-icon span:first-child {
@@ -341,7 +352,8 @@ a:hover {
 
 section {
   padding-top: 4vh;
-  margin: 0 10rem;
+  margin-inline: clamp(1rem, 6vw, 10rem);
+  padding-block: clamp(3rem, 6vh, 6rem);
   box-sizing: border-box;
   padding: 5rem 0rem;
   margin-bottom: 5rem;
@@ -350,7 +362,8 @@ section {
 
 .section-container {
   display: flex;
-  height: 80%;
+  height: auto !important;
+  min-height: 80%;
 }
 
 /* PROFILE SECTION */
@@ -365,9 +378,10 @@ section {
 
 .section__pic-container {
   /* keep a fixed square so the image cannot be stretched into an oval */
-  flex: 0 0 200px;
-  width: 200px;
-  height: 200px;
+  /* 200px -> 12.5rem */
+  flex: 0 0 12.5rem;
+  width: 12.5rem;
+  height: 12.5rem;
   margin: auto 0;
 }
 
@@ -385,12 +399,12 @@ section {
 }
 
 .section__text__p2 {
-  font-size: 1.75rem;
+  font-size: clamp(1.1rem, 2vw, 1.75rem);
   margin-bottom: 1rem;
 }
 
 .title {
-  font-size: 3rem;
+  font-size: clamp(2rem, 4vw, 3rem);
   text-align: center;
 }
 
@@ -415,16 +429,12 @@ section {
   position: relative;
   margin-bottom: 0rem !important;
   padding-bottom: 4rem !important;
-  border-bottom: 2px solid var(--text-color);
+  border-bottom: 0.125rem solid var(--text-color);
   margin-top: 1rem !important;
   padding-top: 2rem !important;
 }
 
-.about-containers {
-  flex-wrap: wrap;
-  justify-content: center;
-  display: flex;
-}
+
 
 .about-details-container {
   justify-content: center;
@@ -443,6 +453,16 @@ section {
 }
 
 .details-container {
+  padding: 1.5rem;
+  flex: 1;
+  background: var(--base-color);
+  border-radius: 2rem;
+  border: var(--base-color) 0.1rem solid;
+  border-color: var(--text-color);
+  text-align: center;
+}
+
+.insights.container {
   padding: 1.5rem;
   flex: 1;
   background: var(--base-color);
@@ -496,8 +516,7 @@ article .icon {
 
 #projects {
   position: relative;
-  border-bottom: 2px solid var(--text-color);
-
+  border-bottom: 0.125rem solid var(--text-color);
 }
 
 .color-container {
@@ -523,7 +542,8 @@ article .icon {
   justify-content: center;
   gap: 1rem;
   padding: 1rem 0;
-  min-height: 60px;
+  /* 60px -> 3.75rem */
+  min-height: 3.75rem;
 }
 
 /* CONTACT */
@@ -590,10 +610,10 @@ footer p {
 
 .btn {
   font-weight: 600;
-  padding: 0.8rem;
-  width: 8rem;
+  padding: 0.75em 1.5em;
+  min-width: 8ch;
   border-radius: 2rem;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 }
 
 .btn-color-1,
@@ -633,7 +653,8 @@ footer p {
   font-size: 0.8rem;
   cursor: pointer;
   background-color: var(--base-color);
-  border: 1px solid var(--text-color);
+  /* 1px -> 0.0625rem, use 0.0625rem or just keep 1px for thin border, sticking to rem per request */
+  border: 0.0625rem solid var(--text-color);
   border-radius: 1rem;
   color: var(--text-color);
 }
@@ -642,14 +663,22 @@ footer p {
   color: goldenrod;
 }
 
+.details-container.color-container {
+  flex: 1 1 auto;
+  width: 100%;
+  /* 60rem ~ 960px */
+  max-width: 60rem;
+  margin: 1.25rem;
+}
+
 /* Flip Card Styles */
-@media (max-width: 700px) {
+@media (max-width: 43.75rem) {
   .gif-spacer {
     height: 0 !important;
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 43.75rem) {
   .flip-card-back {
     padding: 1.2rem;
     flex-direction: column !important;
@@ -685,12 +714,13 @@ footer p {
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 43.75rem) {
   .flip-card-back .blueprint-frame {
     width: 100% !important;
     min-width: 0 !important;
     max-width: 100% !important;
-    height: 240px !important;
+    /* 240px -> 15rem */
+    height: 15rem !important;
     margin: 0 auto 0 auto !important;
     display: block;
     padding-top: 0 !important;
@@ -702,19 +732,29 @@ footer p {
   }
 }
 
-
-
 .details-container.color-container {
-  flex: 1 1 300px;
-  max-width: 500px;
-  min-width: 300px;
+  /* 300px -> 18.75rem */
+  flex: 1 1 18.75rem;
   margin: 1rem;
   height: auto;
-  min-height: 400px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
+
+.insights.container {
+  /* 300px -> 18.75rem */
+  flex: 1 1 18.75rem;
+  /* 500px -> 31.25rem */
+  max-width: 31.25rem;
+  min-width: 18.75rem;
+  margin: 1rem;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
 
 .flip-card {
   position: relative;
@@ -810,7 +850,8 @@ footer p {
 /* Add a scrollable wrapper for card content */
 .flip-card-back .flip-card-back-inner {
   width: 100%;
-  max-width: 700px;
+  /* 700px -> 43.75rem */
+  max-width: 43.75rem;
   margin: 0 auto;
   flex: 1 1 0%;
   min-height: 0;
@@ -825,22 +866,25 @@ footer p {
 .blueprint-frame {
   width: 100%;
   border: none;
-  border-radius: 12px;
+  /* 12px -> 0.75rem */
+  border-radius: 0.75rem;
   padding-top: 2rem;
 }
 
-@media (min-width: 1024px) {
+/* 1024px -> 64rem */
+@media (min-width: 64rem) {
   .blueprint-frame {
     width: 75%;
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 43.75rem) {
   .flip-card-back .blueprint-frame {
     width: 100% !important;
     min-width: 0 !important;
     max-width: 100% !important;
-    height: 240px !important;
+    /* 240px -> 15rem */
+    height: 15rem !important;
     margin: 2.5rem auto 0 auto !important;
     display: block;
     padding-top: 2.5rem !important;
@@ -850,9 +894,11 @@ footer p {
 
 .flip-card.flipped .blueprint-frame {
   width: 45vw !important;
-  max-width: 1200px;
+  /* 1200px -> 75rem */
+  max-width: 75rem;
   height: 35vh !important;
-  min-height: 150px;
+  /* 150px -> 9.375rem */
+  min-height: 9.375rem;
   display: block;
   margin: 2rem auto;
 }
@@ -875,7 +921,8 @@ footer p {
 .project-title-container {
   height: auto;
   padding: 1rem 0;
-  min-height: 60px;
+  /* 60px -> 3.75rem */
+  min-height: 3.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -935,10 +982,18 @@ html.noscroll {
   width: auto !important;
 }
 
-@media (max-width: 480px) {
+/* 480px -> 30rem */
+@media (max-width: 30rem) {
 
   /* allow details panel to shrink on very narrow screens */
   .details-container.color-container {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    flex: 1 1 auto !important;
+    margin: 0.5rem !important;
+  }
+
+  .insights.container {
     min-width: 0 !important;
     max-width: 100% !important;
     flex: 1 1 auto !important;
@@ -990,13 +1045,9 @@ html.noscroll {
 /* Reduce vertical gap between Profile and Projects */
 #profile {
   gap: 2rem;
-  /* less space between picture and text */
   padding-bottom: 6rem;
-  /* reduce bottom padding of profile section */
   margin-bottom: 4rem;
-  /* reduce space before next section */
-
-  border-bottom: 2px solid var(--text-color);
+  border-bottom: 0.125rem solid var(--text-color);
 }
 
 /* Reduce top spacing for Projects so it sits closer to Profile */
@@ -1007,7 +1058,8 @@ html.noscroll {
   padding-bottom: 0.5rem !important;
 }
 
-@media (min-width: 1200px) {
+/* 1200px -> 75rem */
+@media (min-width: 75rem) {
 
   /* Theme toggle: left edge of content, higher z so it's visible */
   .toggle {
@@ -1015,7 +1067,6 @@ html.noscroll {
     top: 3.5rem;
     margin-top: 0;
     z-index: 1001;
-    /* above most content */
   }
 
   /* Language toggle: same left edge, a bit lower so they don't overlap */
@@ -1032,9 +1083,8 @@ html.noscroll {
   position: relative;
   width: 100%;
   aspect-ratio: 16/9;
-  /* keeps correct video ratio */
-  min-height: 140px;
-  /* fallback for very small screens */
+  /* 140px -> 8.75rem */
+  min-height: 8.75rem;
   height: auto;
   overflow: hidden;
 }
@@ -1049,17 +1099,17 @@ html.noscroll {
   border-radius: 1rem;
 }
 
-/* Ensure card boxes can wrap and shrink on narrow screens */
-.about-containers {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 1rem;
-  justify-content: center;
-}
 
 /* Allow detail cards to shrink below their previous min-width on small screens */
-@media (max-width: 700px) {
+@media (max-width: 43.75rem) {
   .details-container.color-container {
+    flex: 1 1 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin: 0.5rem !important;
+  }
+
+  .insights.container {
     flex: 1 1 100% !important;
     min-width: 0 !important;
     max-width: 100% !important;
@@ -1068,7 +1118,8 @@ html.noscroll {
 
   .flip-card-front .article-container {
     aspect-ratio: 16/9;
-    min-height: 120px;
+    /* 120px -> 7.5rem */
+    min-height: 7.5rem;
   }
 }
 
@@ -1077,9 +1128,8 @@ html.noscroll {
   position: relative;
   width: 100%;
   aspect-ratio: 16/9;
-  /* keeps correct video ratio */
-  min-height: 140px;
-  /* fallback for very small screens */
+  /* 140px -> 8.75rem */
+  min-height: 8.75rem;
   height: auto;
   overflow: hidden;
 }
@@ -1100,11 +1150,27 @@ html.noscroll {
   flex-wrap: wrap !important;
   gap: 1rem;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Ensure card boxes can wrap and shrink on narrow screens */
+.about-insights-containers {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 1rem;
 }
 
 /* Allow detail cards to shrink below their previous min-width on small screens */
-@media (max-width: 700px) {
+@media (max-width: 43.75rem) {
   .details-container.color-container {
+    flex: 1 1 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin: 0.5rem !important;
+  }
+
+  .insights.container {
     flex: 1 1 100% !important;
     min-width: 0 !important;
     max-width: 100% !important;
@@ -1113,12 +1179,14 @@ html.noscroll {
 
   .flip-card-front .article-container {
     aspect-ratio: 16/9;
-    min-height: 120px;
+    /* 120px -> 7.5rem */
+    min-height: 7.5rem;
   }
 }
 
 /* Keep 16:9 ratio but cap iframe height on medium/wide screens so buttons stay visible */
-@media screen and (min-width: 701px) and (max-width: 1400px) {
+/* 701px -> 43.8125rem, 1400px -> 87.5rem */
+@media screen and (min-width: 43.8125rem) and (max-width: 87.5rem) {
   .flip-card-front {
     display: flex;
     flex-direction: column;
@@ -1128,12 +1196,10 @@ html.noscroll {
   .flip-card-front .article-container {
     width: 100%;
     aspect-ratio: 16/9;
-    /* preserve ratio */
-    max-height: min(45vh, 420px) !important;
-    /* cap height so it won't push buttons off */
+    /* 420px -> 26.25rem */
+    max-height: min(45vh, 26.25rem) !important;
     height: auto !important;
     flex: 0 0 auto;
-    /* don't grow to fill card */
     overflow: hidden;
   }
 
@@ -1144,7 +1210,6 @@ html.noscroll {
     max-width: 100% !important;
     display: block;
     object-fit: cover;
-    /* keep thumbnail filling container without distortion */
   }
 
   /* Ensure btn area remains visible and not overlapped */
@@ -1156,14 +1221,13 @@ html.noscroll {
 }
 
 /* Make YouTube/video take exactly half the card height on medium/wide screens */
-@media screen and (min-width: 701px) and (max-width: 1400px) {
+@media screen and (min-width: 43.8125rem) and (max-width: 87.5rem) {
   .flip-card-front {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
   }
 
-  /* video area = 50% of the card front */
   .flip-card-front .article-container {
     flex: 0 0 50% !important;
     height: 50% !important;
@@ -1172,7 +1236,6 @@ html.noscroll {
     overflow: hidden;
   }
 
-  /* remaining content (title / buttons) takes the other half */
   .flip-card-front .btn-container,
   .flip-card-front .project-title-container,
   .flip-card-front .project-meta {
@@ -1190,11 +1253,12 @@ html.noscroll {
 }
 
 .details-container.color-container {
-  flex: 0 0 320px !important;
-  min-width: 320px !important;
-  max-width: 320px !important;
-  margin: 1rem;
+  flex: 1 1 auto;
+  max-width: clamp(20rem, 50vw, 60rem);
+  width: 100%;
+  margin: 1.25rem;
 }
+
 
 /* Keep theme & language toggles above the flipped full-screen card */
 .toggle,
@@ -1203,7 +1267,7 @@ html.noscroll {
 }
 
 /* Ensure same on narrow screens */
-@media (max-width: 480px) {
+@media (max-width: 30rem) {
 
   .toggle,
   .toggleLanguage {
@@ -1212,10 +1276,10 @@ html.noscroll {
 }
 
 .section__pic-container {
-  /* keep a fixed square so the image cannot be stretched into an oval */
-  flex: 0 0 200px;
-  width: 200px;
-  height: 200px;
+  /* 200px -> 12.5rem */
+  flex: 0 0 12.5rem;
+  width: 12.5rem;
+  height: 12.5rem;
   margin: auto 0;
 }
 
@@ -1238,7 +1302,7 @@ html.noscroll {
 /* Limit text width and center-align it under the image */
 #about .about-details-container {
   width: 100%;
-  max-width: 900px;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1249,6 +1313,7 @@ html.noscroll {
 #about .text-container {
   padding: 0 1rem;
   box-sizing: border-box;
+  max-width: 50rem;
 }
 
 /* Keep about image centered above text */
@@ -1256,7 +1321,7 @@ html.noscroll {
   margin: 0 auto;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 43.75rem) {
 
   /* Keep comfortable breathing room when a card is expanded to full-screen */
   .flip-card.flipped .flip-card-back {
@@ -1276,7 +1341,8 @@ body {
 }
 
 body {
-  scrollbar-width: 10px;
+  /* 10px -> 0.625rem */
+  scrollbar-width: 0.625rem;
 }
 
 body {
@@ -1309,14 +1375,14 @@ a[href*="linkedin"]:hover {
   transition: box-shadow 0.22s ease, transform 0.12s ease;
   border-radius: 50%;
   display: inline-block;
-  /* ensure ring doesn't shift layout */
   box-sizing: border-box;
 }
 
 /* Hover: add a goldenrod ring and a subtle scale */
 #socials-container img[src$="itch.png"]:hover,
 #socials-container img[src$="linkedin.png"]:hover {
-  box-shadow: 0 0 0 4px goldenrod;
+  /* 4px -> 0.25rem */
+  box-shadow: 0 0 0 0.25rem goldenrod;
   cursor: pointer;
 }
 
@@ -1355,16 +1421,15 @@ a[href*="linkedin"]:hover {
 /* Apply scrolling / scrollbar rules to the flipped card back only */
 .flip-card.flipped .flip-card-back {
   overflow-y: scroll;
-  /* allow inner scrolling on the card back */
-  scrollbar-width: 10px;
-  /* Firefox: use 'thin' (numeric values not supported) */
+  /* 10px -> 0.625rem */
+  scrollbar-width: 0.625rem;
   -ms-overflow-style: none;
-  /* IE/Edge: hide native scrollbar visuals */
 }
 
 /* WebKit browsers: set a 10px track (or hide if you prefer) */
 .flip-card.flipped .flip-card-back::-webkit-scrollbar {
-  width: 10px;
+  /* 10px -> 0.625rem */
+  width: 0.625rem;
 }
 
 .flip-card.flipped .flip-card-back::-webkit-scrollbar {
@@ -1372,8 +1437,9 @@ a[href*="linkedin"]:hover {
 }
 
 .link-icon {
-  width: 16px;
-  height: 16px;
+  /* 16px -> 1rem */
+  width: 1rem;
+  height: 1rem;
   display: inline-block;
   margin-left: 0.35rem;
   vertical-align: middle;
@@ -1395,25 +1461,24 @@ video::-webkit-media-controls-time-remaining-display {
 #AchievementsDesc a {
   color: inherit;
   text-decoration: none;
-  /* Erstmal kein Strich */
   transition: opacity 0.2s ease;
 }
 
 #AchievementsDesc a:hover {
   text-decoration: underline;
   text-decoration-color: rgb(218, 165, 32);
-  /* Goldenrod */
-  text-underline-offset: 3px;
-  /* Der Abstand */
-  text-decoration-thickness: 1px;
-  /* Die Dicke */
+  /* 3px -> 0.1875rem */
+  text-underline-offset: 0.1875rem;
+  /* 1px -> 0.0625rem */
+  text-decoration-thickness: 0.0625rem;
   opacity: 1;
 }
 
 #AchievementsDesc .link-icon {
   width: 0.8em;
   height: auto;
-  margin-left: 5px;
+  /* 5px -> 0.3125rem */
+  margin-left: 0.3125rem;
   vertical-align: middle;
   opacity: 0.7;
   border: none;
@@ -1423,26 +1488,24 @@ video::-webkit-media-controls-time-remaining-display {
   opacity: 1;
 }
 
-/* Ab einer Breite von 1600px orientieren wir uns an der Mitte */
-@media (min-width: 1600px) {
+/* 1600px -> 100rem */
+@media (min-width: 100rem) {
   .toggleLanguage {
     left: 50% !important;
-    /* Startet genau in der Bildschirmmitte */
-    margin-left: -500px;
-    /* Zieht den Button nach links zurück */
+    /* 500px -> 31.25rem */
+    margin-left: -31.25rem;
   }
 
   .flip-card.flipped .exit-btn {
     right: auto !important;
-    /* WICHTIG: Löst die Standard-Fixierung am rechten Rand */
     left: 50% !important;
-    /* Startet in der Mitte */
-    margin-left: 500px;
+    /* 500px -> 31.25rem */
+    margin-left: 31.25rem;
     top: 3.5rem !important;
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 75rem) {
   .flip-card.flipped .exit-btn {
     top: 3.5rem !important;
   }
@@ -1454,9 +1517,7 @@ video::-webkit-media-controls-time-remaining-display {
 #insights,
 #profile {
   border-bottom: none !important;
-  /* Den durchgehenden Strich entfernen */
   position: relative;
-  /* Wichtig, damit die Linie sich an der Sektion orientiert */
 }
 
 /* 2. Die neue, kürzere Linie zeichnen */
@@ -1466,35 +1527,26 @@ video::-webkit-media-controls-time-remaining-display {
 #profile::after {
   content: "";
   display: block;
-
-  /* HIER kannst du die Breite steuern */
   width: 70%;
-
-  height: 2px;
-  /* Dicke der Linie */
+  /* 2px -> 0.125rem */
+  height: 0.125rem;
   background-color: var(--text-color);
-
-  /* Zentrierung am unteren Rand */
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  /* Schiebt die Linie exakt in die Mitte */
 }
 
 .pdf-btn {
   width: 14rem !important;
   max-width: 90vw;
-  letter-spacing: 1px;
-
-  /* FIX: Erzwingt weiße Farbe im Normalzustand */
+  /* 1px -> 0.0625rem */
+  letter-spacing: 0.0625rem;
   color: var(--text-color) !important;
 }
 
-/* Hover-Verhalten: Text wird Gold, Hintergrund bleibt dunkel */
 .pdf-btn:hover {
   color: rgb(218, 165, 32) !important;
-  /* Goldenrod */
   background-color: var(--base-color) !important;
   border-color: var(--text-color) !important;
   cursor: pointer;
@@ -1502,16 +1554,10 @@ video::-webkit-media-controls-time-remaining-display {
 
 /* --- Links für Achievements (Global & Mercury) --- */
 
-/* Erweitere deine bestehende Liste im CSS/Style-Block: */
-
 #AchievementsDesc a,
 #MercuryAchDesc a,
 #UmbraAchievementsDesc a,
-/* NEU */
-#NeoAchievementsDesc a
-
-/* NEU */
-  {
+#NeoAchievementsDesc a {
   color: inherit;
   text-decoration: none;
   transition: opacity 0.2s ease;
@@ -1520,30 +1566,24 @@ video::-webkit-media-controls-time-remaining-display {
 #AchievementsDesc a:hover,
 #MercuryAchDesc a:hover,
 #UmbraAchievementsDesc a:hover,
-/* NEU */
-#NeoAchievementsDesc a:hover
-
-/* NEU */
-  {
+#NeoAchievementsDesc a:hover {
   text-decoration: underline;
   text-decoration-color: rgb(218, 165, 32);
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
+  /* 3px -> 0.1875rem */
+  text-underline-offset: 0.1875rem;
+  /* 1px -> 0.0625rem */
+  text-decoration-thickness: 0.0625rem;
   opacity: 1;
 }
 
-/* Icon Style auch für die neuen IDs */
 #AchievementsDesc .link-icon,
 #MercuryAchDesc .link-icon,
 #UmbraAchievementsDesc .link-icon,
-/* NEU */
-#NeoAchievementsDesc .link-icon
-
-/* NEU */
-  {
+#NeoAchievementsDesc .link-icon {
   width: 0.8em;
   height: auto;
-  margin-left: 5px;
+  /* 5px -> 0.3125rem */
+  margin-left: 0.3125rem;
   vertical-align: middle;
   opacity: 0.7;
   border: none;
@@ -1552,11 +1592,7 @@ video::-webkit-media-controls-time-remaining-display {
 #AchievementsDesc a:hover .link-icon,
 #MercuryAchDesc a:hover .link-icon,
 #UmbraAchievementsDesc a:hover .link-icon,
-/* NEU */
-#NeoAchievementsDesc a:hover .link-icon
-
-/* NEU */
-  {
+#NeoAchievementsDesc a:hover .link-icon {
   opacity: 1;
 }
 
@@ -1566,13 +1602,12 @@ video::-webkit-media-controls-time-remaining-display {
 }
 
 /* --- ULTIMATE BLUEPRINT FIX --- */
-@media (max-width: 700px) {
+@media (max-width: 43.75rem) {
 
-  /* "body" davor erzwingt höhere Priorität als die alten Regeln */
   body .flip-card-back .blueprint-frame {
-    /* Aber mindestens 500px, damit man was sieht */
-    width: 400px !important;
-    min-width: 300px !important;
+    /* 400px -> 25rem, 300px -> 18.75rem */
+    width: 25rem !important;
+    min-width: 18.75rem !important;
     margin-top: 2rem !important;
     padding-top: 0 !important;
   }
@@ -1581,27 +1616,21 @@ video::-webkit-media-controls-time-remaining-display {
 /* --- FIX SOLUTION VIDEOS ON MOBILE --- */
 .flip-card-back video {
   width: 100% !important;
-  /* Zwingt das Video, sich der Breite anzupassen */
-  max-width: 500px !important;
-  /* Behält deine gewünschte Grenze auf dem Desktop */
+  /* 500px -> 31.25rem */
+  max-width: 31.25rem !important;
   height: auto !important;
-  /* Behält das Seitenverhältnis bei */
 }
 
 /* --- FIX: MEDIA SCALING (Video & GIF) --- */
-/* Zwingt Videos UND Bilder auf der Rückseite, sich dem Handy anzupassen */
 .flip-card-back video,
 .flip-card-back img {
   width: 100% !important;
-  /* Nimmt die volle Breite des Eltern-Containers */
-  max-width: 500px !important;
-  /* Aber maximal 500px (wie von dir gewünscht) */
+  /* 500px -> 31.25rem */
+  max-width: 31.25rem !important;
   height: auto !important;
-  /* Verhältnis beibehalten */
   object-fit: contain;
 }
 
-/* Ausnahme: Kleine Icons (wie der Link-Pfeil) sollen klein bleiben */
 .flip-card-back .link-icon {
   width: 0.8em !important;
   max-width: none !important;
@@ -1609,33 +1638,238 @@ video::-webkit-media-controls-time-remaining-display {
 
 /* --- HAMBURGER MENU FIX (REPAIRED) --- */
 
-/* 1. Positionierung: Weniger Abstand zum Rand */
 #hamburger-nav {
   justify-content: space-between !important;
   padding: 0 1rem !important;
-  /* War 1.5rem -> Jetzt 1rem (näher am Rand) */
   margin: 0 !important;
   width: 100% !important;
   box-sizing: border-box;
 }
 
-/* 2. Basis-Style des Menüs (geschlossen) */
 .menu-links {
   background-color: black !important;
   z-index: 9999 !important;
-
-  /* WICHTIG: Hier KEINEN Rahmen setzen, sonst sieht man die Linie! */
   border: none !important;
 }
 
-/* 3. Style des Menüs (GEÖFFNET) */
 .menu-links.open {
-  /* Der Rahmen erscheint erst, wenn das Menü aufklappt */
-  border: 1px solid var(--text-color) !important;
+  /* 1px -> 0.0625rem */
+  border: 0.0625rem solid var(--text-color) !important;
   border-top: none !important;
 }
 
-/* Korrektur für das Logo auf dem Handy */
 #hamburger-nav .logo {
   padding-left: 0 !important;
+}
+
+@media (max-width: 43.75rem) {
+
+  .about-containers,
+  .about-insights-containers {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 43.75rem) {
+
+  .details-container.color-container,
+  .insights.container {
+    flex: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    margin-inline: 0 !important;
+    box-sizing: border-box;
+    flex: 1 1 clamp(22rem, 36vw, 30rem);
+    max-width: clamp(26rem, 40vw, 36rem);
+    margin: 1.5rem;
+  }
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+@media (max-width: 43.75rem) {
+  .flip-card {
+    height: auto !important;
+    min-height: 24rem;
+  }
+}
+
+@media (max-width: 43.75rem) {
+  .flip-card {
+    height: auto !important;
+  }
+}
+
+@media (max-width: 43.75rem) {
+  .details-container.color-container {
+    height: auto !important;
+  }
+}
+
+@media (max-width: 43.75rem) {
+
+  .flip-card,
+  .flip-card-inner,
+  .flip-card-front,
+  .flip-card-back {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+}
+
+.flip-card {
+  height: 100%;
+}
+
+.flip-card-inner {
+  height: 100%;
+}
+
+@media (max-width: 43.75rem) {
+  .flip-card-front {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 43.75rem) {
+
+  .flip-card-inner,
+  .flip-card-front,
+  .flip-card-back {
+    position: static !important;
+  }
+}
+
+@media (max-width: 43.75rem) {
+  .flip-card {
+    height: auto !important;
+    min-height: 0 !important;
+    display: block;
+  }
+}
+
+@media (max-width: 43.75rem) {
+  .flip-card-front {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .flip-card-back {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
+
+@media (max-width: 43.75rem) {
+  .flip-card-back {
+    display: none !important;
+  }
+}
+
+@media (max-width: 43.75rem) {
+  .flip-card.flipped .flip-card-back {
+    display: block !important;
+  }
+
+  .flip-card.flipped .flip-card-front {
+    display: none !important;
+  }
+}
+
+@media (max-width: 43.75rem) {
+
+  .flip-card-inner,
+  .flip-card-front,
+  .flip-card-back {
+    position: static !important;
+  }
+}
+
+@media (max-width: 43.75rem) {
+  .flip-card {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+}
+
+@media (max-width: 43.75rem) {
+
+  .details-container.color-container,
+  .insights.container {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    margin: 0.75rem 0;
+  }
+}
+
+.details-container.color-container {
+  margin: 1.25rem;
+}
+
+@media (max-width: 43.75rem) {
+  .details-container.color-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 1 1 auto !important;
+    margin: 1rem 0 !important;
+  }
+}
+
+/* Gilt nur für Bildschirme größer als 700px (43.75rem) */
+@media (min-width: 43.75rem) {
+  .details-container.color-container {
+    flex: 1 1 35rem !important;
+    max-width: 50rem !important;
+    height: auto !important;
+    min-height: 40rem;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+}
+
+/* FIX: Lücke am unteren Rand auf Mobilgeräten schließen */
+@media (max-width: 43.75rem) {
+  /* entspricht < 700px */
+
+  .flip-card.flipped {
+    /* 1. Nutze Dynamic Viewport Height für exakte Anpassung an Mobil-Screens */
+    height: 100vh !important;
+    /* Fallback für alte Browser */
+    height: 100dvh !important;
+    /* Die moderne Lösung */
+
+    /* 2. Fixiere Positionierung an allen vier Ecken */
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+
+    /* 3. Hintergrundfarbe auf den Haupt-Container zwingen */
+    /* Damit wird verhindert, dass Elemente dahinter durch "transparente Pixel" scheinen */
+    background-color: var(--base-color) !important;
+
+    /* 4. Ränder und Rundungen sicher entfernen */
+    border-radius: 0 !important;
+    margin: 0 !important;
+    width: 100vw !important;
+
+    /* 5. Z-Index hoch genug, um Navigationslinien zu überdecken */
+    z-index: 9995 !important;
+  }
+
+  /* Stellt sicher, dass die "Rückseite" innerhalb dieses Containers auch voll ausgefüllt ist */
+  .flip-card.flipped .flip-card-back {
+    height: 100% !important;
+    width: 100% !important;
+    background-color: var(--base-color) !important;
+  }
 }
