@@ -13,8 +13,6 @@ html {
     font-weight: 600
 }
 
-.btn-color-1,
-.btn-color-2:hover,
 .experience-sub-title,
 .flip-card-back,
 .flip-card-front,
@@ -124,27 +122,10 @@ body {
     background-color: var(--base-color)
 }
 
-.btn-color-1,
-.btn-color-1:hover,
-.btn-color-2,
-.btn-color-2:hover,
-.color-container,
-.flip-card.flipped .flip-card-back {
-    background: var(--base-color)
-}
-
 .float-back-info-col {
     flex: 1 1 0;
     min-width: 0;
     text-align: left
-}
-
-.menu-links a,
-.section__text,
-.section__text__p1,
-.title,
-footer p {
-    text-align: center
 }
 
 @media (max-width:43.75rem) {
@@ -283,6 +264,13 @@ a:hover {
     padding-left: 2.5rem
 }
 
+.details-container,
+.insights.container {
+    padding: 1.5rem;
+    text-align: center;
+    background: var(--base-color)
+}
+
 .contact-icon,
 .logo:hover,
 article .icon {
@@ -330,6 +318,7 @@ article .icon {
 
 .menu-links a {
     padding: .625rem;
+    text-align: center;
     font-size: 1.5rem
 }
 
@@ -376,7 +365,13 @@ section {
 }
 
 .section__text {
-    align-self: center
+    align-self: center;
+    text-align: center
+}
+
+.section__text__p1,
+footer p {
+    text-align: center
 }
 
 .section__text__p2 {
@@ -385,7 +380,8 @@ section {
 }
 
 .title {
-    font-size: clamp(2rem, 4vw, 3rem)
+    font-size: clamp(2rem, 4vw, 3rem);
+    text-align: center
 }
 
 #socials-container {
@@ -418,15 +414,18 @@ section {
     bottom: 2.5rem
 }
 
-.details-container,
-.insights.container {
-    padding: 1.5rem;
+.details-container {
     flex: 1;
-    background: var(--base-color);
+    border-radius: 2rem;
+    border: 2px solid var(--text-color);
+    border-color: var(--text-color)
+}
+
+.insights.container {
+    flex: 1;
     border-radius: 2rem;
     border: var(--base-color) .1rem solid;
-    border-color: var(--text-color);
-    text-align: center
+    border-color: var(--text-color)
 }
 
 .experience-sub-title {
@@ -476,6 +475,10 @@ article {
     padding-bottom: 0 !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important
+}
+
+.color-container {
+    background: var(--base-color)
 }
 
 .project-title {
@@ -551,6 +554,17 @@ footer {
 .btn-color-1:hover,
 .btn-color-2:hover {
     cursor: pointer
+}
+
+.btn-color-1,
+.btn-color-2:hover {
+    background: var(--base-color);
+    color: var(--text-color)
+}
+
+.btn-color-1:hover,
+.btn-color-2 {
+    background: var(--base-color)
 }
 
 .btn-color-2:hover,
@@ -719,6 +733,7 @@ footer {
     width: 100vw;
     height: 100vh;
     min-height: 0;
+    background: var(--base-color);
     overflow-y: auto !important;
     padding: 0
 }

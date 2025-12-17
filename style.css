@@ -457,7 +457,7 @@ section {
   flex: 1;
   background: var(--base-color);
   border-radius: 2rem;
-  border: var(--base-color) 0.1rem solid;
+  border: 2px solid var(--text-color);
   border-color: var(--text-color);
   text-align: center;
 }
