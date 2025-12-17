@@ -995,6 +995,8 @@
                 <div class="btn-container">
                   <button class="btn btn-color-2 project-btn"
                     onclick="event.stopPropagation(); window.open('https://www.meta.com/de-de/experiences/float-a-mixed-reality-experience/24099813506309823/', '_blank');">
+                    <img src="./assets/meta.png" alt="Meta"
+                      style="width: 1.2rem; height: auto; margin-right: 0.5rem; vertical-align: middle;">
                     Meta
                   </button>
                   <button id="floatDetailsBtn" class="btn btn-color-2 project-btn details-btn"
@@ -1015,12 +1017,18 @@
                     <div class="float-back-info-box">
                       <div class="float-back-info-col">
                         <h1 id="P1">Project Scope</h1>
-                        <p id="P2">- 6 Months <br /> - Team of 6
-                          People</p>
+                        <ul style="margin-left: 1rem;" id="P2">
+                          <li>6 Months</li>
+                          <li>Team of 6 People</li>
+                        </ul>
                       </div>
                       <div class="float-back-info-col">
                         <h1 id="RoleTitle">My Role</h1>
-                        <p id="RoleDescription">- Main Programmer <br /> - Shader <br /> - Effects</p>
+                        <ul style="margin-left: 1rem;" id="RoleDescription">
+                          <li>Main Programmer</li>
+                          <li>Shader</li>
+                          <li>Effects</li>
+                        </ul>
                       </div>
                     </div>
 
@@ -1070,7 +1078,7 @@
                 <div class="float-problem-section"
                   style="max-width:700px; margin: 1rem auto 0 auto; text-align:left; margin-top: auto;">
                   <h1 id="AchievementsTitle">Achievements</h1>
-                  <div id="AchievementsDesc" style="word-break: break-word;">
+                  <div id="AchievementsDesc" style="word-break: break-word; margin-left: 1rem;">
                     <ul>
                       <li>
                         <a href="https://www.mb21.de/wettbewerbsjahr_2025.html?articles=float" target="_blank"
@@ -1185,7 +1193,12 @@
                   </h2>
                 </div>
                 <div class="btn-container">
-
+                  <button class="btn btn-color-2 project-btn"
+                    onclick="event.stopPropagation(); window.open('https://mouseworks.itch.io/mercury', '_blank');">
+                    <img src="./assets/itch_red.png" alt="Itch.io"
+                      style="width: 1.2rem; height: auto; margin-right: 0.5rem; vertical-align: middle;">
+                    Itch.io
+                  </button>
                   <button id="mercuryDetailsBtn" class="btn btn-color-2 project-btn details-btn"
                     onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
                     Details
@@ -1200,14 +1213,16 @@
                     <div class="float-back-info-box">
                       <div class="float-back-info-col">
                         <h1 id="mercuryScopeTitle">Project Scope</h1>
-                        <p id="mercuryScopeDesc">
-                          - Under Development <br />
-                          - Team of 6 People <br />
-                        </p>
+                        <ul style="margin-left: 1rem;" id="mercuryScopeDesc">
+                          <li>Under Development</li>
+                          <li>Team of 6 People</li>
+                        </ul>
                       </div>
                       <div class="float-back-info-col">
                         <h1 id="mercuryRoleTitle">My Role</h1>
-                        <p id="mercuryRoleDesc">- Player Mechanics</p>
+                        <ul style="margin-left: 1rem;" id="mercuryRoleDesc">
+                          <li>Player Mechanics</li>
+                        </ul>
                       </div>
                     </div>
                     <div class="float-problem-section">
@@ -1278,7 +1293,7 @@
 
                       <h1 id="MercuryAchTitle">Achievements</h1>
 
-                      <div id="MercuryAchDesc" style="word-break: break-word;">
+                      <div id="MercuryAchDesc" style="word-break: break-word; margin-left: 1rem;">
                         <ul>
                           <li>
                             <a href="https://devpost.com/software/mercury-05i6ty" target="_blank"
@@ -1326,7 +1341,9 @@
                 </div>
                 <div class="btn-container">
                   <button class="btn btn-color-2 project-btn"
-                    onclick="window.open('https://gohde-games.itch.io/god-of-a-cult', '_blank');">
+                    onclick="event.stopPropagation(); window.open('https://gohde-games.itch.io/god-of-a-cult', '_blank');">
+                    <img src="./assets/itch_red.png" alt="Itch.io"
+                      style="width: 1.2rem; height: auto; margin-right: 0.5rem; vertical-align: middle;">
                     Itch.io
                   </button>
                   <button id="cultDetailsBtn" class="btn btn-color-2 project-btn details-btn"
@@ -1343,26 +1360,31 @@
                     <div class="float-back-info-box">
                       <div class="float-back-info-col">
                         <h1 id="cultScopeTitle">Project Scope</h1>
-                        <p id="cultScopeDesc">
-                          - 2nd Semester Project <br />
-                          <style>
-                            #cultScopeDesc a:hover {
-                              text-decoration: underline;
-                              text-decoration-color: rgb(218, 165, 32);
-                              text-underline-offset: 3px;
-                              text-decoration-thickness: 1px;
-                            }
-                          </style>
-                          <a href="https://www.filmmakers.eu/en/actors/thorben-gohde" target="_blank"
-                            rel="noopener noreferrer">
-                            - Voiced by Thorben Gohde
-                            <img src="./assets/hyperlink_icon.png" alt="External link" class="link-icon" />
-                          </a>
-                        </p>
+                        <style>
+                          #cultScopeDesc a:hover {
+                            text-decoration: underline;
+                            text-decoration-color: rgb(218, 165, 32);
+                            text-underline-offset: 3px;
+                            text-decoration-thickness: 1px;
+                          }
+                        </style>
+
+                        <ul style="margin-left: 1rem;" id="cultScopeDesc">
+                          <li>2nd Semester Project</li>
+                          <li>
+                            <a href="https://www.filmmakers.eu/en/actors/thorben-gohde" target="_blank"
+                              rel="noopener noreferrer">
+                              Voiced by Thorben Gohde
+                              <img src="./assets/hyperlink_icon.png" alt="External link" class="link-icon" />
+                            </a>
+                          </li>
+                        </ul>
                       </div>
                       <div class="float-back-info-col">
                         <h1 id="cultRoleTitle">My Role</h1>
-                        <p id="cultRoleDesc">- Solo Project</p>
+                        <ul style="margin-left: 1rem;" id="cultRoleDesc">
+                          <li>Solo Project</li>
+                        </ul>
                       </div>
                     </div>
                     <div class="float-problem-section">
@@ -1393,7 +1415,7 @@
                 <div class="float-problem-section"
                   style="max-width:700px; margin: 1rem auto 0 auto; text-align:left; margin-top: auto;">
                   <h1 id="CultAchievementsTitle">Achievements</h1>
-                  <div id="CultAchievementsDesc" style="word-break: break-word;">
+                  <div id="CultAchievementsDesc" style="word-break: break-word; margin-left: 1rem;">
                     <ul>
                       <li>Exhibitor: HNU Werkschau</li>
                       <li>Showcase project for new semester</li>

@@ -1873,3 +1873,54 @@ body {
     background-color: var(--base-color) !important;
   }
 }
+
+/* --- FIX: Symmetrische Buttons & Bild-Korrektur --- */
+
+/* 1. Container zentrieren */
+.flip-card-front .btn-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  /* Der Abstand liegt nun genau in der Mitte */
+  width: 100% !important;
+}
+
+/* 2. Button-Form fixieren */
+.flip-card-front .btn {
+  /* Feste Breite für ALLE Buttons -> Symmetrie */
+  width: 9rem !important;
+  /* Feste Höhe verhindert "Eiern" oder Verformen durch das Bild */
+  height: 3.25rem !important;
+
+  /* Flexbox zentriert den Inhalt (Bild + Text) perfekt */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+
+  /* Padding auf 0, da wir Breite/Höhe fix haben */
+  padding: 0 !important;
+
+  /* Abstand wird über gap geregelt, nicht über margin am Bild */
+  gap: 0.5rem !important;
+
+  /* Verhindert Umbrüche */
+  white-space: nowrap !important;
+}
+
+/* 3. Bild bändigen (Überschreibt Inline-Styles) */
+.flip-card-front .btn img {
+  /* Größe festnageln */
+  width: 1.4rem !important;
+  height: auto !important;
+
+  /* WICHTIG: Margin entfernen, da wir 'gap' im Button nutzen */
+  margin: 0 !important;
+  margin-right: 0 !important;
+  /* Spezifisch für den Inline-Style */
+
+  /* Verhindert, dass das Bild gequetscht oder gestreckt wird */
+  flex-shrink: 0 !important;
+  object-fit: contain !important;
+  display: block !important;
+}

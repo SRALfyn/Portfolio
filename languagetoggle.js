@@ -151,9 +151,9 @@ const enableLanguage = () => {
 
     // --- MERCURY ---
     if (mercuryScopeTitle) mercuryScopeTitle.innerText = "プロジェクト概要";
-    if (mercuryScopeDesc) mercuryScopeDesc.innerHTML = "- 開発中 <br />- 6人のチーム <br />";
+    if (mercuryScopeDesc) mercuryScopeDesc.innerHTML = "<li>開発中</li><li>6人のチーム</li>";
     if (mercuryRoleTitle) mercuryRoleTitle.innerText = "担当";
-    if (mercuryRoleDesc) mercuryRoleDesc.innerText = "- プレイヤーメカニクス";
+    if (mercuryRoleDesc) mercuryRoleDesc.innerHTML = "<li>プレイヤーメカニクス</li>";
 
     // Mercury Context (Index 0)
     if (mercuryTitles[0]) mercuryTitles[0].innerText = "実装の背景";
@@ -219,9 +219,9 @@ const enableLanguage = () => {
 
     // --- GOD OF A CULT ---
     if (cultScopeTitle) cultScopeTitle.innerText = "プロジェクト概要";
-    if (cultScopeDesc) cultScopeDesc.innerHTML = "- 第2セメスターのプロジェクト <br /> <a href='https://www.filmmakers.eu/en/actors/thorben-gohde' target='_blank' rel='noopener noreferrer'> - 声：Thorben Gohde <img src='./assets/hyperlink_icon.png' alt='外部リンク' class='link-icon' /></a>";
+    if (cultScopeDesc) cultScopeDesc.innerHTML = "<li>第2セメスターのプロジェクト</li><li><a href='https://www.filmmakers.eu/en/actors/thorben-gohde' target='_blank' rel='noopener noreferrer'>声：Thorben Gohde <img src='./assets/hyperlink_icon.png' alt='外部リンク' class='link-icon' /></a></li>";
     if (cultRoleTitle) cultRoleTitle.innerText = "私の役割";
-    if (cultRoleDesc) cultRoleDesc.innerHTML = "・ソロプロジェクト";
+    if (cultRoleDesc) cultRoleDesc.innerHTML = "<li>ソロプロジェクト</li>";
     if (cultProblemTitle) cultProblemTitle.innerText = "コードの背景";
     if (cultProblemDesc) cultProblemDesc.innerText = "できるだけ早くレベルを作成できるように、データテーブルだけで動作するシステムを作成しました。ゲームは完全にボイス付きで、シンプルなシステムで実装されています。";
     if (CultAchievementsTitle) CultAchievementsTitle.innerText = "実績";
@@ -244,9 +244,9 @@ const enableLanguage = () => {
 
     // --- FLOAT ---
     if (P1) P1.innerText = "プロジェクト概要";
-    if (P2) P2.innerHTML = "- 6ヶ月 <br /> - 6人のチーム";
+    if (P2) P2.innerHTML = "<li>6ヶ月</li><li>6人のチーム</li>";
     if (RoleTitle) RoleTitle.innerText = "私の役割";
-    if (RoleDescription) RoleDescription.innerHTML = "・メインプログラマー<br />・シェーダー<br />・エフェクト";
+    if (RoleDescription) RoleDescription.innerHTML = "<li>メインプログラマー</li><li>シェーダー</li><li>エフェクト</li>";
     if (ProblemTitle) ProblemTitle.innerText = "コードの背景";
     if (ProblemDesc) ProblemDesc.innerText = "フォリッジをインスタンススタティックメッシュとして配置する必要があり、ゲームデザイナーから各メッシュを個別に操作しなくても済む方法がないかと頼まれました。そこで、簡単なエディタユーティリティウィジェットを作成しました。";
     if (EmbedTitle) EmbedTitle.innerText = "コードの背景";
@@ -368,9 +368,9 @@ const disableLanguage = () => {
 
     // --- MERCURY ---
     if (mercuryScopeTitle) mercuryScopeTitle.innerText = "Project Scope";
-    if (mercuryScopeDesc) mercuryScopeDesc.innerHTML = "- Under Development <br />- Team of 6 People <br />";
+    if (mercuryScopeDesc) mercuryScopeDesc.innerHTML = "<li>Under Development</li><li>Team of 6 People</li>";
     if (mercuryRoleTitle) mercuryRoleTitle.innerText = "My Role";
-    if (mercuryRoleDesc) mercuryRoleDesc.innerText = "- Player Mechanics";
+    if (mercuryRoleDesc) mercuryRoleDesc.innerHTML = "<li>Player Mechanics</li>";
 
     // Mercury Context
     if (mercuryTitles[0]) mercuryTitles[0].innerText = "The Context of the Code";
@@ -435,9 +435,9 @@ const disableLanguage = () => {
 
     // --- GOD OF A CULT ---
     if (cultScopeTitle) cultScopeTitle.innerText = "Project Scope";
-    if (cultScopeDesc) cultScopeDesc.innerHTML = "- 2nd Semester Project <br /> <a href='https://www.filmmakers.eu/en/actors/thorben-gohde' target='_blank' rel='noopener noreferrer'> - Voiced by Thorben Gohde <img src='./assets/hyperlink_icon.png' alt='External link' class='link-icon' /></a>";
+    if (cultScopeDesc) cultScopeDesc.innerHTML = "<li>2nd Semester Project</li><li><a href='https://www.filmmakers.eu/en/actors/thorben-gohde' target='_blank' rel='noopener noreferrer'>Voiced by Thorben Gohde <img src='./assets/hyperlink_icon.png' alt='External link' class='link-icon' /></a></li>";
     if (cultRoleTitle) cultRoleTitle.innerText = "My Role";
-    if (cultRoleDesc) cultRoleDesc.innerHTML = "- Solo Project";
+    if (cultRoleDesc) cultRoleDesc.innerHTML = "<li>Solo Project</li>";
     if (cultProblemTitle) cultProblemTitle.innerText = "The Context of the Code";
     if (cultProblemDesc) cultProblemDesc.innerText = "To be able to create levels as fast as possible I created a System that works with only Datatables. The Game is fully voiced which is also implemented in a simple System.";
     if (CultAchievementsTitle) CultAchievementsTitle.innerText = "Achievements";
@@ -460,9 +460,9 @@ const disableLanguage = () => {
 
     // --- FLOAT ---
     if (P1) P1.innerText = "Project Scope";
-    if (P2) P2.innerHTML = "- 6 Months <br /> - Team of 6 People";
+    if (P2) P2.innerHTML = "<li>6 Months</li><li>Team of 6 People</li>";
     if (RoleTitle) RoleTitle.innerText = "My Role";
-    if (RoleDescription) RoleDescription.innerHTML = "- Main Programmer <br /> - Shader <br /> - Effects";
+    if (RoleDescription) RoleDescription.innerHTML = "<li>Main Programmer</li><li>Shader</li><li>Effects</li>";
     if (ProblemTitle) ProblemTitle.innerText = "The Context of the Code";
     if (ProblemDesc) ProblemDesc.innerText = "We needed to place the Foliage as Instance Static Meshes and our Game Designer asked me if there is a way so he doesn’t have to manipulate each mesh individually. So I build him a simple Editor Utility Widget.";
     if (EmbedTitle) EmbedTitle.innerText = "The Context of the Code";
