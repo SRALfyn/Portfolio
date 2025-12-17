@@ -545,7 +545,7 @@ footer {
 
 .btn-color-1,
 .btn-color-2 {
-    border: var(--text-color) .1rem solid
+    border: 2px solid var(--text-color) !important
 }
 
 .btn-color-1:hover,
