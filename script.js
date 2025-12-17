@@ -229,3 +229,93 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+
+/* --- POOKI SMOOTH EYE TRACKING (LERP) --- */
+
+// Konfiguration
+const EYE_MOVE_LIMIT = 6; // Max Pixel Bewegung im Auge
+const SMOOTH_FACTOR = 0.1; // 0.1 = weich, 0.5 = schnell, 1.0 = sofort
+
+// Speicher für die aktuelle und Ziel-Position der Augen
+// (Wir speichern das für alle Pookis auf der Seite, falls es mehrere gibt)
+let pookiState = {
+  targetX: 0,
+  targetY: 0,
+  currentX: 0,
+  currentY: 0
+};
+
+// 1. Maus/Touch Position erfassen (Nur Koordinaten speichern, kein DOM manipulieren)
+function updateTarget(clientX, clientY) {
+  // Wir nehmen an, der Spieler schaut in die Mitte des Bildschirms, 
+  // wenn keine Maus da ist, aber hier speichern wir die globale Mausposition.
+  // Die Berechnung relativ zum Auge passiert im Animation Loop.
+  pookiState.mouseX = clientX;
+  pookiState.mouseY = clientY;
+}
+
+document.addEventListener('mousemove', (e) => updateTarget(e.clientX, e.clientY));
+
+document.addEventListener('touchmove', (e) => {
+  const touch = e.touches[0];
+  updateTarget(touch.clientX, touch.clientY);
+}, { passive: true });
+
+document.addEventListener('touchstart', (e) => {
+  const touch = e.touches[0];
+  updateTarget(touch.clientX, touch.clientY);
+}, { passive: true });
+
+
+// 2. Animation Loop (Läuft 60fps für butterweiche Bewegung)
+function animateEyes() {
+  const eyes = document.querySelectorAll('.eye-socket');
+
+  eyes.forEach(eye => {
+    const pupil = eye.querySelector('.pupil');
+    if (!pupil) return;
+
+    // Position des Auges auf dem Bildschirm
+    const rect = eye.getBoundingClientRect();
+    const eyeCenterX = rect.left + rect.width / 2;
+    const eyeCenterY = rect.top + rect.height / 2;
+
+    // Falls noch keine Mausbewegung war, Mitte nehmen
+    const targetMouseX = pookiState.mouseX || window.innerWidth / 2;
+    const targetMouseY = pookiState.mouseY || window.innerHeight / 2;
+
+    // Winkel und Distanz zum Ziel berechnen
+    const angle = Math.atan2(targetMouseY - eyeCenterY, targetMouseX - eyeCenterX);
+
+    // Zielposition der Pupille (begrenzt auf Radius)
+    const targetPupilX = Math.cos(angle) * EYE_MOVE_LIMIT;
+    const targetPupilY = Math.sin(angle) * EYE_MOVE_LIMIT;
+
+    // HIER IST DIE MAGIE (Interpolation)
+    // Wenn wir noch keine individuellen Werte pro Auge haben, initialisieren
+    if (!pupil.dataset.currentX) {
+      pupil.dataset.currentX = 0;
+      pupil.dataset.currentY = 0;
+    }
+
+    // Aktuelle Position holen (aus Dataset parseFloat)
+    let currX = parseFloat(pupil.dataset.currentX);
+    let currY = parseFloat(pupil.dataset.currentY);
+
+    // Annäherung: Current = Current + (Target - Current) * Factor
+    currX += (targetPupilX - currX) * SMOOTH_FACTOR;
+    currY += (targetPupilY - currY) * SMOOTH_FACTOR;
+
+    // Werte zurückspeichern
+    pupil.dataset.currentX = currX;
+    pupil.dataset.currentY = currY;
+
+    // CSS anwenden
+    pupil.style.transform = `translate(-50%, -50%) translate(${currX}px, ${currY}px)`;
+  });
+
+  requestAnimationFrame(animateEyes);
+}
+
+// Animation starten
+requestAnimationFrame(animateEyes);
