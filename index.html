@@ -1058,7 +1058,7 @@
                   </div>
                   <div
                     style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
-                    <video autoplay loop muted playsinline preload="metadata"
+                    <video loop muted playsinline preload="metadata"
                       style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;">
                       <source src="./assets/FLOAT_Solution.webm" type="video/webm">
                       <source src="./assets/FLOAT_Solution.mp4" type="video/mp4">
@@ -1078,7 +1078,7 @@
                     like a form of interaction with the player.</p>
                   <div
                     style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
-                    <video autoplay loop muted playsinline preload="metadata"
+                    <video loop muted playsinline preload="metadata"
                       style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:1.5rem; margin-bottom:0rem;">
                       <source src="./assets/FLOAT_Solution2.webm" type="video/webm">
                       <source src="./assets/FLOAT_Solution2.mp4" type="video/mp4">
@@ -1183,12 +1183,12 @@
 
         <!-- Mercury Karte -->
         <div class="details-container color-container">
-          <div class="flip-card">
+          <div class="flip-card allow-overflow">
             <button class="flip-toggle-btn exit-btn">
               X
             </button>
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
+            <div class="flip-card-inner allow-overflow">
+              <div class="flip-card-front allow-overflow">
                 <div class="article-container">
                   <video controls playsinline preload="metadata" controlsList="nodownload noplaybackrate"
                     disablepictureinpicture poster="./assets/MERCURY_Poster.jpg"
@@ -1209,12 +1209,25 @@
                   </h2>
                 </div>
                 <div class="btn-container">
-                  <button class="btn btn-color-2 project-btn"
-                    onclick="event.stopPropagation(); window.open('https://mouseworks.itch.io/mercury', '_blank');">
-                    <img src="./assets/itch_red.png" alt="Itch.io"
-                      style="width: 1.2rem; height: auto; margin-right: 0.5rem; vertical-align: middle;">
-                    Itch.io
-                  </button>
+
+                  <div class="mercury-punch-group" style="position: relative;">
+
+                    <button id="mercury-itch-btn" class="btn btn-color-2 project-btn"
+                      onclick="event.stopPropagation(); window.open('https://mouseworks.itch.io/mercury', '_blank');">
+                      <img src="./assets/itch_red.png" alt="Itch.io"
+                        style="width: 1.2rem; height: auto; margin-right: 0.5rem; vertical-align: middle;">
+                      Itch.io
+                    </button>
+
+                    <div class="mercury-animation-wrapper">
+                      <div class="mecha-fist">
+                        <div class="knuckles"></div>
+                        <div class="thumb"></div>
+                      </div>
+                      <div class="impact-spark"></div>
+                    </div>
+
+                  </div>
                   <button id="mercuryDetailsBtn" class="btn btn-color-2 project-btn details-btn"
                     onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
                     Details
@@ -1252,7 +1265,7 @@
                   </div>
                   <div
                     style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
-                    <video autoplay loop muted playsinline preload="metadata"
+                    <video loop muted playsinline preload="metadata"
                       style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;">
                       <source src="./assets/MERCURY_Solution.webm" type="video/webm">
                       <source src="./assets/MERCURY_Solution.mp4" type="video/mp4">
@@ -1356,16 +1369,24 @@
                   </h2>
                 </div>
                 <div class="btn-container">
+
+
                   <button class="btn btn-color-2 project-btn"
                     onclick="event.stopPropagation(); window.open('https://gohde-games.itch.io/god-of-a-cult', '_blank');">
                     <img src="./assets/itch_red.png" alt="Itch.io"
                       style="width: 1.2rem; height: auto; margin-right: 0.5rem; vertical-align: middle;">
                     Itch.io
                   </button>
-                  <button id="cultDetailsBtn" class="btn btn-color-2 project-btn details-btn"
-                    onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
-                    Details
-                  </button>
+                  <div class="cult-wrapper" style="position: relative; display: inline-block;">
+
+                    <div class="cultist-fan c1"></div>
+                    <div class="cultist-fan c2"></div>
+                    <div class="cultist-fan c3"></div>
+                    <button id="cultDetailsBtn" class="btn btn-color-2 project-btn details-btn"
+                      onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
+                      Details
+                    </button>
+                  </div>
                 </div>
               </div>
               <div class="flip-card-back">
@@ -1412,7 +1433,7 @@
                   </div>
                   <div
                     style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
-                    <video autoplay loop muted playsinline preload="metadata"
+                    <video loop muted playsinline preload="metadata"
                       style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;">
                       <source src="./assets/GodOfACult_Solution.webm" type="video/webm">
                       <source src="./assets/GodOfACult_Solution.mp4" type="video/mp4">

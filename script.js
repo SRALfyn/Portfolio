@@ -6,7 +6,6 @@ function toggleMenu() {
 }
 
 function lockScrollAtCurrentPosition() {
-  // Verhindert doppeltes Locking
   if (document.body.style.position === 'fixed') return;
 
   var scrollY = window.scrollY;
@@ -50,7 +49,7 @@ function lazyLoadCardMedia(card) {
 
     if (mp4 || webm) {
       const video = document.createElement('video');
-      video.autoplay = true;
+      video.autoplay = false; 
       video.loop = true;
       video.muted = true;
       video.playsInline = true;
@@ -74,7 +73,6 @@ function lazyLoadCardMedia(card) {
 
       img.replaceWith(video);
       try { video.load(); } catch (e) { }
-      video.addEventListener('canplaythrough', () => { video.play().catch(() => { }); }, { once: true });
     } else if (img.getAttribute('data-gif-src')) {
       img.src = img.getAttribute('data-gif-src');
       img.removeAttribute('data-gif-src');
@@ -90,7 +88,6 @@ function addSource(video, src, type) {
   video.appendChild(source);
 }
 
-// Observer
 const mediaObserver = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -104,11 +101,9 @@ document.querySelectorAll('.flip-card').forEach(card => {
   mediaObserver.observe(card);
 });
 
-
-// *** NAVIGATIONS-LOGIK (VOR & ZURÜCK) ***
-
 function closeAllCards() {
   document.querySelectorAll('.flip-card.flipped').forEach(card => {
+    pauseBackVideos(card);
     card.classList.remove('flipped');
   });
   unlockScrollFromLockedPosition();
@@ -120,33 +115,33 @@ function openCardByIndex(index) {
   const card = cards[index];
 
   if (card) {
-    // Falls noch andere offen sind, erst schließen (Sicherheitshalber)
     document.querySelectorAll('.flip-card.flipped').forEach(c => {
-      if (c !== card) c.classList.remove('flipped');
+      if (c !== card) {
+        pauseBackVideos(c);
+        c.classList.remove('flipped');
+      }
     });
 
     lazyLoadCardMedia(card);
     card.classList.add('flipped');
+    
+    playBackVideos(card);
+    
     window._cardWasFlipped = true;
 
-    // Kurze Verzögerung für Scroll-Lock
     setTimeout(lockScrollAtCurrentPosition, 10);
   }
 }
 
-// Browser Navigation Listener (Back & Forward)
 window.addEventListener('popstate', (event) => {
-  // Fall 1: Wir haben einen State mit Index -> Karte öffnen (Vorwärts Button)
   if (event.state && event.state.cardOpen && event.state.cardIndex !== undefined) {
     openCardByIndex(event.state.cardIndex);
   }
-  // Fall 2: Kein State oder cardOpen ist false -> Alles schließen (Zurück Button)
   else {
     closeAllCards();
   }
 });
 
-// Setup Project Buttons (Öffnen)
 document.querySelectorAll('.project-btn').forEach(btn => {
   if (btn.id === 'allGamesBtn') return;
 
@@ -159,55 +154,47 @@ document.querySelectorAll('.project-btn').forEach(btn => {
   });
 
   btn.addEventListener('click', function (e) {
-    // Hier KEIN preventDefault(), damit Links/Buttons normal reagieren,
-    // es sei denn, es ist ein reiner JS-Button.
+    if (!btn.classList.contains('details-btn')) return;
 
-    // Ermittle den Index der aktuellen Karte in der Liste aller Karten
     const allCards = Array.from(document.querySelectorAll('.flip-card'));
     const cardIndex = allCards.indexOf(card);
 
     lazyLoadCardMedia(card);
 
-    // Neuen History-Eintrag mit der Karten-ID (Index) erstellen
     history.pushState({ cardOpen: true, cardIndex: cardIndex }, "", null);
 
     card.classList.add('flipped');
+    
+    playBackVideos(card);
+
     window._cardWasFlipped = true;
     setTimeout(lockScrollAtCurrentPosition, 10);
   });
 });
 
-// Setup Exit Buttons (Schließen via Zurück-Funktion)
 document.querySelectorAll('.exit-btn').forEach(btn => {
   btn.addEventListener('click', function (e) {
     e.preventDefault();
 
-    // Wenn History State vorhanden, nutze Browser-Zurück
     if (history.state && history.state.cardOpen) {
       history.back();
     } else {
-      // Fallback (z.B. bei direktem Aufruf oder Reload)
       closeAllCards();
     }
   });
 });
 
-// Warten, bis das Dokument geladen ist
 document.addEventListener("DOMContentLoaded", function () {
 
-  // Wähle alle Links in der Navigation (Desktop & Mobile), die mit # beginnen
   const navLinks = document.querySelectorAll('.menu-links a, .nav-links a');
 
   navLinks.forEach(link => {
     link.addEventListener('click', function (e) {
-      // 1. Verhindert, dass #... in die URL geschrieben wird
       e.preventDefault();
 
-      // 2. Ziel-ID aus dem href-Attribut holen (z.B. "#about")
       const targetId = this.getAttribute('href');
       const targetSection = document.querySelector(targetId);
 
-      // 3. Manuell weich hinscrollen
       if (targetSection) {
         targetSection.scrollIntoView({
           behavior: 'smooth',
@@ -215,12 +202,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
 
-      // 4. Prüfen, ob das Hamburger-Menü offen ist und ggf. schließen
-      // (Falls dein inline 'onclick' mal nicht greift oder du es entfernst)
       const menu = document.querySelector(".menu-links");
       const icon = document.querySelector(".hamburger-icon");
 
-      // Falls das Menü gerade offen ist -> schließen
       if (menu.classList.contains("open")) {
         menu.classList.remove("open");
         icon.classList.remove("open");
@@ -230,14 +214,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-/* --- POOKI SMOOTH EYE TRACKING (LERP) --- */
+const EYE_MOVE_LIMIT = 6;
+const SMOOTH_FACTOR = 0.1;
 
-// Konfiguration
-const EYE_MOVE_LIMIT = 6; // Max Pixel Bewegung im Auge
-const SMOOTH_FACTOR = 0.1; // 0.1 = weich, 0.5 = schnell, 1.0 = sofort
-
-// Speicher für die aktuelle und Ziel-Position der Augen
-// (Wir speichern das für alle Pookis auf der Seite, falls es mehrere gibt)
 let pookiState = {
   targetX: 0,
   targetY: 0,
@@ -245,11 +224,7 @@ let pookiState = {
   currentY: 0
 };
 
-// 1. Maus/Touch Position erfassen (Nur Koordinaten speichern, kein DOM manipulieren)
 function updateTarget(clientX, clientY) {
-  // Wir nehmen an, der Spieler schaut in die Mitte des Bildschirms, 
-  // wenn keine Maus da ist, aber hier speichern wir die globale Mausposition.
-  // Die Berechnung relativ zum Auge passiert im Animation Loop.
   pookiState.mouseX = clientX;
   pookiState.mouseY = clientY;
 }
@@ -267,7 +242,6 @@ document.addEventListener('touchstart', (e) => {
 }, { passive: true });
 
 
-// 2. Animation Loop (Läuft 60fps für butterweiche Bewegung)
 function animateEyes() {
   const eyes = document.querySelectorAll('.eye-socket');
 
@@ -275,47 +249,51 @@ function animateEyes() {
     const pupil = eye.querySelector('.pupil');
     if (!pupil) return;
 
-    // Position des Auges auf dem Bildschirm
     const rect = eye.getBoundingClientRect();
     const eyeCenterX = rect.left + rect.width / 2;
     const eyeCenterY = rect.top + rect.height / 2;
 
-    // Falls noch keine Mausbewegung war, Mitte nehmen
     const targetMouseX = pookiState.mouseX || window.innerWidth / 2;
     const targetMouseY = pookiState.mouseY || window.innerHeight / 2;
 
-    // Winkel und Distanz zum Ziel berechnen
     const angle = Math.atan2(targetMouseY - eyeCenterY, targetMouseX - eyeCenterX);
 
-    // Zielposition der Pupille (begrenzt auf Radius)
     const targetPupilX = Math.cos(angle) * EYE_MOVE_LIMIT;
     const targetPupilY = Math.sin(angle) * EYE_MOVE_LIMIT;
 
-    // HIER IST DIE MAGIE (Interpolation)
-    // Wenn wir noch keine individuellen Werte pro Auge haben, initialisieren
     if (!pupil.dataset.currentX) {
       pupil.dataset.currentX = 0;
       pupil.dataset.currentY = 0;
     }
 
-    // Aktuelle Position holen (aus Dataset parseFloat)
     let currX = parseFloat(pupil.dataset.currentX);
     let currY = parseFloat(pupil.dataset.currentY);
 
-    // Annäherung: Current = Current + (Target - Current) * Factor
     currX += (targetPupilX - currX) * SMOOTH_FACTOR;
     currY += (targetPupilY - currY) * SMOOTH_FACTOR;
 
-    // Werte zurückspeichern
     pupil.dataset.currentX = currX;
     pupil.dataset.currentY = currY;
 
-    // CSS anwenden
     pupil.style.transform = `translate(-50%, -50%) translate(${currX}px, ${currY}px)`;
   });
 
   requestAnimationFrame(animateEyes);
 }
 
-// Animation starten
 requestAnimationFrame(animateEyes);
+
+// Hilfsfunktion: Videos auf der Rückseite starten & zurücksetzen
+function playBackVideos(card) {
+  const videos = card.querySelectorAll('.flip-card-back video');
+  videos.forEach(v => {
+    v.currentTime = 0; // Immer von vorne starten
+    v.play().catch(e => { /* Autoplay-Blocker vom Browser ignorieren */ });
+  });
+}
+
+// Hilfsfunktion: Videos auf der Rückseite pausieren
+function pauseBackVideos(card) {
+  const videos = card.querySelectorAll('.flip-card-back video');
+  videos.forEach(v => v.pause());
+}
