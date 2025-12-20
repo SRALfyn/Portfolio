@@ -306,7 +306,7 @@ const enableLanguage = () => {
 
     if (Hello) Hello.innerText = "こんにちは、";
     if (Name) Name.innerText = "ラーズ・ゴーデです";
-    if (Developer) Developer.innerText = "ゲーム開発者";
+    if (Developer) Developer.innerText = "ゲーム＆シェーダープログラマー";
 
     if (GetTo) GetTo.innerText = "もっと知る";
     if (AboutMe) AboutMe.innerText = "私について";
