@@ -1,4 +1,3 @@
-
 /* Remove underline on hover for All my Games button */
 .all-games-btn:hover {
   text-decoration: none !important;
@@ -125,8 +124,10 @@
   --base-color: black;
   --text-color: white;
   --icon-color: 0%;
-  --toon-skin: #888888;     /* Helle Hautfarbe */
-  --toon-line: #303030;     /* Dicke schwarze Outline */
+  --toon-skin: #888888;
+  /* Helle Hautfarbe */
+  --toon-line: #303030;
+  /* Dicke schwarze Outline */
   --toon-cuff: #9c0000;
 }
 
@@ -1940,7 +1941,7 @@ body {
 /* WICHTIG: Damit Buttons über Pooki liegen */
 .flip-card-front .btn-container {
   position: relative;
-  z-index: 10;
+  z-index: 1;
   /* Höher als Pooki */
 }
 
@@ -2083,8 +2084,9 @@ body {
   position: relative;
   z-index: 10;
   /* Neue Animation für diagonalen Treffer */
-  animation: btn-uppercut-react 2s infinite cubic-bezier(.36,.07,.19,.97);
-  transform-origin: center bottom; /* Dreht sich eher um den unteren Punkt */
+  animation: btn-uppercut-react 2s infinite cubic-bezier(.36, .07, .19, .97);
+  transform-origin: center bottom;
+  /* Dreht sich eher um den unteren Punkt */
 }
 
 /* --- DIE MECHA-FAUST (Uppercut Position) --- */
@@ -2101,11 +2103,11 @@ body {
   border: none;
   z-index: 22;
   overflow: visible;
-  
+
   /* Rotation & Scale */
   transform: rotate(45deg) scale(0.75);
   transform-origin: center bottom;
-  
+
   animation: fist-uppercut-small 2s infinite ease-in-out;
 }
 
@@ -2116,78 +2118,81 @@ body {
   left: 0;
   width: 44px;
   height: 32px;
-  
+
   background-color: var(--toon-skin);
   border: 3px solid var(--toon-line);
-  
+
   transform: skewY(10deg);
   transform-origin: bottom left;
-  
+
   /* ÄNDERUNG: Clip-Path unten rechts von 90% auf 85% verschmälert */
   clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 0% 100%);
-  
+
   /* Radius unten rechts leicht angepasst (4px statt 6px) */
-  border-radius: 8px 12px 4px 4px; 
+  border-radius: 8px 12px 4px 4px;
   z-index: 2;
 
   /* Linien */
-  background-image: linear-gradient(
-    to right, 
-    transparent 22%, 
-    var(--toon-line) 22%, var(--toon-line) 28%,
-    transparent 28%, 
-    transparent 47%, 
-    var(--toon-line) 47%, var(--toon-line) 53%,
-    transparent 53%,
-    transparent 72%,
-    var(--toon-line) 72%, var(--toon-line) 78%,
-    transparent 78%
-  );
+  background-image: linear-gradient(to right,
+      transparent 22%,
+      var(--toon-line) 22%, var(--toon-line) 28%,
+      transparent 28%,
+      transparent 47%,
+      var(--toon-line) 47%, var(--toon-line) 53%,
+      transparent 53%,
+      transparent 72%,
+      var(--toon-line) 72%, var(--toon-line) 78%,
+      transparent 78%);
 }
 
 /* 3. Der Daumen */
 .thumb {
   position: absolute;
-  top: 18px; 
-  left: -2px; 
-  width: 32px; 
+  top: 18px;
+  left: -2px;
+  width: 32px;
   height: 14px;
   background-color: var(--toon-skin);
   border: 3px solid var(--toon-line);
   border-radius: 8px;
-  
-  transform: rotate(-5deg); 
+
+  transform: rotate(-5deg);
   z-index: 3;
-  
-  box-shadow: 0 2px 0 rgba(0,0,0,0.1);
+
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
 }
 
 /* 4. Die Manschette */
 .mecha-fist::after {
   content: '';
   position: absolute;
-  top: 36px; 
-  left: 6px; 
+  top: 36px;
+  left: 6px;
   width: 32px;
   height: 12px;
   background-color: var(--toon-cuff);
   border: 3px solid var(--toon-line);
-  border-radius: 0 0 8px 8px; 
-  transform: rotate(-5deg); 
-  z-index: 1; 
+  border-radius: 0 0 8px 8px;
+  transform: rotate(-5deg);
+  z-index: 1;
 }
 
 /* --- ANIMATION --- */
 @keyframes fist-uppercut-small {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate(0, 0) rotate(45deg) scale(0.75);
   }
+
   30% {
-    transform: translate(-10px, 10px) rotate(15deg) scale(0.75); 
+    transform: translate(-10px, 10px) rotate(15deg) scale(0.75);
   }
+
   45% {
-    transform: translate(35px, -35px) rotate(45deg) scale(0.85); 
+    transform: translate(35px, -35px) rotate(45deg) scale(0.85);
   }
+
   60% {
     transform: translate(0, 0) rotate(45deg) scale(0.75);
   }
@@ -2198,10 +2203,11 @@ body {
   position: absolute;
   top: 50%;
   /* Positioniert den Funken dort, wo das Icon sitzt (ca. 25px von links) */
-  left: 40px; 
+  left: 40px;
   width: 30px;
   height: 30px;
-  background: radial-gradient(circle, #fff 20%, orange 50%, transparent 70%); /* Etwas oranger für mehr Wucht */
+  background: radial-gradient(circle, #fff 20%, orange 50%, transparent 70%);
+  /* Etwas oranger für mehr Wucht */
   opacity: 0;
   /* Startet zentriert und klein */
   transform: translate(-50%, -50%) scale(0);
@@ -2215,50 +2221,77 @@ body {
 
 /* 2. Button Reaktion (Wird nach oben rechts gestoßen) */
 @keyframes btn-uppercut-react {
-  0%, 42% { transform: scale(1) translate(0,0); }
-  
-  45% { 
-    /* Treffer-Moment: Button wird nach oben rechts gedrückt und leicht gedreht */
-    transform: scale(0.97) translate(2px, -3px) rotate(1deg); 
-    filter: brightness(1.3); /* Aufleuchten */
+
+  0%,
+  42% {
+    transform: scale(1) translate(0, 0);
   }
-  
-  50% { transform: scale(1.01) translate(-1px, 1px); } /* Rückfederung */
-  60% { transform: scale(1); }
+
+  45% {
+    /* Treffer-Moment: Button wird nach oben rechts gedrückt und leicht gedreht */
+    transform: scale(0.97) translate(2px, -3px) rotate(1deg);
+    filter: brightness(1.3);
+    /* Aufleuchten */
+  }
+
+  50% {
+    transform: scale(1.01) translate(-1px, 1px);
+  }
+
+  /* Rückfederung */
+  60% {
+    transform: scale(1);
+  }
 }
 
 /* 3. Der Blitz (Explodiert am Icon) */
 @keyframes spark-flash-uppercut {
-  0%, 42% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
-  
-  45% { 
-    opacity: 1; 
-    /* Wächst beim Treffer */
-    transform: translate(-50%, -50%) scale(1.8); 
+
+  0%,
+  42% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
   }
-  
-  60% { opacity: 0; transform: translate(-50%, -50%) scale(2.2); }
-  100% { opacity: 0; }
+
+  45% {
+    opacity: 1;
+    /* Wächst beim Treffer */
+    transform: translate(-50%, -50%) scale(1.8);
+  }
+
+  60% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.2);
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 /* --- MOBILE ANPASSUNG --- */
 @media (max-width: 30rem) {
+
   /* 1. WICHTIG: Faust & Funken NICHT ausblenden */
-  .mecha-fist, .impact-spark { 
-    display: block !important; 
+  .mecha-fist,
+  .impact-spark {
+    display: block !important;
   }
-  
+
   /* 2. Animation auf dem Button aktiv lassen */
-  #mercury-itch-btn { 
-    animation: btn-uppercut-react 2s infinite cubic-bezier(.36,.07,.19,.97) !important; 
+  #mercury-itch-btn {
+    animation: btn-uppercut-react 2s infinite cubic-bezier(.36, .07, .19, .97) !important;
   }
-  
+
   /* 3. Optional: Die ganze Animation leicht verkleinern, damit sie auf dem Handy nicht zu wuchtig wirkt */
   .mercury-animation-wrapper {
-    transform: scale(0.85); /* 85% Größe */
-    transform-origin: center bottom; /* Skaliert von unten */
+    transform: scale(0.85);
+    /* 85% Größe */
+    transform-origin: center bottom;
+    /* Skaliert von unten */
   }
 }
+
 /* Erlaubt Animationen, über den Rand hinauszuragen */
 .allow-overflow {
   overflow: visible !important;
@@ -2266,7 +2299,7 @@ body {
 
 /* Optional: Damit die Faust sicher über benachbarten Karten liegt */
 .flip-card.allow-overflow {
-  z-index: 5; 
+  z-index: 5;
 }
 
 /* --- GOD OF A CULT: THE FANATIC CROWD (FIXED EYES) --- */
@@ -2282,18 +2315,20 @@ body {
 .cultist-fan {
   position: absolute;
   /* START: Sie sitzen tief (versteckt) */
-  top: 5px; 
-  
+  top: 5px;
+
   width: 22px;
   height: 20px;
-  background-color: #1b1b1b; /* Dein Dunkles Grau */
+  background-color: #1b1b1b;
+  /* Dein Dunkles Grau */
   border-radius: 50% 50% 0 0;
   z-index: 1;
-  box-shadow: 0 0 5px #9e9e9e; /* Dein grauer Schatten */
+  box-shadow: 0 0 5px #9e9e9e;
+  /* Dein grauer Schatten */
 
   /* WICHTIG: 'top' wird animiert, nicht gesprungen */
-  transition: top 0.4s ease-out, background-color 0.3s; 
-  
+  transition: top 0.4s ease-out, background-color 0.3s;
+
   /* Die Wipp-Bewegung läuft jetzt über 'transform' statt 'top' */
   animation: fan-bobbing 2s infinite ease-in-out;
 }
@@ -2303,50 +2338,58 @@ body {
 .cultist-fan::after {
   content: '';
   position: absolute;
-  top: 5px; 
+  top: 5px;
   width: 8px;
   height: 10px;
-  background-color: #000000; /* Schwarz */
+  background-color: #000000;
+  /* Schwarz */
   border-radius: 50%;
-  
+
   /* Weiße Pupille (Inset Shadow) */
   box-shadow: inset 0 0 0 2.5px #ffffff;
-  
+
   transition: all 0.3s ease;
 }
 
-.cultist-fan::before { left: 2px; }
-.cultist-fan::after { right: 2px; }
+.cultist-fan::before {
+  left: 2px;
+}
+
+.cultist-fan::after {
+  right: 2px;
+}
 
 
 /* 3. Positionierung der 3 Fans */
-.c1 { 
-  left: 18px; 
-  animation-duration: 2.2s; 
-  animation-delay: 0.1s; 
+.c1 {
+  left: 18px;
+  animation-duration: 2.2s;
+  animation-delay: 0.1s;
 }
-.c2 { 
-  left: 50%; 
+
+.c2 {
+  left: 50%;
   /* Wichtig: Transform Startposition definieren */
-  transform: translateX(-50%); 
-  animation-duration: 1.8s; 
-  animation-delay: 1.2s; 
+  transform: translateX(-50%);
+  animation-duration: 1.8s;
+  animation-delay: 1.2s;
 }
-.c3 { 
-  right: 18px; 
-  animation-duration: 2.5s; 
-  animation-delay: 0.6s; 
+
+.c3 {
+  right: 18px;
+  animation-duration: 2.5s;
+  animation-delay: 0.6s;
 }
 
 
 /* 4. HOVER-ZUSTAND (Das weiche Aufstehen) */
 .cult-wrapper:hover .cultist-fan {
   /* ZIEL: Fahren hoch auf -20px (Dank transition gleitend, nicht spawnend) */
-  top: -20px; 
-  
+  top: -20px;
+
   /* Farbe bleibt (oder ändert sich leicht, falls gewünscht) */
   background-color: #1b1b1b;
-  
+
   /* Wechsel zur Zitter-Animation */
   animation: fan-excited 0.4s infinite alternate !important;
 }
@@ -2354,10 +2397,10 @@ body {
 /* Hover Augen (Gelb & Leuchtend) */
 .cult-wrapper:hover .cultist-fan::before,
 .cult-wrapper:hover .cultist-fan::after {
-  background-color: #ffeb3b; 
+  background-color: #ffeb3b;
   /* Gelbe Pupille & Gelber Glow außen */
-  box-shadow: 
-    inset 0 0 0 2.5px #ffeb3b, 
+  box-shadow:
+    inset 0 0 0 2.5px #ffeb3b,
     0 0 8px #ffeb3b;
 }
 
@@ -2366,36 +2409,60 @@ body {
 
 /* Normales Wippen */
 @keyframes fan-bobbing {
-  0%, 100% {
+
+  0%,
+  100% {
     /* Ausgangsposition */
-    transform: translateY(0); 
+    transform: translateY(0);
   }
+
   50% {
     /* Wippt 15px nach oben (relativ zur aktuellen 'top' Position) */
-    transform: translateY(-15px); 
+    transform: translateY(-15px);
   }
 }
 
 /* Sonderfall Mitte (muss translateX(-50%) behalten) */
 @keyframes fan-bobbing-center {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(-15px); }
+
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-15px);
+  }
 }
+
 /* Zuweisung der Animation für den Mittleren */
-.c2 { animation-name: fan-bobbing-center; }
+.c2 {
+  animation-name: fan-bobbing-center;
+}
 
 
 /* Zittern bei Hover */
 @keyframes fan-excited {
-  from { transform: translateY(0) rotate(0); }
-  to { transform: translateY(-2px) rotate(5deg) scale(1.1); }
+  from {
+    transform: translateY(0) rotate(0);
+  }
+
+  to {
+    transform: translateY(-2px) rotate(5deg) scale(1.1);
+  }
 }
 
 /* Sonderfall Mitte bei Hover */
 @keyframes fan-excited-center {
-  from { transform: translateX(-50%) translateY(0) rotate(0); }
-  to { transform: translateX(-50%) translateY(-2px) rotate(-5deg) scale(1.1); }
+  from {
+    transform: translateX(-50%) translateY(0) rotate(0);
+  }
+
+  to {
+    transform: translateX(-50%) translateY(-2px) rotate(-5deg) scale(1.1);
+  }
 }
+
 /* Zuweisung Hover-Animation Mitte */
 .cult-wrapper:hover .c2 {
   animation: fan-excited-center 0.4s infinite alternate !important;
