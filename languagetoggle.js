@@ -38,6 +38,7 @@ const umbraDetailsBtn = document.getElementById('umbraDetailsBtn');
 const neoTokyoDetailsBtn = document.getElementById('neoTokyoDetailsBtn');
 const mercuryDetailsBtn = document.getElementById('mercuryDetailsBtn');
 const allGamesBtn = document.getElementById('allGamesBtn');
+const AllSteamBtn = document.getElementById('AllSteamBtn');
 
 // Taglines
 let floattitle = document.getElementById('floattitle');
@@ -284,7 +285,18 @@ const enableLanguage = () => {
         "</ul>";
 
     // --- GENERAL UI ---
-    if (allGamesBtn) allGamesBtn.innerText = "全てのゲーム";
+    if (allGamesBtn) {
+        allGamesBtn.innerHTML = `
+      <img src="./assets/itch_red.png" alt="itch_logo" style="width: 1.2rem; height: auto; margin-right: 0.5rem; vertical-align: middle;">
+      全てのゲーム
+    `;
+    }
+    if (AllSteamBtn) {
+        AllSteamBtn.innerHTML = `
+      <img src="./assets/steam.png" alt="steam_logo" style="width: 1.2rem; height: auto; margin-right: 0.5rem; vertical-align: middle;">
+      Steam配信タイトル
+    `;
+    }
     if (floatDetailsBtn) floatDetailsBtn.innerText = "詳細";
     if (cultDetailsBtn) cultDetailsBtn.innerText = "詳細";
     if (umbraDetailsBtn) umbraDetailsBtn.innerText = "詳細";
@@ -500,7 +512,18 @@ const disableLanguage = () => {
         "</ul>";
 
     // --- GENERAL UI ---
-    if (allGamesBtn) allGamesBtn.innerText = "All my Games";
+    if (allGamesBtn) {
+        allGamesBtn.innerHTML = `
+      <img src="./assets/itch_red.png" alt="itch_logo" style="width: 1.2rem; height: auto; margin-right: 0.5rem; vertical-align: middle;">
+      All my Games
+    `;
+    }
+    if (AllSteamBtn) {
+        AllSteamBtn.innerHTML = `
+      <img src="./assets/steam.png" alt="steam_logo" style="width: 1.2rem; height: auto; margin-right: 0.5rem; vertical-align: middle;">
+      Steam Releases
+    `;
+    }
     if (floatDetailsBtn) floatDetailsBtn.innerText = "Details";
     if (cultDetailsBtn) cultDetailsBtn.innerText = "Details";
     if (umbraDetailsBtn) umbraDetailsBtn.innerText = "Details";
