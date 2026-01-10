@@ -950,10 +950,12 @@
       <h1 id="Name" class="title">Lars Gohde</h1>
       <p id="Developer" class="section__text__p2">Game and Shader Programmer</p>
       <div id="socials-container">
-        <img src="./assets/linkedin.png" alt="My LinkedIn profile" class="icon"
-          onclick="window.open('https://www.linkedin.com/in/lars-gohde', '_blank');" />
-        <img src="./assets/itch.png" alt="My Itch.io profile" class="icon"
-          onclick="window.open('https://gohde-games.itch.io', '_blank');" />
+        <a href="https://www.linkedin.com/in/lars-gohde" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/linkedin.png" alt="My LinkedIn profile" class="icon" />
+        </a>
+        <a href="https://gohde-games.itch.io" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/itch.png" alt="My Itch.io profile" class="icon" />
+        </a>
       </div>
     </div>
   </section>
@@ -993,12 +995,13 @@
                   </span>
                 </h2>
                 <div class="btn-container">
-                  <button class="btn btn-color-2 project-btn"
-                    onclick="event.stopPropagation(); window.open('https://www.meta.com/de-de/experiences/float-a-mixed-reality-experience/24099813506309823/', '_blank');">
+                  <a href="https://www.meta.com/de-de/experiences/float-a-mixed-reality-experience/24099813506309823/"
+                    target="_blank" rel="noopener noreferrer" class="btn btn-color-2 project-btn"
+                    style="text-decoration: none; display: inline-flex; align-items: center;">
                     <img src="./assets/meta.png" alt="Meta"
                       style="width: 1.2rem; height: auto; margin-right: 0.5rem; vertical-align: middle;">
                     Meta
-                  </button>
+                  </a>
                   <button id="floatDetailsBtn" class="btn btn-color-2 project-btn details-btn"
                     onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
                     Details
@@ -1058,7 +1061,7 @@
                   </div>
                   <div
                     style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
-                    <video loop muted playsinline preload="metadata"
+                    <video loop muted playsinline preload="metadata" poster="./assets/float_solution_poster.png"
                       style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;">
                       <source src="./assets/FLOAT_Solution.webm" type="video/webm">
                       <source src="./assets/FLOAT_Solution.mp4" type="video/mp4">
@@ -1070,6 +1073,7 @@
                   <iframe src="about:blank" data-src="https://blueprintue.com/render/zp_ydxfg/" class="blueprint-frame"
                     scrolling="no" height="300" style="margin-top:0;" allowfullscreen>
                   </iframe>
+                  <img src="./assets/float_bp_1.png" class="print-only-image" alt="Blueprint Logic">
                 </div>
                 <div class="float-problem-section" style="max-width: 700px; margin: 0 auto; text-align: left;">
                   <h1 id="EmbedTitle">The Context of the Code</h1>
@@ -1078,7 +1082,7 @@
                     like a form of interaction with the player.</p>
                   <div
                     style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
-                    <video loop muted playsinline preload="metadata"
+                    <video loop muted playsinline preload="metadata" poster="./assets/float_solution2_poster.png"
                       style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:1.5rem; margin-bottom:0rem;">
                       <source src="./assets/FLOAT_Solution2.webm" type="video/webm">
                       <source src="./assets/FLOAT_Solution2.mp4" type="video/mp4">
@@ -1089,6 +1093,7 @@
                     <iframe src="about:blank" data-src="https://blueprintue.com/render/cx-yye7d/"
                       class="blueprint-frame" scrolling="no" height="300" style="margin-top:0;" allowfullscreen>
                     </iframe>
+                    <img src="./assets/float_bp_2.png" class="print-only-image" alt="Blueprint Logic">
                   </div>
                 </div>
                 <div class="float-problem-section"
@@ -1212,12 +1217,14 @@
 
                   <div class="mercury-punch-group" style="position: relative;">
 
-                    <button id="mercury-itch-btn" class="btn btn-color-2 project-btn"
-                      onclick="event.stopPropagation(); window.open('https://www.meta.com/de-de/experiences/mercury-tech-showcase/25471705512446257/', '_blank');">
+                    <a id="mercury-itch-btn"
+                      href="https://www.meta.com/de-de/experiences/mercury-tech-showcase/25471705512446257/"
+                      target="_blank" rel="noopener noreferrer" class="btn btn-color-2 project-btn"
+                      style="text-decoration: none; display: inline-flex; align-items: center;">
                       <img src="./assets/meta.png" alt="Meta"
                         style="width: 1.2rem; height: auto; margin-right: 0.5rem; vertical-align: middle;">
                       Meta
-                    </button>
+                    </a>
 
                     <div class="mercury-animation-wrapper">
                       <div class="mecha-fist">
@@ -1265,7 +1272,7 @@
                   </div>
                   <div
                     style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
-                    <video loop muted playsinline preload="metadata"
+                    <video loop muted playsinline preload="metadata" poster="./assets/mercury_solution_poster.png"
                       style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;">
                       <source src="./assets/MERCURY_Solution.webm" type="video/webm">
                       <source src="./assets/MERCURY_Solution.mp4" type="video/mp4">
@@ -1371,12 +1378,13 @@
                 <div class="btn-container">
 
 
-                  <button class="btn btn-color-2 project-btn"
-                    onclick="event.stopPropagation(); window.open('https://gohde-games.itch.io/god-of-a-cult', '_blank');">
+                  <a href="https://gohde-games.itch.io/god-of-a-cult" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-color-2 project-btn"
+                    style="text-decoration: none; display: inline-flex; align-items: center;">
                     <img src="./assets/itch_red.png" alt="Itch.io"
                       style="width: 1.2rem; height: auto; margin-right: 0.5rem; vertical-align: middle;">
                     Itch.io
-                  </button>
+                  </a>
                   <div class="cult-wrapper" style="position: relative; display: inline-block;">
 
                     <div class="cultist-fan c1"></div>
@@ -1433,13 +1441,13 @@
                   </div>
                   <div
                     style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
-                    <video loop muted playsinline preload="metadata"
+                    <video loop muted playsinline preload="metadata" poster="./assets/godofacult_solution_poster.png"
                       style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;">
                       <source src="./assets/GodOfACult_Solution.webm" type="video/webm">
                       <source src="./assets/GodOfACult_Solution.mp4" type="video/mp4">
                       Dein Browser unterstützt keine Videos.
                     </video>
-                    <img src="loading.jpg" data-gif-src="./assets/GodOfACult_DT.png" alt="God Of a Cult Solution gif 2"
+                    <img src="./assets/GodOfACult_DT.png" alt="God Of a Cult Solution gif 2"
                       style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0.5rem; margin-bottom:0;" />
                   </div>
                 </div>
@@ -1447,6 +1455,7 @@
                   <iframe src="about:blank" data-src="https://blueprintue.com/render/s-gbgfb-/" class="blueprint-frame"
                     scrolling="no" height="300" style="margin-top:0;" allowfullscreen>
                   </iframe>
+                  <img src="./assets/godofacult_bp.png" class="print-only-image" alt="Blueprint Logic">
                 </div>
                 <!-- God Of a Cult Achievements (aligned like other cards) -->
                 <div class="float-problem-section"
@@ -1613,7 +1622,6 @@
     <p>@ 2025 by Lars Gohde</p>
   </footer>
   <script src="script.js" defer></script>
-
 </body>
 
 </html>

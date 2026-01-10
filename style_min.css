@@ -1848,3 +1848,477 @@ video::-webkit-media-controls-time-remaining-display {
 .cult-wrapper:hover .c2 {
     animation: .4s infinite alternate fan-excited-center !important
 }
+
+
+@media print {
+
+    @page {
+
+        size: A4;
+
+        margin: 0;
+
+
+
+    }
+
+
+
+    html,
+
+    body {
+
+        background-color: black !important;
+
+        color: white !important;
+
+        -webkit-print-color-adjust: exact !important;
+
+        print-color-adjust: exact !important;
+
+        width: 100% !important;
+
+        height: auto !important;
+
+        overflow: visible !important;
+
+    }
+
+
+
+    /* Navigation anzeigen */
+
+    #desktop-nav {
+
+        display: flex !important;
+
+        justify-content: space-around !important;
+
+        align-items: center !important;
+
+        height: 10vh !important;
+
+        background-color: black !important;
+
+        width: 100% !important;
+
+    }
+
+
+
+    /* Seitenumbruch für Sektionen, außer für die erste nach der Nav */
+
+    section {
+
+        break-before: page !important;
+
+        page-break-before: always !important;
+
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        justify-content: center !important;
+
+        min-height: 100vh !important;
+
+        width: 100% !important;
+
+        margin: 0 !important;
+
+        padding: 2rem !important;
+
+        background-color: black !important;
+
+        box-sizing: border-box !important;
+
+    }
+
+
+
+    /* Verhindert Seitenumbruch vor der Profile-Sektion, damit Nav und Profile auf Seite 1 sind */
+
+    #profile {
+
+        break-before: avoid !important;
+
+        page-break-before: avoid !important;
+
+        min-height: 90vh !important;
+
+        /* Platz für Nav lassen */
+
+    }
+
+
+
+    /* Icons verkleinern (Socials & Contact) */
+
+    .icon,
+
+    .contact-icon,
+
+    .email-icon {
+
+        height: 1.2rem !important;
+
+        /* Deutlich kleiner */
+
+        width: auto !important;
+
+    }
+
+
+
+    #socials-container {
+
+        gap: 0.5rem !important;
+
+        margin-top: 0.5rem !important;
+
+    }
+
+
+
+    .contact-info-container {
+
+        margin: 0.5rem !important;
+
+        gap: 0.5rem !important;
+
+    }
+
+
+
+    /* Container-Anpassungen */
+
+    .details-container.color-container {
+
+        break-inside: avoid !important;
+
+        border: 0px solid white !important;
+
+        background-color: black !important;
+
+        margin: 1rem auto !important;
+
+        width: 90% !important;
+
+    }
+
+
+
+    .flip-card {
+
+        display: block !important;
+
+        height: auto !important;
+
+        background-color: black !important;
+
+    }
+
+
+
+    .flip-card-inner {
+
+        display: block !important;
+
+        height: auto !important;
+
+    }
+
+
+
+    .flip-card-front {
+
+        display: block !important;
+
+        position: relative !important;
+
+        opacity: 1 !important;
+
+        background-color: black !important;
+
+    }
+
+
+
+    .flip-card-back {
+
+        display: block !important;
+
+        position: relative !important;
+
+        opacity: 1 !important;
+
+
+
+        background-color: black !important;
+
+        color: white !important;
+
+        padding: 2rem !important;
+
+        width: 100% !important;
+
+        min-height: 100vh !important;
+
+    }
+
+
+
+    /* UI-Elemente ausblenden */
+
+    #hamburger-nav,
+    .btn.btn-color-2.project-btn.details-btn,
+    .toggleLanguage,
+    .cult-wrapper,
+    .flip-toggle-btn,
+
+    .exit-btn,
+
+    #language-switch,
+
+    .pooki-head-container,
+
+    .mercury-animation-wrapper,
+
+    footer {
+
+        display: none !important;
+
+    }
+
+
+
+    /* Medienoptimierung */
+
+    video,
+
+    img,
+
+    .blueprint-frame {
+
+        max-width: 100% !important;
+
+        height: auto !important;
+
+        border: 1px solid #3d3d3d !important;
+
+    }
+
+
+
+    h1,
+
+    h2,
+
+    h3,
+
+    p,
+
+    li,
+
+    span,
+
+    a {
+
+        color: white !important;
+
+    }
+
+    /* Stellt sicher, dass Links wie Buttons aussehen und keine Unterstriche haben */
+    a.btn,
+    .icon,
+    .contact-info-container a {
+        text-decoration: none !important;
+        display: inline-flex !important;
+        /* Wichtig für die Klickfläche */
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Klickbereich für Icons sicherstellen */
+    #socials-container a {
+        display: inline-block !important;
+        line-height: 0;
+    }
+
+    /* Mercury-Button komplett resetten für das PDF */
+    #mercury-itch-btn {
+        position: relative !important;
+        z-index: 9999 !important;
+        display: inline-flex !important;
+        /* Animationen und Transforms zerstören oft die Link-Koordinaten im PDF */
+        animation: none !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+        /* Sicherstellen, dass die Klickfläche nicht durch negative Margins verschoben ist */
+        top: 0 !important;
+        left: 0 !important;
+    }
+
+    /* Den Wrapper und alle Animations-Elemente komplett entfernen */
+    .mercury-animation-wrapper,
+    .mecha-fist,
+    .impact-spark,
+    .mercury-punch-group::after {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
+    /* Den umschließenden Container neutralisieren */
+    .mercury-punch-group {
+        position: relative !important;
+        display: inline-block !important;
+        transform: none !important;
+        z-index: 1 !important;
+    }
+
+    /* 1. Rahmen nur für große Medien (Videos & Blueprints) beibehalten */
+    video,
+    .blueprint-frame,
+    .article-container video {
+        max-width: 100% !important;
+        height: auto !important;
+        border: 1px solid #3d3d3d !important;
+        display: block !important;
+    }
+
+    /* 2. Rahmen von allen Bildern (Icons, PNGs) entfernen */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+        border: none !important;
+        /* Entfernt den Kasten */
+        box-shadow: none !important;
+        background: transparent !important;
+    }
+
+    /* 3. Spezifischer Reset für Icons in Buttons und Socials */
+    .icon,
+    .project-btn img,
+    #socials-container img,
+    .contact-icon {
+        border: none !important;
+        outline: none !important;
+        background: none !important;
+    }
+
+    #profile::after,
+    #projects::after,
+    #about::after,
+    #insights::after {
+        display: none !important;
+        content: none !important;
+    }
+
+    /* Verhindert den Seitenumbruch direkt nach der Sektions-Überschrift */
+    #projects .experience-details-container,
+    #projects .about-containers {
+        break-before: avoid !important;
+        page-break-before: avoid !important;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+
+    /* Erzwingt, dass der erste Projekt-Container auf derselben Seite wie die Überschrift bleibt */
+    #projects .details-container.color-container:first-of-type {
+        break-before: avoid !important;
+        page-break-before: avoid !important;
+        margin-top: 0.5rem !important;
+    }
+
+    /* Optimiert den Platz der Überschriften in der Druckansicht */
+    #projects h1.title {
+        margin-bottom: 1rem !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+    }
+
+    /* Verhindert den Umbruch nach den einleitenden Texten */
+    #projects .section__text__p1,
+    #projects .title {
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+        margin-bottom: 0.5rem !important;
+        /* Verkleinert den Abstand */
+    }
+
+    /* Zwingt den Hauptcontainer, direkt nach der Überschrift zu bleiben */
+    #projects .experience-details-container {
+        break-before: avoid !important;
+        page-break-before: avoid !important;
+        margin-top: 0 !important;
+    }
+
+    /* Stellt sicher, dass die erste Karte nicht auf eine neue Seite springt */
+    #projects .details-container.color-container:first-of-type {
+        break-before: avoid !important;
+        page-break-before: avoid !important;
+        margin-top: 0 !important;
+    }
+
+    /* Target das spezifische Div innerhalb der Karten-Rückseite */
+    .flip-card-back>div>div[style*="margin-top: 6rem"] {
+        margin-top: 0 !important;
+    }
+
+    /* Falls du die Abstände der Awards-Grafik auch anpassen willst */
+    .flip-card-back img[alt="FLOAT Awards"] {
+        margin-top: 0.5rem !important;
+    }
+}
+
+/* Standardmäßig das Druckbild im Browser verstecken */
+.print-only-image {
+    display: none;
+}
+
+@media print {
+
+    /* Alle Blueprints / Iframes beim Drucken verstecken */
+    .blueprint-frame,
+    iframe {
+        display: none !important;
+    }
+
+    /* Das Ersatzbild beim Drucken anzeigen */
+    .print-only-image {
+        display: block !important;
+        width: 100% !important;
+        max-width: 800px;
+        /* Oder eine passende Breite für A4 */
+        height: auto !important;
+        margin: 1rem auto !important;
+        border: 1px solid #3d3d3d !important;
+    }
+
+    .print-only-image {
+        display: block !important;
+        /* Exakte Breite für das A4-Format festlegen */
+        width: 16cm !important;
+        margin: 1rem auto !important;
+
+        /* Seitenverhältnis erzwingen (z. B. 16:9 oder 4:3) */
+        aspect-ratio: 16 / 9 !important;
+
+        /* Bildanpassung steuern */
+        object-fit: contain !important;
+        /* Das gesamte Bild wird ohne Beschnitt angezeigt */
+        border: 1px solid #3d3d3d !important;
+    }
+
+    /* Verstecken des Iframes im Druck */
+    .blueprint-frame {
+        display: none !important;
+    }
+
+    #pdfBtn,
+    .pdf-btn {
+        display: none !important;
+    }
+}

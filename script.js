@@ -49,7 +49,7 @@ function lazyLoadCardMedia(card) {
 
     if (mp4 || webm) {
       const video = document.createElement('video');
-      video.autoplay = false; 
+      video.autoplay = false;
       video.loop = true;
       video.muted = true;
       video.playsInline = true;
@@ -124,9 +124,9 @@ function openCardByIndex(index) {
 
     lazyLoadCardMedia(card);
     card.classList.add('flipped');
-    
+
     playBackVideos(card);
-    
+
     window._cardWasFlipped = true;
 
     setTimeout(lockScrollAtCurrentPosition, 10);
@@ -164,7 +164,7 @@ document.querySelectorAll('.project-btn').forEach(btn => {
     history.pushState({ cardOpen: true, cardIndex: cardIndex }, "", null);
 
     card.classList.add('flipped');
-    
+
     playBackVideos(card);
 
     window._cardWasFlipped = true;
