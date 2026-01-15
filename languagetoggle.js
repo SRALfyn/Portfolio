@@ -108,6 +108,7 @@ const subStyle = 'style="display: block; line-height: 1.1; margin-top: 5px;"';
 
 const postMortemBtn = document.getElementById("post_mortem");
 const postMortemBtn2 = document.getElementById("post_mortem2");
+const postMortemBtn3 = document.getElementById("post_mortem3");
 
 // --- JAPANISCH AKTIVIEREN ---
 const enableLanguage = () => {
@@ -145,6 +146,7 @@ const enableLanguage = () => {
     if (pdfBtn) pdfBtn.innerHTML = "完全なPDFガイドを見る (英語のみ)";
     if (postMortemBtn) postMortemBtn.innerHTML = "ポストモーテムを見る (英語のみ)";
     if (postMortemBtn2) postMortemBtn2.innerHTML = "ポストモーテムを見る (英語のみ)";
+    if (postMortemBtn3) postMortemBtn3.innerHTML = "ポストモーテムを見る (英語のみ)";
 
     // --- TAGLINES ---
     if (floattitle) floattitle.innerHTML = `<span ${subStyle}>義肢データを収集する、受賞歴のあるMR</span>`;
@@ -375,6 +377,7 @@ const disableLanguage = () => {
     if (pdfBtn) pdfBtn.innerHTML = "View Full PDF Guide (Only English)";
     if (postMortemBtn) postMortemBtn.innerHTML = "View Post-Mortem (Only English)";
     if (postMortemBtn2) postMortemBtn2.innerHTML = "View Post-Mortem (Only English)";
+    if (postMortemBtn3) postMortemBtn3.innerHTML = "View Post-Mortem (Only English)";
 
     // --- TAGLINES ---
     if (floattitle) floattitle.innerHTML = `<span ${subStyle}>Award-winning MR for prosthetics research</span>`;
