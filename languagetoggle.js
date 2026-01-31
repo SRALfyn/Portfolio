@@ -104,6 +104,15 @@ const neoProblemDescs = document.querySelectorAll('#neoProblemDesc');
 let Contact = document.getElementById('Contact');
 let cvLink = document.getElementById('cvLink');
 
+// Descriptions
+let FloatDescribtionTitle = document.getElementById('FloatDescribtionTitle');
+let FloatDescription = document.getElementById('FloatDescription');
+let mercuryDescribtionTitle = document.getElementById('mercuryDescribtionTitle');
+let mercuryDescription = document.getElementById('mercuryDescription');
+let gofofacultDescribtionTitle = document.getElementById('gofofacultDescribtionTitle');
+let gofofacultDescription = document.getElementById('gofofacultDescription');
+
+
 // Style-Definition Global verfügbar machen
 const subStyle = 'style="display: block; line-height: 1.1; margin-top: 5px;"';
 
@@ -342,6 +351,16 @@ const enableLanguage = () => {
     if (insights3) insights3.innerHTML = "パフォーマンス";
 
     if (cvLink) cvLink.innerText = "CVを見る";
+
+    // --- DESCRIPTIONS (JAPANISCH) ---
+    if (FloatDescribtionTitle) FloatDescribtionTitle.innerText = "概要";
+    if (FloatDescription) FloatDescription.innerText = "FLOATは、医療データ収集をゲーム化した複合現実（MR）シリアスゲームです。ハンドジェスチャーのみを使用し、プレイヤーは断片化された世界でパズルを解きます。その間、システムは筋肉の動きを記録し、AI学習による義肢開発に貢献します。";
+
+    if (mercuryDescribtionTitle) mercuryDescribtionTitle.innerText = "概要";
+    if (mercuryDescription) mercuryDescription.innerText = "MERCURYは、初のコントローラー不要VRメカ格闘ゲームです。プレイヤーは身体の動きを使って構造物を登り、高速なアリーナ戦闘に参加します。移動と戦闘の両方において、この直接的な入力に完全に依存しています。";
+
+    if (gofofacultDescribtionTitle) gofofacultDescribtionTitle.innerText = "概要";
+    if (gofofacultDescription) gofofacultDescription.innerText = "God of a Cultは、コミカルなポイント＆クリックアドベンチャーです。プレイヤーは「時間の神」となり、パズルを解いて行方不明の妹を探します。フルボイスで、翻訳テキストと拡張性のあるセーブシステムが含まれています。";
 }
 
 // --- ENGLISCH AKTIVIEREN (Disable Japanese) ---
@@ -573,6 +592,16 @@ const disableLanguage = () => {
     if (insights3) insights3.innerHTML = "Performance";
 
     if (cvLink) cvLink.innerText = "View CV";
+
+    // --- DESCRIPTIONS (ENGLISCH) ---
+    if (FloatDescribtionTitle) FloatDescribtionTitle.innerText = "Description";
+    if (FloatDescription) FloatDescription.innerText = "FLOAT is a Mixed Reality serious game that gamifies medical data collection. Using only hand gestures, players interact with a fractured world to solve puzzles, while the system records muscle movement, contributing to the development of AI-trained prosthetics.";
+
+    if (mercuryDescribtionTitle) mercuryDescribtionTitle.innerText = "Description";
+    if (mercuryDescription) mercuryDescription.innerText = "MERCURY is the first controller-free VR mecha brawler. Players use physical movements to climb through structures and engage in high-speed arena combat. The game relies entirely on this direct input for both navigation and fighting.";
+
+    if (gofofacultDescribtionTitle) gofofacultDescribtionTitle.innerText = "Description";
+    if (gofofacultDescription) gofofacultDescription.innerText = "God of a Cult is a comedic point-and-click adventure. Players become the God of Time to solve puzzles and find their missing sister. The game is fully voiced and includes translated text and a scalable save system.";
 }
 
 // --- INIT ---
