@@ -102,6 +102,7 @@ const neoProblemDescs = document.querySelectorAll('#neoProblemDesc');
 
 // Contact
 let Contact = document.getElementById('Contact');
+let cvLink = document.getElementById('cvLink');
 
 // Style-Definition Global verfügbar machen
 const subStyle = 'style="display: block; line-height: 1.1; margin-top: 5px;"';
@@ -318,8 +319,9 @@ const enableLanguage = () => {
     if (experienceEE) experienceEE.innerText = "経験";
     if (projectsSS) projectsSS.innerText = "プロジェクト";
     if (contactTT) contactTT.innerText = "お問い合わせ";
-    if (insightsS) insightsS.innerHTML = "技術的知見";
-    if (insightsSS) insightsSS.innerHTML = "技術的知見";
+    if (insightsS) insightsS.innerHTML = "パフォーマンス";
+    if (insightsSS) insightsSS.innerHTML = "パフォーマンス";
+
 
     if (Hello) Hello.innerText = "こんにちは、";
     if (Name) Name.innerText = "ラーズ・ゴーデです";
@@ -337,7 +339,9 @@ const enableLanguage = () => {
     if (experience3) experience3.innerText = "経験";
     if (projects3) projects3.innerText = "プロジェクト";
     if (contact3) contact3.innerText = "お問い合わせ";
-    if (insights3) insights3.innerHTML = "技術的知見";
+    if (insights3) insights3.innerHTML = "パフォーマンス";
+
+    if (cvLink) cvLink.innerText = "CVを見る";
 }
 
 // --- ENGLISCH AKTIVIEREN (Disable Japanese) ---
@@ -548,8 +552,9 @@ const disableLanguage = () => {
     if (experienceEE) experienceEE.innerText = "Experience";
     if (projectsSS) projectsSS.innerText = "Projects";
     if (contactTT) contactTT.innerText = "Contact";
-    if (insightsS) insightsS.innerHTML = "Insights";
-    if (insightsSS) insightsSS.innerHTML = "Insights";
+    if (insightsS) insightsS.innerHTML = "Performance";
+    if (insightsSS) insightsSS.innerHTML = "Performance";
+
 
 
     if (Hello) Hello.innerText = "Hello, I'm";
@@ -565,7 +570,9 @@ const disableLanguage = () => {
     if (experience3) experience3.innerText = "Experience";
     if (projects3) projects3.innerText = "Projects";
     if (contact3) contact3.innerText = "Contact";
-    if (insights3) insights3.innerHTML = "Insights";
+    if (insights3) insights3.innerHTML = "Performance";
+
+    if (cvLink) cvLink.innerText = "View CV";
 }
 
 // --- INIT ---
