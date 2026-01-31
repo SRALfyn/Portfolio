@@ -2078,10 +2078,14 @@ video::-webkit-media-controls-time-remaining-display {
     .toggleLanguage,
     .cult-wrapper,
     .flip-toggle-btn,
-
     .exit-btn,
 
     #language-switch,
+
+    #contact .contact-info-container:nth-child(3),
+    img[src*="cv.png"],
+    a[onclick*="CV.pdf"],
+    a[href*="CV.pdf"],
 
     .pooki-head-container,
 
