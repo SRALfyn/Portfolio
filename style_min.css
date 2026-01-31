@@ -1069,6 +1069,7 @@ body::-webkit-scrollbar {
 .btn-color-1:hover,
 .btn-color-2:hover,
 .nav-links a:hover,
+.contact-info-container a:hover,
 a[href*=linkedin]:hover,
 a[href="#about"]:hover,
 a[href="#contact"]:hover,
@@ -1078,6 +1079,7 @@ a[href^="mailto:"]:hover {
 }
 
 #socials-container img[src$="itch.png"],
+#socials-container img[src$="cv.png"],
 #socials-container img[src$="linkedin.png"] {
     transition: box-shadow .22s, transform .12s;
     border-radius: 50%;
@@ -1086,6 +1088,7 @@ a[href^="mailto:"]:hover {
 }
 
 #socials-container img[src$="itch.png"]:hover,
+#socials-container img[src$="cv.png"]:hover,
 #socials-container img[src$="linkedin.png"]:hover {
     box-shadow: 0 0 0 .25rem #daa520;
     cursor: pointer
