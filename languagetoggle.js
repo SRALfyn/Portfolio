@@ -18,9 +18,9 @@ let projects3 = document.getElementById('projects3');
 let contact3 = document.getElementById('contact3');
 
 // Profile
-let Hello = document.getElementById('Hello');
 let Name = document.getElementById('Name');
 let Developer = document.getElementById('Developer');
+let StudentStatus = document.getElementById('StudentStatus');
 
 // About
 let GetTo = document.getElementById('GetTo');
@@ -332,9 +332,9 @@ const enableLanguage = () => {
     if (insightsSS) insightsSS.innerHTML = "パフォーマンス";
 
 
-    if (Hello) Hello.innerText = "こんにちは、";
-    if (Name) Name.innerText = "ラーズ・ゴーデです";
+    if (Name) Name.innerText = "ラーズ・ゴーデ";
     if (Developer) Developer.innerText = "ゲーム＆シェーダープログラマー";
+    if (StudentStatus) StudentStatus.innerText = "神奈川大学 交換留学生 (2026年3月〜8月)";
 
     if (GetTo) GetTo.innerText = "もっと知る";
     if (AboutMe) AboutMe.innerText = "私について";
@@ -576,9 +576,9 @@ const disableLanguage = () => {
 
 
 
-    if (Hello) Hello.innerText = "Hello, I'm";
     if (Name) Name.innerText = "Lars Gohde";
     if (Developer) Developer.innerText = "Game and Shader Programmer";
+    if (StudentStatus) StudentStatus.innerText = "Incoming Exchange Student at Kanagawa Univ. (March – Aug 2026)";
     if (GetTo) GetTo.innerText = "Get To Know More";
     if (AboutMe) AboutMe.innerText = "About Me";
     if (Longtext) Longtext.innerText = "I first discovered game development in school through a class project. Seeing others play and enjoy what I had created sparked a feeling I never wanted to lose. In 2023 I visited Japan and developed a strong connection to the country, which continues to inspire me every day. Today, my motivation to create games is closely tied to my long-term ambition of building a career and life in Japan.";

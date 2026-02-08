@@ -167,7 +167,7 @@ body {
     --icon-color: 0%;
     --toon-skin: #888888;
     --toon-line: #303030;
-    --toon-cuff: #9c0000;
+    --toon-cuff: #004aa6;
     --pk-skin: #3e3b52;
     --pk-outline: #000000;
     --pk-leaf: #76c442
@@ -2328,4 +2328,12 @@ video::-webkit-media-controls-time-remaining-display {
     .pdf-btn {
         display: none !important;
     }
+}
+
+#insights {
+    /* Verringert den Abstand NACH der Linie (zwischen Linie und About Me) */
+    margin-bottom: 1rem !important;
+
+    /* Verringert den Abstand VOR der Linie (zwischen Performance-Karten und Linie) */
+    padding-bottom: 2rem !important;
 }
