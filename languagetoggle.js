@@ -120,6 +120,9 @@ const postMortemBtn = document.getElementById("post_mortem");
 const postMortemBtn2 = document.getElementById("post_mortem2");
 const postMortemBtn3 = document.getElementById("post_mortem3");
 
+
+let mercuryApproaches = document.getElementById('mercuryApproaches');
+
 // --- JAPANISCH AKTIVIEREN ---
 const enableLanguage = () => {
     // Insights Section Titles
@@ -167,8 +170,8 @@ const enableLanguage = () => {
 
     // --- MERCURY ---
     if (mercuryScopeTitle) mercuryScopeTitle.innerText = "プロジェクト概要";
-    if (mercuryScopeDesc) mercuryScopeDesc.innerHTML = "<li>開発中</li><li>6人のチーム</li>";
-    if (mercuryRoleTitle) mercuryRoleTitle.innerText = "担当";
+    if (mercuryScopeDesc) mercuryScopeDesc.innerHTML = "<li>2ヶ月</li><li>6人のチーム</li>";
+    if (mercuryRoleTitle) mercuryRoleTitle.innerText = "主な役割";
     if (mercuryRoleDesc) mercuryRoleDesc.innerHTML = "<li>プレイヤーメカニクス</li>";
 
     // Mercury Context (Index 0)
@@ -188,6 +191,9 @@ const enableLanguage = () => {
             <li>意図しない掴み/離しを防ぐ安全策を備えたポーズベースの検出</li>
             <li>床と垂直面（壁）の文脈に応じたチェック</li>
         </ul>
+
+<img src="./assets/MERCURY_Movement_Sketches.png" alt="God Of a Cult Solution gif 2"
+                          style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column; max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0.5rem; margin-bottom:0;" />
 
         <h3 style="margin-bottom: 2px; margin-top: 15px; font-size: 1.1em;">表面の検証</h3>
         <p style="margin-top: 0; margin-bottom: 15px;">スフィアトレースで掴みコンポーネントを識別し、手の向きと表面法線の整合性を通じて意図を検証します。</p>
@@ -215,7 +221,7 @@ const enableLanguage = () => {
 
     if (neoScopeTitle) neoScopeTitle.innerText = "プロジェクト概要";
     if (neoScopeDesc) neoScopeDesc.innerHTML = "・48時間ゲームジャム<br />・6人チーム";
-    if (neoRoleTitle) neoRoleTitle.innerText = "私の役割";
+    if (neoRoleTitle) neoRoleTitle.innerText = "主な役割";
     if (neoRoleDesc) neoRoleDesc.innerHTML = "・メインプログラマー";
     if (NeoAchievementsTitle) NeoAchievementsTitle.innerHTML = "実績";
     if (NeoAchievementsDesc) NeoAchievementsDesc.innerHTML = "<ul>" +
@@ -230,13 +236,13 @@ const enableLanguage = () => {
         "<a href='https://devpost.com/software/mercury-05i6ty' target='_blank' rel='noopener noreferrer'>" +
         "参加者: Meta Horizon Start Developer Competition" +
         "<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a>" +
-        "</li></ul>";
+        "</li><li>受賞者: HNU Werkschau | ベストメカニクス賞</li></ul>";
 
 
     // --- GOD OF A CULT ---
     if (cultScopeTitle) cultScopeTitle.innerText = "プロジェクト概要";
     if (cultScopeDesc) cultScopeDesc.innerHTML = "<li>第2セメスターのプロジェクト</li><li><a href='https://www.filmmakers.eu/en/actors/thorben-gohde' target='_blank' rel='noopener noreferrer'>声：Thorben Gohde <img src='./assets/hyperlink_icon.png' alt='外部リンク' class='link-icon' /></a></li>";
-    if (cultRoleTitle) cultRoleTitle.innerText = "私の役割";
+    if (cultRoleTitle) cultRoleTitle.innerText = "主な役割";
     if (cultRoleDesc) cultRoleDesc.innerHTML = "<li>ソロプロジェクト</li>";
     if (cultProblemTitle) cultProblemTitle.innerText = "コードの背景";
     if (cultProblemDesc) cultProblemDesc.innerText = "できるだけ早くレベルを作成できるように、データテーブルだけで動作するシステムを作成しました。ゲームは完全にボイス付きで、シンプルなシステムで実装されています。";
@@ -246,7 +252,7 @@ const enableLanguage = () => {
     // --- UMBRA ---
     if (umbraScopeTitle) umbraScopeTitle.innerText = "プロジェクト概要";
     if (umbraScopeDesc) umbraScopeDesc.innerHTML = "- 48時間ゲームジャム <br /> - 2週間の延長 <br /> - 4人のチーム";
-    if (umbraRoleTitle) umbraRoleTitle.innerText = "私の役割";
+    if (umbraRoleTitle) umbraRoleTitle.innerText = "主な役割";
     if (umbraRoleDesc) umbraRoleDesc.innerHTML = "・唯一のプログラマー<br />・シェーダー";
     if (umbraProblemTitle) umbraProblemTitle.innerText = "コードの背景";
     if (umbraProblemDesc) umbraProblemDesc.innerText = "このメインメニューのために複数のウィジェットを作成し、他のプロジェクトでも使えるようにしました。マクロで各サブウィジェットのオープンを管理しています。メインメニューは3D空間に配置され、マテリアルにはカメラが常に動いているような錯覚を生むための基本的なパナーを使用しています。";
@@ -261,7 +267,7 @@ const enableLanguage = () => {
     // --- FLOAT ---
     if (P1) P1.innerText = "プロジェクト概要";
     if (P2) P2.innerHTML = "<li>6ヶ月</li><li>6人のチーム</li>";
-    if (RoleTitle) RoleTitle.innerText = "私の役割";
+    if (RoleTitle) RoleTitle.innerText = "主な役割";
     if (RoleDescription) RoleDescription.innerHTML = "<li>メインプログラマー</li><li>シェーダー</li><li>エフェクト</li>";
     if (ProblemTitle) ProblemTitle.innerText = "コードの背景";
     if (ProblemDesc) ProblemDesc.innerText = "フォリッジをインスタンススタティックメッシュとして配置する必要があり、ゲームデザイナーから各メッシュを個別に操作しなくても済む方法がないかと頼まれました。そこで、簡単なエディタユーティリティウィジェットを作成しました。";
@@ -354,13 +360,21 @@ const enableLanguage = () => {
 
     // --- DESCRIPTIONS (JAPANISCH) ---
     if (FloatDescribtionTitle) FloatDescribtionTitle.innerText = "概要";
-    if (FloatDescription) FloatDescription.innerText = "FLOATは、医療データ収集をゲーム化した複合現実（MR）シリアスゲームです。ハンドジェスチャーのみを使用し、プレイヤーは断片化された世界でパズルを解きます。その間、システムは筋肉の動きを記録し、AI学習による義肢開発に貢献します。";
+    if (FloatDescription) FloatDescription.innerText = "FLOATは、医療データ収集をゲーム化したMixed Reality（複合現実）シリアスゲームです。プレイヤーはハンドジェスチャーのみを使って断片化された世界でPookisを助け、同時にシステムが筋肉の動きを記録することで、AI搭載義手の開発に貢献します。";
 
     if (mercuryDescribtionTitle) mercuryDescribtionTitle.innerText = "概要";
-    if (mercuryDescription) mercuryDescription.innerText = "MERCURYは、初のコントローラー不要VRメカ格闘ゲームです。プレイヤーは身体の動きを使って構造物を登り、高速なアリーナ戦闘に参加します。移動と戦闘の両方において、この直接的な入力に完全に依存しています。";
+    if (mercuryDescription) mercuryDescription.innerText = "MERCURYは、世界初のコントローラー不要VRメカ格闘アクションです。プレイヤーは自身の身体の動きを使って都市をよじ登り、ハイスピードなアリーナ戦闘を繰り広げます。移動と戦闘のすべてが、ハンドトラッキングのみによって操作されます。";
 
     if (gofofacultDescribtionTitle) gofofacultDescribtionTitle.innerText = "概要";
-    if (gofofacultDescription) gofofacultDescription.innerText = "God of a Cultは、コミカルなポイント＆クリックアドベンチャーです。プレイヤーは「時間の神」となり、パズルを解いて行方不明の妹を探します。フルボイスで、翻訳テキストと拡張性のあるセーブシステムが含まれています。";
+    if (gofofacultDescription) gofofacultDescription.innerText = "God of a Cultは、コメディ要素のあるポイント＆クリックアドベンチャーです。プレイヤーはパズルを解きながら「時の神」となり、行方不明の妹を探します。フルボイス対応で、翻訳テキスト機能と拡張性のあるセーブシステムが実装されています。";
+
+    if (mercuryApproaches) {
+        // Titel (h3)
+        mercuryApproaches.querySelector('h3').innerText = "移動アプローチの検討";
+        // Text (p)
+        mercuryApproaches.querySelector('p').innerText = "移動システムについて複数のアイデアを検討していたため、それぞれのプロトタイプをUnityで作成しました。";
+    }
+
 }
 
 // --- ENGLISCH AKTIVIEREN (Disable Japanese) ---
@@ -411,8 +425,8 @@ const disableLanguage = () => {
 
     // --- MERCURY ---
     if (mercuryScopeTitle) mercuryScopeTitle.innerText = "Project Scope";
-    if (mercuryScopeDesc) mercuryScopeDesc.innerHTML = "<li>Under Development</li><li>Team of 6 People</li>";
-    if (mercuryRoleTitle) mercuryRoleTitle.innerText = "My Role";
+    if (mercuryScopeDesc) mercuryScopeDesc.innerHTML = "<li>2 Months</li><li>Team of 6 People</li>";
+    if (mercuryRoleTitle) mercuryRoleTitle.innerText = "My Core Role";
     if (mercuryRoleDesc) mercuryRoleDesc.innerHTML = "<li>Player Mechanics</li>";
 
     // Mercury Context
@@ -432,6 +446,9 @@ const disableLanguage = () => {
           <li>Pose-based detection with safeguards against unintended grabs/releases.</li>
           <li>Context-aware checks for floors vs. vertical surfaces.</li>
         </ul>
+
+<img src="./assets/MERCURY_Movement_Sketches.png" alt="God Of a Cult Solution gif 2"
+                          style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column; max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0.5rem; margin-bottom:0;" />
 
         <h3 style="margin-bottom: 2px; margin-top: 15px; font-size: 1.1em;">Surface Validation</h3>
         <p style="margin-top: 0; margin-bottom: 15px;">Sphere traces identify grab components and validate intent through hand-direction vs. surface-normal alignment.</p>
@@ -459,7 +476,7 @@ const disableLanguage = () => {
 
     if (neoScopeTitle) neoScopeTitle.innerText = "Project Scope";
     if (neoScopeDesc) neoScopeDesc.innerHTML = "- 48-Hour Game Jam <br /> - Team of 6 People";
-    if (neoRoleTitle) neoRoleTitle.innerText = "My Role";
+    if (neoRoleTitle) neoRoleTitle.innerText = "My Core Role";
     if (neoRoleDesc) neoRoleDesc.innerHTML = "- Main Programmer";
     if (NeoAchievementsTitle) NeoAchievementsTitle.innerHTML = "Achievements";
     if (NeoAchievementsDesc) NeoAchievementsDesc.innerHTML = "<ul>" +
@@ -474,12 +491,12 @@ const disableLanguage = () => {
         "<a href='https://devpost.com/software/mercury-05i6ty' target='_blank' rel='noopener noreferrer'>" +
         "Participant: Meta Horizon Start Developer Competition" +
         "<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a>" +
-        "</li></ul>";
+        "</li><li>Winner: HNU Werkschau | Best Mechanics-Award</li></ul>";
 
     // --- GOD OF A CULT ---
     if (cultScopeTitle) cultScopeTitle.innerText = "Project Scope";
     if (cultScopeDesc) cultScopeDesc.innerHTML = "<li>2nd Semester Project</li><li><a href='https://www.filmmakers.eu/en/actors/thorben-gohde' target='_blank' rel='noopener noreferrer'>Voiced by Thorben Gohde <img src='./assets/hyperlink_icon.png' alt='External link' class='link-icon' /></a></li>";
-    if (cultRoleTitle) cultRoleTitle.innerText = "My Role";
+    if (cultRoleTitle) cultRoleTitle.innerText = "My Core Role";
     if (cultRoleDesc) cultRoleDesc.innerHTML = "<li>Solo Project</li>";
     if (cultProblemTitle) cultProblemTitle.innerText = "The Context of the Code";
     if (cultProblemDesc) cultProblemDesc.innerText = "To be able to create levels as fast as possible I created a System that works with only Datatables. The Game is fully voiced which is also implemented in a simple System.";
@@ -489,7 +506,7 @@ const disableLanguage = () => {
     // --- UMBRA ---
     if (umbraScopeTitle) umbraScopeTitle.innerText = "Project Scope";
     if (umbraScopeDesc) umbraScopeDesc.innerHTML = "- 48-Hour Game Jam <br /> - Extended by 2 Weeks <br /> - Team of 4 People";
-    if (umbraRoleTitle) umbraRoleTitle.innerText = "My Role";
+    if (umbraRoleTitle) umbraRoleTitle.innerText = "My Core Role";
     if (umbraRoleDesc) umbraRoleDesc.innerHTML = "- Only Programmer <br /> - Shader";
     if (umbraProblemTitle) umbraProblemTitle.innerText = "The Context of the Code";
     if (umbraProblemDesc) umbraProblemDesc.innerText = "For this Main Menu I created multiple Widgets so I could use them in different Projects. A Macro handles the opening of the different Sub-Widgets. The Main Menu is placed in a 3D Space and on the Materials is a basic Panner to create the Illusion of the Camera moving constantly.";
@@ -504,7 +521,7 @@ const disableLanguage = () => {
     // --- FLOAT ---
     if (P1) P1.innerText = "Project Scope";
     if (P2) P2.innerHTML = "<li>6 Months</li><li>Team of 6 People</li>";
-    if (RoleTitle) RoleTitle.innerText = "My Role";
+    if (RoleTitle) RoleTitle.innerText = "My Core Role";
     if (RoleDescription) RoleDescription.innerHTML = "<li>Main Programmer</li><li>Shader</li><li>Effects</li>";
     if (ProblemTitle) ProblemTitle.innerText = "The Context of the Code";
     if (ProblemDesc) ProblemDesc.innerText = "We needed to place the Foliage as Instance Static Meshes and our Game Designer asked me if there is a way so he doesn’t have to manipulate each mesh individually. So I build him a simple Editor Utility Widget.";
@@ -595,13 +612,21 @@ const disableLanguage = () => {
 
     // --- DESCRIPTIONS (ENGLISCH) ---
     if (FloatDescribtionTitle) FloatDescribtionTitle.innerText = "Description";
-    if (FloatDescription) FloatDescription.innerText = "FLOAT is a Mixed Reality serious game that gamifies medical data collection. Using only hand gestures, players interact with a fractured world to solve puzzles, while the system records muscle movement, contributing to the development of AI-trained prosthetics.";
+    if (FloatDescription) FloatDescription.innerText = "FLOAT is a Mixed Reality serious game that gamifies medical data collection. Using only hand gestures, players interact with a fractured world to help the little Pookis, while the system records muscle movement, contributing to the development of AI-trained prosthetics.";
 
     if (mercuryDescribtionTitle) mercuryDescribtionTitle.innerText = "Description";
-    if (mercuryDescription) mercuryDescription.innerText = "MERCURY is the first controller-free VR mecha brawler. Players use physical movements to climb through structures and engage in high-speed arena combat. The game relies entirely on this direct input for both navigation and fighting.";
+    if (mercuryDescription) mercuryDescription.innerText = "Mercury is the first controller-free VR mecha brawler. Players use physical movements to climb through a city and engage in fast-paced arena combat. The game relies entirely on hand tracking for both navigation and fighting.";
 
     if (gofofacultDescribtionTitle) gofofacultDescribtionTitle.innerText = "Description";
-    if (gofofacultDescription) gofofacultDescription.innerText = "God of a Cult is a comedic point-and-click adventure. Players become the God of Time to solve puzzles and find their missing sister. The game is fully voiced and includes translated text and a scalable save system.";
+    if (gofofacultDescription) gofofacultDescription.innerText = "God of a Cult is a comedic point-and-click adventure. Players solve puzzles to become the God of Time and find their missing sister. The game is fully voiced and includes translated text and a scalable save system.";
+
+    if (mercuryApproaches) {
+        // Title (h3)
+        mercuryApproaches.querySelector('h3').innerText = "Different Movement Approaches";
+        // Text (p)
+        mercuryApproaches.querySelector('p').innerText = "As we were looking at multiple ideas on the movement system, I created prototypes for each of them in Unity.";
+    }
+
 }
 
 // --- INIT ---
