@@ -192,8 +192,15 @@ const enableLanguage = () => {
             <li>床と垂直面（壁）の文脈に応じたチェック</li>
         </ul>
 
-<img src="./assets/MERCURY_Movement_Sketches.png" alt="God Of a Cult Solution gif 2"
-                          style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column; max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0.5rem; margin-bottom:0;" />
+<div
+                          style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
+                          <video autoplay loop muted playsinline preload="metadata" poster="./assets/MERCURY_Movement_Debug.jpg"
+                            style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;">
+                            <source src="./assets/MERCURY_Movement_Debug.webm" type="video/webm">
+                            <source src="./assets/MERCURY_Movement_Debug.mp4" type="video/mp4">
+                            Your browser does not support videos.
+                          </video>
+                        </div>
 
         <h3 style="margin-bottom: 2px; margin-top: 15px; font-size: 1.1em;">表面の検証</h3>
         <p style="margin-top: 0; margin-bottom: 15px;">スフィアトレースで掴みコンポーネントを識別し、手の向きと表面法線の整合性を通じて意図を検証します。</p>
@@ -447,8 +454,15 @@ const disableLanguage = () => {
           <li>Context-aware checks for floors vs. vertical surfaces.</li>
         </ul>
 
-<img src="./assets/MERCURY_Movement_Sketches.png" alt="God Of a Cult Solution gif 2"
-                          style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column; max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0.5rem; margin-bottom:0;" />
+<div
+                          style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
+                          <video autoplay loop muted playsinline preload="metadata" poster="./assets/MERCURY_Movement_Debug.jpg"
+                            style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;">
+                            <source src="./assets/MERCURY_Movement_Debug.webm" type="video/webm">
+                            <source src="./assets/MERCURY_Movement_Debug.mp4" type="video/mp4">
+                            Your browser does not support videos.
+                          </video>
+                        </div>
 
         <h3 style="margin-bottom: 2px; margin-top: 15px; font-size: 1.1em;">Surface Validation</h3>
         <p style="margin-top: 0; margin-bottom: 15px;">Sphere traces identify grab components and validate intent through hand-direction vs. surface-normal alignment.</p>

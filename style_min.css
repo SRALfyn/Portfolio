@@ -770,7 +770,6 @@ footer {
 
 .flip-card.flipped .flip-card-back {
     padding-top: 0 !important;
-    max-height: 90vh;
     opacity: 1;
     pointer-events: auto;
     z-index: 2;
