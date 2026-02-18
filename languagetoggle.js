@@ -97,6 +97,7 @@ let mercuryRoleDesc = document.getElementById('mercuryRoleDesc');
 // Spezielle Listen für doppelte IDs
 const mercuryTitles = document.querySelectorAll('#mercuryProblemTitle');
 const mercuryDescs = document.querySelectorAll('#mercuryProblemDesc');
+const mercuryDescs2 = document.querySelectorAll('#mercuryProblemDesc2');
 const neoProblemTitles = document.querySelectorAll('#neoProblemTitle');
 const neoProblemDescs = document.querySelectorAll('#neoProblemDesc');
 
@@ -190,18 +191,11 @@ const enableLanguage = () => {
         <ul style="margin-top: 0; margin-bottom: 15px; padding-left: 20px;">
             <li>意図しない掴み/離しを防ぐ安全策を備えたポーズベースの検出</li>
             <li>床と垂直面（壁）の文脈に応じたチェック</li>
-        </ul>
+        </ul>`;
+    }
 
-<div
-                          style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
-                          <video autoplay loop muted playsinline preload="metadata" poster="./assets/MERCURY_Movement_Debug.jpg"
-                            style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;">
-                            <source src="./assets/MERCURY_Movement_Debug.webm" type="video/webm">
-                            <source src="./assets/MERCURY_Movement_Debug.mp4" type="video/mp4">
-                            Your browser does not support videos.
-                          </video>
-                        </div>
-
+    if (mercuryDescs2[0]) {
+        mercuryDescs2[0].innerHTML = `
         <h3 style="margin-bottom: 2px; margin-top: 15px; font-size: 1.1em;">表面の検証</h3>
         <p style="margin-top: 0; margin-bottom: 15px;">スフィアトレースで掴みコンポーネントを識別し、手の向きと表面法線の整合性を通じて意図を検証します。</p>
 
@@ -453,17 +447,11 @@ const disableLanguage = () => {
           <li>Pose-based detection with safeguards against unintended grabs/releases.</li>
           <li>Context-aware checks for floors vs. vertical surfaces.</li>
         </ul>
+        </ul>`;
+    }
 
-<div
-                          style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
-                          <video autoplay loop muted playsinline preload="metadata" poster="./assets/MERCURY_Movement_Debug.jpg"
-                            style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;">
-                            <source src="./assets/MERCURY_Movement_Debug.webm" type="video/webm">
-                            <source src="./assets/MERCURY_Movement_Debug.mp4" type="video/mp4">
-                            Your browser does not support videos.
-                          </video>
-                        </div>
-
+    if (mercuryDescs2[0]) {
+        mercuryDescs2[0].innerHTML = `
         <h3 style="margin-bottom: 2px; margin-top: 15px; font-size: 1.1em;">Surface Validation</h3>
         <p style="margin-top: 0; margin-bottom: 15px;">Sphere traces identify grab components and validate intent through hand-direction vs. surface-normal alignment.</p>
 
