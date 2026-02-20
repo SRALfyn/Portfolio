@@ -594,8 +594,8 @@ const disableLanguage = () => {
     if (experienceEE) experienceEE.innerText = "Experience";
     if (projectsSS) projectsSS.innerText = "Projects";
     if (contactTT) contactTT.innerText = "Contact";
-    if (insightsS) insightsS.innerHTML = "Performance";
-    if (insightsSS) insightsSS.innerHTML = "Performance";
+    if (insightsS) insightsS.innerHTML = "Performance Guide";
+    if (insightsSS) insightsSS.innerHTML = "Performance Guide";
 
 
 
@@ -612,7 +612,7 @@ const disableLanguage = () => {
     if (experience3) experience3.innerText = "Experience";
     if (projects3) projects3.innerText = "Projects";
     if (contact3) contact3.innerText = "Contact";
-    if (insights3) insights3.innerHTML = "Performance";
+    if (insights3) insights3.innerHTML = "Performance Guide";
 
     if (cvLink) cvLink.innerText = "View CV";
 

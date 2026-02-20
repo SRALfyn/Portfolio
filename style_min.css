@@ -2592,3 +2592,7 @@ video::-webkit-media-controls-time-remaining-display {
         opacity: 0;
     }
 }
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
