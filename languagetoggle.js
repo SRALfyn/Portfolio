@@ -335,8 +335,8 @@ const enableLanguage = () => {
     if (experienceEE) experienceEE.innerText = "経験";
     if (projectsSS) projectsSS.innerText = "プロジェクト";
     if (contactTT) contactTT.innerText = "お問い合わせ";
-    if (insightsS) insightsS.innerHTML = "パフォーマンス";
-    if (insightsSS) insightsSS.innerHTML = "パフォーマンス";
+    if (insightsS) insightsS.innerHTML = "パフォーマンスガイド";
+    if (insightsSS) insightsSS.innerHTML = "パフォーマンスガイド";
 
 
     if (Name) Name.innerText = "ラーズ・ゴーデ";
@@ -355,7 +355,7 @@ const enableLanguage = () => {
     if (experience3) experience3.innerText = "経験";
     if (projects3) projects3.innerText = "プロジェクト";
     if (contact3) contact3.innerText = "お問い合わせ";
-    if (insights3) insights3.innerHTML = "パフォーマンス";
+    if (insights3) insights3.innerHTML = "パフォーマンスガイド";
 
     if (cvLink) cvLink.innerText = "CVを見る";
 
@@ -375,6 +375,10 @@ const enableLanguage = () => {
         // Text (p)
         mercuryApproaches.querySelector('p').innerText = "移動システムについて複数のアイデアを検討していたため、それぞれのプロトタイプをUnityで作成しました。";
     }
+
+
+    if (EmbedTitle1) EmbedTitle1.innerText = "コードの背景";
+    if (EmbedDesc1) EmbedDesc1.innerText = "ゲーム内のすべての障害物はコアクラスを継承しており、ゲームデザイナーがエディタ内で調整可能なパラメータを備えています。各障害物は複数のPookiを処理できるように設計されています。";
 
 }
 
@@ -629,14 +633,58 @@ const disableLanguage = () => {
         mercuryApproaches.querySelector('p').innerText = "As we were looking at multiple ideas on the movement system, I created prototypes for each of them in Unity.";
     }
 
+
+    if (EmbedTitle1) EmbedTitle1.innerText = "The Context of the Code";
+    if (EmbedDesc1) EmbedDesc1.innerText = "All obstacles in the game inherit from a core class, exposing parameters that the Game Designer can adjust in the editor. Each obstacle is designed to handle multiple Pookis.";
+
+
 }
 
 // --- INIT ---
 if (language === "active") {
     enableLanguage();
 }
+if (languageToggle) {
+    const rand = (min, max) => Math.random() * (max - min) + min;
 
-languageToggle.addEventListener("click", () => {
-    language = localStorage.getItem('language');
-    language !== "active" ? enableLanguage() : disableLanguage();
-});
+    languageToggle.addEventListener("click", (event) => {
+        // --- Language toggle logic ---
+        let language = localStorage.getItem("language");
+        language !== "active" ? enableLanguage() : disableLanguage();
+
+        // --- Emoji spawn logic ---
+        const rect = languageToggle.getBoundingClientRect();
+
+        const fallingEmoji = document.createElement("div");
+        fallingEmoji.textContent = "🌸";
+        fallingEmoji.className = "falling-emoji";
+
+        fallingEmoji.style.left = `${rect.right - 25}px`;
+        fallingEmoji.style.top = `${rect.top - 6}px`;
+
+        const rStart = Math.round(rand(-40, 40));
+        const rEnd = Math.round(rand(-720, 720));
+        const sStart = +(rand(0.8, 1.6).toFixed(2));
+        const sEnd = +(rand(0.2, 1.2).toFixed(2));
+        const txEnd = Math.round(rand(-100, 100));
+        const duration = +(rand(1.8, 3.2).toFixed(2));
+
+        fallingEmoji.style.setProperty("--r-start", `${rStart}deg`);
+        fallingEmoji.style.setProperty("--r-end", `${rEnd}deg`);
+        fallingEmoji.style.setProperty("--s-start", sStart);
+        fallingEmoji.style.setProperty("--s-end", sEnd);
+        fallingEmoji.style.setProperty("--tx-end", `${txEnd}px`);
+
+        fallingEmoji.style.transform =
+            `translate(0, 0) rotate(${rStart}deg) scale(${sStart})`;
+
+        fallingEmoji.style.animation =
+            `fallSwingFade ${duration}s linear forwards`;
+
+        document.body.appendChild(fallingEmoji);
+
+        fallingEmoji.addEventListener("animationend", () => {
+            fallingEmoji.remove();
+        });
+    });
+}

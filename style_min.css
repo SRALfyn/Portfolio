@@ -1932,10 +1932,6 @@ video::-webkit-media-controls-time-remaining-display {
 
     }
 
-
-
-    /* Navigation anzeigen */
-
     #desktop-nav {
 
         display: flex !important;
@@ -1952,9 +1948,6 @@ video::-webkit-media-controls-time-remaining-display {
 
     }
 
-
-
-    /* Seitenumbruch für Sektionen, außer für die erste nach der Nav */
 
     section {
 
@@ -1983,9 +1976,6 @@ video::-webkit-media-controls-time-remaining-display {
     }
 
 
-
-    /* Verhindert Seitenumbruch vor der Profile-Sektion, damit Nav und Profile auf Seite 1 sind */
-
     #profile {
 
         break-before: avoid !important;
@@ -1994,13 +1984,7 @@ video::-webkit-media-controls-time-remaining-display {
 
         min-height: 90vh !important;
 
-        /* Platz für Nav lassen */
-
     }
-
-
-
-    /* Icons verkleinern (Socials & Contact) */
 
     .icon,
 
@@ -2010,7 +1994,6 @@ video::-webkit-media-controls-time-remaining-display {
 
         height: 1.2rem !important;
 
-        /* Deutlich kleiner */
 
         width: auto !important;
 
@@ -2036,9 +2019,6 @@ video::-webkit-media-controls-time-remaining-display {
 
     }
 
-
-
-    /* Container-Anpassungen */
 
     .details-container.color-container {
 
@@ -2115,9 +2095,6 @@ video::-webkit-media-controls-time-remaining-display {
     }
 
 
-
-    /* UI-Elemente ausblenden */
-
     #hamburger-nav,
     .btn.btn-color-2.project-btn.details-btn,
     .toggleLanguage,
@@ -2142,9 +2119,6 @@ video::-webkit-media-controls-time-remaining-display {
 
     }
 
-
-
-    /* Medienoptimierung */
 
     video,
 
@@ -2180,39 +2154,32 @@ video::-webkit-media-controls-time-remaining-display {
 
     }
 
-    /* Stellt sicher, dass Links wie Buttons aussehen und keine Unterstriche haben */
     a.btn,
     .icon,
     .contact-info-container a {
         text-decoration: none !important;
         display: inline-flex !important;
-        /* Wichtig für die Klickfläche */
         align-items: center;
         justify-content: center;
     }
 
-    /* Klickbereich für Icons sicherstellen */
     #socials-container a {
         display: inline-block !important;
         line-height: 0;
     }
 
-    /* Mercury-Button komplett resetten für das PDF */
     #mercury-itch-btn {
         position: relative !important;
         z-index: 9999 !important;
         display: inline-flex !important;
-        /* Animationen und Transforms zerstören oft die Link-Koordinaten im PDF */
         animation: none !important;
         transform: none !important;
         filter: none !important;
         transition: none !important;
-        /* Sicherstellen, dass die Klickfläche nicht durch negative Margins verschoben ist */
         top: 0 !important;
         left: 0 !important;
     }
 
-    /* Den Wrapper und alle Animations-Elemente komplett entfernen */
     .mercury-animation-wrapper,
     .mecha-fist,
     .impact-spark,
@@ -2222,7 +2189,6 @@ video::-webkit-media-controls-time-remaining-display {
         pointer-events: none !important;
     }
 
-    /* Den umschließenden Container neutralisieren */
     .mercury-punch-group {
         position: relative !important;
         display: inline-block !important;
@@ -2230,7 +2196,6 @@ video::-webkit-media-controls-time-remaining-display {
         z-index: 1 !important;
     }
 
-    /* 1. Rahmen nur für große Medien (Videos & Blueprints) beibehalten */
     video,
     .blueprint-frame,
     .article-container video {
@@ -2240,17 +2205,14 @@ video::-webkit-media-controls-time-remaining-display {
         display: block !important;
     }
 
-    /* 2. Rahmen von allen Bildern (Icons, PNGs) entfernen */
     img {
         max-width: 100% !important;
         height: auto !important;
         border: none !important;
-        /* Entfernt den Kasten */
         box-shadow: none !important;
         background: transparent !important;
     }
 
-    /* 3. Spezifischer Reset für Icons in Buttons und Socials */
     .icon,
     .project-btn img,
     #socials-container img,
@@ -2268,7 +2230,6 @@ video::-webkit-media-controls-time-remaining-display {
         content: none !important;
     }
 
-    /* Verhindert den Seitenumbruch direkt nach der Sektions-Überschrift */
     #projects .experience-details-container,
     #projects .about-containers {
         break-before: avoid !important;
@@ -2277,73 +2238,61 @@ video::-webkit-media-controls-time-remaining-display {
         padding-top: 0 !important;
     }
 
-    /* Erzwingt, dass der erste Projekt-Container auf derselben Seite wie die Überschrift bleibt */
     #projects .details-container.color-container:first-of-type {
         break-before: avoid !important;
         page-break-before: avoid !important;
         margin-top: 0.5rem !important;
     }
 
-    /* Optimiert den Platz der Überschriften in der Druckansicht */
     #projects h1.title {
         margin-bottom: 1rem !important;
         page-break-after: avoid !important;
         break-after: avoid !important;
     }
 
-    /* Verhindert den Umbruch nach den einleitenden Texten */
     #projects .section__text__p1,
     #projects .title {
         break-after: avoid !important;
         page-break-after: avoid !important;
         margin-bottom: 0.5rem !important;
-        /* Verkleinert den Abstand */
     }
 
-    /* Zwingt den Hauptcontainer, direkt nach der Überschrift zu bleiben */
     #projects .experience-details-container {
         break-before: avoid !important;
         page-break-before: avoid !important;
         margin-top: 0 !important;
     }
 
-    /* Stellt sicher, dass die erste Karte nicht auf eine neue Seite springt */
     #projects .details-container.color-container:first-of-type {
         break-before: avoid !important;
         page-break-before: avoid !important;
         margin-top: 0 !important;
     }
 
-    /* Target das spezifische Div innerhalb der Karten-Rückseite */
     .flip-card-back>div>div[style*="margin-top: 6rem"] {
         margin-top: 0 !important;
     }
 
-    /* Falls du die Abstände der Awards-Grafik auch anpassen willst */
     .flip-card-back img[alt="FLOAT Awards"] {
         margin-top: 0.5rem !important;
     }
 }
 
-/* Standardmäßig das Druckbild im Browser verstecken */
 .print-only-image {
     display: none;
 }
 
 @media print {
 
-    /* Alle Blueprints / Iframes beim Drucken verstecken */
     .blueprint-frame,
     iframe {
         display: none !important;
     }
 
-    /* Das Ersatzbild beim Drucken anzeigen */
     .print-only-image {
         display: block !important;
         width: 100% !important;
         max-width: 800px;
-        /* Oder eine passende Breite für A4 */
         height: auto !important;
         margin: 1rem auto !important;
         border: 1px solid #3d3d3d !important;
@@ -2351,20 +2300,13 @@ video::-webkit-media-controls-time-remaining-display {
 
     .print-only-image {
         display: block !important;
-        /* Exakte Breite für das A4-Format festlegen */
         width: 16cm !important;
         margin: 1rem auto !important;
-
-        /* Seitenverhältnis erzwingen (z. B. 16:9 oder 4:3) */
         aspect-ratio: 16 / 9 !important;
-
-        /* Bildanpassung steuern */
         object-fit: contain !important;
-        /* Das gesamte Bild wird ohne Beschnitt angezeigt */
         border: 1px solid #3d3d3d !important;
     }
 
-    /* Verstecken des Iframes im Druck */
     .blueprint-frame {
         display: none !important;
     }
@@ -2376,9 +2318,277 @@ video::-webkit-media-controls-time-remaining-display {
 }
 
 #insights {
-    /* Verringert den Abstand NACH der Linie (zwischen Linie und About Me) */
     margin-bottom: 1rem !important;
-
-    /* Verringert den Abstand VOR der Linie (zwischen Performance-Karten und Linie) */
     padding-bottom: 2rem !important;
+}
+
+.car-on-btn {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-color);
+    pointer-events: none;
+}
+
+.car__body {
+    animation: shake 0.1s ease-in-out infinite alternate;
+}
+
+.car__line {
+    transform-origin: center right;
+    stroke-dasharray: 22;
+    animation: line 0.4s ease-in-out infinite;
+    animation-fill-mode: both;
+}
+
+.car__line--top {
+    animation-delay: 0s;
+}
+
+.car__line--middle {
+    animation-delay: 0.1s;
+}
+
+.car__line--bottom {
+    animation-delay: 0.2s;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateY(-1%);
+    }
+
+    100% {
+        transform: translateY(3%);
+    }
+}
+
+@keyframes line {
+    0% {
+        stroke-dashoffset: 22;
+    }
+
+    25% {
+        stroke-dashoffset: 22;
+    }
+
+    50% {
+        stroke-dashoffset: 0;
+    }
+
+    51% {
+        stroke-dashoffset: 0;
+    }
+
+    80% {
+        stroke-dashoffset: -22;
+    }
+
+    100% {
+        stroke-dashoffset: -22;
+    }
+}
+
+.car__wheel-spin {
+    transform-origin: 0px 0px;
+    animation: spin-wheel 0.3s linear infinite;
+}
+
+@keyframes spin-wheel {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.strike {
+    animation: strikes-svg linear infinite;
+}
+
+.strike1 {
+    animation-delay: 0.1s;
+    animation-duration: 0.25s;
+}
+
+.strike2 {
+    animation-delay: 0.02s;
+    animation-duration: 0.2s;
+}
+
+.strike3 {
+    animation-delay: 0.15s;
+    animation-duration: 0.3s;
+}
+
+.strike4 {
+    animation-delay: 0.08s;
+    animation-duration: 0.22s;
+}
+
+.strike5 {
+    animation-delay: 0.22s;
+    animation-duration: 0.28s;
+}
+
+@keyframes strikes-svg {
+    0% {
+        transform: translateX(27px);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+}
+
+.car-on-btn {
+    pointer-events: auto !important;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.spawn-animation {
+    animation: carPopIn 0.5s ease-out forwards !important;
+}
+
+.drive-off-animation {
+    animation: driveOffAndFall 0.7s linear forwards !important;
+}
+
+@keyframes carPopIn {
+    0% {
+        transform: translateX(-20%) scale(0.3);
+        opacity: 0;
+    }
+
+    60% {
+        transform: translateX(-20%) scale(1.15);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-20%) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes driveOffAndFall {
+    0% {
+        transform: translateX(-20%) translateY(0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+
+    20% {
+        transform: translateX(-45%) translateY(0) rotate(-5deg) scale(1.3);
+        opacity: 1;
+    }
+
+    45% {
+        transform: translateX(50%) translateY(0) rotate(20deg) scale(0.8);
+        opacity: 1;
+    }
+
+    70% {
+        transform: translateX(100%) translateY(30px) rotate(40deg) scale(0.6);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(200%) translateY(100px) rotate(75deg) scale(0.2);
+        opacity: 0;
+    }
+}
+
+.car-on-btn {
+    transition: color 0.3s ease;
+}
+
+.car-on-btn:hover {
+    color: goldenrod;
+}
+
+#language-switch,
+#theme-switch {
+    height: 3.125rem;
+    width: 3.125rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+#language-switch::after {
+    content: "🌸";
+    position: absolute;
+    top: -0.25rem;
+    right: -0.25rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    pointer-events: none;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-origin: center;
+}
+
+#language-switch:hover::after {
+    transform: scale(1.4) rotate(10deg);
+}
+
+@keyframes emojiPopIn {
+    0% {
+        transform: scale(0) rotate(-45deg);
+    }
+
+    80% {
+        transform: scale(1.3) rotate(15deg);
+    }
+
+    100% {
+        transform: scale(1.4) rotate(10deg);
+    }
+}
+
+#language-switch.respawn-emoji::after {
+    animation: emojiPopIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.falling-emoji {
+    position: fixed;
+    font-size: 1.25rem;
+    line-height: 1;
+    pointer-events: none;
+    z-index: 9999;
+    animation: fallSwingFade 2.5s linear forwards;
+    will-change: transform, opacity;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+}
+
+@keyframes fallSwingFade {
+    0% {
+        transform: translate(0, 0) rotate(var(--r-start)) scale(var(--s-start));
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(var(--tx-end), 250px) rotate(var(--r-end)) scale(var(--s-end));
+        opacity: 0;
+    }
 }

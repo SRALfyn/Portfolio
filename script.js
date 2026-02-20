@@ -297,3 +297,38 @@ function pauseBackVideos(card) {
   const videos = card.querySelectorAll('.flip-card-back video');
   videos.forEach(v => v.pause());
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const carSvg = document.querySelector(".car-on-btn");
+
+  if (carSvg) {
+    // Lässt das Auto direkt beim Laden der Seite spawnen
+    carSvg.classList.add("spawn-animation");
+
+    carSvg.addEventListener("click", (event) => {
+      event.stopPropagation();
+      event.preventDefault();
+
+      if (carSvg.classList.contains("drive-off-animation")) return;
+
+      // Entfernt den Spawn-Effekt und triggert den Fall
+      carSvg.classList.remove("spawn-animation");
+
+      // Kurzer Reflow-Hack, um sicherzustellen, dass die neue Animation sauber startet
+      void carSvg.offsetWidth;
+
+      carSvg.classList.add("drive-off-animation");
+
+      setTimeout(() => {
+        carSvg.style.visibility = "hidden";
+      }, 700);
+
+      // Nach 3 Sekunden wird das Auto zurückgesetzt und die Spawn-Animation erneut abgespielt
+      setTimeout(() => {
+        carSvg.classList.remove("drive-off-animation");
+        carSvg.style.visibility = "visible";
+        carSvg.classList.add("spawn-animation");
+      }, 2000);
+    });
+  }
+});
