@@ -124,6 +124,9 @@ const postMortemBtn3 = document.getElementById("post_mortem3");
 
 let mercuryApproaches = document.getElementById('mercuryApproaches');
 
+let cultProblemTitle2 = document.getElementById('cultProblemTitle2');
+let cultProblemDesc2 = document.getElementById('cultProblemDesc2');
+
 // --- JAPANISCH AKTIVIEREN ---
 const enableLanguage = () => {
     // Insights Section Titles
@@ -246,7 +249,7 @@ const enableLanguage = () => {
     if (cultRoleTitle) cultRoleTitle.innerText = "主な役割";
     if (cultRoleDesc) cultRoleDesc.innerHTML = "<li>ソロプロジェクト</li>";
     if (cultProblemTitle) cultProblemTitle.innerText = "コードの背景";
-    if (cultProblemDesc) cultProblemDesc.innerText = "できるだけ早くレベルを作成できるように、データテーブルだけで動作するシステムを作成しました。ゲームは完全にボイス付きで、シンプルなシステムで実装されています。";
+    if (cultProblemDesc) cultProblemDesc.innerText = "可能な限り早くレベルを作成できるよう、データテーブルのみで機能するシステムを開発しました。ゲームはフルボイスで、会話、現実の時間を表示する時計、そして画面の前にいるプレイヤーこそが「時間の神」であることを明かす演出によって、第四の壁を越えます。";
     if (CultAchievementsTitle) CultAchievementsTitle.innerText = "実績";
     if (CultAchievementsDesc) CultAchievementsDesc.innerHTML = "<ul><li>出展者: HNU Werkschau</li><li>新学期のためのショーケースプロジェクト</li></ul>";
 
@@ -367,8 +370,7 @@ const enableLanguage = () => {
     if (mercuryDescription) mercuryDescription.innerText = "MERCURYは、世界初のコントローラー不要VRメカ格闘アクションです。プレイヤーは自身の身体の動きを使って都市をよじ登り、ハイスピードなアリーナ戦闘を繰り広げます。移動と戦闘のすべてが、ハンドトラッキングのみによって操作されます。";
 
     if (gofofacultDescribtionTitle) gofofacultDescribtionTitle.innerText = "概要";
-    if (gofofacultDescription) gofofacultDescription.innerText = "God of a Cultは、コメディ要素のあるポイント＆クリックアドベンチャーです。プレイヤーはパズルを解きながら「時の神」となり、行方不明の妹を探します。フルボイス対応で、翻訳テキスト機能と拡張性のあるセーブシステムが実装されています。";
-
+    if (gofofacultDescription) gofofacultDescription.innerText = "God of a Cultは、コメディ要素のあるポイント＆クリックアドベンチャーです。プレイヤーはパズルを解き、主人公が次なる「時間の神」の化身となって行方不明の妹を見つけ出せるよう導きます。ゲームはフルボイス対応で、翻訳テキストと拡張性のあるセーブシステムが実装されています。";
     if (mercuryApproaches) {
         // Titel (h3)
         mercuryApproaches.querySelector('h3').innerText = "移動アプローチの検討";
@@ -379,6 +381,13 @@ const enableLanguage = () => {
 
     if (EmbedTitle1) EmbedTitle1.innerText = "コードの背景";
     if (EmbedDesc1) EmbedDesc1.innerText = "ゲーム内のすべての障害物はコアクラスを継承しており、ゲームデザイナーがエディタ内で調整可能なパラメータを備えています。各障害物は複数のPookiを処理できるように設計されています。";
+
+
+    if (cultProblemDesc) cultProblemDesc.innerText = "可能な限り早くレベルを作成できるよう、データテーブルのみで機能するシステムを開発しました。ゲームはフルボイスで、会話、現実の時間を表示する時計、そして画面の前にいるプレイヤーこそが「時間の神」であることを明かす演出によって、第四の壁を越えます。";
+    if (gofofacultDescription) gofofacultDescription.innerText = "God of a Cultは、コメディ要素のあるポイント＆クリックアドベンチャーです。プレイヤーはパズルを解き、主人公が次なる「時間の神」の化身となって行方不明の妹を見つけ出せるよう導きます。ゲームはフルボイス対応で、翻訳テキストと拡張性のあるセーブシステムが実装されています。";
+
+    if (cultProblemTitle2) cultProblemTitle2.innerText = "チュートリアルシリーズの作成";
+    if (cultProblemDesc2) cultProblemDesc2.innerHTML = "他の開発者の助けになるよう、Unreal Engine 5で必要なコアシステムを構築する方法を解説する7時間以上のシリーズを録画しました。視聴は<a href='https://www.youtube.com/playlist?list=PLSStU8YtITKfY5ivtE77u5DZma00sIdtf' target='_blank' rel='noopener noreferrer' class='tutorial-link'>こちら</a>から可能です。";
 
 }
 
@@ -505,7 +514,7 @@ const disableLanguage = () => {
     if (cultRoleTitle) cultRoleTitle.innerText = "My Core Role";
     if (cultRoleDesc) cultRoleDesc.innerHTML = "<li>Solo Project</li>";
     if (cultProblemTitle) cultProblemTitle.innerText = "The Context of the Code";
-    if (cultProblemDesc) cultProblemDesc.innerText = "To be able to create levels as fast as possible I created a System that works with only Datatables. The Game is fully voiced which is also implemented in a simple System.";
+    if (cultProblemDesc) cultProblemDesc.innerText = "To create levels as fast as possible, I developed a system that relies entirely on Data Tables. The game is fully voiced and breaks the fourth wall through dialogues, real-time clocks, and revealing that the player in front of the screen is the God of Time.";
     if (CultAchievementsTitle) CultAchievementsTitle.innerText = "Achievements";
     if (CultAchievementsDesc) CultAchievementsDesc.innerHTML = "<ul><li>Exhibitor: HNU Werkschau</li><li>Showcase project for new semester</li></ul>";
 
@@ -624,7 +633,7 @@ const disableLanguage = () => {
     if (mercuryDescription) mercuryDescription.innerText = "Mercury is the first controller-free VR mecha brawler. Players use physical movements to climb through a city and engage in fast-paced arena combat. The game relies entirely on hand tracking for both navigation and fighting.";
 
     if (gofofacultDescribtionTitle) gofofacultDescribtionTitle.innerText = "Description";
-    if (gofofacultDescription) gofofacultDescription.innerText = "God of a Cult is a comedic point-and-click adventure. Players solve puzzles to become the God of Time and find their missing sister. The game is fully voiced and includes translated text and a scalable save system.";
+    if (gofofacultDescription) gofofacultDescription.innerText = "God of a Cult is a comedic point-and-click adventure. Players solve puzzles to help the protagonist become the next incarnation of the God of Time and find his missing sister. The game is fully voiced and includes translated text and a scalable save system.";
 
     if (mercuryApproaches) {
         // Title (h3)
@@ -637,6 +646,11 @@ const disableLanguage = () => {
     if (EmbedTitle1) EmbedTitle1.innerText = "The Context of the Code";
     if (EmbedDesc1) EmbedDesc1.innerText = "All obstacles in the game inherit from a core class, exposing parameters that the Game Designer can adjust in the editor. Each obstacle is designed to handle multiple Pookis.";
 
+    if (cultProblemDesc) cultProblemDesc.innerText = "To create levels as fast as possible, I developed a system that relies entirely on Data Tables. The game is fully voiced and breaks the fourth wall through dialogues, real-time clocks, and revealing that the player in front of the screen is the God of Time.";
+    if (gofofacultDescription) gofofacultDescription.innerText = "God of a Cult is a comedic point-and-click adventure. Players solve puzzles to help the protagonist become the next incarnation of the God of Time and find his missing sister. The game is fully voiced and includes translated text and a scalable save system.";
+
+    if (cultProblemTitle2) cultProblemTitle2.innerText = "Creation of a Tutorial Series";
+    if (cultProblemDesc2) cultProblemDesc2.innerHTML = "To help others, I recorded a 7+ hour series explaining how to build the required core systems in Unreal Engine 5. It can be viewed <a href='https://www.youtube.com/playlist?list=PLSStU8YtITKfY5ivtE77u5DZma00sIdtf' target='_blank' rel='noopener noreferrer' class='tutorial-link'>here</a>.";
 
 }
 

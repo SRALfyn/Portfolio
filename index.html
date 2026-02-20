@@ -102,8 +102,8 @@
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <div class="article-container">
-                  <video controls playsinline preload="metadata" controlsList="nodownload noplaybackrate"
-                    disablepictureinpicture poster="./assets/FLOAT_Poster.jpg"
+                  <video autoplay loop muted playsinline preload="metadata" disablepictureinpicture
+                    poster="./assets/FLOAT_Poster.jpg"
                     style="width: 100%; max-width: 560px; height: auto; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; display: block; margin: 0 auto;">
 
                     <source src="./assets/FLOAT_Showcase.webm" type="video/webm">
@@ -194,7 +194,7 @@
                         editor. Each obstacle is designed to handle multiple Pookis. </p>
                       <div
                         style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column; margin-top: 1rem; margin-bottom: 2rem;">
-                        <video loop muted playsinline preload="metadata" poster="./assets/float_solution_poster.png"
+                        <video loop muted playsinline preload="metadata" poster="./assets/FLOAT_Obstacles_Poster.png"
                           style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;">
                           <source src="./assets/FLOAT_Obstacles.webm" type="video/webm">
                           <source src="./assets/FLOAT_Obstacles.mp4" type="video/mp4">
@@ -361,8 +361,8 @@
             <div class="flip-card-inner allow-overflow">
               <div class="flip-card-front allow-overflow">
                 <div class="article-container">
-                  <video controls playsinline preload="metadata" controlsList="nodownload noplaybackrate"
-                    disablepictureinpicture poster="./assets/MERCURY_Poster.jpg"
+                  <video autoplay loop muted playsinline preload="metadata" disablepictureinpicture
+                    poster="./assets/MERCURY_Poster.jpg"
                     style="width: 100%; max-width: 560px; height: auto; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; display: block; margin: 0 auto;">
 
                     <source src="./assets/MERCURY_Showcase.webm" type="video/webm">
@@ -578,8 +578,8 @@
             <div class="flip-card-inner">
               <div class="flip-card-front">
                 <div class="article-container">
-                  <video controls playsinline preload="metadata" controlsList="nodownload noplaybackrate"
-                    disablepictureinpicture poster="./assets/God_Of_A_Cult_Poster.jpg"
+                  <video autoplay loop muted playsinline preload="metadata" disablepictureinpicture
+                    poster="./assets/God_Of_A_Cult_Poster.jpg"
                     style="width: 100%; max-width: 560px; height: auto; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; display: block; margin: 0 auto;">
 
                     <source src="./assets/God_Of_A_Cult_Showcase.webm" type="video/webm">
@@ -658,55 +658,90 @@
                       <h1 id="gofofacultDescribtionTitle">Description</h1>
                       <p id="gofofacultDescription"
                         style="word-break: break-word; white-space: pre-line; padding-bottom: 5rem;">
-                        God of a Cult is a comedic point-and-click adventure. Players solve puzzles to become the God of
-                        Time and find their missing sister. The game is fully voiced and includes translated text and a
-                        scalable save system.
+                        God of a Cult is a comedic point-and-click adventure. Players solve puzzles to help the
+                        protagonist become the next incarnation of the God of Time and find his missing sister. The game
+                        is fully voiced and includes translated text and a scalable save system.
                       </p>
                     </div>
 
+                    <!-- === Carousel: replace the single image in the God of a Cult back side with this === -->
+                    <div class="cult-carousel" aria-label="God of a Cult images" onclick="event.stopPropagation()">
+                      <button class="cult-carousel__arrow cult-carousel__arrow--left" aria-label="previous">‹</button>
+
+                      <div class="cult-carousel__viewport">
+                        <!-- Add / remove images as needed. Keep the class cult-carousel__slide -->
+                        <img class="cult-carousel__slide" src="./assets/GodOfACult_Carousel_01.png"
+                          alt="God of a Cult - Interactions" />
+                        <img class="cult-carousel__slide" src="./assets/GodOfACult_Carousel_02.png"
+                          alt="God of a Cult - Sensitive Cursor" />
+                        <img class="cult-carousel__slide" src="./assets/GodOfACult_Carousel_03.png"
+                          alt="God of a Cult - Expendable" />
+                        <img class="cult-carousel__slide" src="./assets/GodOfACult_Carousel_04.png"
+                          alt="God of a Cult - Dialogue Code Snippet" />
+                        <img class="cult-carousel__slide" src="./assets/GodOfACult_Carousel_05.png"
+                          alt="God of a Cult - Overview Code Snippet" />
+                      </div>
+
+                      <button class="cult-carousel__arrow cult-carousel__arrow--right" aria-label="next">›</button>
+
+                      <div class="cult-carousel__dots" aria-hidden="false"></div>
+                    </div>
+
+
                     <div class="float-problem-section">
                       <h1 id="cultProblemTitle">The Context of the Code</h1>
-                      <p id="cultProblemDesc" style="word-break: break-word; white-space: pre-line;">To be able to
-                        create levels as fast as possible I created a System that works with only Datatables. The Game
-                        is fully voiced which is also implemented in a simple System.</p>
+                      <p id="cultProblemDesc" style="word-break: break-word; white-space: pre-line;">To create levels as
+                        fast as possible, I developed a system that relies entirely on Data Tables. The game is fully
+                        voiced and breaks the fourth wall through dialogues, real-time clocks, and revealing that the
+                        player in front of the screen is the God of Time.</p>
                     </div>
                   </div>
                   <div
                     style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
                     <video loop muted playsinline preload="metadata" poster="./assets/godofacult_solution_poster.png"
-                      style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;">
-                      <source src="./assets/GodOfACult_Solution.webm" type="video/webm">
-                      <source src="./assets/GodOfACult_Solution.mp4" type="video/mp4">
+                      style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:2rem;">
+                      <source src="./assets/GodOfACult_Camera.webm" type="video/webm">
+                      <source src="./assets/GodOfACult_Camera.mp4" type="video/mp4">
                       Your browser does not support videos.
                     </video>
-                    <img src="./assets/GodOfACult_DT.png" alt="God Of a Cult Solution gif 2"
-                      style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0.5rem; margin-bottom:0;" />
                   </div>
-                  <div style="width: 100%; display: flex; justify-content: center;">
-                    <iframe src="about:blank" data-src="https://blueprintue.com/render/s-gbgfb-/"
-                      class="blueprint-frame" scrolling="no" height="300" style="margin-top:0;" allowfullscreen>
-                    </iframe>
-                    <img src="./assets/godofacult_bp.png" class="print-only-image" alt="Blueprint Logic">
+
+                  <div class="float-problem-section">
+                    <h1 id="cultProblemTitle2">Creation of a Tutorial Series</h1>
+                    <p id="cultProblemDesc2" style="word-break: break-word; white-space: pre-line;">To help others, I
+                      recorded a 7+ hour series explaining how to build the required core systems in Unreal Engine 5. It
+                      can be viewed <a href="https://www.youtube.com/playlist?list=PLSStU8YtITKfY5ivtE77u5DZma00sIdtf"
+                        target="_blank" rel="noopener noreferrer" class="tutorial-link">here</a>.</p>
                   </div>
-                </div>
+
+                  <div
+                    style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
+                    <video loop muted playsinline preload="metadata" poster="./assets/godofacult_solution_poster.png"
+                      style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:2rem;">
+                      <source src="./assets/GodOfACult_Youtube.mp4" type="video/webm">
+                      <source src="./assets/GodOfACult_Youtube.mp4" type="video/mp4">
+                      Your browser does not support videos.
+                    </video>
+                  </div>
 
 
-                <div class="btn-container"
-                  style="margin-bottom: 2rem; min-height: 6rem; display: flex; justify-content: center;">
-                  <button id="post_mortem2" class="btn btn-color-2 pdf-btn"
-                    onclick="window.open('./assets/Gohde_Lars_GodOfACult_PostMortem.pdf', '_blank');">
-                    View Post-Mortem (Only English)
-                  </button>
-                </div>
-                <!-- God Of a Cult Achievements (aligned like other cards) -->
-                <div class="float-problem-section"
-                  style="max-width:700px; margin: 1rem auto 0 auto; text-align:left; margin-top: auto;">
-                  <h1 id="CultAchievementsTitle">Achievements</h1>
-                  <div id="CultAchievementsDesc" style="word-break: break-word; margin-left: 1rem;">
-                    <ul>
-                      <li>Exhibitor: HNU Werkschau</li>
-                      <li>Showcase project for new semester</li>
-                    </ul>
+                  <div class="btn-container"
+                    style="margin-bottom: 2rem; min-height: 6rem; display: flex; justify-content: center;">
+                    <button id="post_mortem2" class="btn btn-color-2 pdf-btn"
+                      onclick="window.open('./assets/Gohde_Lars_GodOfACult_PostMortem.pdf', '_blank');">
+                      View Post-Mortem (Only English)
+                    </button>
+                  </div>
+                  <!-- God Of a Cult Achievements (aligned like other cards) -->
+                  <div class="float-problem-section"
+                    style="max-width:700px; margin: 1rem auto 0 auto; text-align:left; margin-top: auto;">
+                    <h1 id="CultAchievementsTitle">Achievements</h1>
+                    <div id="CultAchievementsDesc" style="word-break: break-word; margin-left: 1rem;">
+                      <ul>
+                        <li>Exhibitor: HNU Werkschau</li>
+                        <li>Showcase project for new semester</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -714,9 +749,8 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Steam Games Button 
+      <!-- Steam Games Button 
     <div style="width:100%;display:flex;justify-content:center;margin:2rem 0;">
       <a id="AllSteamBtn" href="https://gohde-games.itch.io" target="_blank" rel="noopener noreferrer"
         class="btn btn-color-2 all-games-btn" style="font-size:1.2rem;min-width:200px;text-align:center;">
@@ -727,15 +761,15 @@
     </div>
     -->
 
-    <!-- All My Games Button -->
-    <div style="width:100%;display:flex;justify-content:center;margin:2rem 0;">
-      <a id="allGamesBtn" href="https://gohde-games.itch.io" target="_blank" rel="noopener noreferrer"
-        class="btn btn-color-2 all-games-btn" style="font-size:1.2rem;min-width:200px;text-align:center;">
-        <img src="./assets/itch_red.png" alt="steam_logo"
-          style="width: 1.2rem; height: auto; margin-right: 0.5rem; vertical-align: middle;">
-        All my Games
-      </a>
-    </div>
+      <!-- All My Games Button -->
+      <div style="width:100%;display:flex;justify-content:center;margin:2rem 0;">
+        <a id="allGamesBtn" href="https://gohde-games.itch.io" target="_blank" rel="noopener noreferrer"
+          class="btn btn-color-2 all-games-btn" style="font-size:1.2rem;min-width:200px;text-align:center;">
+          <img src="./assets/itch_red.png" alt="steam_logo"
+            style="width: 1.2rem; height: auto; margin-right: 0.5rem; vertical-align: middle;">
+          All my Games
+        </a>
+      </div>
   </section>
 
 
@@ -915,9 +949,16 @@
         </ul>
       </div>
     </nav>
-    <p>© 2025 by Lars Gohde. All rights reserved.</p>
+    <p>© 2026 by Lars Gohde. All rights reserved.</p>
   </footer>
   <script src="script.js" defer></script>
+
+  <div id="mediaModal" class="media-modal">
+    <span class="media-modal-close">&times;</span>
+    <img class="media-modal-content" id="modalImg" style="display: none;">
+    <video loop muted class="media-modal-content" id="modalVideo" style="display: none;"></video>
+  </div>
+
 </body>
 
 </html>

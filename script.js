@@ -332,3 +332,314 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+
+// Cult carousel - robust fix for modal always opening last image
+(function () {
+  function qs(sel, ctx) { return (ctx || document).querySelector(sel); }
+  function qsa(sel, ctx) { return Array.from((ctx || document).querySelectorAll(sel)); }
+
+  class CultCarousel {
+    constructor(root) {
+      this.root = root;
+      this.viewport = qs('.cult-carousel__viewport', root);
+      this.slides = qsa('.cult-carousel__slide', this.viewport);
+      this.leftBtn = qs('.cult-carousel__arrow--left', root);
+      this.rightBtn = qs('.cult-carousel__arrow--right', root);
+      this.dotsContainer = qs('.cult-carousel__dots', root);
+      this.current = 0;
+      this.modal = null;
+      if (!this.slides.length) return;
+      this.setup();
+      this.show(0);
+    }
+
+    setup() {
+      // make root focusable for keyboard nav
+      this.root.tabIndex = 0;
+
+      // viewport click opens modal at the currently tracked index
+      this.viewport.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.openModal(this.current);
+      });
+
+      if (this.leftBtn) this.leftBtn.addEventListener('click', (e) => { e.stopPropagation(); this.prev(); });
+      if (this.rightBtn) this.rightBtn.addEventListener('click', (e) => { e.stopPropagation(); this.next(); });
+
+      // dots in small (card) carousel
+      this.dots = [];
+      this.dotsContainer.innerHTML = '';
+      this.slides.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.className = 'cult-carousel__dot';
+        d.type = 'button';
+        d.title = `Slide ${i + 1}`;
+        d.addEventListener('click', (ev) => { ev.stopPropagation(); this.show(i); });
+        this.dotsContainer.appendChild(d);
+        this.dots.push(d);
+      });
+
+      // keyboard navigation while focus inside root
+      this.root.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); this.prev(); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); this.next(); }
+      });
+
+      // Touch swipe support for main carousel
+      let startX = 0;
+      this.viewport.addEventListener('touchstart', (e) => {
+        startX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      this.viewport.addEventListener('touchend', (e) => {
+        const endX = e.changedTouches[0].screenX;
+        if (startX - endX > 50) this.next();
+        if (endX - startX > 50) this.prev();
+      }, { passive: true });
+
+      // prevent flip/card click-through
+      this.root.addEventListener('click', (e) => e.stopPropagation());
+    }
+
+    show(index) {
+      const len = this.slides.length;
+      this.current = ((index % len) + len) % len;
+      this.slides.forEach((s, i) => s.classList.toggle('cult-active', i === this.current));
+      this.dots.forEach((d, i) => d.classList.toggle('cult-dot-active', i === this.current));
+    }
+
+    prev() { this.show(this.current - 1); }
+    next() { this.show(this.current + 1); }
+
+    // open modal at clicked index; modal contains full carousel + dots + nav
+    openModal(startIndex) {
+      if (this.modal) return;
+
+      // ensure startIndex is a valid number within range; fallback to 0
+      let idx = Number(startIndex);
+      if (!Number.isFinite(idx) || this.slides.length === 0) idx = 0;
+      const len = this.slides.length;
+      idx = ((idx % len) + len) % len;
+
+      const images = this.slides.map(s => ({ src: s.src, alt: s.alt || '' }));
+
+      const modal = document.createElement('div');
+      modal.className = 'cult-modal';
+      modal.tabIndex = -1;
+
+      const inner = document.createElement('div');
+      inner.className = 'cult-modal__inner';
+
+      const left = document.createElement('button');
+      left.className = 'cult-modal__arrow cult-modal__arrow--left';
+      left.title = 'Previous';
+      left.innerHTML = '‹';
+
+      const right = document.createElement('button');
+      right.className = 'cult-modal__arrow cult-modal__arrow--right';
+      right.title = 'Next';
+      right.innerHTML = '›';
+
+      const modalViewport = document.createElement('div');
+      modalViewport.className = 'cult-modal__viewport';
+
+      const modalSlides = images.map((im, i) => {
+        const el = document.createElement('img');
+        el.className = 'cult-modal__slide';
+        el.src = im.src;
+        el.alt = im.alt;
+        el.dataset.index = i;
+        modalViewport.appendChild(el);
+        return el;
+      });
+
+      const modalDots = document.createElement('div');
+      modalDots.className = 'cult-modal__dots';
+      const modalDotButtons = images.map((_, i) => {
+        const b = document.createElement('button');
+        b.className = 'cult-modal__dot';
+        b.type = 'button';
+        b.title = `Slide ${i + 1}`;
+        b.addEventListener('click', (ev) => { ev.stopPropagation(); showSlide(i); });
+        modalDots.appendChild(b);
+        return b;
+      });
+
+      // append elements
+      inner.appendChild(left);
+      inner.appendChild(modalViewport);
+      inner.appendChild(right);
+      inner.appendChild(modalDots);
+      modal.appendChild(inner);
+      document.body.appendChild(modal);
+
+      // showSlide function
+      const showSlide = (newIndex) => {
+        const n = modalSlides.length;
+        idx = ((newIndex % n) + n) % n;
+        modalSlides.forEach((s, i) => s.classList.toggle('cult-modal__slide--active', i === idx));
+        modalDotButtons.forEach((d, i) => d.classList.toggle('cult-modal__dot--active', i === idx));
+
+        // Sync the underlying carousel
+        this.show(idx);
+      };
+
+      // attach arrow handlers (use showSlide closure)
+      left.addEventListener('click', (e) => { e.stopPropagation(); showSlide(idx - 1); });
+      right.addEventListener('click', (e) => { e.stopPropagation(); showSlide(idx + 1); });
+
+      // initial
+      showSlide(idx);
+
+      // close handlers
+      const escHandler = (e) => { if (e.key === 'Escape') closeModal(); };
+      const backdropClick = () => { closeModal(); };
+
+      modal.addEventListener('click', backdropClick);
+      document.addEventListener('keydown', escHandler);
+
+      modal.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); showSlide(idx - 1); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); showSlide(idx + 1); }
+      });
+
+      modal.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.deltaY > 0) {
+          showSlide(idx + 1);
+        } else if (e.deltaY < 0) {
+          showSlide(idx - 1);
+        }
+      });
+
+      // Touch swipe support for modal
+      let modalStartX = 0;
+      modal.addEventListener('touchstart', (e) => {
+        modalStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      modal.addEventListener('touchend', (e) => {
+        const modalEndX = e.changedTouches[0].screenX;
+        if (modalStartX - modalEndX > 50) showSlide(idx + 1);
+        if (modalEndX - modalStartX > 50) showSlide(idx - 1);
+      }, { passive: true });
+
+      const closeModal = () => {
+        document.removeEventListener('keydown', escHandler);
+        modal.removeEventListener('click', backdropClick);
+        modal.remove();
+        this.modal = null;
+      };
+
+      this.modal = modal;
+      modal.focus();
+    }
+  }
+
+  // init on DOMContentLoaded or now
+  function init() {
+    qsa('.cult-carousel').forEach(root => new CultCarousel(root));
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("mediaModal");
+  const modalImg = document.getElementById("modalImg");
+  const modalVideo = document.getElementById("modalVideo");
+  const closeBtn = document.querySelector(".media-modal-close");
+
+  // select page media, explicitly exclude modal elements;
+  // then filter out media that live inside .cult-carousel or inside any modal
+  const allMedia = Array.from(document.querySelectorAll("img:not(#modalImg), video:not(#modalVideo)"));
+  const mediaElements = allMedia.filter(el => {
+    if (el.closest('.cult-carousel')) return false; // exclude carousel media
+    if (el.closest('.cult-modal')) return false;    // exclude carousel's own modal (if present)
+    if (el.closest('#mediaModal')) return false;    // exclude the global modal itself
+    return true;
+  });
+
+  // Open modal for each media element
+  mediaElements.forEach(media => {
+    if (media.classList.contains("link-icon") || media.closest("button")) return;
+
+    media.classList.add("zoomable");
+
+    media.addEventListener("click", (e) => {
+      e.stopPropagation();
+      modal.style.display = "flex";
+
+      if (media.tagName === "IMG") {
+        modalImg.style.display = "block";
+        modalVideo.style.display = "none";
+        modalImg.src = media.src;
+      } else if (media.tagName === "VIDEO") {
+        const currentTime = Number.isFinite(media.currentTime) ? media.currentTime : 0;
+        const wasPlaying = !media.paused;
+        const playbackRate = media.playbackRate || 1;
+
+        modalImg.style.display = "none";
+        modalVideo.style.display = "block";
+
+        const sourceEl = media.querySelector("source");
+        const src = sourceEl ? sourceEl.src : media.currentSrc || media.src || "";
+
+        if (!modalVideo.src || modalVideo.src !== src) {
+          try { modalVideo.pause(); } catch (e) { }
+          modalVideo.removeAttribute("src");
+          modalVideo.load();
+          modalVideo.src = src;
+        }
+
+        modalVideo.playbackRate = playbackRate;
+
+        const applySync = () => {
+          const dur = modalVideo.duration;
+          const target = (isFinite(dur) && dur > 0) ? Math.min(currentTime, dur) : currentTime;
+          try { modalVideo.currentTime = target; } catch (err) { }
+          if (wasPlaying) {
+            modalVideo.play().catch(() => { });
+          } else {
+            try { modalVideo.pause(); } catch (e) { }
+          }
+        };
+
+        if (modalVideo.readyState >= 1 && isFinite(modalVideo.duration)) {
+          applySync();
+        } else {
+          modalVideo.addEventListener("loadedmetadata", function once() {
+            applySync();
+            modalVideo.removeEventListener("loadedmetadata", once);
+          }, { once: true });
+        }
+
+        try { modalVideo.currentTime = currentTime; } catch (e) { }
+      }
+    });
+  });
+
+  const closeModal = () => {
+    modal.style.display = "none";
+    modalImg.src = "";
+    try { modalVideo.pause(); } catch (e) { }
+    try { modalVideo.currentTime = 0; } catch (e) { }
+    modalVideo.removeAttribute("src");
+    modalVideo.load();
+  };
+
+  if (closeBtn) closeBtn.addEventListener("click", (e) => { e.stopPropagation(); closeModal(); });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  modalImg.addEventListener("click", (e) => { e.stopPropagation(); closeModal(); });
+  modalVideo.addEventListener("click", (e) => { e.stopPropagation(); closeModal(); });
+
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+});
+

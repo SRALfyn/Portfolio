@@ -2596,3 +2596,302 @@ video::-webkit-media-controls-time-remaining-display {
 * {
     -webkit-tap-highlight-color: transparent;
 }
+
+/* Cult carousel */
+.cult-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    /* passt sich vorhandenen video/elementen an */
+    margin: 0.75rem auto 0 auto;
+    user-select: none;
+    padding-bottom: 2rem;
+}
+
+.cult-carousel__viewport {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 3px solid #3d3d3d;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background: #0f0f0f;
+    height: auto;
+}
+
+.cult-carousel__slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0;
+    transform: scale(1.02);
+    transition: opacity 260ms ease, transform 260ms ease;
+    cursor: zoom-in;
+}
+
+/* active slide */
+.cult-carousel__slide.cult-active {
+    opacity: 1;
+    transform: scale(1);
+    position: relative;
+}
+
+/* arrows */
+.cult-carousel__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 30;
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 120ms;
+    backdrop-filter: blur(3px);
+}
+
+.cult-carousel__arrow:hover {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.cult-carousel__arrow--left {
+    left: 8px;
+}
+
+.cult-carousel__arrow--right {
+    right: 8px;
+}
+
+/* dots */
+.cult-carousel__dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.75rem;
+}
+
+.cult-carousel__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #9a9a9a;
+    border: none;
+    cursor: pointer;
+    transition: transform 140ms, background 140ms;
+}
+
+.cult-carousel__dot.cult-dot-active {
+    background: var(--base-color, #d4af37);
+    transform: scale(1.25);
+}
+
+/* fullscreen modal (opened when clicking an image) */
+.cult-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    padding: 24px;
+}
+
+.cult-modal__img {
+    max-height: 95vh;
+    max-width: 95vw;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    border-radius: 6px;
+    cursor: zoom-out;
+}
+
+/* small screens tweak */
+@media (max-width: 520px) {
+    .cult-carousel__arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+
+    .cult-carousel {
+        max-width: 100%;
+    }
+}
+
+/* dot active color for small carousel */
+.cult-carousel__dot.cult-dot-active {
+    background: goldenrod;
+    /* changed to goldenrod */
+    transform: scale(1.25);
+}
+
+/* modal base */
+.cult-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    padding: 24px;
+    cursor: zoom-out;
+}
+
+.cult-modal__inner {
+    position: relative;
+    width: 95%;
+    max-width: 1100px;
+    max-height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.cult-modal__viewport {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.cult-modal__slide {
+    display: none;
+    max-width: 95%;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.cult-modal__slide--active {
+    display: block;
+}
+
+/* modal arrows */
+.cult-modal__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2000;
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    cursor: pointer;
+    transition: background 120ms;
+    backdrop-filter: blur(3px);
+}
+
+.cult-modal__arrow--left {
+    left: 8px;
+}
+
+.cult-modal__arrow--right {
+    right: 8px;
+}
+
+/* modal dots and active color */
+.cult-modal__dots {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 2100;
+}
+
+.cult-modal__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #9a9a9a;
+    border: none;
+    cursor: pointer;
+    transition: transform 140ms, background 140ms;
+}
+
+.cult-modal__dot--active {
+    background: goldenrod;
+    transform: scale(1.25);
+}
+
+.tutorial-link {
+    font-weight: bold;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.tutorial-link:hover {
+    color: goldenrod;
+    text-decoration: none;
+}
+
+.media-modal {
+    display: none;
+    /* Standardmäßig ausgeblendet */
+    position: fixed;
+    z-index: 10000;
+    /* Stellt sicher, dass es über allen anderen Elementen liegt */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+}
+
+.media-modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.media-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10001;
+}
+
+.media-modal-close:hover {
+    color: #bbb;
+}
+
+/* Zeigt dem Nutzer an, dass Bilder und Videos klickbar sind */
+img.zoomable,
+video.zoomable {
+    cursor: zoom-in;
+}
