@@ -924,7 +924,7 @@ html.noscroll {
 
 #profile {
     gap: 2rem;
-    padding-bottom: 6rem;
+    padding-bottom: 4rem;
     margin-bottom: 4rem;
     border-bottom: .125rem solid var(--text-color)
 }

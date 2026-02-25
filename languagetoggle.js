@@ -127,6 +127,131 @@ let mercuryApproaches = document.getElementById('mercuryApproaches');
 let cultProblemTitle2 = document.getElementById('cultProblemTitle2');
 let cultProblemDesc2 = document.getElementById('cultProblemDesc2');
 
+
+const translatableElements = [
+    // Nav & Footer
+    aboutt, experienceE, projectsS, contactT,
+    abouttt, experienceEE, projectsSS, contactTT,
+    about3, experience3, projects3, contact3,
+
+    // Profile & About
+    Name, Developer, StudentStatus,
+    GetTo, AboutMe, Longtext,
+
+    // Projects Section
+    Browse, Projects, Contact, cvLink,
+
+    // Project Card Details Buttons
+    floatDetailsBtn, cultDetailsBtn, umbraDetailsBtn,
+    neoTokyoDetailsBtn, mercuryDetailsBtn, allGamesBtn, AllSteamBtn,
+
+    // Taglines
+    floattitle, godofaculttitle, umbratitle, neotokyotitle, mercurytitle,
+
+    // FLOAT
+    P1, P2, RoleTitle, RoleDescription, ProblemTitle, ProblemDesc,
+    EmbedTitle, EmbedDesc, AchievementsTitle, AchievementsDesc,
+    FloatDescribtionTitle, FloatDescription,
+
+    // CULT
+    cultScopeTitle, cultScopeDesc, cultRoleTitle, cultRoleDesc,
+    cultProblemTitle, cultProblemDesc, CultAchievementsTitle, CultAchievementsDesc,
+    gofofacultDescribtionTitle, gofofacultDescription, cultProblemTitle2, cultProblemDesc2,
+
+    // UMBRA
+    umbraScopeTitle, umbraScopeDesc, umbraRoleTitle, umbraRoleDesc,
+    umbraProblemTitle, umbraProblemDesc, UmbraAchievementsTitle, UmbraAchievementsDesc,
+
+    // NEO TOKYO
+    neoScopeTitle, neoScopeDesc, neoRoleTitle, neoRoleDesc,
+    NeoAchievementsTitle, NeoAchievementsDesc,
+    ...neoProblemTitles, ...neoProblemDescs,
+
+    // MERCURY
+    mercuryScopeTitle, mercuryScopeDesc, mercuryRoleTitle, mercuryRoleDesc,
+    mercuryDescribtionTitle, mercuryDescription, mercuryApproaches,
+    ...mercuryTitles, ...mercuryDescs, ...mercuryDescs2,
+
+    // Post Mortem Buttons
+    postMortemBtn, postMortemBtn2, postMortemBtn3,
+
+    // Im Skript referenzierte globale Variablen/IDs (falls sie auf der Seite existieren)
+    typeof InsightsSubtitle !== 'undefined' ? InsightsSubtitle : null,
+    typeof InsightsTitle !== 'undefined' ? InsightsTitle : null,
+    typeof cpuTitle !== 'undefined' ? cpuTitle : null,
+    typeof cpuList !== 'undefined' ? cpuList : null,
+    typeof gpuTitle !== 'undefined' ? gpuTitle : null,
+    typeof gpuList !== 'undefined' ? gpuList : null,
+    typeof memTitle !== 'undefined' ? memTitle : null,
+    typeof memList !== 'undefined' ? memList : null,
+    typeof pdfBtn !== 'undefined' ? pdfBtn : null,
+    typeof insightsS !== 'undefined' ? insightsS : null,
+    typeof insightsSS !== 'undefined' ? insightsSS : null,
+    typeof insights3 !== 'undefined' ? insights3 : null,
+    typeof MercuryAchTitle !== 'undefined' ? MercuryAchTitle : null,
+    typeof MercuryAchDesc !== 'undefined' ? MercuryAchDesc : null,
+    typeof EmbedTitle1 !== 'undefined' ? EmbedTitle1 : null,
+    typeof EmbedDesc1 !== 'undefined' ? EmbedDesc1 : null
+];
+
+const originalEnglishTexts = new Map();
+
+// 3. Originaltexte beim Start speichern
+translatableElements.forEach(el => {
+    if (el) {
+        originalEnglishTexts.set(el, el.innerHTML);
+    }
+});
+
+const showDisclaimer = () => {
+    const languageToggle = document.getElementById('language-switch');
+    if (!languageToggle) return;
+
+    const disclaimer = document.createElement('div');
+
+    disclaimer.innerHTML = '※注記：この翻訳はサイトを読みやすくするためにツールを使用して作成されたものであり、私の現在の実際の日本語能力を反映するものではありません。';
+
+    // Fixed Positionierung für mitscrollende Elemente
+    disclaimer.style.position = 'fixed';
+    disclaimer.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    disclaimer.style.color = '#fff';
+    disclaimer.style.padding = '8px 12px';
+    disclaimer.style.borderRadius = '4px';
+    disclaimer.style.fontSize = '12px';
+    disclaimer.style.whiteSpace = 'normal';
+    disclaimer.style.lineHeight = '1.4';
+    disclaimer.style.pointerEvents = 'none';
+    disclaimer.style.zIndex = '1000';
+    disclaimer.style.opacity = '0';
+    disclaimer.style.transition = 'opacity 0.4s ease';
+
+    document.body.appendChild(disclaimer);
+
+    const rect = languageToggle.getBoundingClientRect();
+
+    const spaceOnRight = window.innerWidth - rect.right - 25;
+    disclaimer.style.maxWidth = `${Math.min(280, Math.max(60, spaceOnRight))}px`;
+
+    // Immer rechts positionieren
+    disclaimer.style.left = `${rect.right + 15}px`;
+
+    // Vertikal zentrieren (ohne window.scrollY, da position: fixed)
+    const topPosition = rect.top + (rect.height / 2) - (disclaimer.offsetHeight / 2);
+    disclaimer.style.top = `${topPosition}px`;
+
+    // Fade-in
+    requestAnimationFrame(() => {
+        disclaimer.style.opacity = '1';
+    });
+
+    // Nach 6 Sekunden ausblenden und entfernen
+    setTimeout(() => {
+        disclaimer.style.opacity = '0';
+        setTimeout(() => disclaimer.remove(), 400);
+    }, 10000);
+};
+
+
 // --- JAPANISCH AKTIVIEREN ---
 const enableLanguage = () => {
     // Insights Section Titles
@@ -348,7 +473,8 @@ const enableLanguage = () => {
 
     if (GetTo) GetTo.innerText = "もっと知る";
     if (AboutMe) AboutMe.innerText = "私について";
-    if (Longtext) Longtext.innerText = "ゲーム開発に初めて触れたのは学校のプロジェクトで、自分の作ったものを他の人が遊んで楽しんでくれる姿を見て、忘れられない感動を覚えました。2023年に日本を訪れ、強い縁を感じ、それ以来毎日インスピレーションを受けています。今では、ゲーム制作へのモチベーションは、日本でキャリアと人生を築くという長期的な目標と深く結びついています。";
+    if (Longtext) Longtext.innerHTML = "初めてゲーム開発に触れたのは、高校時代のプロジェクトです。自分が作ったものを他の人が楽しんでいる姿を見て、忘れられないほど感動し、この情熱を持ち続けたいと思いました。2023年に日本を訪れ、この国に強く惹かれました。<br /> <br /> 現在、日本の文化は私の日常生活に深く根付いています。ビデオゲーム、漫画、アニメへの情熱に加え、生き甲斐という哲学もこれに含まれます。さらに、武神館での稽古を始め、そこから日本の歴史について多くのことを学んでいます。 <br /> <br /> 日本のゲームスタジオで特に印象的なのは、プレイヤーの期待に応える、完成された高品質な体験を提供しようとする開発者の献身的な姿勢です。私は、最高のプレイヤー体験を創り出すことに尽力する環境の一員になりたいと考えています。";
+
 
     if (Browse) Browse.innerText = "";
     if (Projects) Projects.innerText = "最近のプロジェクト";
@@ -389,270 +515,25 @@ const enableLanguage = () => {
     if (cultProblemTitle2) cultProblemTitle2.innerText = "チュートリアルシリーズの作成";
     if (cultProblemDesc2) cultProblemDesc2.innerHTML = "他の開発者の助けになるよう、Unreal Engine 5で必要なコアシステムを構築する方法を解説する7時間以上のシリーズを録画しました。視聴は<a href='https://www.youtube.com/playlist?list=PLSStU8YtITKfY5ivtE77u5DZma00sIdtf' target='_blank' rel='noopener noreferrer' class='tutorial-link'>こちら</a>から可能です。";
 
+    if (!sessionStorage.getItem('disclaimerShown')) {
+        showDisclaimer();
+        sessionStorage.setItem('disclaimerShown', 'true');
+    }
+
+
 }
 
 // --- ENGLISCH AKTIVIEREN (Disable Japanese) ---
 const disableLanguage = () => {
+    // 4. Gespeicherte Originaltexte aus dem HTML wiederherstellen
+    translatableElements.forEach(el => {
+        if (el && originalEnglishTexts.has(el)) {
+            el.innerHTML = originalEnglishTexts.get(el);
+        }
+    });
 
-    // Insights Section Titles
-    if (InsightsSubtitle) InsightsSubtitle.innerHTML = "Technical Methodology";
-    if (InsightsTitle) InsightsTitle.innerHTML = "Performance Guide";
-
-    // Card 1: Profiling & CPU
-    if (cpuTitle) cpuTitle.innerHTML = "Profiling & CPU";
-    if (cpuList) cpuList.innerHTML =
-        "<li style='margin-bottom: 0.5rem;'><strong>Profiling:</strong> Bottleneck-analysis using <em>stat unit</em>, <em>stat scenerendering</em>, Unreal Insights</li>" +
-        "<li style='margin-bottom: 0.5rem;'><strong>Threads:</strong> Distinguishing Game Thread, Render Thread, and GPU time</li>" +
-        "<li style='margin-bottom: 0.5rem;'><strong>Ticks:</strong> Conditional ticking and reduced update rates</li>" +
-        "<li style='margin-bottom: 0.5rem;'><strong>Logic:</strong> Simplified logic flow; high-frequency operations moved to C++</li>" +
-        "<li style='margin-bottom: 0.5rem;'><strong>Pooling:</strong> Reuse of frequently spawned objects</li>";
-
-    // Card 2: GPU & Rendering
-    if (gpuTitle) gpuTitle.innerHTML = "GPU & Rendering";
-    if (gpuList) gpuList.innerHTML =
-        "<li style='margin-bottom: 0.5rem;'><strong>Draw Calls:</strong> Instancing (ISM/HISM) and Hierarchical LODs (HLOD)</li>" +
-        "<li style='margin-bottom: 0.5rem;'><strong>Materials:</strong> Minimal slots, master-material workflow, reduced shader cost</li>" +
-        "<li style='margin-bottom: 0.5rem;'><strong>Lighting:</strong> Controlled dynamic lights, shadow settings, attenuation</li>" +
-        "<li style='margin-bottom: 0.5rem;'><strong>VFX:</strong> GPU simulations with fixed bounds and pooled effects</li>" +
-        "<li style='margin-bottom: 0.5rem;'><strong>VR:</strong> Instanced Stereo, Multi-View, efficient forward rendering</li>";
-
-    // Card 3: Workflow & Memory
-    if (memTitle) memTitle.innerHTML = "Workflow & Memory";
-    if (memList) memList.innerHTML =
-        "<li style='margin-bottom: 0.5rem;'><strong>References:</strong> Use of soft references and async loading</li>" +
-        "<li style='margin-bottom: 0.5rem;'><strong>Build Size:</strong> Removal of unused plugins; selective map inclusion</li>" +
-        "<li style='margin-bottom: 0.5rem;'><strong>Planning:</strong> Early performance planning in game design</li>" +
-        "<li style='margin-bottom: 0.5rem;'><strong>Maintenance:</strong> Continuous profiling and documenting global changes</li>";
-
-    // PDF Button
-    if (pdfBtn) pdfBtn.innerHTML = "View Full PDF Guide (Only English)";
-    if (postMortemBtn) postMortemBtn.innerHTML = "View Post-Mortem (Only English)";
-    if (postMortemBtn2) postMortemBtn2.innerHTML = "View Post-Mortem (Only English)";
-    if (postMortemBtn3) postMortemBtn3.innerHTML = "View Post-Mortem (Only English)";
-
-    // --- TAGLINES ---
-    if (floattitle) floattitle.innerHTML = `<span ${subStyle}>Award-winning MR for prosthetics research</span>`;
-    if (godofaculttitle) godofaculttitle.innerHTML = `<span ${subStyle}>Expandable comedic point-and-click cult sim</span>`;
-    if (umbratitle) umbratitle.innerHTML = `<span ${subStyle}>Atmospheric, unforgiving speedrun</span>`;
-    if (neotokyotitle) neotokyotitle.innerHTML = `<span ${subStyle}>Endless wave-based action</span>`;
-    if (mercurytitle) mercurytitle.innerHTML = `<span ${subStyle}>World's first fast-paced hand-tracking brawler</span>`;
-
-    // --- MERCURY ---
-    if (mercuryScopeTitle) mercuryScopeTitle.innerText = "Project Scope";
-    if (mercuryScopeDesc) mercuryScopeDesc.innerHTML = "<li>2 Months</li><li>Team of 6 People</li>";
-    if (mercuryRoleTitle) mercuryRoleTitle.innerText = "My Core Role";
-    if (mercuryRoleDesc) mercuryRoleDesc.innerHTML = "<li>Player Mechanics</li>";
-
-    // Mercury Context
-    if (mercuryTitles[0]) mercuryTitles[0].innerText = "The Context of the Code";
-    if (mercuryDescs[0]) {
-        mercuryDescs[0].innerText = "Mercury is the first VR mecha brawler with pure hand-gesture controls. It utilizes controller-free gorilla locomotion, pushing hand tracking to its limits with fast-paced combat. Developed in just five weeks, the project required extensive iteration to solve the challenges of the unique movement system in the city environment.";
-    }
-    // Mercury Locomotion (HTML Reset)
-    if (mercuryTitles[1]) mercuryTitles[1].innerText = "Gorilla Locomotion System";
-    if (mercuryDescs[1]) {
-        mercuryDescs[1].innerHTML = `
-        <h3 style="margin-bottom: 2px; font-size: 1.1em;">Hand-Surface Interaction</h3>
-        <p style="margin-top: 0; margin-bottom: 15px;">Linetraces position the mecha hands directly on surfaces for consistent contact and clear player feedback.</p>
-
-        <h3 style="margin-bottom: 2px; margin-top: 15px; font-size: 1.1em;">Grab Recognition</h3>
-        <ul style="margin-top: 0; margin-bottom: 15px; padding-left: 20px;">
-          <li>Pose-based detection with safeguards against unintended grabs/releases.</li>
-          <li>Context-aware checks for floors vs. vertical surfaces.</li>
-        </ul>
-        </ul>`;
-    }
-
-    if (mercuryDescs2[0]) {
-        mercuryDescs2[0].innerHTML = `
-        <h3 style="margin-bottom: 2px; margin-top: 15px; font-size: 1.1em;">Surface Validation</h3>
-        <p style="margin-top: 0; margin-bottom: 15px;">Sphere traces identify grab components and validate intent through hand-direction vs. surface-normal alignment.</p>
-
-        <h3 style="margin-bottom: 2px; margin-top: 15px; font-size: 1.1em;">Climbing & Movement Response</h3>
-        <ul style="margin-top: 0; margin-bottom: 15px; padding-left: 20px;">
-          <li>Player movement is derived from relative hand motion with weighted recent input for high responsiveness.</li>
-          <li>Adaptive transitions handle gravity, capsule scaling, and movement offsets during grabs.</li>
-        </ul>
-
-        <h3 style="margin-bottom: 2px; font-size: 1.1em;">Release Dynamics</h3>
-        <ul style="margin-top: 0; margin-bottom: 0; padding-left: 20px;">
-          <li>Final launch velocity blends camera aim, movement intent, and surface type.</li>
-          <li>Short lockouts prevent accidental re-grabs and maintain fluid momentum.</li>
-        </ul>`;
-    }
-
-    // --- NEO TOKYO ---
-    if (neoProblemTitles.length > 0) neoProblemTitles[0].innerText = "What’s in the Box?";
-    if (neoProblemDescs.length > 0) neoProblemDescs[0].innerText = "Core systems first: wave system, between-round shop, intro sequence. For VR we focused on fast, fun mechanics like procedural katana slicing.";
-    if (neoProblemTitles.length > 1) neoProblemTitles[1].innerText = "Compromises";
-    if (neoProblemDescs.length > 1) neoProblemDescs[1].innerText = "Skipped complex features like a currency system to keep scope realistic.";
-    if (neoProblemTitles.length > 2) neoProblemTitles[2].innerText = "In hindsight";
-    if (neoProblemDescs.length > 2) neoProblemDescs[2].innerText = "No revision control → higher workload on one person, fewer features shipped.";
-
-    if (neoScopeTitle) neoScopeTitle.innerText = "Project Scope";
-    if (neoScopeDesc) neoScopeDesc.innerHTML = "- 48-Hour Game Jam <br /> - Team of 6 People";
-    if (neoRoleTitle) neoRoleTitle.innerText = "My Core Role";
-    if (neoRoleDesc) neoRoleDesc.innerHTML = "- Main Programmer";
-    if (NeoAchievementsTitle) NeoAchievementsTitle.innerHTML = "Achievements";
-    if (NeoAchievementsDesc) NeoAchievementsDesc.innerHTML = "<ul>" +
-        "<li>Exhibitor: HNU Werkschau</li>" +
-        "<li><a href='https://events.games-bavaria.com/event/🎮-hessen-meets-bayern-game-connect-2025/' target='_blank' rel='noopener noreferrer'>Exhibitor: Game Connect 2025 - Bayern meets Hessen<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
-        "<li>Winner: 2. HNU Game Jam</li>" +
-        "</ul>";
-
-    // Mercury Achievements
-    if (MercuryAchTitle) MercuryAchTitle.innerHTML = "Achievements";
-    if (MercuryAchDesc) MercuryAchDesc.innerHTML = "<ul><li>" +
-        "<a href='https://devpost.com/software/mercury-05i6ty' target='_blank' rel='noopener noreferrer'>" +
-        "Participant: Meta Horizon Start Developer Competition" +
-        "<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a>" +
-        "</li><li>Winner: HNU Werkschau | Best Mechanics-Award</li></ul>";
-
-    // --- GOD OF A CULT ---
-    if (cultScopeTitle) cultScopeTitle.innerText = "Project Scope";
-    if (cultScopeDesc) cultScopeDesc.innerHTML = "<li>2nd Semester Project</li><li><a href='https://www.filmmakers.eu/en/actors/thorben-gohde' target='_blank' rel='noopener noreferrer'>Voiced by Thorben Gohde <img src='./assets/hyperlink_icon.png' alt='External link' class='link-icon' /></a></li>";
-    if (cultRoleTitle) cultRoleTitle.innerText = "My Core Role";
-    if (cultRoleDesc) cultRoleDesc.innerHTML = "<li>Solo Project</li>";
-    if (cultProblemTitle) cultProblemTitle.innerText = "The Context of the Code";
-    if (cultProblemDesc) cultProblemDesc.innerText = "To create levels as fast as possible, I developed a system that relies entirely on Data Tables. The game is fully voiced and breaks the fourth wall through dialogues, real-time clocks, and revealing that the player in front of the screen is the God of Time.";
-    if (CultAchievementsTitle) CultAchievementsTitle.innerText = "Achievements";
-    if (CultAchievementsDesc) CultAchievementsDesc.innerHTML = "<ul><li>Exhibitor: HNU Werkschau</li><li>Showcase project for new semester</li></ul>";
-
-    // --- UMBRA ---
-    if (umbraScopeTitle) umbraScopeTitle.innerText = "Project Scope";
-    if (umbraScopeDesc) umbraScopeDesc.innerHTML = "- 48-Hour Game Jam <br /> - Extended by 2 Weeks <br /> - Team of 4 People";
-    if (umbraRoleTitle) umbraRoleTitle.innerText = "My Core Role";
-    if (umbraRoleDesc) umbraRoleDesc.innerHTML = "- Only Programmer <br /> - Shader";
-    if (umbraProblemTitle) umbraProblemTitle.innerText = "The Context of the Code";
-    if (umbraProblemDesc) umbraProblemDesc.innerText = "For this Main Menu I created multiple Widgets so I could use them in different Projects. A Macro handles the opening of the different Sub-Widgets. The Main Menu is placed in a 3D Space and on the Materials is a basic Panner to create the Illusion of the Camera moving constantly.";
-    if (UmbraAchievementsTitle) UmbraAchievementsTitle.innerText = "Achievements";
-    if (UmbraAchievementsDesc) UmbraAchievementsDesc.innerHTML = "<ul>" +
-        "<li>Exhibitor: HNU Werkschau</li>" +
-        "<li><a href='https://events.games-bavaria.com/event/🎮-hessen-meets-bayern-game-connect-2025/' target='_blank' rel='noopener noreferrer'>Exhibitor: Game Connect 2025 - Bayern meets Hessen<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
-        "<li>Winner: 1. HNU Game Jam</li>" +
-        "<li>Winner: HNU Werkschau | Best Sound</li>" +
-        "</ul>";
-
-    // --- FLOAT ---
-    if (P1) P1.innerText = "Project Scope";
-    if (P2) P2.innerHTML = "<li>6 Months</li><li>Team of 6 People</li>";
-    if (RoleTitle) RoleTitle.innerText = "My Core Role";
-    if (RoleDescription) RoleDescription.innerHTML = "<li>Main Programmer</li><li>Shader</li><li>Effects</li>";
-    if (ProblemTitle) ProblemTitle.innerText = "The Context of the Code";
-    if (ProblemDesc) ProblemDesc.innerText = "We needed to place the Foliage as Instance Static Meshes and our Game Designer asked me if there is a way so he doesn’t have to manipulate each mesh individually. So I build him a simple Editor Utility Widget.";
-    if (EmbedTitle) EmbedTitle.innerText = "The Context of the Code";
-    if (EmbedDesc) EmbedDesc.innerText = "To create different types of obstacles in the game we decided to use Water. It had various requirements that needed to be met, like a form of interaction with the player.";
-    if (AchievementsTitle) AchievementsTitle.innerText = "Achievements";
-    if (AchievementsDesc) AchievementsDesc.innerHTML = "<ul>" +
-        // Winners
-        "<li><a href='https://www.mb21.de/wettbewerbsjahr_2025.html?articles=float' target='_blank' rel='noopener noreferrer'>Winner: Deutscher Multimediapreis mb21<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
-
-        "<li><a href='https://www.studentgamesfestival.com/2025-winners' target='_blank' rel='noopener noreferrer'>Winner: Best Student Games Award | Meaningful Game<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
-
-        "<li><a href='https://www.linkedin.com/feed/update/urn:li:activity:7334126257871175680/' target='_blank' rel='noopener noreferrer'>Winner: Varjo Academic Giveaway Campaign<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
-
-        "<li>Winner: HNU Werkschau | Best Game-Award</li>" +
-
-        // Nominees (mit margin-top)
-        "<li style='margin-top: 20px;'><a href='https://nextrealitycontest.de/de/nominierte/nominierte-2025/' target='_blank' rel='noopener noreferrer'>Nominee: XRC25 | Young Talent<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
-
-        "<li><a href='https://nextrealitycontest.de/de/nominierte/nominierte-2025/' target='_blank' rel='noopener noreferrer'>Nominee: XRC25 | Community Award<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
-
-        // Exhibitors (mit margin-top bei Business Area)
-        "<li style='margin-top: 20px;'><a href='https://www.games-bavaria.com/gamescom-2025/' target='_blank' rel='noopener noreferrer'>Exhibitor: Gamescom 2025 | Business Area<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
-
-        "<li><a href='https://rawtalentbooth.com' target='_blank' rel='noopener noreferrer'>Exhibitor: Gamescom 2025 | Entertainment Area<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
-
-        "<li><a href='https://germandevdays.com/exhibitors' target='_blank' rel='noopener noreferrer'>Exhibitor: GermanDevDays 2025<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
-
-        "<li><a href='https://play-con.de/ausstellerinnen-2025-neuulm/' target='_blank' rel='noopener noreferrer'>Exhibitor: Play! Con 2025<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
-
-        "<li>Exhibitor: Hackerkiste Augsburg 2025</li>" +
-        "<li>Exhibitor: TINCON 2025</li>" +
-
-        // Member (mit margin-top)
-        "<li style='margin-top: 20px;'>Member: Meta Horizon Start Community</li>" +
-        "</ul>";
-
-    // --- GENERAL UI ---
-    if (allGamesBtn) {
-        allGamesBtn.innerHTML = `
-      <img src="./assets/itch_red.png" alt="itch_logo" style="width: 1.2rem; height: auto; margin-right: 0.5rem; vertical-align: middle;">
-      All my Games
-    `;
-    }
-    if (AllSteamBtn) {
-        AllSteamBtn.innerHTML = `
-      <img src="./assets/steam.png" alt="steam_logo" style="width: 1.2rem; height: auto; margin-right: 0.5rem; vertical-align: middle;">
-      Steam Releases
-    `;
-    }
-    if (floatDetailsBtn) floatDetailsBtn.innerText = "Details";
-    if (cultDetailsBtn) cultDetailsBtn.innerText = "Details";
-    if (umbraDetailsBtn) umbraDetailsBtn.innerText = "Details";
-    if (neoTokyoDetailsBtn) neoTokyoDetailsBtn.innerText = "Details";
-    if (mercuryDetailsBtn) mercuryDetailsBtn.innerText = "Details";
-
-    localStorage.setItem('language', null);
-
-    if (aboutt) aboutt.innerText = "About";
-    if (experienceE) experienceE.innerText = "Experience";
-    if (projectsS) projectsS.innerText = "Projects";
-    if (contactT) contactT.innerText = "Contact";
-    if (abouttt) abouttt.innerText = "About";
-    if (experienceEE) experienceEE.innerText = "Experience";
-    if (projectsSS) projectsSS.innerText = "Projects";
-    if (contactTT) contactTT.innerText = "Contact";
-    if (insightsS) insightsS.innerHTML = "Performance Guide";
-    if (insightsSS) insightsSS.innerHTML = "Performance Guide";
-
-
-
-    if (Name) Name.innerText = "Lars Gohde";
-    if (Developer) Developer.innerText = "Game and Shader Programmer";
-    if (StudentStatus) StudentStatus.innerText = "Incoming Exchange Student at Kanagawa Univ. (March – Aug 2026)";
-    if (GetTo) GetTo.innerText = "Get To Know More";
-    if (AboutMe) AboutMe.innerText = "About Me";
-    if (Longtext) Longtext.innerText = "I first discovered game development in school through a class project. Seeing others play and enjoy what I had created sparked a feeling I never wanted to lose. In 2023 I visited Japan and developed a strong connection to the country, which continues to inspire me every day. Today, my motivation to create games is closely tied to my long-term ambition of building a career and life in Japan.";
-    if (Browse) Browse.innerText = "Browse My";
-    if (Projects) Projects.innerText = "Recent Projects";
-    if (Contact) Contact.innerText = "Contact Me";
-    if (about3) about3.innerText = "About";
-    if (experience3) experience3.innerText = "Experience";
-    if (projects3) projects3.innerText = "Projects";
-    if (contact3) contact3.innerText = "Contact";
-    if (insights3) insights3.innerHTML = "Performance Guide";
-
-    if (cvLink) cvLink.innerText = "View CV";
-
-    // --- DESCRIPTIONS (ENGLISCH) ---
-    if (FloatDescribtionTitle) FloatDescribtionTitle.innerText = "Description";
-    if (FloatDescription) FloatDescription.innerText = "FLOAT is a Mixed Reality serious game that gamifies medical data collection. Using only hand gestures, players interact with a fractured world to help the little Pookis, while the system records muscle movement, contributing to the development of AI-trained prosthetics.";
-
-    if (mercuryDescribtionTitle) mercuryDescribtionTitle.innerText = "Description";
-    if (mercuryDescription) mercuryDescription.innerText = "Mercury is the first controller-free VR mecha brawler. Players use physical movements to climb through a city and engage in fast-paced arena combat. The game relies entirely on hand tracking for both navigation and fighting.";
-
-    if (gofofacultDescribtionTitle) gofofacultDescribtionTitle.innerText = "Description";
-    if (gofofacultDescription) gofofacultDescription.innerText = "God of a Cult is a comedic point-and-click adventure. Players solve puzzles to help the protagonist become the next incarnation of the God of Time and find his missing sister. The game is fully voiced and includes translated text and a scalable save system.";
-
-    if (mercuryApproaches) {
-        // Title (h3)
-        mercuryApproaches.querySelector('h3').innerText = "Different Movement Approaches";
-        // Text (p)
-        mercuryApproaches.querySelector('p').innerText = "As we were looking at multiple ideas on the movement system, I created prototypes for each of them in Unity.";
-    }
-
-
-    if (EmbedTitle1) EmbedTitle1.innerText = "The Context of the Code";
-    if (EmbedDesc1) EmbedDesc1.innerText = "All obstacles in the game inherit from a core class, exposing parameters that the Game Designer can adjust in the editor. Each obstacle is designed to handle multiple Pookis.";
-
-    if (cultProblemDesc) cultProblemDesc.innerText = "To create levels as fast as possible, I developed a system that relies entirely on Data Tables. The game is fully voiced and breaks the fourth wall through dialogues, real-time clocks, and revealing that the player in front of the screen is the God of Time.";
-    if (gofofacultDescription) gofofacultDescription.innerText = "God of a Cult is a comedic point-and-click adventure. Players solve puzzles to help the protagonist become the next incarnation of the God of Time and find his missing sister. The game is fully voiced and includes translated text and a scalable save system.";
-
-    if (cultProblemTitle2) cultProblemTitle2.innerText = "Creation of a Tutorial Series";
-    if (cultProblemDesc2) cultProblemDesc2.innerHTML = "To help others, I recorded a 7+ hour series explaining how to build the required core systems in Unreal Engine 5. It can be viewed <a href='https://www.youtube.com/playlist?list=PLSStU8YtITKfY5ivtE77u5DZma00sIdtf' target='_blank' rel='noopener noreferrer' class='tutorial-link'>here</a>.";
-
-}
+    localStorage.setItem('language', 'inactive');
+};
 
 // --- INIT ---
 if (language === "active") {
