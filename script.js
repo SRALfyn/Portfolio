@@ -565,8 +565,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Open modal for each media element
   mediaElements.forEach(media => {
-    if (media.classList.contains("link-icon") || media.closest("button")) return;
+    // Exclude explicit small UI icons / controls:
+    // - icons used for external links
+    // - items inside nav/menu/language controls
+    // - styled .btn / .project-btn icons (e.g. meta/itch icons)
+    // - everything inside the contact section (#contact)
+    if (media.classList.contains("link-icon")) return;
+    if (media.closest('.menu-links, .nav-links, .hamburger-icon, .languageswitch')) return;
+    if (media.closest('.btn, .project-btn')) return;
+    if (media.closest('#contact, .contact-info-container, .contact-icon')) return;
 
+    // Allow images even if they sit inside a <button> element,
+    // unless excluded above. Mark as zoomable for styling if needed.
     media.classList.add("zoomable");
 
     media.addEventListener("click", (e) => {
@@ -576,7 +586,12 @@ document.addEventListener("DOMContentLoaded", () => {
       if (media.tagName === "IMG") {
         modalImg.style.display = "block";
         modalVideo.style.display = "none";
-        modalImg.src = media.src;
+
+        // Prefer high-res / large versions if provided on the image element
+        const largeSrc = media.dataset.largeSrc || media.dataset.large || media.dataset.hires || media.getAttribute('data-large-src');
+        modalImg.src = largeSrc || media.src;
+        modalImg.alt = media.alt || "";
+
       } else if (media.tagName === "VIDEO") {
         const currentTime = Number.isFinite(media.currentTime) ? media.currentTime : 0;
         const wasPlaying = !media.paused;
@@ -621,6 +636,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
 
   const closeModal = () => {
     modal.style.display = "none";
