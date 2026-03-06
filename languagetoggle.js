@@ -409,6 +409,8 @@ const enableLanguage = () => {
 
         "<li><a href='https://www.studentgamesfestival.com/2025-winners' target='_blank' rel='noopener noreferrer'>受賞者: Best Student Games Award | Meaningful Game<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
 
+        "<li><a href='https://www.bvdw.org/events/digital-responsibility-award/' target = '_blank' rel = 'noopener noreferrer' >受賞者: Digital Responsibility Award 2026 | Digital well - being & inclusion <img src = './assets/hyperlink_icon.png' alt = 'Link' class='link-icon' /> </a ></li > " +
+
         "<li><a href='https://www.linkedin.com/feed/update/urn:li:activity:7334126257871175680/' target='_blank' rel='noopener noreferrer'>受賞者: Varjoアカデミックギブアウェイキャンペーン<img src='./assets/hyperlink_icon.png' alt='Link' class='link-icon' /></a></li>" +
 
         "<li>受賞者: HNU Werkschau | ベストゲーム賞</li>" +
