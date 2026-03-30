@@ -4,15 +4,12 @@ const languageToggle = document.getElementById('language-switch');
 // --- DOM ELEMENTE HOLEN ---
 
 // Nav & Footer
-let aboutt = document.getElementById('aboutT');
 let experienceE = document.getElementById('experienceE');
 let projectsS = document.getElementById('projectsS');
 let contactT = document.getElementById('contactT');
-let abouttt = document.getElementById('aboutTT');
 let experienceEE = document.getElementById('experienceEE');
 let projectsSS = document.getElementById('projectsSS');
 let contactTT = document.getElementById('contactTT');
-let about3 = document.getElementById('about3');
 let experience3 = document.getElementById('experience3');
 let projects3 = document.getElementById('projects3');
 let contact3 = document.getElementById('contact3');
@@ -21,11 +18,6 @@ let contact3 = document.getElementById('contact3');
 let Name = document.getElementById('Name');
 let Developer = document.getElementById('Developer');
 let StudentStatus = document.getElementById('StudentStatus');
-
-// About
-let GetTo = document.getElementById('GetTo');
-let AboutMe = document.getElementById('AboutMe');
-let Longtext = document.getElementById('Longtext');
 
 // Projects Section
 let Browse = document.getElementById('Browse');
@@ -130,13 +122,12 @@ let cultProblemDesc2 = document.getElementById('cultProblemDesc2');
 
 const translatableElements = [
     // Nav & Footer
-    aboutt, experienceE, projectsS, contactT,
-    abouttt, experienceEE, projectsSS, contactTT,
-    about3, experience3, projects3, contact3,
+    experienceE, projectsS, contactT,
+    experienceEE, projectsSS, contactTT,
+    experience3, projects3, contact3,
 
     // Profile & About
     Name, Developer, StudentStatus,
-    GetTo, AboutMe, Longtext,
 
     // Projects Section
     Browse, Projects, Contact, cvLink,
@@ -457,11 +448,9 @@ const enableLanguage = () => {
 
     localStorage.setItem('language', 'active');
 
-    if (aboutt) aboutt.innerText = "自己紹介";
     if (experienceE) experienceE.innerText = "経験";
     if (projectsS) projectsS.innerText = "プロジェクト";
     if (contactT) contactT.innerText = "お問い合わせ";
-    if (abouttt) abouttt.innerText = "自己紹介";
     if (experienceEE) experienceEE.innerText = "経験";
     if (projectsSS) projectsSS.innerText = "プロジェクト";
     if (contactTT) contactTT.innerText = "お問い合わせ";
@@ -473,16 +462,12 @@ const enableLanguage = () => {
     if (Developer) Developer.innerText = "ゲーム＆シェーダープログラマー";
     if (StudentStatus) StudentStatus.innerText = "神奈川大学 交換留学生 (2026年3月〜8月)";
 
-    if (GetTo) GetTo.innerText = "もっと知る";
-    if (AboutMe) AboutMe.innerText = "私について";
-    if (Longtext) Longtext.innerHTML = "初めてゲーム開発に触れたのは、高校時代のプロジェクトです。自分が作ったものを他の人が楽しんでいる姿を見て、忘れられないほど感動し、この情熱を持ち続けたいと思いました。2023年に日本を訪れ、この国に強く惹かれました。<br /> <br /> 現在、日本の文化は私の日常生活に深く根付いています。ビデオゲーム、漫画、アニメへの情熱に加え、生き甲斐という哲学もこれに含まれます。さらに、武神館での稽古を始め、そこから日本の歴史について多くのことを学んでいます。 <br /> <br /> 日本のゲームスタジオで特に印象的なのは、プレイヤーの期待に応える、完成された高品質な体験を提供しようとする開発者の献身的な姿勢です。私は、最高のプレイヤー体験を創り出すことに尽力する環境の一員になりたいと考えています。";
-
 
     if (Browse) Browse.innerText = "";
     if (Projects) Projects.innerText = "最近のプロジェクト";
     if (Contact) Contact.innerText = "お問い合わせ";
 
-    if (about3) about3.innerText = "自己紹介";
+
     if (experience3) experience3.innerText = "経験";
     if (projects3) projects3.innerText = "プロジェクト";
     if (contact3) contact3.innerText = "お問い合わせ";

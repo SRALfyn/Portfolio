@@ -659,3 +659,46 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
 });
 
+document.querySelectorAll('.toggleLanguage, .exit-btn').forEach(button => {
+  let startY = 0;
+  let activeScrollArea = null;
+
+  // Cache the target on touch start
+  button.addEventListener('touchstart', (event) => {
+    startY = event.touches[0].clientY;
+    activeScrollArea = document.querySelector('.flip-card.flipped .flip-card-back');
+  }, { passive: true });
+
+  button.addEventListener('touchmove', (event) => {
+    event.preventDefault();
+
+    const currentY = event.touches[0].clientY;
+    const deltaY = startY - currentY;
+
+    // Use the cached variable instead of querying the DOM
+    if (activeScrollArea) {
+      activeScrollArea.scrollTop += deltaY;
+    } else {
+      document.documentElement.scrollTop += deltaY;
+      document.body.scrollTop += deltaY;
+    }
+
+    startY = currentY;
+  }, { passive: false });
+
+  // Cache the target when the mouse enters the button
+  button.addEventListener('mouseenter', () => {
+    activeScrollArea = document.querySelector('.flip-card.flipped .flip-card-back');
+  });
+
+  button.addEventListener('wheel', (event) => {
+    event.preventDefault();
+
+    if (activeScrollArea) {
+      activeScrollArea.scrollTop += event.deltaY;
+    } else {
+      document.documentElement.scrollTop += event.deltaY;
+      document.body.scrollTop += event.deltaY;
+    }
+  }, { passive: false });
+});
