@@ -831,7 +831,6 @@ footer {
 
 .project-title-container {
     height: auto;
-    padding: 1rem 0;
     min-height: 3.75rem;
     display: flex;
     align-items: center;
@@ -2894,4 +2893,10 @@ video::-webkit-media-controls-time-remaining-display {
 img.zoomable,
 video.zoomable {
     cursor: zoom-in;
+}
+
+@media (min-width: 43.75rem) {
+    .about-containers>.details-container.color-container {
+        max-width: min(50rem, calc(50% - 0.5rem)) !important;
+    }
 }
