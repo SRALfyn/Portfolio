@@ -199,8 +199,9 @@ const showDisclaimer = () => {
     if (!languageToggle) return;
 
     const disclaimer = document.createElement('div');
+    disclaimer.id = 'language-disclaimer'; // Add this line
 
-    disclaimer.innerHTML = '※注記：この翻訳はサイトを読みやすくするためにツールを使用して作成されたものであり、私の現在の実際の日本語能力を反映するものではありません。';
+    disclaimer.innerHTML = '※注記：この日本語の翻訳はサイトを読みやすくするためにツールを使用して作成されたものであり、私の現在の実際の日本語能力を反映するものではありません。';
 
     // Fixed Positionierung für mitscrollende Elemente
     disclaimer.style.position = 'fixed';
@@ -502,12 +503,15 @@ const enableLanguage = () => {
     if (cultProblemTitle2) cultProblemTitle2.innerText = "チュートリアルシリーズの作成";
     if (cultProblemDesc2) cultProblemDesc2.innerHTML = "他の開発者の助けになるよう、Unreal Engine 5で必要なコアシステムを構築する方法を解説する7時間以上のシリーズを録画しました。視聴は<a href='https://www.youtube.com/playlist?list=PLSStU8YtITKfY5ivtE77u5DZma00sIdtf' target='_blank' rel='noopener noreferrer' class='tutorial-link'>こちら</a>から可能です。";
 
-    if (!sessionStorage.getItem('disclaimerShown')) {
+    const activeDisclaimer = document.getElementById('language-disclaimer');
+    if (activeDisclaimer) {
+        // Just update text if it already exists
+        activeDisclaimer.innerHTML = '※注記：この日本語の翻訳はサイトを読みやすくするためにツールを使用して作成されたものであり、私の現在の実際の日本語能力を反映するものではありません。';
+    } else if (!sessionStorage.getItem('disclaimerShown')) {
+        // Only spawn it if it hasn't been shown in this session
         showDisclaimer();
         sessionStorage.setItem('disclaimerShown', 'true');
     }
-
-
 }
 
 // --- ENGLISCH AKTIVIEREN (Disable Japanese) ---
@@ -518,6 +522,12 @@ const disableLanguage = () => {
             el.innerHTML = originalEnglishTexts.get(el);
         }
     });
+
+    // Add this block to change the text to English
+    const activeDisclaimer = document.getElementById('language-disclaimer');
+    if (activeDisclaimer) {
+        activeDisclaimer.innerHTML = '*Note: The Japanese translation on this site was generated using tools to improve readability and does not reflect my actual current proficiency.';
+    }
 
     localStorage.setItem('language', 'inactive');
 };
