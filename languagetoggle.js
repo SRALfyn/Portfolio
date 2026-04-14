@@ -459,7 +459,7 @@ const enableLanguage = () => {
     if (insightsSS) insightsSS.innerHTML = "パフォーマンスガイド";
 
 
-    if (Name) Name.innerText = "ラーズ・ゴーデ";
+    if (Name) Name.innerText = "ラース・ゴーデ";
     if (Developer) Developer.innerText = "ゲーム＆シェーダープログラマー";
     if (StudentStatus) StudentStatus.innerText = "神奈川大学 交換留学生 (2026年3月〜8月)";
 
