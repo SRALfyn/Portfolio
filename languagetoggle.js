@@ -85,6 +85,8 @@ let mercuryScopeTitle = document.getElementById('mercuryScopeTitle');
 let mercuryScopeDesc = document.getElementById('mercuryScopeDesc');
 let mercuryRoleTitle = document.getElementById('mercuryRoleTitle');
 let mercuryRoleDesc = document.getElementById('mercuryRoleDesc');
+let mercuryLearningTitle = document.getElementById('mercuryLearningTitle');
+let mercuryLearningText = document.getElementById('mercuryLearningText');
 
 // Spezielle Listen für doppelte IDs
 const mercuryTitles = document.querySelectorAll('#mercuryProblemTitle');
@@ -160,7 +162,7 @@ const translatableElements = [
 
     // MERCURY
     mercuryScopeTitle, mercuryScopeDesc, mercuryRoleTitle, mercuryRoleDesc,
-    mercuryDescribtionTitle, mercuryDescription, mercuryApproaches,
+    mercuryDescribtionTitle, mercuryDescription, mercuryApproaches, mercuryLearningTitle, mercuryLearningText,
     ...mercuryTitles, ...mercuryDescs, ...mercuryDescs2,
 
     // Post Mortem Buttons
@@ -294,6 +296,8 @@ const enableLanguage = () => {
     if (mercuryScopeDesc) mercuryScopeDesc.innerHTML = "<li>2ヶ月</li><li>6人のチーム</li>";
     if (mercuryRoleTitle) mercuryRoleTitle.innerText = "主な役割";
     if (mercuryRoleDesc) mercuryRoleDesc.innerHTML = "<li>プレイヤーメカニクス</li>";
+    if (mercuryLearningTitle) mercuryLearningTitle.innerText = "ストア配信";
+    if (mercuryLearningText) mercuryLearningText.innerText = "展示会では移動システムの仕組みを直接説明できたため、MERCURYは非常に好評でした。プレイヤーが操作方法を理解した後のフィードバックは非常にポジティブなものでした。しかし残念ながら、プレイヤーが自宅で一人でプレイする環境では意図した通りに伝わらず、結果としてフラストレーションを招いてしまいました。このプロジェクトを通じて、コアメカニクスをいかに明確に伝えるかに注力することが、私にとって重要な教訓となりました。";
 
     // Mercury Context (Index 0)
     if (mercuryTitles[0]) mercuryTitles[0].innerText = "実装の背景";
