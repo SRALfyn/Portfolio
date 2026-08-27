@@ -126,6 +126,25 @@
     text-align: justify;
   }
 
+  .resource-list-section {
+    margin-bottom: 2rem;
+  }
+
+  .resource-item {
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .resource-item img {
+    flex-basis: 4rem;
+    height: 4rem;
+    width: 4rem;
+  }
+
+  .resource-item h2 {
+    font-size: 1.15rem;
+  }
+
 }
 
 
