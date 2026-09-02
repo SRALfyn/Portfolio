@@ -557,6 +557,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // then filter out media that live inside .cult-carousel or inside any modal
   const allMedia = Array.from(document.querySelectorAll("img:not(#modalImg), video:not(#modalVideo)"));
   const mediaElements = allMedia.filter(el => {
+    if (el.closest('.resource-item a')) return false; // resource thumbnails should keep their links
     if (el.closest('.cult-carousel')) return false; // exclude carousel media
     if (el.closest('.cult-modal')) return false;    // exclude carousel's own modal (if present)
     if (el.closest('#mediaModal')) return false;    // exclude the global modal itself
@@ -701,4 +702,56 @@ document.querySelectorAll('.toggleLanguage, .exit-btn').forEach(button => {
       document.body.scrollTop += event.deltaY;
     }
   }, { passive: false });
+
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const profileSection = document.getElementById('profile');
+  if (!profileSection) return;
+
+  const filterBtns = profileSection.querySelectorAll('.filter-btn');
+  const allResourceItems = document.querySelectorAll('.resource-list-section .resource-item');
+  const resourceSections = document.querySelectorAll('.resource-list-section');
+  let selectedFilter = null;
+
+  const updateResources = () => {
+    filterBtns.forEach(button => {
+      const filterValue = button.getAttribute('data-filter');
+      button.classList.toggle(
+        'active',
+        filterValue === 'All' ? selectedFilter === null : selectedFilter === filterValue
+      );
+    });
+
+    allResourceItems.forEach(item => {
+      const tagElements = item.querySelectorAll('.tag');
+      const tags = tagElements.length > 0
+        ? Array.from(tagElements, tag => tag.textContent.trim())
+        : (item.getAttribute('data-tags') || '').split(',').map(tag => tag.trim());
+      const isVisible = selectedFilter === null || tags.includes(selectedFilter);
+      item.classList.toggle('hidden', !isVisible);
+    });
+
+    resourceSections.forEach(section => {
+      section.classList.toggle('hidden', !section.querySelector('.resource-item:not(.hidden)'));
+    });
+  };
+
+  filterBtns.forEach(button => {
+    button.addEventListener('click', () => {
+      const filterValue = button.getAttribute('data-filter');
+
+      if (filterValue === 'All') {
+        selectedFilter = null;
+      } else if (selectedFilter === filterValue) {
+        selectedFilter = null;
+      } else {
+        selectedFilter = filterValue;
+      }
+
+      updateResources();
+    });
+  });
+
+  updateResources();
 });

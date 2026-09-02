@@ -11,7 +11,7 @@
   <meta property="og:title" content="Lars Gohde | Resources">
   <link rel="stylesheet" href="../style_min.css?v=20260827" />
   <link rel="stylesheet" href="../mediaqueries.css" />
-  <script type="text/javascript" src="languagetoggle.js" defer></script>
+  <script type="text/javascript" src="../languagetoggle.js" defer></script>
   <link rel="icon" type="image/png" href="https://lars-goh.de/assets/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="https://lars-goh.de/assets/favicon.svg" />
   <link rel="shortcut icon" href="https://lars-goh.de/assets/favicon.ico" />
@@ -54,12 +54,22 @@
 
       <h1 style="margin-top: 2rem;" id="Name" class="title">Resources</h1>
     </div>
+    <div class="filter-container">
+      <div class="filter-group">
+        <button class="filter-btn filter-btn-primary active" data-filter="All">All</button>
+        <button class="filter-btn filter-btn-primary" data-filter="Art">Art</button>
+        <button class="filter-btn filter-btn-primary" data-filter="Tech">Tech</button>
+        <button class="filter-btn filter-btn-primary" data-filter="Sound">Sound</button>
+        <button class="filter-btn filter-btn-primary" data-filter="TechArt">TechArt</button>
+        <button class="filter-btn filter-btn-primary" data-filter="Game Design">Game Design</button>
+      </div>
+    </div>
   </section>
 
   <section id="Websites" class="resource-list-section">
     <h1 class="title">Websites</h1>
     <ul class="resource-list">
-      <li class="resource-item">
+      <li class="resource-item" data-tags="Art,Game Design">
         <a href="https://gameuidatabase.com/" target="_blank" rel="noopener noreferrer">
           <img src="https://s2.googleusercontent.com/s2/favicons?domain=gameuidatabase.com&sz=64"
             alt="Game UI Database Favicon">
@@ -67,36 +77,50 @@
         <div class="resource-item__content">
           <h2>Game UI Database</h2>
           <p>A reference for exploring interface design from games</p>
+          <div class="tags">
+            <span class="tag">Art</span>
+            <span class="tag">Game Design</span>
+          </div>
         </div>
       </li>
-      <li class="resource-item">
+      <li class="resource-item" data-tags="Sound,Tech">
         <a href="https://www.beepbox.co" target="_blank" rel="noopener noreferrer">
           <img src="https://s2.googleusercontent.com/s2/favicons?domain=beepbox.co&sz=64" alt="BeepBox Favicon">
         </a>
         <div class="resource-item__content">
           <h2>BeepBox</h2>
           <p>A browser-based tool for creating chiptune music</p>
+          <div class="tags">
+            <span class="tag">Sound</span>
+          </div>
         </div>
       </li>
-      <li class="resource-item">
+      <li class="resource-item" data-tags="Art,Tech,TechArt">
         <a href="https://yal.cc/tools/" target="_blank" rel="noopener noreferrer">
           <img src="https://s2.googleusercontent.com/s2/favicons?domain=yal.cc&sz=64" alt="YAL Tools Favicon">
         </a>
         <div class="resource-item__content">
           <h2>YAL Tools</h2>
           <p>A collection of tools for game development and digital art</p>
+          <div class="tags">
+            <span class="tag">Art</span>
+          </div>
         </div>
       </li>
-      <li class="resource-item">
+      <li class="resource-item" data-tags="Art,Game Design">
         <a href="https://coolors.co" target="_blank" rel="noopener noreferrer">
           <img src="https://s2.googleusercontent.com/s2/favicons?domain=coolors.co&sz=64" alt="Coolors Favicon">
         </a>
         <div class="resource-item__content">
           <h2>Coolors</h2>
           <p>A tool for generating and exploring color palettes</p>
+          <div class="tags">
+            <span class="tag">Art</span>
+            <span class="tag">Game Design</span>
+          </div>
         </div>
       </li>
-      <li class="resource-item">
+      <li class="resource-item" data-tags="Tech,Organization">
         <a href="https://app.diagrams.net" target="_blank" rel="noopener noreferrer">
           <img src="https://s2.googleusercontent.com/s2/favicons?domain=app.diagrams.net&sz=64"
             alt="diagrams.net Favicon">
@@ -104,18 +128,26 @@
         <div class="resource-item__content">
           <h2>diagrams.net</h2>
           <p>A browser-based diagramming and flowchart tool</p>
+          <div class="tags">
+            <span class="tag">Tech</span>
+            <span class="tag">Game Design</span>
+          </div>
         </div>
       </li>
-      <li class="resource-item">
+      <li class="resource-item" data-tags="Tech,Localization">
         <a href="https://www.forethought-studio.com/translate/po/" target="_blank" rel="noopener noreferrer">
           <img src="https://www.forethought-studio.com/favicon.svg" alt="Forethought Studio Favicon">
         </a>
         <div class="resource-item__content">
           <h2>Translate PO</h2>
           <p>A tool for translating and editing game localization PO files</p>
+          <div class="tags">
+            <span class="tag">Tech</span>
+            <span class="tag">Game Design</span>
+          </div>
         </div>
       </li>
-      <li class="resource-item">
+      <li class="resource-item" data-tags="Art,Graphics,TechArt">
         <a href="https://cpetry.github.io/NormalMap-Online/" target="_blank" rel="noopener noreferrer">
           <img src="https://cpetry.github.io/NormalMap-Online/images/nmap_logo_trans_small.png"
             alt="NormalMap Online Logo">
@@ -123,15 +155,59 @@
         <div class="resource-item__content">
           <h2>NormalMap Online</h2>
           <p>A browser-based generator for creating normal maps from images</p>
+          <div class="tags">
+            <span class="tag">Art</span>
+          </div>
         </div>
       </li>
-      <li class="resource-item">
+      <li class="resource-item" data-tags="Art,Animation">
         <a href="https://www.mixamo.com" target="_blank" rel="noopener noreferrer">
           <img src="https://www.mixamo.com/favicon.ico" alt="Mixamo Favicon">
         </a>
         <div class="resource-item__content">
           <h2>Mixamo</h2>
           <p>A library of 3D characters and animations</p>
+          <div class="tags">
+            <span class="tag">Art</span>
+          </div>
+        </div>
+      </li>
+      <li class="resource-item" data-tags="Tech,TechArt">
+        <a href="https://github.com/BenjaminYde/TechArt-Guide/tree/main" target="_blank" rel="noopener noreferrer">
+          <img src="https://github.githubassets.com/favicons/favicon.svg" alt="GitHub logo for TechArt Guide">
+        </a>
+        <div class="resource-item__content">
+          <h2>TechArt Guide</h2>
+          <p>A round-up of technical art resources and best practices</p>
+          <div class="tags">
+            <span class="tag">TechArt</span>
+          </div>
+        </div>
+      </li>
+      <li class="resource-item" data-tags="Tech,TechArt">
+        <a href="https://github.com/wyhinton/AwesomeHoudini" target="_blank" rel="noopener noreferrer">
+          <img src="https://github.githubassets.com/favicons/favicon.svg" alt="GitHub logo for Awesome Houdini">
+        </a>
+        <div class="resource-item__content">
+          <h2>Awesome Houdini</h2>
+          <p>A curated collection of free and open-source Houdini resources</p>
+          <div class="tags">
+            <span class="tag">TechArt</span>
+          </div>
+        </div>
+      </li>
+      <li class="resource-item" data-tags="Tech,TechArt">
+        <a href="https://docs.google.com/spreadsheets/d/11FbYBV_OV2INv3LCk38fmcgZbuVrgxYaZK-1KifCpyc/htmlview"
+          target="_blank" rel="noopener noreferrer">
+          <img src="https://ssl.gstatic.com/docs/spreadsheets/favicon3.ico"
+            alt="SideFX Digital Learning Material Favicon">
+        </a>
+        <div class="resource-item__content">
+          <h2>SideFX Digital Learning Material</h2>
+          <p>A spreadsheet of Houdini tutorials, presentations, and learning resources</p>
+          <div class="tags">
+            <span class="tag">TechArt</span>
+          </div>
         </div>
       </li>
     </ul>
@@ -140,7 +216,7 @@
   <section id="Programs" class="resource-list-section">
     <h1 class="title">Programs</h1>
     <ul class="resource-list">
-      <li class="resource-item">
+      <li class="resource-item" data-tags="Art,3D">
         <a href="https://ephtracy.github.io" target="_blank" rel="noopener noreferrer">
           <img src="https://s2.googleusercontent.com/s2/favicons?domain=ephtracy.github.io&sz=64"
             alt="MagicaVoxel Favicon">
@@ -148,18 +224,24 @@
         <div class="resource-item__content">
           <h2>MagicaVoxel</h2>
           <p>A voxel art editor for creating 3D models</p>
+          <div class="tags">
+            <span class="tag">Art</span>
+          </div>
         </div>
       </li>
-      <li class="resource-item">
+      <li class="resource-item" data-tags="Sound,Tech">
         <a href="https://www.audacityteam.org" target="_blank" rel="noopener noreferrer">
           <img src="https://s2.googleusercontent.com/s2/favicons?domain=audacityteam.org&sz=64" alt="Audacity Favicon">
         </a>
         <div class="resource-item__content">
           <h2>Audacity</h2>
           <p>A software for recording and editing audio</p>
+          <div class="tags">
+            <span class="tag">Sound</span>
+          </div>
         </div>
       </li>
-      <li class="resource-item">
+      <li class="resource-item" data-tags="Art,Pixel Art">
         <a href="https://graphicsgale.com/us/" target="_blank" rel="noopener noreferrer">
           <img src="https://s2.googleusercontent.com/s2/favicons?domain=graphicsgale.com&sz=64"
             alt="GraphicsGale Favicon">
@@ -167,6 +249,9 @@
         <div class="resource-item__content">
           <h2>GraphicsGale</h2>
           <p>A pixel art editor for creating sprites and animations</p>
+          <div class="tags">
+            <span class="tag">Art</span>
+          </div>
         </div>
       </li>
     </ul>
@@ -175,103 +260,157 @@
   <section id="Youtube" class="resource-list-section">
     <h1 class="title">Youtube</h1>
     <ul class="resource-list">
-      <li class="resource-item">
+      <li class="resource-item" data-tags="Educational,Analysis">
         <a href="https://www.youtube.com/@XboxAhoy" target="_blank" rel="noopener noreferrer">
           <img src="https://unavatar.io/youtube/XboxAhoy" alt="Xbox Ahoy Channel Image">
         </a>
         <div class="resource-item__content">
           <h2>Ahoy</h2>
           <p>Deep dives into niche topics</p>
+          <div class="tags">
+            <span class="tag">Game Design</span>
+          </div>
         </div>
       </li>
-      <li class="resource-item">
+      <li class="resource-item" data-tags="Tech,TechArt">
         <a href="https://www.youtube.com/@BenCloward" target="_blank" rel="noopener noreferrer">
           <img src="https://unavatar.io/youtube/BenCloward" alt="Ben Cloward Channel Image">
         </a>
         <div class="resource-item__content">
           <h2>Ben Cloward</h2>
           <p>Tutorials and technical insights on shaders</p>
+          <div class="tags">
+            <span class="tag">Tech</span>
+            <span class="tag">TechArt</span>
+            <span class="tag">Art</span>
+          </div>
         </div>
       </li>
-      <li class="resource-item">
+      <li class="resource-item" data-tags="Art,Game Design">
         <a href="https://www.youtube.com/@DarylTalksGames" target="_blank" rel="noopener noreferrer">
           <img src="https://unavatar.io/youtube/DarylTalksGames" alt="Daryl Talks Games Channel Image">
         </a>
         <div class="resource-item__content">
           <h2>Daryl Talks Games</h2>
           <p>Video essays exploring game design and psychology</p>
+          <div class="tags">
+            <span class="tag">Game Design</span>
+          </div>
         </div>
       </li>
-      <li class="resource-item">
+      <li class="resource-item" data-tags="Tech,Educational">
         <a href="https://www.youtube.com/@EnriqueVenturaGames" target="_blank" rel="noopener noreferrer">
           <img src="https://unavatar.io/youtube/EnriqueVenturaGames" alt="Enrique Ventura Games Channel Image">
         </a>
         <div class="resource-item__content">
           <h2>Enrique Ventura Games</h2>
           <p>Tutorials and technical insights</p>
+          <div class="tags">
+            <span class="tag">TechArt</span>
+          </div>
         </div>
       </li>
-      <li class="resource-item">
+      <li class="resource-item" data-tags="Art,Tech,Sound,TechArt">
         <a href="https://www.youtube.com/@GDCFestivalofGaming" target="_blank" rel="noopener noreferrer">
           <img src="https://unavatar.io/youtube/GDCFestivalofGaming" alt="GDC Festival of Gaming Channel Image">
         </a>
         <div class="resource-item__content">
           <h2>GDC Festival of Gaming</h2>
           <p>Talks covering every aspect of game development</p>
+          <div class="tags">
+            <span class="tag">Art</span>
+            <span class="tag">Tech</span>
+            <span class="tag">Sound</span>
+            <span class="tag">TechArt</span>
+            <span class="tag">Game Design</span>
+          </div>
         </div>
       </li>
-      <li class="resource-item">
+      <li class="resource-item" data-tags="Art,Animation,Educational">
         <a href="https://www.youtube.com/@Nonsensical2D" target="_blank" rel="noopener noreferrer">
           <img src="https://unavatar.io/youtube/Nonsensical2D" alt="Nonsensical 2D Channel Image">
         </a>
         <div class="resource-item__content">
           <h2>Nonsensical 2D</h2>
           <p>Tutorials on creative 2D art and animation</p>
+          <div class="tags">
+            <span class="tag">Art</span>
+          </div>
         </div>
       </li>
-      <li class="resource-item">
+      <li class="resource-item" data-tags="Tech,TechArt">
         <a href="https://www.youtube.com/@PrismaticaDev" target="_blank" rel="noopener noreferrer">
           <img src="https://unavatar.io/youtube/PrismaticaDev" alt="Prismatica Dev Channel Image">
         </a>
         <div class="resource-item__content">
           <h2>Prismatica Dev</h2>
           <p>Insights and experiments on shaders</p>
+          <div class="tags">
+            <span class="tag">Tech</span>
+            <span class="tag">TechArt</span>
+            <span class="tag">Art</span>
+          </div>
         </div>
       </li>
-      <li class="resource-item">
+      <li class="resource-item" data-tags="Art,Game Design">
         <a href="https://www.youtube.com/@razbuten" target="_blank" rel="noopener noreferrer">
           <img src="https://unavatar.io/youtube/razbuten" alt="razbuten Channel Image">
         </a>
         <div class="resource-item__content">
           <h2>razbuten</h2>
           <p>Video essays about game design and player experience</p>
+          <div class="tags">
+            <span class="tag">Game Design</span>
+          </div>
         </div>
       </li>
-      <li class="resource-item">
+      <li class="resource-item" data-tags="Tech,TechArt">
         <a href="https://www.youtube.com/@SebastianLague" target="_blank" rel="noopener noreferrer">
           <img src="https://unavatar.io/youtube/SebastianLague" alt="Sebastian Lague Channel Image">
         </a>
         <div class="resource-item__content">
           <h2>Sebastian Lague</h2>
           <p>Programming journeys covering graphics, simulations and games</p>
+          <div class="tags">
+            <span class="tag">Tech</span>
+          </div>
         </div>
       </li>
-      <li class="resource-item">
+      <li class="resource-item" data-tags="Tech,Development,Educational">
         <a href="https://www.youtube.com/@Spacemarine658" target="_blank" rel="noopener noreferrer">
           <img src="https://unavatar.io/youtube/Spacemarine658" alt="Spacemarine658 Channel Image">
         </a>
         <div class="resource-item__content">
           <h2>Spacemarine658</h2>
           <p>Game development and technical insights</p>
+          <div class="tags">
+            <span class="tag">Tech</span>
+          </div>
         </div>
       </li>
-      <li class="resource-item">
+      <li class="resource-item" data-tags="Art,Animation">
         <a href="https://www.youtube.com/@VideoGameAnimationStudy" target="_blank" rel="noopener noreferrer">
           <img src="https://unavatar.io/youtube/VideoGameAnimationStudy" alt="Video Game Animation Study Channel Image">
         </a>
         <div class="resource-item__content">
           <h2>Video Game Animation Study</h2>
           <p>Analysis of animations</p>
+          <div class="tags">
+            <span class="tag">Art</span>
+          </div>
+        </div>
+      </li>
+      <li class="resource-item" data-tags="Tech,TechArt">
+        <a href="https://www.youtube.com/playlist?list=PLd959VTYXCB551P4atiY52iA14JyLsaI7" target="_blank"
+          rel="noopener noreferrer">
+          <img src="https://unavatar.io/youtube/EHoudiniAcademy" alt="EHoudini Academy Channel Image">
+        </a>
+        <div class="resource-item__content">
+          <h2>Houdini Tech Art Playlist</h2>
+          <p>Beginner's playlist for Houdini</p>
+          <div class="tags">
+            <span class="tag">TechArt</span>
+          </div>
         </div>
       </li>
     </ul>
@@ -289,7 +428,7 @@
     </nav>
     <p>© 2026 by Lars Gohde. All rights reserved.</p>
   </footer>
-  <script src="script.js" defer></script>
+  <script src="../script.js" defer></script>
 
   <div id="mediaModal" class="media-modal">
     <span class="media-modal-close">&times;</span>
