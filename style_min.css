@@ -415,6 +415,14 @@ section {
     align-items: center;
 }
 
+.resources-page #profile {
+    gap: 1rem;
+}
+
+.resources-page .filter-container {
+    margin-top: 0;
+}
+
 .section__text {
     align-self: center;
     text-align: center
