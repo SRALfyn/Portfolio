@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometry Runner</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            user-select: none
+        }
+
+        #gameContainer {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center
+        }
+
+        canvas {
+            display: block;
+            width: min(800px, 100vw);
+            height: auto;
+            image-rendering: pixelated
+        }
+
+        .text {
+            display: none;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-align: center;
+            white-space: nowrap;
+            line-height: 1.5
+        }
+
+        @media(max-width:500px) {
+            .text {
+                font-size: 20px
+            }
+
+            .text span {
+                font-size: 12px !important
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="gameContainer">
+        <div id="startText" class="text" style="display:block">GEOMETRY RUNNER<br><span
+                style="font-size:14px;font-weight:normal">Press Space or Touch to Start</span></div>
+        <div id="gameOverText" class="text">GAME OVER<br><span id="finalScore"
+                style="font-size:18px;font-weight:normal"></span><br><span
+                style="font-size:14px;font-weight:normal">Press Space or wait 3s to Restart</span></div>
+        <canvas id="gameCanvas" width="800" height="250"></canvas>
+    </div>
+    <script>
+        const c = document.getElementById("gameCanvas"), ctx = c.getContext("2d"), startText = document.getElementById("startText"), gameOverText = document.getElementById("gameOverText"), finalScore = document.getElementById("finalScore");
+        let score = 0, highscore = localStorage.getItem("geometryRunnerHighscore") || 0, gameSpeed = 2.5, isGameOver = false, obstacles = [], backgroundLayers = [], particles = [], nextTimer = 0, isJumpHeld = false, hasStarted = false, gravityDir = 1, nextGravityDir = 1, moveDir = 1, isFlipping = false, flipProgress = 0, restartTimeout = null;
+
+        function initBackground() {
+            backgroundLayers = [
+                { speed: 0.1, alpha: 0.05, points: genPts(40, 90) },
+                { speed: 0.3, alpha: 0.1, points: genPts(70, 120) },
+                { speed: 0.8, alpha: 0.2, points: genPts(195, 215) }
+            ];
+        }
+        function genPts(min, max) { let p = [], w = 50, n = Math.ceil(2400 / w); for (let i = 0; i < n; i++)p.push({ x: -800 + i * w, y: min + Math.random() * (max - min) }); return p; }
+
+        const player = {
+            x: 50, y: 200, width: 40, height: 40, vy: 0, rot: 0, gravity: 0.16, jumpStrength: -6.4, jumping: false, trail: [], visible: true,
+            draw() {
+                if (!this.visible) return;
+                for (let i = 0; i < this.trail.length; i++) {
+                    let t = this.trail[i], p = (i + 1) / this.trail.length, a = p * 0.25, s = p * 0.8 + 0.2, w = this.width * s, h = this.height * s, off = (this.trail.length - i) * (gameSpeed * 0.8 * moveDir);
+                    ctx.save(); ctx.translate(t.x - off + 20, t.y + 20); ctx.rotate(t.rotation); ctx.strokeStyle = `rgba(255,255,255,${a})`; ctx.lineWidth = 2; ctx.strokeRect(-w / 2, -h / 2, w, h); ctx.restore();
+                }
+                ctx.save(); ctx.translate(this.x + 20, this.y + 20); ctx.rotate(this.rot); ctx.fillStyle = "#000"; ctx.fillRect(-20, -20, 40, 40); ctx.strokeStyle = "#fff"; ctx.lineWidth = 2; ctx.strokeRect(-20, -20, 40, 40); ctx.restore();
+            },
+            update() {
+                if (!this.visible) return;
+                this.trail.push({ x: this.x, y: this.y, rotation: this.rot }); if (this.trail.length > 30) this.trail.shift();
+                this.vy += this.gravity * gravityDir; this.y += this.vy;
+                let floor = c.height - 50, ceil = 10, ground = false;
+                if (gravityDir === 1 && this.y >= floor) { this.y = floor; ground = true; } else if (gravityDir === -1 && this.y <= ceil) { this.y = ceil; ground = true; }
+                if (ground) { this.vy = 0; this.jumping = false; this.rot = gravityDir === 1 ? 0 : Math.PI; if (hasStarted && isJumpHeld) this.jump(); }
+                else this.rot += gameSpeed * 0.025 * gravityDir * moveDir;
+            },
+            jump() { if (!this.jumping && this.visible) { this.vy = this.jumpStrength * gravityDir; this.jumping = true; } }
+        };
+
+        class Obstacle {
+            constructor(g, off = 0) { this.width = 40; this.height = 40; this.y = g === -1 ? 10 : c.height - 50; this.g = g; this.x = (moveDir === 1 ? c.width : -40) + off; this.type = "obstacle"; }
+            draw() {
+                ctx.fillStyle = "#000"; ctx.beginPath();
+                if (this.g === 1) ctx.moveTo(this.x, this.y + 40), ctx.lineTo(this.x + 20, this.y), ctx.lineTo(this.x + 40, this.y + 40);
+                else ctx.moveTo(this.x, this.y), ctx.lineTo(this.x + 20, this.y + 40), ctx.lineTo(this.x + 40, this.y);
+                ctx.closePath(); ctx.fill(); ctx.strokeStyle = "#fff"; ctx.lineWidth = 2; ctx.stroke();
+            }
+            update() { this.x -= gameSpeed * moveDir; }
+        }
+
+        class Portal {
+            constructor(t) { this.type = "portal"; this.portalType = t; this.width = 10; this.height = c.height; this.y = 0; this.passed = false; this.x = moveDir === 1 ? c.width : -10; }
+            draw() { ctx.strokeStyle = this.portalType === "gravity" ? "#00ffff" : "#ff00ff"; ctx.lineWidth = 2; for (let j = 0; j < c.height; j += 20)ctx.strokeRect(this.x + 2, j, 6, 10); }
+            update() { this.x -= gameSpeed * moveDir; }
+        }
+
+        function handleInput(e) {
+            e?.preventDefault?.(); isJumpHeld = true;
+            if (!hasStarted) { hasStarted = true; startText.style.display = "none"; player.jump(); return; }
+            if (isGameOver) { startGame(true); return; }
+            player.jump();
+        }
+
+        window.addEventListener("keydown", e => { if (e.code === "Space" || e.code === "ArrowUp") handleInput(e); });
+        window.addEventListener("keyup", e => { if (e.code === "Space" || e.code === "ArrowUp") isJumpHeld = false; });
+        window.addEventListener("touchstart", handleInput, { passive: false });
+        window.addEventListener("touchend", () => isJumpHeld = false, { passive: false });
+
+        function startGame(immediate = false) {
+            score = 0; gameSpeed = 2.5; isGameOver = false; obstacles = []; nextTimer = 0; gravityDir = 1; nextGravityDir = 1; moveDir = 1; isFlipping = false; flipProgress = 0; particles = [];
+            player.x = 50; player.y = c.height - 50; player.vy = 0; player.jumping = false; player.rot = 0; player.trail = []; player.visible = true;
+            hasStarted = true; initBackground(); startText.style.display = "none"; gameOverText.style.display = "none";
+            if (restartTimeout) clearTimeout(restartTimeout);
+            if (immediate) player.jump();
+        }
+
+        function resetGame() {
+            hasStarted = false; score = 0; gameSpeed = 2.5; isGameOver = false; obstacles = []; nextTimer = 0; gravityDir = 1; nextGravityDir = 1; moveDir = 1; isFlipping = false; flipProgress = 0; particles = [];
+            player.x = 50; player.y = c.height - 50; player.vy = 0; player.jumping = false; player.rot = 0; player.trail = []; player.visible = true;
+            initBackground(); gameOverText.style.display = "none"; startText.style.display = "block";
+            if (restartTimeout) clearTimeout(restartTimeout);
+        }
+
+        function renderBackground(isMoving) {
+            backgroundLayers.forEach((z, l) => {
+                if (isMoving) {
+                    for (let p of z.points) p.x -= gameSpeed * z.speed * moveDir;
+                    let first = z.points[0], last = z.points[z.points.length - 1], w = z.points[1].x - first.x, min = l === 2 ? 195 : l === 1 ? 70 : 40, max = l === 2 ? 215 : l === 1 ? 120 : 90;
+                    if (moveDir === 1 && last.x < c.width + 800) z.points.push({ x: last.x + w, y: min + Math.random() * (max - min) });
+                    if (moveDir === 1 && first.x < -800) z.points.shift();
+                    if (moveDir === -1 && first.x > -800) z.points.unshift({ x: first.x - w, y: min + Math.random() * (max - min) });
+                    if (moveDir === -1 && last.x > c.width + 800) z.points.pop();
+                }
+
+                ctx.beginPath(); let started = false, fx, lx;
+                for (let p of z.points) if (p.x >= -200 && p.x <= c.width + 200) { if (!started) { ctx.moveTo(p.x, p.y); fx = p.x; started = true; } else ctx.lineTo(p.x, p.y); lx = p.x; }
+                if (started) {
+                    ctx.lineTo(lx, c.height + 100); ctx.lineTo(fx, c.height + 100); ctx.closePath(); ctx.fillStyle = "#000"; ctx.fill();
+                    ctx.beginPath(); started = false;
+                    for (let p of z.points) if (p.x >= -200 && p.x <= c.width + 200) { if (!started) { ctx.moveTo(p.x, p.y); started = true; } else ctx.lineTo(p.x, p.y); }
+                    ctx.strokeStyle = `rgba(255,255,255,${z.alpha})`; ctx.lineWidth = 1.5; ctx.stroke();
+                }
+            });
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, c.width, c.height);
+
+            if (!isGameOver) {
+                renderBackground(true);
+                ctx.save();
+                if (flipProgress > 0) { let sx = Math.cos(flipProgress * Math.PI); ctx.translate(c.width / 2, 0); ctx.scale(sx, 1); ctx.translate(-c.width / 2, 0); }
+
+                player.update();
+
+                if (hasStarted) {
+                    if (nextTimer <= 0) {
+                        let r = Math.random();
+                        if (score > 3 && r < 0.15) { let t = r < 0.5 ? "gravity" : "mirror"; obstacles.push(new Portal(t)); if (t === "gravity") nextGravityDir *= -1; nextTimer = 250 + Math.random() * 100; }
+                        else if (r < 0.35) { obstacles.push(new Obstacle(nextGravityDir, 0), new Obstacle(nextGravityDir, moveDir === 1 ? 40 : -40)); nextTimer = 150 + Math.random() * 100; }
+                        else { obstacles.push(new Obstacle(nextGravityDir)); nextTimer = 130 + Math.random() * 100; }
+                    } else nextTimer--;
+                }
+
+                let triggerMirror = false;
+                for (let i = obstacles.length - 1; i >= 0; i--) {
+                    let o = obstacles[i]; if (hasStarted) o.update(); o.draw();
+                    if (hasStarted && player.x < o.x + o.width && player.x + player.width > o.x && player.y < o.y + o.height && player.y + player.height > o.y) {
+                        if (o.type === "portal") { if (!o.passed) { o.passed = true; if (o.portalType === "gravity") gravityDir *= -1; else triggerMirror = true; } }
+                        else if (!isGameOver) {
+                            isGameOver = true; player.visible = false; player.trail = [];
+                            particles = Array.from({ length: 35 }, () => { let a = Math.random() * Math.PI * 2, s = 2 + Math.random() * 5; return { x: player.x + 20, y: player.y + 20, vx: Math.cos(a) * s, vy: Math.sin(a) * s, size: 2 + Math.random() * 5, life: 35 + Math.random() * 20 }; });
+                            if (score > highscore) { highscore = score; localStorage.setItem("geometryRunnerHighscore", highscore); }
+                            finalScore.textContent = `Score: ${score} | Highscore: ${highscore}`;
+                            gameOverText.style.display = "block";
+                            restartTimeout = setTimeout(() => { if (isGameOver) startGame(true); }, 3000);
+                        }
+                    }
+                    let off = moveDir === 1 ? o.x + o.width < 0 : o.x > c.width;
+                    if (hasStarted && off) { let rem = obstacles.splice(i, 1)[0]; if (rem.type === "obstacle") { score++; if (score % 5 === 0) gameSpeed += 0.2; } }
+                }
+
+                player.draw(); ctx.restore();
+
+                if (isFlipping) { flipProgress -= 0.04; if (flipProgress <= 0) { flipProgress = 0; isFlipping = false; } }
+                if (triggerMirror) { moveDir *= -1; player.x = c.width - player.x - player.width; for (let o of obstacles) o.x = c.width - o.x - o.width; isFlipping = true; flipProgress = 1; }
+            } else {
+                renderBackground(false);
+                for (let o of obstacles) o.draw();
+                for (let i = particles.length - 1; i >= 0; i--) {
+                    let p = particles[i]; p.x += p.vx; p.y += p.vy; p.vx *= 0.97; p.vy *= 0.97; p.vy += 0.08; p.life--;
+                    if (p.life <= 0) particles.splice(i, 1);
+                    else { ctx.fillStyle = `rgba(255,255,255,${Math.max(0, p.life / 55)})`; ctx.fillRect(p.x - p.size / 2, p.y - p.size / 2, p.size, p.size); }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        resetGame(); animate();
+    </script>
+</body>
+
+</html>
