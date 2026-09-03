@@ -325,6 +325,8 @@
       function triggerGameOver() {
         isGameOver ||
           ((isGameOver = !0),
+          (gameSpeed = 20),
+          (runTime = 0),
           (player.visible = !1),
           (particles = Array.from({ length: 25 }, () => {
             let e = Math.random() * Math.PI * 2,
@@ -386,9 +388,10 @@
               (this.fallTime += frameScale),
               (this.y < -120 || this.fallTime > 90) && triggerGameOver());
           else {
-            ((this.x += 8 * phoneTilt * frameScale),
-              keys.left && (this.x -= 8 * frameScale),
-              keys.right && (this.x += 8 * frameScale));
+            hasStarted &&
+              ((this.x += 8 * phoneTilt * frameScale),
+                keys.left && (this.x -= 8 * frameScale),
+                keys.right && (this.x += 8 * frameScale));
             let e = 120;
             Math.abs(this.x) > e &&
               ((this.falling = !0),
@@ -463,6 +466,7 @@
       function startGame(e = !1) {
         ((score = 0),
           (gameSpeed = 20),
+          (runTime = 0),
           (isGameOver = !1),
           (obstacles = []),
           (nextTimer = 0),
@@ -490,7 +494,6 @@
         ((hasStarted = !1),
           (score = 0),
           (gameSpeed = 20),
-          (runTime = 0),
           (runTime = 0),
           (isGameOver = !1),
           (obstacles = []),
@@ -525,9 +528,7 @@
           (ctx.lineJoin = "round"),
           gridZ.forEach((e, t) => {
             if (
-              (hasStarted &&
-                !isGameOver &&
-                (gridZ[t] -= gameSpeed * frameScale),
+              (!isGameOver && (gridZ[t] -= gameSpeed * frameScale),
               gridZ[t] < -200 && (gridZ[t] += 5200),
               gridZ[t] > -190)
             ) {
@@ -587,7 +588,7 @@
           } else {
             if ((player.update(), player.draw(), hasStarted && !isGameOver)) {
               runTime += frameScale;
-              gameSpeed = Math.min(60, 20 + runTime / 300);
+              gameSpeed = Math.min(60, 20 + runTime / 100);
               if (nextTimer <= 0) {
                 let e = 40 + 40 * Math.random(),
                   t = e,
