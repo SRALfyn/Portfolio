@@ -32,7 +32,8 @@
             display: block;
             width: min(800px, 100vw);
             height: auto;
-            image-rendering: pixelated
+            image-rendering: pixelated;
+            touch-action: none
         }
 
         .text {
@@ -72,8 +73,10 @@
         <canvas id="gameCanvas" width="800" height="250"></canvas>
     </div>
     <script>
-        const c = document.getElementById("gameCanvas"), ctx = c.getContext("2d"), startText = document.getElementById("startText"), gameOverText = document.getElementById("gameOverText"), finalScore = document.getElementById("finalScore");
-        let score = 0, highscore = localStorage.getItem("geometryRunnerHighscore") || 0, gameSpeed = 2.5, isGameOver = false, obstacles = [], backgroundLayers = [], particles = [], nextTimer = 0, isJumpHeld = false, hasStarted = false, gravityDir = 1, nextGravityDir = 1, moveDir = 1, isFlipping = false, flipProgress = 0, restartTimeout = null;
+        const c = document.getElementById("gameCanvas"), ctx = c.getContext("2d", { alpha: false, desynchronized: true }), startText = document.getElementById("startText"), gameOverText = document.getElementById("gameOverText"), finalScore = document.getElementById("finalScore");
+        const isTouchDevice = matchMedia("(pointer: coarse)").matches;
+        const trailLimit = isTouchDevice ? 12 : 20;
+        let score = 0, highscore = localStorage.getItem("geometryRunnerHighscore") || 0, gameSpeed = 2.5, isGameOver = false, obstacles = [], backgroundLayers = [], particles = [], nextTimer = 0, isJumpHeld = false, hasStarted = false, gravityDir = 1, nextGravityDir = 1, moveDir = 1, isFlipping = false, flipProgress = 0, restartTimeout = null, isPageVisible = document.visibilityState === "visible";
 
         function initBackground() {
             backgroundLayers = [
@@ -96,7 +99,7 @@
             },
             update() {
                 if (!this.visible) return;
-                this.trail.push({ x: this.x, y: this.y, rotation: this.rot }); if (this.trail.length > 30) this.trail.shift();
+                this.trail.push({ x: this.x, y: this.y, rotation: this.rot }); if (this.trail.length > trailLimit) this.trail.shift();
                 this.vy += this.gravity * gravityDir; this.y += this.vy;
                 let floor = c.height - 50, ceil = 10, ground = false;
                 if (gravityDir === 1 && this.y >= floor) { this.y = floor; ground = true; } else if (gravityDir === -1 && this.y <= ceil) { this.y = ceil; ground = true; }
@@ -134,6 +137,10 @@
         window.addEventListener("keyup", e => { if (e.code === "Space" || e.code === "ArrowUp") isJumpHeld = false; });
         window.addEventListener("touchstart", handleInput, { passive: false });
         window.addEventListener("touchend", () => isJumpHeld = false, { passive: false });
+        document.addEventListener("visibilitychange", () => {
+            isPageVisible = document.visibilityState === "visible";
+            if (isPageVisible) requestAnimationFrame(animate);
+        });
 
         function startGame(immediate = false) {
             score = 0; gameSpeed = 2.5; isGameOver = false; obstacles = []; nextTimer = 0; gravityDir = 1; nextGravityDir = 1; moveDir = 1; isFlipping = false; flipProgress = 0; particles = [];
@@ -173,6 +180,7 @@
         }
 
         function animate() {
+            if (!isPageVisible) return;
             ctx.clearRect(0, 0, c.width, c.height);
 
             if (!isGameOver) {
