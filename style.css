@@ -1,2942 +1,3244 @@
-/* Remove underline on hover for All my Games button */
+@font-face {
+    font-display: swap;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    src: url('./assets/fonts/poppins-v24-latin-300.woff2') format('woff2'),
+        url('./assets/fonts/poppins-v24-latin-300.ttf') format('truetype');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./assets/fonts/poppins-v24-latin-regular.woff2') format('woff2'),
+        url('./assets/fonts/poppins-v24-latin-regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    src: url('./assets/fonts/poppins-v24-latin-500.woff2') format('woff2'),
+        url('./assets/fonts/poppins-v24-latin-500.ttf') format('truetype');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    src: url('./assets/fonts/poppins-v24-latin-600.woff2') format('woff2'),
+        url('./assets/fonts/poppins-v24-latin-600.ttf') format('truetype');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    src: url('./assets/fonts/poppins-v24-latin-700.woff2') format('woff2'),
+        url('./assets/fonts/poppins-v24-latin-700.ttf') format('truetype');
+}
+
+body,
+html {
+    scroll-behavior: smooth
+}
+
+.menu-links li,
+.nav-links {
+    list-style: none
+}
+
+.btn,
+.section__text p {
+    font-weight: 600
+}
+
+.experience-sub-title,
+.flip-card-back,
+.flip-card-front,
+.flip-toggle-btn,
+.menu-links a,
+.project-btn,
+.project-title,
+a,
+a:hover,
+body,
+p {
+    color: var(--text-color)
+}
+
+.flip-card.flipped .flip-card-back,
+body {
+    scrollbar-width: 0.625rem;
+    -ms-overflow-style: none
+}
+
+#language-switch:hover,
+.toggleLanguage:hover,
+a:hover {
+    text-underline-offset: 1rem;
+    text-decoration: underline
+}
+
+.menu-links a,
+a {
+    text-decoration: none
+}
+
 .all-games-btn:hover {
-  text-decoration: none !important;
+    text-decoration: none !important
 }
 
-/* Add a small gap above the gif on FLOAT card back */
 .flip-card-back img[alt="Solution in action"] {
-  margin-top: 1.2rem;
+    margin-top: 1.2rem
 }
 
-/* Only add margin-top to the first h1 (Project Scope) on the back of each card */
+#P1,
 .flip-card-back h1:first-of-type {
-  margin-top: 4rem;
+    margin-top: 4rem
 }
 
-/* Remove top padding from flipped card back, handled by parent */
-.flip-card.flipped .flip-card-back {
-  overflow-y: auto !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  max-height: 90vh;
-}
-
-/* FLOAT card back: remove all margin/padding from Problem section on all screens */
 .float-problem-section {
-  margin: 0 0 1.2rem 0 !important;
-  padding: 0 !important;
-  text-align: left !important;
-  width: 100% !important;
+    margin: 0 0 1.2rem !important;
+    padding: 0 !important;
+    text-align: left !important;
+    width: 100% !important
 }
 
 .float-problem-section h1,
 .float-problem-section p {
-  margin: 0 !important;
-  padding: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important
 }
 
-.float-problem-row {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 0;
-}
-
+.float-problem-row,
 .float-problem-row h1,
 .float-problem-row p {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0
 }
 
-/* 700px -> 43.75rem */
-@media (max-width: 43.75rem) {
-  .float-problem-row {
-    margin-top: 1rem;
-    margin-bottom: 1.5rem;
-    padding: 0;
-  }
 
-  .float-problem-row h1,
-  .float-problem-row p {
-    margin-bottom: 0.5rem;
-  }
-}
 
-/* FLOAT card back: remove margin around problem text on wide screens, keep small margin on small screens */
 .float-problem-row {
-  margin-top: 0;
+    margin-top: 0
 }
 
-@media (max-width: 43.75rem) {
-  .float-problem-row {
-    margin-top: 1rem;
-    margin-bottom: 1.5rem;
-  }
-}
-
-/* FLOAT card back info box matches front card style */
 .float-back-info-box {
-  background: none;
-  border: none;
-  border-radius: 0;
-  /* 2px -> 0.125rem */
-  border-bottom: 0.125rem solid var(--text-color);
-  padding: 0 0 0.7rem 0;
-  display: flex;
-  gap: 2rem;
-  width: 100%;
-  max-width: 43.75rem;
-  margin-bottom: 1.2rem;
-  margin-top: 0rem;
-  justify-content: center;
+    background: 0 0;
+    border: none;
+    border-radius: 0;
+    border-bottom: .125rem solid var(--text-color);
+    padding: 0 0 .7rem;
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+    max-width: 43.75rem;
+    margin-bottom: 1.2rem;
+    margin-top: 0;
+    justify-content: center
+}
+
+#language-switch,
+#theme-switch,
+.flip-card,
+.flip-card-back,
+.flip-card-front,
+.flip-toggle-btn,
+.menu-links,
+body {
+    background-color: var(--base-color)
 }
 
 .float-back-info-col {
-  flex: 1 1 0;
-  min-width: 0;
-  text-align: left;
+    flex: 1 1 0;
+    min-width: 0;
+    text-align: left
 }
 
-@media (max-width: 43.75rem) {
-  .float-back-info-box {
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
-    padding-top: 0rem;
-  }
+
+
+@media (max-width:56.25rem) {
+    .float-problem-row {
+        order: -1;
+        margin-top: 0 !important;
+        margin-bottom: 2.5rem
+    }
 }
 
-/* FLOAT card back: make the problem row full width below text/gif on large screens, above gif on small screens */
-/* 900px -> 56.25rem */
-@media (max-width: 56.25rem) {
-  .float-problem-row {
-    order: -1;
-    margin-top: 0 !important;
-    margin-bottom: 2.5rem;
-  }
+.toggle,
+.toggleLanguage {
+    left: 1rem;
+    margin-top: 3.5rem;
+    display: flex;
+    position: fixed
 }
-
-/* GENERAL */
 
 :root {
-  --base-color: black;
-  --text-color: white;
-  --icon-color: 0%;
-  --toon-skin: #888888;
-  /* Helle Hautfarbe */
-  --toon-line: #303030;
-  /* Dicke schwarze Outline */
-  --toon-cuff: #9c0000;
+    --base-color: black;
+    --text-color: white;
+    --icon-color: 0%;
+    --toon-skin: #888888;
+    --toon-line: #303030;
+    --toon-cuff: #004aa6;
+    --pk-skin: #3e3b52;
+    --pk-outline: #000000;
+    --pk-leaf: #76c442
 }
 
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  background-color: var(--base-color);
-  color: var(--text-color);
-  transition: 0.5s;
+    font-family: Poppins, sans-serif;
+    transition: .5s;
+    overflow-y: scroll
 }
 
 html {
-  scroll-behavior: smooth;
-  /* 14px -> 0.875rem, 18px -> 1.125rem */
-  font-size: clamp(0.875rem, 1vw, 1.125rem);
+    font-size: clamp(.875rem, 1vw, 1.125rem)
 }
 
-html,
-body {
-  height: 100%;
-  scroll-behavior: smooth;
-  box-sizing: border-box;
+body,
+html {
+    height: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden
 }
 
 *,
-*::before,
-*::after {
-  box-sizing: inherit;
+::after,
+::before {
+    box-sizing: inherit
 }
 
-p {
-  color: var(--text-color);
-}
-
-/* TOGGLE MODE */
-
+#language-switch,
 #theme-switch {
-  /* 50px -> 3.125rem */
-  height: 3.125rem;
-  width: 3.125rem;
-  border-radius: 50%;
-  background-color: var(--base-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    height: 3.125rem;
+    width: 3.125rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center
 }
 
-#theme-switch svg:last-child {
-  display: none;
+#language-switch svg:first-child,
+#theme-switch svg:last-child,
+.darkmode #language-switch svg:last-child,
+.darkmode #theme-switch svg:first-child,
+.flip-card.flipped .meta-btn {
+    display: none
 }
 
-.darkmode #theme-switch svg:first-child {
-  display: none;
+.darkmode #language-switch svg:first-child,
+.darkmode #theme-switch svg:last-child,
+.flip-card.flipped .exit-btn,
+.menu-links a {
+    display: block
 }
 
-.darkmode #theme-switch svg:last-child {
-  display: block;
-}
-
-.toggle {
-  position: fixed;
-  left: 1rem;
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  margin-top: 3.5rem;
-}
-
+.toggle,
 .toggleLanguage {
-  position: fixed;
-  left: 1rem;
-  margin-top: 3.5rem;
-  z-index: 998;
-  display: flex;
-  align-items: center;
+    align-items: center
 }
 
-#language-switch {
-  /* 50px -> 3.125rem */
-  height: 3.125rem;
-  width: 3.125rem;
-  border-radius: 50%;
-  background-color: var(--base-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#experience,
+.hamburger-menu,
+.logo {
+    position: relative
 }
 
-#language-switch svg:first-child {
-  display: none;
-}
-
-.darkmode #language-switch svg:last-child {
-  display: none;
-}
-
-.darkmode #language-switch svg:first-child {
-  display: block;
-}
-
-/* DESKTOP NAV */
-
-nav,
-.nav-links {
-  display: flex;
+.nav-links,
+nav {
+    display: flex
 }
 
 nav {
-  justify-content: space-around;
-  align-items: center;
-  height: 17vh;
+    justify-content: space-around;
+    align-items: center;
+    height: 17vh
 }
 
 .nav-links {
-  gap: 2rem;
-  list-style: none;
-  font-size: 1.25rem;
+    gap: 2rem;
+    font-size: 1.25rem
 }
 
 a {
-  color: var(--text-color);
-  text-decoration: none;
-  text-decoration-color: var(--base-color);
+    text-decoration-color: var(--base-color)
 }
 
 a:hover {
-  color: var(--text-color);
-  text-decoration: underline;
-  text-underline-offset: 1rem;
-  text-decoration-color: var(--text-color);
+    text-decoration-color: var(--text-color)
 }
 
 .logo {
-  font-size: 2rem;
-  position: relative;
-  z-index: 1;
-  padding-left: 2.5rem;
+    font-size: 2rem;
+    z-index: 1;
+    padding-left: 2.5rem
 }
 
-.logo:hover {
-  cursor: default;
+.details-container,
+.insights.container {
+    padding: 1.5rem;
+    text-align: center;
+    background: var(--base-color)
 }
 
-/* HAMBURGER MENU */
-
-#hamburger-nav {
-  display: none;
+.contact-icon,
+.logo:hover,
+article .icon {
+    cursor: default
 }
 
 .hamburger-menu {
-  position: relative;
-  display: inline-block;
+    display: inline-block
+}
+
+.arrow,
+.flip-toggle-btn,
+.menu-links {
+    position: absolute
 }
 
 .hamburger-icon {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  /* 24px -> 1.5rem */
-  height: 1.5rem;
-  /* 30px -> 1.875rem */
-  width: 1.875rem;
-  cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 1.5rem;
+    width: 1.875rem;
+    cursor: pointer
+}
+
+#profile,
+#socials-container {
+    justify-content: center;
+    display: flex
 }
 
 .hamburger-icon span {
-  width: 100%;
-  /* 2px -> 0.125rem */
-  height: 0.125rem;
-  background-color: var(--text-color);
+    width: 100%;
+    height: .125rem;
+    background-color: var(--text-color)
 }
 
 .menu-links {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: var(--base-color);
-  /* 175px -> 10.9375rem ~ 11rem */
-  width: 11rem;
-  max-height: 0;
-  overflow: hidden;
+    top: 100%;
+    right: 0;
+    width: 11rem;
+    max-height: 0;
+    overflow: hidden
 }
 
 .menu-links a {
-  display: block;
-  /* 10px -> 0.625rem */
-  padding: 0.625rem;
-  text-align: center;
-  font-size: 1.5rem;
-  color: var(--text-color);
-  text-decoration: none;
-}
-
-.menu-links li {
-  list-style: none;
+    padding: .625rem;
+    text-align: center;
+    font-size: 1.5rem
 }
 
 .menu-links.open {
-  /* 300px -> 18.75rem */
-  max-height: 18.75rem;
+    max-height: 18.75rem
 }
 
 .hamburger-icon.open span:first-child {
-  /* 10px -> 0.625rem, 5px -> 0.3125rem */
-  transform: rotate(45deg) translate(0.625rem, 0.3125rem);
+    transform: rotate(45deg) translate(.625rem, .3125rem)
 }
 
 .hamburger-icon.open span:nth-child(2) {
-  opacity: 0;
+    opacity: 0
 }
 
 .hamburger-icon.open span:last-child {
-  /* 10px -> 0.625rem, -5px -> -0.3125rem */
-  transform: rotate(-45deg) translate(0.625rem, -0.3125rem);
+    transform: rotate(-45deg) translate(.625rem, -.3125rem)
 }
 
 .hamburger-icon span:first-child {
-  transform: none;
-  opacity: 1;
+    transform: none;
+    opacity: 1
 }
 
-/* SECTIONS */
-
 section {
-  padding-top: 4vh;
-  margin-inline: clamp(1rem, 6vw, 10rem);
-  padding-block: clamp(3rem, 6vh, 6rem);
-  box-sizing: border-box;
-  padding: 5rem 0rem;
-  margin-bottom: 5rem;
-  height: auto;
+    margin-inline: clamp(1rem, 6vw, 10rem);
+    padding-block: clamp(3rem, 6vh, 6rem);
+    box-sizing: border-box;
+    padding: 5rem 0;
+    margin-bottom: 5rem;
+    height: auto
 }
 
 .section-container {
-  display: flex;
-  height: auto !important;
-  min-height: 80%;
+    display: flex;
+    height: auto !important;
+    min-height: 80%
 }
-
-/* PROFILE SECTION */
 
 #profile {
-  display: flex;
-  justify-content: center;
-  gap: 5rem;
-  margin-top: 0rem;
-  padding-top: 0rem;
+    gap: 5rem;
+    margin-top: 0;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.section__pic-container {
-  /* keep a fixed square so the image cannot be stretched into an oval */
-  /* 200px -> 12.5rem */
-  flex: 0 0 12.5rem;
-  width: 12.5rem;
-  height: 12.5rem;
-  margin: auto 0;
+.resources-page #profile {
+    gap: 1rem;
+}
+
+.resources-page .filter-container {
+    margin-top: 0;
 }
 
 .section__text {
-  align-self: center;
-  text-align: center;
+    align-self: center;
+    text-align: center
 }
 
-.section__text p {
-  font-weight: 600;
-}
-
-.section__text__p1 {
-  text-align: center;
+.section__text__p1,
+footer p {
+    text-align: center
 }
 
 .section__text__p2 {
-  font-size: clamp(1.1rem, 2vw, 1.75rem);
-  margin-bottom: 1rem;
+    font-size: clamp(1.1rem, 2vw, 1.75rem);
+    margin-bottom: 1rem
 }
 
 .title {
-  font-size: clamp(2rem, 4vw, 3rem);
-  text-align: center;
+    font-size: clamp(2rem, 4vw, 3rem);
+    text-align: center
+}
+
+.resource-list-section {
+    margin-bottom: 3rem;
+    padding-top: 0;
+}
+
+.resource-list-section.hidden {
+    display: none;
+}
+
+.resource-list {
+    display: grid;
+    gap: 1rem;
+    list-style: none;
+    margin: 0 auto;
+    max-width: 50rem;
+}
+
+.resource-item {
+    align-items: center;
+    border-bottom: .125rem solid var(--text-color);
+    display: flex;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.resource-item img {
+    border: .125rem solid var(--text-color);
+    border-radius: 50%;
+    flex: 0 0 5rem;
+    height: 5rem;
+    object-fit: cover;
+    width: 5rem;
+}
+
+.resource-item__content {
+    text-align: left;
+}
+
+.resource-item h2 {
+    font-size: 1.35rem;
+    margin-bottom: .35rem;
+}
+
+.resource-item p {
+    line-height: 1.6;
+}
+
+.resource-item .tags {
+    display: none;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.tag {
+    display: inline-block;
+    background-color: var(--color-bg2);
+    color: var(--text-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.85rem;
+    border: 0.0625rem solid var(--text-color);
+}
+
+.filter-container {
+    margin: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+.filter-secondary {
+    opacity: 0.7;
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    border: 0.125rem solid var(--text-color);
+    background-color: transparent;
+    color: var(--text-color);
+    border-radius: 2rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.filter-btn:hover {
+    border-color: #daa520;
+}
+
+.filter-btn-primary {
+    font-weight: 600;
+}
+
+.filter-btn.active {
+    border-color: #daa520;
+}
+
+.resource-item {
+    transition: opacity 0.3s ease, max-height 0.3s ease, margin 0.3s ease;
+    overflow: hidden;
+}
+
+.resource-item.hidden {
+    display: none;
+    opacity: 0;
+    height: 0;
+    max-height: 0;
+    margin: 0;
+    min-height: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+    border-bottom-width: 0;
+    pointer-events: none;
 }
 
 #socials-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-  gap: 1rem;
+    margin-top: 1rem;
+    gap: 1rem
 }
-
-/* ICONS */
 
 .icon {
-  cursor: pointer;
-  height: 2rem;
-  filter: 100%;
+    cursor: pointer;
+    height: 2rem;
+    filter: 100%
 }
-
-/* ABOUT SECTION */
 
 #about {
-  position: relative;
-  margin-bottom: 0rem !important;
-  padding-bottom: 4rem !important;
-  border-bottom: 0.125rem solid var(--text-color);
-  margin-top: 1rem !important;
-  padding-top: 2rem !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 4rem !important;
+    border-bottom: .125rem solid var(--text-color);
+    margin-top: 1rem !important;
+    padding-top: 2rem !important
 }
-
-
 
 .about-details-container {
-  justify-content: center;
-  flex-direction: column;
-  display: flex;
-}
-
-.about-pic {
-  border-radius: 2rem;
+    justify-content: center;
+    flex-direction: column;
+    display: flex
 }
 
 .arrow {
-  position: absolute;
-  right: -5rem;
-  bottom: 2.5rem;
+    right: -5rem;
+    bottom: 2.5rem
 }
 
 .details-container {
-  padding: 1.5rem;
-  flex: 1;
-  background: var(--base-color);
-  border-radius: 2rem;
-  border: 2px solid var(--text-color);
-  border-color: var(--text-color);
-  text-align: center;
+    flex: 1;
+    border-radius: 2rem;
+    border: 2px solid var(--text-color);
+    border-color: var(--text-color)
 }
 
 .insights.container {
-  padding: 1.5rem;
-  flex: 1;
-  background: var(--base-color);
-  border-radius: 2rem;
-  border: var(--base-color) 0.1rem solid;
-  border-color: var(--text-color);
-  text-align: center;
-}
-
-/* EXPERIENCE SECTION */
-
-#experience {
-  position: relative;
+    flex: 1;
+    border-radius: 2rem;
+    border: var(--base-color) .1rem solid;
+    border-color: var(--text-color)
 }
 
 .experience-sub-title {
-  color: var(--text-color);
-  font-weight: 600;
-  font-size: 1.3rem;
-  margin-bottom: 2rem;
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin-bottom: 2rem
 }
 
 .experience-details-container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+    display: flex;
+    justify-content: center;
+    flex-direction: column
 }
 
 .article-container {
-  display: flex;
-  text-align: initial;
-  flex-wrap: wrap;
-  flex-direction: row;
-  gap: 2.5rem;
-  justify-content: space-around;
-  height: 75%;
+    display: flex;
+    text-align: initial;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 2.5rem;
+    justify-content: space-around;
+    height: 75%
 }
 
 article {
-  display: flex;
-  width: 20rem;
-  justify-content: left;
-  gap: 0.5rem;
+    display: flex;
+    width: 20rem;
+    justify-content: left;
+    gap: .5rem
 }
-
-article .icon {
-  cursor: default;
-}
-
-/* PROJECTS SECTION */
 
 #projects {
-  position: relative;
-  border-bottom: 0.125rem solid var(--text-color);
+    border-bottom: .125rem solid var(--text-color);
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    margin-bottom: 1rem !important;
+    padding-bottom: .5rem !important
+}
+
+.color-container,
+.project-btn {
+    border-color: var(--text-color)
+}
+
+#contact,
+.flip-card.flipped .flip-card-back {
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important
 }
 
 .color-container {
-  border-color: var(--text-color);
-  background: var(--base-color);
+    background: var(--base-color)
 }
 
 .project-title {
-  margin: 1rem;
-  color: var(--text-color);
-  font-size: 1.1rem;
-  text-align: center;
-  word-break: break-word;
-}
-
-.project-btn {
-  color: var(--text-color);
-  border-color: var(--text-color);
+    margin: 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+    word-break: break-word
 }
 
 .btn-container {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  padding: 1rem 0;
-  /* 60px -> 3.75rem */
-  min-height: 3.75rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    min-height: 3.75rem
 }
 
-/* CONTACT */
-
 #contact {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  /* reduce space between contact section and footer */
-  margin-bottom: 0rem !important;
-  padding-bottom: 0rem !important;
-  margin-top: 0rem !important;
-  padding-top: 1.5rem !important;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding-top: 1.5rem !important
 }
 
 .contact-info-upper-container {
-  display: flex;
-  justify-content: center;
-  border-radius: 2rem;
-  border: var(--base-color) 0.1rem solid;
-  border-color: var(--text-color);
-  margin: 2rem auto;
-  padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    border-radius: 2rem;
+    border: var(--base-color) .1rem solid;
+    border-color: var(--text-color);
+    margin: 2rem auto;
+    padding: .5rem
 }
 
 .contact-info-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  margin: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    margin: 1rem
 }
 
 .contact-info-container p {
-  font-size: larger;
-}
-
-.contact-icon {
-  cursor: default;
+    font-size: larger
 }
 
 .email-icon {
-  height: 2.5rem;
+    height: 2.5rem
 }
-
-/* FOOTER SECTION */
 
 footer {
-  padding: 5rem 0rem;
-  margin-bottom: 5rem;
-  height: auto;
-  margin: 0 1rem;
-  margin-top: 0rem !important;
-  padding-top: 0rem !important;
-  margin-bottom: 1.5rem !important;
-  padding-bottom: 1.5rem !important;
+    padding: 5rem 0;
+    height: auto;
+    margin: 0 1rem;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    margin-bottom: 1.5rem !important;
+    padding-bottom: 1.5rem !important
 }
-
-footer p {
-  text-align: center;
-}
-
-/* BUTTONS */
 
 .btn {
-  font-weight: 600;
-  padding: 0.75em 1.5em;
-  min-width: 8ch;
-  border-radius: 2rem;
-  font-size: 0.95rem;
+    padding: .75em 1.5em;
+    min-width: 8ch;
+    border-radius: 2rem;
+    font-size: .95rem
 }
 
 .btn-color-1,
 .btn-color-2 {
-  border: 2px solid var(--text-color) !important;
+    border: 2px solid var(--text-color) !important
 }
 
 .btn-color-1:hover,
 .btn-color-2:hover {
-  cursor: pointer;
+    cursor: pointer
 }
 
 .btn-color-1,
 .btn-color-2:hover {
-  background: var(--base-color);
-  color: var(--text-color);
+    background: var(--base-color);
+    color: var(--text-color)
 }
 
-.btn-color-1:hover {
-  background: var(--base-color);
-}
-
+.btn-color-1:hover,
 .btn-color-2 {
-  background: var(--base-color);
+    background: var(--base-color)
 }
 
-.btn-color-2:hover {
-  color: goldenrod;
+.btn-color-2:hover,
+.flip-toggle-btn:hover {
+    color: #daa520
 }
 
 .flip-toggle-btn {
-  position: absolute;
-  top: 0rem;
-  right: 1rem;
-  z-index: 4;
-  padding: 0.4rem 0.8rem;
-  font-size: 0.8rem;
-  cursor: pointer;
-  background-color: var(--base-color);
-  /* 1px -> 0.0625rem, use 0.0625rem or just keep 1px for thin border, sticking to rem per request */
-  border: 0.0625rem solid var(--text-color);
-  border-radius: 1rem;
-  color: var(--text-color);
+    top: 0;
+    right: 1rem;
+    z-index: 4;
+    padding: .4rem .8rem;
+    font-size: .8rem;
+    cursor: pointer;
+    border: .0625rem solid var(--text-color);
+    border-radius: 1rem
 }
 
-.flip-toggle-btn:hover {
-  color: goldenrod;
+.flip-card,
+.flip-card-inner {
+    position: relative;
+    width: 100%
 }
 
 .details-container.color-container {
-  flex: 1 1 auto;
-  width: 100%;
-  /* 60rem ~ 960px */
-  max-width: 60rem;
-  margin: 1.25rem;
+    flex: 1 1 auto;
+    max-width: 60rem
 }
 
-/* Flip Card Styles */
-@media (max-width: 43.75rem) {
-  .gif-spacer {
-    height: 0 !important;
-  }
-}
 
-@media (max-width: 43.75rem) {
-  .flip-card-back {
-    padding: 1.2rem;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    text-align: center !important;
-  }
 
-  .flip-card-back>div {
-    flex-direction: column !important;
-    gap: 1.2rem !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    width: 100% !important;
-    margin: 0 !important;
-  }
-
-  .flip-card-back {
-    background-color: var(--base-color);
-    color: var(--text-color);
-    z-index: 1;
-    opacity: 0;
-    overflow-y: auto;
-    pointer-events: none;
-    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+.details-container.color-container {
+    flex: 1 1 18.75rem;
+    height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    height: 100%;
-    min-height: 0;
-    box-sizing: border-box;
-  }
-}
-
-@media (max-width: 43.75rem) {
-  .flip-card-back .blueprint-frame {
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    /* 240px -> 15rem */
-    height: 15rem !important;
-    margin: 0 auto 0 auto !important;
-    display: block;
-    padding-top: 0 !important;
-  }
-
-  .flip-card-back h1,
-  .flip-card-back #P1 {
-    margin-top: 0 !important;
-  }
-}
-
-.details-container.color-container {
-  /* 300px -> 18.75rem */
-  flex: 1 1 18.75rem;
-  margin: 1rem;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+    overflow: hidden
 }
 
 .insights.container {
-  /* 300px -> 18.75rem */
-  flex: 1 1 18.75rem;
-  /* 500px -> 31.25rem */
-  max-width: 31.25rem;
-  min-width: 18.75rem;
-  margin: 1rem;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+    flex: 1 1 18.75rem;
+    max-width: 31.25rem;
+    min-width: 18.75rem;
+    margin: 1rem;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden
 }
-
 
 .flip-card {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 2rem;
-  background-color: var(--base-color);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+    border-radius: 2rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column
 }
 
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.flip-card-front,
-.flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  border-radius: 2rem;
-  box-sizing: border-box;
-  overflow: hidden;
+.flip-card-back,
+.flip-card-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 2rem;
+    box-sizing: border-box;
+    overflow: hidden
 }
 
 .flip-card-front {
-  background-color: var(--base-color);
-  color: var(--text-color);
-  z-index: 2;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
+    z-index: 2;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem
+}
+
+.flip-card-back,
+.flip-card.flipped .flip-card-front {
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1
 }
 
 .flip-card-back {
-  background-color: var(--base-color);
-  color: var(--text-color);
-  z-index: 1;
-  opacity: 0;
-  overflow-y: auto;
-  pointer-events: none;
-  padding: 2rem 3rem 3rem 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+    overflow-y: auto;
+    padding: 2rem 3rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center
 }
 
-/* Flip state */
 .flip-card.flipped {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 1000;
-  border-radius: 0;
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  padding: 0;
-}
-
-.flip-card.flipped .flip-card-front {
-  opacity: 0;
-  pointer-events: none;
-  z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    padding: 0
 }
 
 .flip-card.flipped .flip-card-back {
-  opacity: 1;
-  pointer-events: auto;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100vw;
-  height: 100vh;
-  min-height: 0;
-  background: var(--base-color);
-  overflow-y: auto !important;
-  padding: 0;
+    padding-top: 0 !important;
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100vw;
+    height: 100vh;
+    min-height: 0;
+    background: var(--base-color);
+    overflow-y: auto !important;
+    padding: 0
 }
 
-/* Add a scrollable wrapper for card content */
 .flip-card-back .flip-card-back-inner {
-  width: 100%;
-  /* 700px -> 43.75rem */
-  max-width: 43.75rem;
-  margin: 0 auto;
-  flex: 1 1 0%;
-  min-height: 0;
-  padding: 2rem 1rem 2rem 1rem;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+    width: 100%;
+    max-width: 43.75rem;
+    margin: 0 auto;
+    flex: 1 1 0%;
+    min-height: 0;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch
 }
 
-/* Blueprint iframe styles */
 .blueprint-frame {
-  width: 100%;
-  border: none;
-  /* 12px -> 0.75rem */
-  border-radius: 0.75rem;
-  padding-top: 2rem;
+    width: 100%;
+    border: none;
+    border-radius: .75rem;
+    padding-top: 2rem
 }
 
-/* 1024px -> 64rem */
-@media (min-width: 64rem) {
-  .blueprint-frame {
-    width: 75%;
-  }
+@media (min-width:64rem) {
+    .blueprint-frame {
+        width: 75%
+    }
 }
 
-@media (max-width: 43.75rem) {
-  .flip-card-back .blueprint-frame {
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    /* 240px -> 15rem */
-    height: 15rem !important;
-    margin: 2.5rem auto 0 auto !important;
-    display: block;
-    padding-top: 2.5rem !important;
-  }
+.flip-card-back h1,
+.flip-card-back p {
+    margin-bottom: 1rem
 }
-
 
 .flip-card.flipped .blueprint-frame {
-  width: 45vw !important;
-  /* 1200px -> 75rem */
-  max-width: 75rem;
-  height: 35vh !important;
-  /* 150px -> 9.375rem */
-  min-height: 9.375rem;
-  display: block;
-  margin: 2rem auto;
+    width: 45vw !important;
+    max-width: 75rem;
+    height: 35vh !important;
+    min-height: 9.375rem;
+    display: block;
+    margin: 2rem auto
 }
-
 
 .flip-card-back h1 {
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-
-
-#P1 {
-  margin-top: 4rem;
-}
-
-.flip-card-back p {
-  margin-bottom: 1rem;
+    margin-top: 0
 }
 
 .project-title-container {
-  height: auto;
-  padding: 1rem 0;
-  /* 60px -> 3.75rem */
-  min-height: 3.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    height: auto;
+    min-height: 3.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center
 }
 
 .flip-card-front .btn-container {
-  height: auto;
-  padding: 1rem 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    height: auto;
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center
 }
 
 .flip-card-front .article-container {
-  position: relative;
-  height: 50%;
-  flex-shrink: 0;
-  margin-bottom: 1rem;
+    flex-shrink: 0;
+    margin-bottom: 1rem
 }
 
 .flip-card-front .article-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0
 }
-
-
 
 .flip-card .exit-btn {
-  display: none;
-  top: 2rem;
-  right: 2rem;
-  width: 3.5rem;
-  height: 3.5rem;
-  padding: 0;
-  font-size: 1.2rem;
-  border-radius: 2rem;
-  z-index: 10;
-}
-
-.flip-card.flipped .meta-btn {
-  display: none;
-}
-
-.flip-card.flipped .exit-btn {
-  display: block;
+    display: none;
+    top: 2rem;
+    right: 2rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    padding: 0;
+    font-size: 1.2rem;
+    border-radius: 2rem;
+    z-index: 10
 }
 
 body.noscroll,
 html.noscroll {
-  overflow: scroll !important;
-  height: 100% !important;
-  position: static !important;
-  width: auto !important;
+    overflow: scroll !important;
+    height: 100% !important;
+    position: static !important;
+    width: auto !important
 }
 
-/* 480px -> 30rem */
-@media (max-width: 30rem) {
+@media (max-width:30rem) {
 
-  /* allow details panel to shrink on very narrow screens */
-  .details-container.color-container {
-    min-width: 0 !important;
-    max-width: 100% !important;
-    flex: 1 1 auto !important;
-    margin: 0.5rem !important;
-  }
+    .details-container.color-container,
+    .insights.container {
+        min-width: 0 !important;
+        max-width: 100% !important;
+        flex: 1 1 auto !important;
+        margin: .5rem !important
+    }
 
-  .insights.container {
-    min-width: 0 !important;
-    max-width: 100% !important;
-    flex: 1 1 auto !important;
-    margin: 0.5rem !important;
-  }
+    .btn {
+        width: auto !important;
+        padding: .45rem .6rem !important;
+        font-size: .85rem !important
+    }
 
-  /* make regular buttons more compact so they don't overflow */
-  .btn {
-    width: auto !important;
-    padding: 0.45rem 0.6rem !important;
-    font-size: 0.85rem !important;
-  }
+    .exit-btn,
+    .flip-toggle-btn,
+    .meta-btn {
+        position: fixed !important;
+        top: .6rem !important;
+        right: .6rem !important;
+        z-index: 2000 !important
+    }
 
-  /* keep the details/exit/meta toggles always visible */
-  .flip-toggle-btn,
-  .meta-btn,
-  .exit-btn {
-    position: fixed !important;
-    top: 0.6rem !important;
-    right: 0.6rem !important;
-    z-index: 2000 !important;
-  }
-
-  /* ensure flipped state's exit button sits above the card */
-  .flip-card.flipped .exit-btn {
-    display: block !important;
-    right: 0.6rem !important;
-    top: 0.6rem !important;
-  }
-
-
+    .flip-card.flipped .exit-btn {
+        display: block !important;
+        right: .6rem !important;
+        top: .6rem !important
+    }
 }
 
-/* Fix: allow problem text to use full width (override inline pre-line/newlines) */
-.float-problem-section p,
-#ProblemDesc {
-  white-space: normal !important;
-  word-break: normal !important;
-  overflow-wrap: break-word !important;
-  text-align: left !important;
+#ProblemDesc,
+.float-problem-section p {
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+    text-align: left !important
 }
 
-/* Ensure the problem column stretches instead of aligning everything to the right */
-.flip-card-back>div>div[style*="align-items: flex-end"],
-.flip-card-back>div>div {
-  align-items: stretch !important;
+.flip-card-back>div>div,
+.flip-card-back>div>div[style*="align-items: flex-end"] {
+    align-items: stretch !important
 }
 
-/* Reduce vertical gap between Profile and Projects */
 #profile {
-  gap: 2rem;
-  padding-bottom: 6rem;
-  margin-bottom: 4rem;
-  border-bottom: 0.125rem solid var(--text-color);
+    gap: 2rem;
+    padding-bottom: 4rem;
+    margin-bottom: 4rem;
+    border-bottom: .125rem solid var(--text-color)
 }
 
-/* Reduce top spacing for Projects so it sits closer to Profile */
-#projects {
-  margin-top: 0 !important;
-  padding-top: 0rem !important;
-  margin-bottom: 1rem !important;
-  padding-bottom: 0.5rem !important;
+@media (min-width:75rem) {
+
+    .toggle,
+    .toggleLanguage {
+        left: 10rem;
+        top: 3.5rem;
+        margin-top: 0
+    }
+
+    .toggle {
+        z-index: 1001
+    }
+
+    .toggleLanguage {
+        z-index: 1000
+    }
+
+    .flip-card.flipped .exit-btn {
+        top: 3.5rem !important
+    }
 }
 
-/* 1200px -> 75rem */
-@media (min-width: 75rem) {
-
-  /* Theme toggle: left edge of content, higher z so it's visible */
-  .toggle {
-    left: 10rem;
-    top: 3.5rem;
-    margin-top: 0;
-    z-index: 1001;
-  }
-
-  /* Language toggle: same left edge, a bit lower so they don't overlap */
-  .toggleLanguage {
-    left: 10rem;
-    top: 3.5rem;
-    margin-top: 0;
-    z-index: 1000;
-  }
-}
-
-/* Make video/iframe content fully responsive so one fixed-size iframe doesn't squeeze others */
 .flip-card-front .article-container {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16/9;
-  /* 140px -> 8.75rem */
-  min-height: 8.75rem;
-  height: auto;
-  overflow: hidden;
-}
-
-/* Override any hard-coded width/height attributes on iframes/videos */
-.flip-card-front .article-container iframe,
-.flip-card-front .article-container video {
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 100% !important;
-  display: block;
-  border-radius: 1rem;
-}
-
-
-/* Allow detail cards to shrink below their previous min-width on small screens */
-@media (max-width: 43.75rem) {
-  .details-container.color-container {
-    flex: 1 1 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    margin: 0.5rem !important;
-  }
-
-  .insights.container {
-    flex: 1 1 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    margin: 0.5rem !important;
-  }
-
-  .flip-card-front .article-container {
-    aspect-ratio: 16/9;
-    /* 120px -> 7.5rem */
-    min-height: 7.5rem;
-  }
-}
-
-/* Make video/iframe content fully responsive so one fixed-size iframe doesn't squeeze others */
-.flip-card-front .article-container {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16/9;
-  /* 140px -> 8.75rem */
-  min-height: 8.75rem;
-  height: auto;
-  overflow: hidden;
-}
-
-/* Override any hard-coded width/height attributes on iframes/videos */
-.flip-card-front .article-container iframe,
-.flip-card-front .article-container video {
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 100% !important;
-  display: block;
-  border-radius: 1rem;
-}
-
-/* Ensure card boxes can wrap and shrink on narrow screens */
-.about-containers {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 1rem;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Ensure card boxes can wrap and shrink on narrow screens */
-.about-insights-containers {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 1rem;
-}
-
-/* Allow detail cards to shrink below their previous min-width on small screens */
-@media (max-width: 43.75rem) {
-  .details-container.color-container {
-    flex: 1 1 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    margin: 0.5rem !important;
-  }
-
-  .insights.container {
-    flex: 1 1 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    margin: 0.5rem !important;
-  }
-
-  .flip-card-front .article-container {
-    aspect-ratio: 16/9;
-    /* 120px -> 7.5rem */
-    min-height: 7.5rem;
-  }
-}
-
-/* Keep 16:9 ratio but cap iframe height on medium/wide screens so buttons stay visible */
-/* 701px -> 43.8125rem, 1400px -> 87.5rem */
-@media screen and (min-width: 43.8125rem) and (max-width: 87.5rem) {
-  .flip-card-front {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-
-  .flip-card-front .article-container {
+    position: relative;
     width: 100%;
     aspect-ratio: 16/9;
-    /* 420px -> 26.25rem */
-    max-height: min(45vh, 26.25rem) !important;
-    height: auto !important;
-    flex: 0 0 auto;
-    overflow: hidden;
-  }
+    min-height: 8.75rem;
+    height: auto;
+    overflow: hidden
+}
 
-  .flip-card-front .article-container iframe,
-  .flip-card-front .article-container video {
+.flip-card-front .article-container iframe,
+.flip-card-front .article-container video {
     width: 100% !important;
     height: 100% !important;
     max-width: 100% !important;
     display: block;
-    object-fit: cover;
-  }
-
-  /* Ensure btn area remains visible and not overlapped */
-  .flip-card-front .btn-container {
-    flex: 0 0 auto;
-    z-index: 4;
-    padding-bottom: 1rem;
-  }
+    border-radius: 1rem
 }
 
-/* Make YouTube/video take exactly half the card height on medium/wide screens */
-@media screen and (min-width: 43.8125rem) and (max-width: 87.5rem) {
-  .flip-card-front {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
+.about-containers {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 1rem;
+    justify-content: center;
+    flex-direction: row !important;
+    align-items: stretch;
+    width: 100%;
+}
 
-  .flip-card-front .article-container {
-    flex: 0 0 50% !important;
-    height: 50% !important;
-    max-height: 50% !important;
-    min-height: 0 !important;
-    overflow: hidden;
-  }
+.about-insights-containers {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 1rem
+}
 
-  .flip-card-front .btn-container,
-  .flip-card-front .project-title-container,
-  .flip-card-front .project-meta {
-    flex: 1 1 auto !important;
-    min-height: 0 !important;
-  }
 
-  .flip-card-front .article-container iframe,
-  .flip-card-front .article-container video {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    display: block;
-  }
+
+@media screen and (min-width:43.8125rem) and (max-width:87.5rem) {
+    .flip-card-front .article-container {
+        width: 100%;
+        aspect-ratio: 16/9;
+        flex: 0 0 auto
+    }
+
+    .flip-card-front .article-container iframe,
+    .flip-card-front .article-container video {
+        max-width: 100% !important;
+        object-fit: cover;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        display: block
+    }
+
+    .flip-card-front .btn-container {
+        flex: 0 0 auto;
+        z-index: 4;
+        padding-bottom: 1rem
+    }
+
+    .flip-card-front {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start
+    }
+
+    .flip-card-front .article-container {
+        flex: 0 0 50% !important;
+        height: 50% !important;
+        max-height: 50% !important;
+        min-height: 0 !important;
+        overflow: hidden
+    }
+
+    .flip-card-front .btn-container,
+    .flip-card-front .project-meta,
+    .flip-card-front .project-title-container {
+        flex: 1 1 auto !important;
+        min-height: 0 !important
+    }
 }
 
 .details-container.color-container {
-  flex: 1 1 auto;
-  max-width: clamp(20rem, 50vw, 60rem);
-  width: 100%;
-  margin: 1.25rem;
+    flex: 1 1 auto;
+    max-width: clamp(20rem, 50vw, 60rem);
+    width: 100%
 }
 
-
-/* Keep theme & language toggles above the flipped full-screen card */
 .toggle,
 .toggleLanguage {
-  z-index: 2001 !important;
-}
-
-/* Ensure same on narrow screens */
-@media (max-width: 30rem) {
-
-  .toggle,
-  .toggleLanguage {
-    z-index: 2001 !important;
-  }
+    z-index: 2001 !important
 }
 
 .section__pic-container {
-  /* 200px -> 12.5rem */
-  flex: 0 0 12.5rem;
-  width: 12.5rem;
-  height: 12.5rem;
-  margin: auto 0;
+    flex: 0 0 12.5rem;
+    width: 12.5rem;
+    height: 12.5rem;
+    margin: auto 0
 }
 
-/* replaced: ensure profile/about image is always a perfect circle */
 .about-pic {
-  width: 100%;
-  height: 100%;
-  display: block;
-  border-radius: 50%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 50%;
+    object-fit: cover
 }
 
-/* About section: place picture above the text and center contents */
 #about .section-container {
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem
 }
 
-/* Limit text width and center-align it under the image */
 #about .about-details-container {
-  width: 100%;
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center
 }
 
-/* Add some horizontal padding so long lines don't touch edges */
 #about .text-container {
-  padding: 0 1rem;
-  box-sizing: border-box;
-  max-width: 50rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    max-width: 50rem
 }
 
-/* Keep about image centered above text */
 #about .section__pic-container {
-  margin: 0 auto;
-}
-
-@media (max-width: 43.75rem) {
-
-  /* Keep comfortable breathing room when a card is expanded to full-screen */
-  .flip-card.flipped .flip-card-back {
-    padding: 1.2rem 1rem 2rem 1rem !important;
-    box-sizing: border-box !important;
-  }
-
-  /* Ensure the inner scrollable wrapper keeps sensible horizontal padding */
-  .flip-card-back .flip-card-back-inner {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-  }
-}
-
-body {
-  overflow-y: scroll;
-}
-
-body {
-  /* 10px -> 0.625rem */
-  scrollbar-width: 0.625rem;
-}
-
-body {
-  -ms-overflow-style: none;
+    margin: 0 auto
 }
 
 body::-webkit-scrollbar {
-  display: none;
+    display: none
 }
 
-/* Make underline on hover goldrod for projects/about/contact links and mailto/linkedin anchors */
-a[href="#projects"]:hover,
+.btn-color-1:hover,
+.btn-color-2:hover,
+.nav-links a:hover,
+.contact-info-container a:hover,
+a[href*=linkedin]:hover,
 a[href="#about"]:hover,
 a[href="#contact"]:hover,
-a[href^="mailto:"]:hover,
-a[href*="linkedin"]:hover {
-  text-decoration-color: goldenrod !important;
+a[href="#projects"]:hover,
+a[href^="mailto:"]:hover {
+    text-decoration-color: goldenrod !important
 }
 
-/* Also ensure nav links and typical project/contact buttons use gold underline on hover */
-.nav-links a:hover,
-.btn-color-1:hover,
-.btn-color-2:hover {
-  text-decoration-color: goldenrod !important;
-}
-
-/* Top social icons (itch.png / linkedin.png) hover -> ring around icon instead of color tint */
 #socials-container img[src$="itch.png"],
+#socials-container img[src$="cv.png"],
 #socials-container img[src$="linkedin.png"] {
-  transition: box-shadow 0.22s ease, transform 0.12s ease;
-  border-radius: 50%;
-  display: inline-block;
-  box-sizing: border-box;
+    transition: box-shadow .22s, transform .12s;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box
 }
 
-/* Hover: add a goldenrod ring and a subtle scale */
 #socials-container img[src$="itch.png"]:hover,
+#socials-container img[src$="cv.png"]:hover,
 #socials-container img[src$="linkedin.png"]:hover {
-  /* 4px -> 0.25rem */
-  box-shadow: 0 0 0 0.25rem goldenrod;
-  cursor: pointer;
+    box-shadow: 0 0 0 .25rem #daa520;
+    cursor: pointer
 }
 
-/* Language toggle: match nav/social hover behavior (goldrod text/underline + icon tint) */
-.toggleLanguage:hover,
-#language-switch:hover {
-  color: goldenrod !important;
-  text-decoration: underline;
-  text-decoration-color: goldenrod !important;
-  text-underline-offset: 1rem;
-  cursor: pointer;
+#language-switch:hover,
+.toggleLanguage:hover {
+    color: #daa520 !important;
+    text-decoration-color: goldenrod !important;
+    cursor: pointer
 }
 
-/* Tint inline SVGs inside the language switch */
 #language-switch:hover svg,
 #language-switch:hover svg * {
-  fill: goldenrod !important;
-  stroke: goldenrod !important;
+    fill: goldenrod !important;
+    stroke: goldenrod !important
 }
 
-/* Approximate goldenrod for raster images used in the language switch */
 #language-switch:hover img {
-  filter: brightness(0) saturate(100%) invert(72%) sepia(61%) saturate(1073%) hue-rotate(359deg) brightness(91%) contrast(90%) !important;
+    filter: brightness(0) saturate(100%) invert(72%) sepia(61%) saturate(1073%) hue-rotate(359deg) brightness(91%) contrast(90%) !important
 }
 
-/* Remove rounded corners when a card is expanded to full screen */
 .flip-card.flipped,
-.flip-card.flipped .flip-card-front,
+.flip-card.flipped .blueprint-frame,
 .flip-card.flipped .flip-card-back,
-.flip-card.flipped .flip-card-inner,
 .flip-card.flipped .flip-card-back-inner,
-.flip-card.flipped .blueprint-frame {
-  border-radius: 0 !important;
-}
-
-/* Apply scrolling / scrollbar rules to the flipped card back only */
-.flip-card.flipped .flip-card-back {
-  overflow-y: scroll;
-  /* 10px -> 0.625rem */
-  scrollbar-width: 0.625rem;
-  -ms-overflow-style: none;
-}
-
-/* WebKit browsers: set a 10px track (or hide if you prefer) */
-.flip-card.flipped .flip-card-back::-webkit-scrollbar {
-  /* 10px -> 0.625rem */
-  width: 0.625rem;
+.flip-card.flipped .flip-card-front,
+.flip-card.flipped .flip-card-inner {
+    border-radius: 0 !important
 }
 
 .flip-card.flipped .flip-card-back::-webkit-scrollbar {
-  display: none;
+    width: .625rem;
+    display: none
 }
 
 .link-icon {
-  /* 16px -> 1rem */
-  width: 1rem;
-  height: 1rem;
-  display: inline-block;
-  margin-left: 0.35rem;
-  vertical-align: middle;
+    width: 1rem;
+    height: 1rem;
+    display: inline-block;
+    margin-left: .35rem;
+    vertical-align: middle
 }
 
-/* Verbirgt die aktuelle Zeit */
 video::-webkit-media-controls-current-time-display {
-  display: none !important;
+    display: none !important
 }
 
-/* Verbirgt die verbleibende Zeit */
 video::-webkit-media-controls-time-remaining-display {
-  display: none !important;
+    display: none !important
 }
-
-
-/* Diese Regeln gelten nun dauerhaft, egal welche Sprache geladen ist */
 
 #AchievementsDesc a {
-  color: inherit;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
+    color: inherit
 }
 
 #AchievementsDesc a:hover {
-  text-decoration: underline;
-  text-decoration-color: rgb(218, 165, 32);
-  /* 3px -> 0.1875rem */
-  text-underline-offset: 0.1875rem;
-  /* 1px -> 0.0625rem */
-  text-decoration-thickness: 0.0625rem;
-  opacity: 1;
+    text-decoration-color: rgb(218, 165, 32);
+    text-underline-offset: 0.1875rem;
+    text-decoration-thickness: 0.0625rem
 }
 
-#AchievementsDesc .link-icon {
-  width: 0.8em;
-  height: auto;
-  /* 5px -> 0.3125rem */
-  margin-left: 0.3125rem;
-  vertical-align: middle;
-  opacity: 0.7;
-  border: none;
+@media (min-width:100rem) {
+    .toggleLanguage {
+        left: 50% !important;
+        margin-left: -31.25rem
+    }
+
+    .flip-card.flipped .exit-btn {
+        right: auto !important;
+        left: 50% !important;
+        margin-left: 31.25rem;
+        top: 3.5rem !important
+    }
 }
 
-#AchievementsDesc a:hover .link-icon {
-  opacity: 1;
-}
-
-/* 1600px -> 100rem */
-@media (min-width: 100rem) {
-  .toggleLanguage {
-    left: 50% !important;
-    /* 500px -> 31.25rem */
-    margin-left: -31.25rem;
-  }
-
-  .flip-card.flipped .exit-btn {
-    right: auto !important;
-    left: 50% !important;
-    /* 500px -> 31.25rem */
-    margin-left: 31.25rem;
-    top: 3.5rem !important;
-  }
-}
-
-@media (min-width: 75rem) {
-  .flip-card.flipped .exit-btn {
-    top: 3.5rem !important;
-  }
-}
-
-/* 1. Alten Border entfernen & Positionierung vorbereiten */
-#projects,
 #about,
 #insights,
-#profile {
-  border-bottom: none !important;
-  position: relative;
+#profile,
+#projects {
+    border-bottom: none !important;
+    position: relative
 }
 
-/* 2. Die neue, kürzere Linie zeichnen */
-#projects::after,
 #about::after,
 #insights::after,
-#profile::after {
-  content: "";
-  display: block;
-  width: 70%;
-  /* 2px -> 0.125rem */
-  height: 0.125rem;
-  background-color: var(--text-color);
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+#profile::after,
+#projects::after {
+    content: "";
+    display: block;
+    width: 70%;
+    height: .125rem;
+    background-color: var(--text-color);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%)
 }
 
 .pdf-btn {
-  width: 14rem !important;
-  max-width: 90vw;
-  /* 1px -> 0.0625rem */
-  letter-spacing: 0.0625rem;
-  color: var(--text-color) !important;
+    width: 14rem !important;
+    max-width: 90vw;
+    letter-spacing: .0625rem;
+    color: var(--text-color) !important
 }
 
 .pdf-btn:hover {
-  color: rgb(218, 165, 32) !important;
-  background-color: var(--base-color) !important;
-  border-color: var(--text-color) !important;
-  cursor: pointer;
+    color: #daa520 !important;
+    background-color: var(--base-color) !important;
+    border-color: var(--text-color) !important;
+    cursor: pointer
 }
-
-/* --- Links für Achievements (Global & Mercury) --- */
 
 #AchievementsDesc a,
 #MercuryAchDesc a,
-#UmbraAchievementsDesc a,
-#NeoAchievementsDesc a {
-  color: inherit;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
+#NeoAchievementsDesc a,
+#UmbraAchievementsDesc a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity .2s
 }
 
 #AchievementsDesc a:hover,
 #MercuryAchDesc a:hover,
-#UmbraAchievementsDesc a:hover,
-#NeoAchievementsDesc a:hover {
-  text-decoration: underline;
-  text-decoration-color: rgb(218, 165, 32);
-  /* 3px -> 0.1875rem */
-  text-underline-offset: 0.1875rem;
-  /* 1px -> 0.0625rem */
-  text-decoration-thickness: 0.0625rem;
-  opacity: 1;
+#NeoAchievementsDesc a:hover,
+#UmbraAchievementsDesc a:hover {
+    text-decoration: underline;
+    text-decoration-color: rgb(218, 165, 32);
+    text-underline-offset: 0.1875rem;
+    text-decoration-thickness: 0.0625rem;
+    opacity: 1
 }
 
 #AchievementsDesc .link-icon,
 #MercuryAchDesc .link-icon,
-#UmbraAchievementsDesc .link-icon,
-#NeoAchievementsDesc .link-icon {
-  width: 0.8em;
-  height: auto;
-  /* 5px -> 0.3125rem */
-  margin-left: 0.3125rem;
-  vertical-align: middle;
-  opacity: 0.7;
-  border: none;
+#NeoAchievementsDesc .link-icon,
+#UmbraAchievementsDesc .link-icon {
+    width: .8em;
+    height: auto;
+    margin-left: .3125rem;
+    vertical-align: middle;
+    opacity: .7;
+    border: none
 }
 
 #AchievementsDesc a:hover .link-icon,
 #MercuryAchDesc a:hover .link-icon,
-#UmbraAchievementsDesc a:hover .link-icon,
-#NeoAchievementsDesc a:hover .link-icon {
-  opacity: 1;
+#NeoAchievementsDesc a:hover .link-icon,
+#UmbraAchievementsDesc a:hover .link-icon {
+    opacity: 1
 }
 
-#AchievementsDesc a:hover .link-icon,
-#MercuryAchDesc a:hover .link-icon {
-  opacity: 1;
-}
-
-/* --- ULTIMATE BLUEPRINT FIX --- */
-@media (max-width: 43.75rem) {
-
-  body .flip-card-back .blueprint-frame {
-    /* 400px -> 25rem, 300px -> 18.75rem */
-    width: 25rem !important;
-    min-width: 18.75rem !important;
-    margin-top: 2rem !important;
-    padding-top: 0 !important;
-  }
-}
-
-/* --- FIX SOLUTION VIDEOS ON MOBILE --- */
+.flip-card-back img,
 .flip-card-back video {
-  width: 100% !important;
-  /* 500px -> 31.25rem */
-  max-width: 31.25rem !important;
-  height: auto !important;
-}
-
-/* --- FIX: MEDIA SCALING (Video & GIF) --- */
-.flip-card-back video,
-.flip-card-back img {
-  width: 100% !important;
-  /* 500px -> 31.25rem */
-  max-width: 31.25rem !important;
-  height: auto !important;
-  object-fit: contain;
+    width: 100% !important;
+    max-width: 31.25rem !important;
+    height: auto !important;
+    object-fit: contain
 }
 
 .flip-card-back .link-icon {
-  width: 0.8em !important;
-  max-width: none !important;
+    width: .8em !important;
+    max-width: none !important
 }
 
-/* --- HAMBURGER MENU FIX (REPAIRED) --- */
-
 #hamburger-nav {
-  justify-content: space-between !important;
-  padding: 0 1rem !important;
-  margin: 0 !important;
-  width: 100% !important;
-  box-sizing: border-box;
+    display: none;
+    justify-content: space-between !important;
+    padding: 0 1rem !important;
+    margin: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box
 }
 
 .menu-links {
-  background-color: black !important;
-  z-index: 9999 !important;
-  border: none !important;
+    background-color: #000 !important;
+    z-index: 9999 !important;
+    border: none !important
 }
 
 .menu-links.open {
-  /* 1px -> 0.0625rem */
-  border: 0.0625rem solid var(--text-color) !important;
-  border-top: none !important;
+    border: .0625rem solid var(--text-color) !important;
+    border-top: none !important
 }
 
 #hamburger-nav .logo {
-  padding-left: 0 !important;
+    padding-left: 0 !important
 }
 
-@media (max-width: 43.75rem) {
 
-  .about-containers,
-  .about-insights-containers {
-    flex-direction: column !important;
-    align-items: stretch !important;
-    width: 100% !important;
-  }
-}
 
-@media (max-width: 43.75rem) {
-
-  .details-container.color-container,
-  .insights.container {
-    flex: none !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 100% !important;
-    margin-inline: 0 !important;
-    box-sizing: border-box;
-    flex: 1 1 clamp(22rem, 36vw, 30rem);
-    max-width: clamp(26rem, 40vw, 36rem);
-    margin: 1.5rem;
-  }
-}
-
-html,
-body {
-  overflow-x: hidden;
-}
-
-@media (max-width: 43.75rem) {
-  .flip-card {
-    height: auto !important;
-    min-height: 24rem;
-  }
-}
-
-@media (max-width: 43.75rem) {
-  .flip-card {
-    height: auto !important;
-  }
-}
-
-@media (max-width: 43.75rem) {
-  .details-container.color-container {
-    height: auto !important;
-  }
-}
-
-@media (max-width: 43.75rem) {
-
-  .flip-card,
-  .flip-card-inner,
-  .flip-card-front,
-  .flip-card-back {
-    height: auto !important;
-    min-height: 0 !important;
-  }
-}
-
-.flip-card {
-  height: 100%;
-}
-
+.flip-card,
 .flip-card-inner {
-  height: 100%;
+    height: 100%
 }
 
-@media (max-width: 43.75rem) {
-  .flip-card-front {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-}
 
-@media (max-width: 43.75rem) {
-
-  .flip-card-inner,
-  .flip-card-front,
-  .flip-card-back {
-    position: static !important;
-  }
-}
-
-@media (max-width: 43.75rem) {
-  .flip-card {
-    height: auto !important;
-    min-height: 0 !important;
-    display: block;
-  }
-}
-
-@media (max-width: 43.75rem) {
-  .flip-card-front {
-    opacity: 1 !important;
-    pointer-events: auto !important;
-  }
-
-  .flip-card-back {
-    opacity: 1 !important;
-    pointer-events: auto !important;
-  }
-}
-
-@media (max-width: 43.75rem) {
-  .flip-card-back {
-    display: none !important;
-  }
-}
-
-@media (max-width: 43.75rem) {
-  .flip-card.flipped .flip-card-back {
-    display: block !important;
-  }
-
-  .flip-card.flipped .flip-card-front {
-    display: none !important;
-  }
-}
-
-@media (max-width: 43.75rem) {
-
-  .flip-card-inner,
-  .flip-card-front,
-  .flip-card-back {
-    position: static !important;
-  }
-}
-
-@media (max-width: 43.75rem) {
-  .flip-card {
-    height: auto !important;
-    min-height: 0 !important;
-  }
-}
-
-@media (max-width: 43.75rem) {
-
-  .details-container.color-container,
-  .insights.container {
-    width: 100%;
-    max-width: 100%;
-    min-width: 100%;
-    margin: 0.75rem 0;
-  }
-}
 
 .details-container.color-container {
-  margin: 1.25rem;
+    margin: 1.25rem
 }
 
-@media (max-width: 43.75rem) {
-  .details-container.color-container {
-    width: 100% !important;
-    max-width: 100% !important;
-    flex: 1 1 auto !important;
-    margin: 1rem 0 !important;
-  }
+
+
+@media (min-width:43.75rem) {
+    .details-container.color-container {
+        flex: 1 1 35rem !important;
+        max-width: 50rem !important;
+        height: auto !important;
+        min-height: 40rem;
+        max-height: none !important;
+        overflow: visible !important
+    }
 }
 
-/* Gilt nur für Bildschirme größer als 700px (43.75rem) */
-@media (min-width: 43.75rem) {
-  .details-container.color-container {
-    flex: 1 1 35rem !important;
-    max-width: 50rem !important;
-    height: auto !important;
-    min-height: 40rem;
-    max-height: none !important;
-    overflow: visible !important;
-  }
-}
-
-/* FIX: Lücke am unteren Rand auf Mobilgeräten schließen */
-@media (max-width: 43.75rem) {
-  /* entspricht < 700px */
-
-  .flip-card.flipped {
-    /* 1. Nutze Dynamic Viewport Height für exakte Anpassung an Mobil-Screens */
-    height: 100vh !important;
-    /* Fallback für alte Browser */
-    height: 100dvh !important;
-    /* Die moderne Lösung */
-
-    /* 2. Fixiere Positionierung an allen vier Ecken */
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-
-    /* 3. Hintergrundfarbe auf den Haupt-Container zwingen */
-    /* Damit wird verhindert, dass Elemente dahinter durch "transparente Pixel" scheinen */
-    background-color: var(--base-color) !important;
-
-    /* 4. Ränder und Rundungen sicher entfernen */
-    border-radius: 0 !important;
-    margin: 0 !important;
-    width: 100vw !important;
-
-    /* 5. Z-Index hoch genug, um Navigationslinien zu überdecken */
-    z-index: 9995 !important;
-  }
-
-  /* Stellt sicher, dass die "Rückseite" innerhalb dieses Containers auch voll ausgefüllt ist */
-  .flip-card.flipped .flip-card-back {
-    height: 100% !important;
-    width: 100% !important;
-    background-color: var(--base-color) !important;
-  }
-}
-
-/* --- FIX: Symmetrische Buttons & Bild-Korrektur --- */
-
-/* 1. Container zentrieren */
 .flip-card-front .btn-container {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  gap: 1rem !important;
-  /* Der Abstand liegt nun genau in der Mitte */
-  width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    width: 100% !important;
+    position: relative;
+    z-index: 1
 }
 
-/* 2. Button-Form fixieren */
 .flip-card-front .btn {
-  /* Feste Breite für ALLE Buttons -> Symmetrie */
-  width: 9rem !important;
-  /* Feste Höhe verhindert "Eiern" oder Verformen durch das Bild */
-  height: 3.25rem !important;
-
-  /* Flexbox zentriert den Inhalt (Bild + Text) perfekt */
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-
-  /* Padding auf 0, da wir Breite/Höhe fix haben */
-  padding: 0 !important;
-
-  /* Abstand wird über gap geregelt, nicht über margin am Bild */
-  gap: 0.5rem !important;
-
-  /* Verhindert Umbrüche */
-  white-space: nowrap !important;
+    width: 9rem !important;
+    height: 3.25rem !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+    gap: .5rem !important;
+    white-space: nowrap !important
 }
 
-/* 3. Bild bändigen (Überschreibt Inline-Styles) */
 .flip-card-front .btn img {
-  /* Größe festnageln */
-  width: 1.4rem !important;
-  height: auto !important;
-
-  /* WICHTIG: Margin entfernen, da wir 'gap' im Button nutzen */
-  margin: 0 !important;
-  margin-right: 0 !important;
-  /* Spezifisch für den Inline-Style */
-
-  /* Verhindert, dass das Bild gequetscht oder gestreckt wird */
-  flex-shrink: 0 !important;
-  object-fit: contain !important;
-  display: block !important;
-}
-
-/* --- POOKI INTERACTIVE HEAD (FIXED) --- */
-
-:root {
-  --pk-skin: #3e3b52;
-  --pk-outline: #000000;
-  --pk-leaf: #76c442;
-}
-
-/* WICHTIG: Damit Buttons über Pooki liegen */
-.flip-card-front .btn-container {
-  position: relative;
-  z-index: 1;
-  /* Höher als Pooki */
+    width: 1.4rem !important;
+    height: auto !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+    object-fit: contain !important;
+    display: block !important
 }
 
 .pooki-head-container {
-  position: absolute;
-  /* Alignment: Ändere diesen Wert, um ihn höher/tiefer zu setzen */
-  bottom: -3px;
-  right: 1.5rem;
-  width: 70px;
-  height: 60px;
-  z-index: 1;
-  /* Niedriger als Buttons (10), aber über Background */
-  pointer-events: none;
+    position: absolute;
+    bottom: -3px;
+    right: 1.5rem;
+    width: 70px;
+    height: 60px;
+    z-index: 1;
+    pointer-events: none
 }
 
 .pooki-head {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background-color: var(--pk-skin);
-  border: 3px solid var(--pk-outline);
-  border-radius: 45% 45% 40% 40%;
-  box-shadow: inset 4px 4px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: var(--pk-skin);
+    border: 3px solid var(--pk-outline);
+    border-radius: 45% 45% 40% 40%;
+    box-shadow: inset 4px 4px 0 rgba(255, 255, 255, .1)
 }
 
-/* --- AUGEN --- */
 .eye-socket {
-  position: absolute;
-  top: 13px;
-  width: 28px;
-  height: 28px;
-  background-color: white;
-  border: 3px solid var(--pk-outline);
-  border-radius: 50%;
-  overflow: hidden;
-  z-index: 2;
+    position: absolute;
+    top: 13px;
+    width: 28px;
+    height: 28px;
+    background-color: #fff;
+    border: 3px solid var(--pk-outline);
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 2
 }
 
 .eye-socket.left {
-  left: 6px;
+    left: 6px
 }
 
 .eye-socket.right {
-  right: 6px;
+    right: 6px
 }
 
 .pupil {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 20px;
-  height: 20px;
-  background-color: black;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+    border-radius: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.mouth,
+.pupil::after {
+    width: 6px;
+    position: absolute
 }
 
 .pupil::after {
-  content: '';
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  width: 6px;
-  height: 6px;
-  background-color: white;
-  border-radius: 50%;
+    content: '';
+    top: 4px;
+    right: 4px;
+    height: 6px;
+    background-color: #fff;
+    border-radius: 50%
 }
 
-/* --- DETAILS --- */
 .mouth {
-  position: absolute;
-  bottom: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 6px;
-  height: 3px;
-  border-bottom: 2px solid black;
-  border-radius: 0 0 50% 50%;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 3px;
+    border-bottom: 2px solid #000;
+    border-radius: 0 0 50% 50%
 }
-
-
 
 .antenna-leaf {
-  position: absolute;
-  top: -20px;
-  left: 8px;
-  width: 26px;
-  height: 16px;
-  background-color: var(--pk-leaf);
-  border: 2px solid rgb(27, 27, 27);
-  border-radius: 0 100% 0 100%;
-  transform: rotate(-15deg);
-  transform-origin: bottom right;
-  animation: leafWiggle 3s infinite ease-in-out;
+    position: absolute;
+    top: -20px;
+    left: 8px;
+    width: 26px;
+    height: 16px;
+    background-color: var(--pk-leaf);
+    border: 2px solid #1b1b1b;
+    border-radius: 0 100%;
+    transform: rotate(-15deg);
+    transform-origin: bottom right;
+    animation: 3s ease-in-out infinite leafWiggle
 }
 
 @keyframes leafWiggle {
 
-  0%,
-  100% {
-    transform: rotate(-15deg);
-  }
+    0%,
+    100% {
+        transform: rotate(-15deg)
+    }
 
-  50% {
-    transform: rotate(-5deg);
-  }
+    50% {
+        transform: rotate(-5deg)
+    }
 }
 
-/* MOBILE: Nicht ausblenden, sondern verkleinern */
-@media (max-width: 30rem) {
-  .pooki-head-container {
-    display: block !important;
-    /* Erzwingt Sichtbarkeit */
-    transform: scale(0.7);
-    /* 70% Größe */
-    transform-origin: bottom right;
-    /* Skaliert in die Ecke hinein */
-    right: 0.5rem;
-    /* Etwas näher an den Rand */
-    bottom: -2px;
-    /* Ggf. Mobile-Alignment anpassen */
-  }
-}
-
-/* --- MERCURY UPPERCUT ANIMATION (Icon Target) --- */
-
-/* Der Wrapper liegt über dem Button */
 .mercury-animation-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 20;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 20
 }
 
-/* Ziel-Button: Reagiert auf den Schlag von unten */
 #mercury-itch-btn {
-  position: relative;
-  z-index: 10;
-  /* Neue Animation für diagonalen Treffer */
-  animation: btn-uppercut-react 2s infinite cubic-bezier(.36, .07, .19, .97);
-  transform-origin: center bottom;
-  /* Dreht sich eher um den unteren Punkt */
+    position: relative;
+    z-index: 10;
+    animation: 2s cubic-bezier(.36, .07, .19, .97) infinite btn-uppercut-react;
+    transform-origin: center bottom
 }
 
-/* --- DIE MECHA-FAUST (Uppercut Position) --- */
-/* --- DIE CARTOON-FAUST (V9 - Smaller & Natural Slope) --- */
-
-/* 1. Der Container */
 .mecha-fist {
-  position: absolute;
-  bottom: -35px;
-  left: -25px;
-  width: 50px;
-  height: 50px;
-  background: transparent;
-  border: none;
-  z-index: 22;
-  overflow: visible;
-
-  /* Rotation & Scale */
-  transform: rotate(45deg) scale(0.75);
-  transform-origin: center bottom;
-
-  animation: fist-uppercut-small 2s infinite ease-in-out;
+    position: absolute;
+    bottom: -35px;
+    left: -25px;
+    width: 50px;
+    height: 50px;
+    background: 0 0;
+    border: none;
+    z-index: 22;
+    overflow: visible;
+    transform: rotate(45deg) scale(.75);
+    transform-origin: center bottom;
+    animation: 2s ease-in-out infinite fist-uppercut-small
 }
 
-/* 2. Die Finger (Angepasste Form) */
-.knuckles {
-  position: absolute;
-  top: 4px;
-  left: 0;
-  width: 44px;
-  height: 32px;
-
-  background-color: var(--toon-skin);
-  border: 3px solid var(--toon-line);
-
-  transform: skewY(10deg);
-  transform-origin: bottom left;
-
-  /* ÄNDERUNG: Clip-Path unten rechts von 90% auf 85% verschmälert */
-  clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 0% 100%);
-
-  /* Radius unten rechts leicht angepasst (4px statt 6px) */
-  border-radius: 8px 12px 4px 4px;
-  z-index: 2;
-
-  /* Linien */
-  background-image: linear-gradient(to right,
-      transparent 22%,
-      var(--toon-line) 22%, var(--toon-line) 28%,
-      transparent 28%,
-      transparent 47%,
-      var(--toon-line) 47%, var(--toon-line) 53%,
-      transparent 53%,
-      transparent 72%,
-      var(--toon-line) 72%, var(--toon-line) 78%,
-      transparent 78%);
-}
-
-/* 3. Der Daumen */
+.knuckles,
 .thumb {
-  position: absolute;
-  top: 18px;
-  left: -2px;
-  width: 32px;
-  height: 14px;
-  background-color: var(--toon-skin);
-  border: 3px solid var(--toon-line);
-  border-radius: 8px;
-
-  transform: rotate(-5deg);
-  z-index: 3;
-
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+    background-color: var(--toon-skin);
+    border: 3px solid var(--toon-line)
 }
 
-/* 4. Die Manschette */
+.knuckles {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    width: 44px;
+    height: 32px;
+    transform: skewY(10deg);
+    transform-origin: bottom left;
+    clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 0% 100%);
+    border-radius: 8px 12px 4px 4px;
+    z-index: 2;
+    background-image: linear-gradient(to right, transparent 22%, var(--toon-line) 22%, var(--toon-line) 28%, transparent 28%, transparent 47%, var(--toon-line) 47%, var(--toon-line) 53%, transparent 53%, transparent 72%, var(--toon-line) 72%, var(--toon-line) 78%, transparent 78%)
+}
+
+.mecha-fist::after,
+.thumb {
+    width: 32px;
+    transform: rotate(-5deg);
+    position: absolute
+}
+
+.thumb {
+    top: 18px;
+    left: -2px;
+    height: 14px;
+    border-radius: 8px;
+    z-index: 3;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, .1)
+}
+
 .mecha-fist::after {
-  content: '';
-  position: absolute;
-  top: 36px;
-  left: 6px;
-  width: 32px;
-  height: 12px;
-  background-color: var(--toon-cuff);
-  border: 3px solid var(--toon-line);
-  border-radius: 0 0 8px 8px;
-  transform: rotate(-5deg);
-  z-index: 1;
+    content: '';
+    top: 36px;
+    left: 6px;
+    height: 12px;
+    background-color: var(--toon-cuff);
+    border: 3px solid var(--toon-line);
+    border-radius: 0 0 8px 8px;
+    z-index: 1
 }
 
-/* --- ANIMATION --- */
 @keyframes fist-uppercut-small {
 
-  0%,
-  100% {
-    transform: translate(0, 0) rotate(45deg) scale(0.75);
-  }
+    0%,
+    100%,
+    60% {
+        transform: translate(0, 0) rotate(45deg) scale(.75)
+    }
 
-  30% {
-    transform: translate(-10px, 10px) rotate(15deg) scale(0.75);
-  }
+    30% {
+        transform: translate(-10px, 10px) rotate(15deg) scale(.75)
+    }
 
-  45% {
-    transform: translate(35px, -35px) rotate(45deg) scale(0.85);
-  }
-
-  60% {
-    transform: translate(0, 0) rotate(45deg) scale(0.75);
-  }
+    45% {
+        transform: translate(35px, -35px) rotate(45deg) scale(.85)
+    }
 }
 
-/* --- FUNKE (Am Icon) --- */
 .impact-spark {
-  position: absolute;
-  top: 50%;
-  /* Positioniert den Funken dort, wo das Icon sitzt (ca. 25px von links) */
-  left: 40px;
-  width: 30px;
-  height: 30px;
-  background: radial-gradient(circle, #fff 20%, orange 50%, transparent 70%);
-  /* Etwas oranger für mehr Wucht */
-  opacity: 0;
-  /* Startet zentriert und klein */
-  transform: translate(-50%, -50%) scale(0);
-  z-index: 25;
-  animation: spark-flash-uppercut 2s infinite;
-}
-
-/* --- ANIMATIONEN --- */
-
-
-
-/* 2. Button Reaktion (Wird nach oben rechts gestoßen) */
-@keyframes btn-uppercut-react {
-
-  0%,
-  42% {
-    transform: scale(1) translate(0, 0);
-  }
-
-  45% {
-    /* Treffer-Moment: Button wird nach oben rechts gedrückt und leicht gedreht */
-    transform: scale(0.97) translate(2px, -3px) rotate(1deg);
-    filter: brightness(1.3);
-    /* Aufleuchten */
-  }
-
-  50% {
-    transform: scale(1.01) translate(-1px, 1px);
-  }
-
-  /* Rückfederung */
-  60% {
-    transform: scale(1);
-  }
-}
-
-/* 3. Der Blitz (Explodiert am Icon) */
-@keyframes spark-flash-uppercut {
-
-  0%,
-  42% {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, #fff 20%, orange 50%, transparent 70%);
     opacity: 0;
     transform: translate(-50%, -50%) scale(0);
-  }
-
-  45% {
-    opacity: 1;
-    /* Wächst beim Treffer */
-    transform: translate(-50%, -50%) scale(1.8);
-  }
-
-  60% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(2.2);
-  }
-
-  100% {
-    opacity: 0;
-  }
+    z-index: 25;
+    animation: 2s infinite spark-flash-uppercut
 }
 
-/* --- MOBILE ANPASSUNG --- */
-@media (max-width: 30rem) {
+@keyframes btn-uppercut-react {
 
-  /* 1. WICHTIG: Faust & Funken NICHT ausblenden */
-  .mecha-fist,
-  .impact-spark {
-    display: block !important;
-  }
+    0%,
+    42% {
+        transform: scale(1) translate(0, 0)
+    }
 
-  /* 2. Animation auf dem Button aktiv lassen */
-  #mercury-itch-btn {
-    animation: btn-uppercut-react 2s infinite cubic-bezier(.36, .07, .19, .97) !important;
-  }
+    45% {
+        transform: scale(.97) translate(2px, -3px) rotate(1deg);
+        filter: brightness(1.3)
+    }
 
-  /* 3. Optional: Die ganze Animation leicht verkleinern, damit sie auf dem Handy nicht zu wuchtig wirkt */
-  .mercury-animation-wrapper {
-    transform: scale(0.85);
-    /* 85% Größe */
-    transform-origin: center bottom;
-    /* Skaliert von unten */
-  }
+    50% {
+        transform: scale(1.01) translate(-1px, 1px)
+    }
+
+    60% {
+        transform: scale(1)
+    }
 }
 
-/* Erlaubt Animationen, über den Rand hinauszuragen */
+@keyframes spark-flash-uppercut {
+
+    0%,
+    42% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0)
+    }
+
+    45% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.8)
+    }
+
+    60% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(2.2)
+    }
+
+    100% {
+        opacity: 0
+    }
+}
+
+@media (max-width:30rem) {
+
+    .toggle,
+    .toggleLanguage {
+        z-index: 2001 !important
+    }
+
+    .pooki-head-container {
+        display: block !important;
+        transform: scale(.7);
+        transform-origin: bottom right;
+        right: .5rem;
+        bottom: -2px
+    }
+
+    .impact-spark,
+    .mecha-fist {
+        display: block !important
+    }
+
+    #mercury-itch-btn {
+        animation: 2s cubic-bezier(.36, .07, .19, .97) infinite btn-uppercut-react !important
+    }
+
+    .mercury-animation-wrapper {
+        transform: scale(.85);
+        transform-origin: center bottom
+    }
+}
+
 .allow-overflow {
-  overflow: visible !important;
+    overflow: visible !important
 }
 
-/* Optional: Damit die Faust sicher über benachbarten Karten liegt */
 .flip-card.allow-overflow {
-  z-index: 5;
+    z-index: 5
 }
-
-/* --- GOD OF A CULT: THE FANATIC CROWD (FIXED EYES) --- */
-
-/* --- GOD OF A CULT: FINAL DESIGN & SMOOTH MOVEMENT --- */
 
 .cult-wrapper .project-btn {
-  position: relative;
-  z-index: 10;
+    position: relative;
+    z-index: 10
 }
 
-/* 1. Basis-Stil (Dein Design + Weicher Übergang) */
 .cultist-fan {
-  position: absolute;
-  /* START: Sie sitzen tief (versteckt) */
-  top: 5px;
-
-  width: 22px;
-  height: 20px;
-  background-color: #1b1b1b;
-  /* Dein Dunkles Grau */
-  border-radius: 50% 50% 0 0;
-  z-index: 1;
-  box-shadow: 0 0 5px #9e9e9e;
-  /* Dein grauer Schatten */
-
-  /* WICHTIG: 'top' wird animiert, nicht gesprungen */
-  transition: top 0.4s ease-out, background-color 0.3s;
-
-  /* Die Wipp-Bewegung läuft jetzt über 'transform' statt 'top' */
-  animation: fan-bobbing 2s infinite ease-in-out;
+    position: absolute;
+    top: 5px;
+    width: 22px;
+    height: 20px;
+    background-color: #1b1b1b;
+    border-radius: 50% 50% 0 0;
+    z-index: 1;
+    box-shadow: 0 0 5px #9e9e9e;
+    transition: top .4s ease-out, background-color .3s;
+    animation: 2s ease-in-out infinite fan-bobbing
 }
 
-/* 2. Die Augen (Dein Design) */
-.cultist-fan::before,
-.cultist-fan::after {
-  content: '';
-  position: absolute;
-  top: 5px;
-  width: 8px;
-  height: 10px;
-  background-color: #000000;
-  /* Schwarz */
-  border-radius: 50%;
-
-  /* Weiße Pupille (Inset Shadow) */
-  box-shadow: inset 0 0 0 2.5px #ffffff;
-
-  transition: all 0.3s ease;
+.cultist-fan::after,
+.cultist-fan::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    width: 8px;
+    height: 10px;
+    background-color: #000;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 2.5px #fff;
+    transition: .3s
 }
 
 .cultist-fan::before {
-  left: 2px;
+    left: 2px
 }
 
 .cultist-fan::after {
-  right: 2px;
+    right: 2px
 }
 
-
-/* 3. Positionierung der 3 Fans */
 .c1 {
-  left: 18px;
-  animation-duration: 2.2s;
-  animation-delay: 0.1s;
+    left: 18px;
+    animation-duration: 2.2s;
+    animation-delay: .1s
 }
 
 .c2 {
-  left: 50%;
-  /* Wichtig: Transform Startposition definieren */
-  transform: translateX(-50%);
-  animation-duration: 1.8s;
-  animation-delay: 1.2s;
+    left: 50%;
+    transform: translateX(-50%);
+    animation-duration: 1.8s;
+    animation-delay: 1.2s;
+    animation-name: fan-bobbing-center
 }
 
 .c3 {
-  right: 18px;
-  animation-duration: 2.5s;
-  animation-delay: 0.6s;
+    right: 18px;
+    animation-duration: 2.5s;
+    animation-delay: .6s
 }
 
-
-/* 4. HOVER-ZUSTAND (Das weiche Aufstehen) */
 .cult-wrapper:hover .cultist-fan {
-  /* ZIEL: Fahren hoch auf -20px (Dank transition gleitend, nicht spawnend) */
-  top: -20px;
-
-  /* Farbe bleibt (oder ändert sich leicht, falls gewünscht) */
-  background-color: #1b1b1b;
-
-  /* Wechsel zur Zitter-Animation */
-  animation: fan-excited 0.4s infinite alternate !important;
+    top: -20px;
+    background-color: #1b1b1b;
+    animation: .4s infinite alternate fan-excited !important
 }
 
-/* Hover Augen (Gelb & Leuchtend) */
-.cult-wrapper:hover .cultist-fan::before,
-.cult-wrapper:hover .cultist-fan::after {
-  background-color: #ffeb3b;
-  /* Gelbe Pupille & Gelber Glow außen */
-  box-shadow:
-    inset 0 0 0 2.5px #ffeb3b,
-    0 0 8px #ffeb3b;
+.cult-wrapper:hover .cultist-fan::after,
+.cult-wrapper:hover .cultist-fan::before {
+    background-color: #ffeb3b;
+    box-shadow: inset 0 0 0 2.5px #ffeb3b, 0 0 8px #ffeb3b
 }
 
-
-/* --- ANIMATIONEN (Nun über Transform statt Top) --- */
-
-/* Normales Wippen */
 @keyframes fan-bobbing {
 
-  0%,
-  100% {
-    /* Ausgangsposition */
-    transform: translateY(0);
-  }
+    0%,
+    100% {
+        transform: translateY(0)
+    }
 
-  50% {
-    /* Wippt 15px nach oben (relativ zur aktuellen 'top' Position) */
-    transform: translateY(-15px);
-  }
+    50% {
+        transform: translateY(-15px)
+    }
 }
 
-/* Sonderfall Mitte (muss translateX(-50%) behalten) */
 @keyframes fan-bobbing-center {
 
-  0%,
-  100% {
-    transform: translateX(-50%) translateY(0);
-  }
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0)
+    }
 
-  50% {
-    transform: translateX(-50%) translateY(-15px);
-  }
+    50% {
+        transform: translateX(-50%) translateY(-15px)
+    }
 }
 
-/* Zuweisung der Animation für den Mittleren */
-.c2 {
-  animation-name: fan-bobbing-center;
-}
-
-
-/* Zittern bei Hover */
 @keyframes fan-excited {
-  from {
-    transform: translateY(0) rotate(0);
-  }
+    from {
+        transform: translateY(0) rotate(0)
+    }
 
-  to {
-    transform: translateY(-2px) rotate(5deg) scale(1.1);
-  }
+    to {
+        transform: translateY(-2px) rotate(5deg) scale(1.1)
+    }
 }
 
-/* Sonderfall Mitte bei Hover */
 @keyframes fan-excited-center {
-  from {
-    transform: translateX(-50%) translateY(0) rotate(0);
-  }
+    from {
+        transform: translateX(-50%) translateY(0) rotate(0)
+    }
 
-  to {
-    transform: translateX(-50%) translateY(-2px) rotate(-5deg) scale(1.1);
-  }
+    to {
+        transform: translateX(-50%) translateY(-2px) rotate(-5deg) scale(1.1)
+    }
 }
 
-/* Zuweisung Hover-Animation Mitte */
 .cult-wrapper:hover .c2 {
-  animation: fan-excited-center 0.4s infinite alternate !important;
+    animation: .4s infinite alternate fan-excited-center !important
+}
+
+
+@media print {
+
+    @page {
+
+        size: A4;
+
+        margin: 0;
+
+
+
+    }
+
+
+
+    html,
+
+    body {
+
+        background-color: black !important;
+
+        color: white !important;
+
+        -webkit-print-color-adjust: exact !important;
+
+        print-color-adjust: exact !important;
+
+        width: 100% !important;
+
+        height: auto !important;
+
+        overflow: visible !important;
+
+    }
+
+    #desktop-nav {
+
+        display: flex !important;
+
+        justify-content: space-around !important;
+
+        align-items: center !important;
+
+        height: 10vh !important;
+
+        background-color: black !important;
+
+        width: 100% !important;
+
+    }
+
+
+    section {
+
+        break-before: page !important;
+
+        page-break-before: always !important;
+
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        justify-content: center !important;
+
+        min-height: 100vh !important;
+
+        width: 100% !important;
+
+        margin: 0 !important;
+
+        padding: 2rem !important;
+
+        background-color: black !important;
+
+        box-sizing: border-box !important;
+
+    }
+
+
+    #profile {
+
+        break-before: avoid !important;
+
+        page-break-before: avoid !important;
+
+        min-height: 90vh !important;
+
+    }
+
+    .icon,
+
+    .contact-icon,
+
+    .email-icon {
+
+        height: 1.2rem !important;
+
+
+        width: auto !important;
+
+    }
+
+
+
+    #socials-container {
+
+        gap: 0.5rem !important;
+
+        margin-top: 0.5rem !important;
+
+    }
+
+
+
+    .contact-info-container {
+
+        margin: 0.5rem !important;
+
+        gap: 0.5rem !important;
+
+    }
+
+
+    .details-container.color-container {
+
+        break-inside: avoid !important;
+
+        border: 0px solid white !important;
+
+        background-color: black !important;
+
+        margin: 1rem auto !important;
+
+        width: 90% !important;
+
+    }
+
+
+
+    .flip-card {
+
+        display: block !important;
+
+        height: auto !important;
+
+        background-color: black !important;
+
+    }
+
+
+
+    .flip-card-inner {
+
+        display: block !important;
+
+        height: auto !important;
+
+    }
+
+
+
+    .flip-card-front {
+
+        display: block !important;
+
+        position: relative !important;
+
+        opacity: 1 !important;
+
+        background-color: black !important;
+
+    }
+
+
+
+    .flip-card-back {
+
+        display: block !important;
+
+        position: relative !important;
+
+        opacity: 1 !important;
+
+
+
+        background-color: black !important;
+
+        color: white !important;
+
+        padding: 2rem !important;
+
+        width: 100% !important;
+
+        min-height: 100vh !important;
+
+    }
+
+
+    #hamburger-nav,
+    .btn.btn-color-2.project-btn.details-btn,
+    .toggleLanguage,
+    .cult-wrapper,
+    .flip-toggle-btn,
+    .exit-btn,
+
+    #language-switch,
+
+    #contact .contact-info-container:nth-child(3),
+    img[src*="cv.png"],
+    a[onclick*="CV.pdf"],
+    a[href*="CV.pdf"],
+
+    .pooki-head-container,
+
+    .mercury-animation-wrapper,
+
+    footer {
+
+        display: none !important;
+
+    }
+
+
+    video,
+
+    img,
+
+    .blueprint-frame {
+
+        max-width: 100% !important;
+
+        height: auto !important;
+
+        border: 1px solid #3d3d3d !important;
+
+    }
+
+
+
+    h1,
+
+    h2,
+
+    h3,
+
+    p,
+
+    li,
+
+    span,
+
+    a {
+
+        color: white !important;
+
+    }
+
+    a.btn,
+    .icon,
+    .contact-info-container a {
+        text-decoration: none !important;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #socials-container a {
+        display: inline-block !important;
+        line-height: 0;
+    }
+
+    #mercury-itch-btn {
+        position: relative !important;
+        z-index: 9999 !important;
+        display: inline-flex !important;
+        animation: none !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+        top: 0 !important;
+        left: 0 !important;
+    }
+
+    .mercury-animation-wrapper,
+    .mecha-fist,
+    .impact-spark,
+    .mercury-punch-group::after {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
+    .mercury-punch-group {
+        position: relative !important;
+        display: inline-block !important;
+        transform: none !important;
+        z-index: 1 !important;
+    }
+
+    video,
+    .blueprint-frame,
+    .article-container video {
+        max-width: 100% !important;
+        height: auto !important;
+        border: 1px solid #3d3d3d !important;
+        display: block !important;
+    }
+
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+        border: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+    }
+
+    .icon,
+    .project-btn img,
+    #socials-container img,
+    .contact-icon {
+        border: none !important;
+        outline: none !important;
+        background: none !important;
+    }
+
+    #profile::after,
+    #projects::after,
+    #about::after,
+    #insights::after {
+        display: none !important;
+        content: none !important;
+    }
+
+    #projects .experience-details-container,
+    #projects .about-containers {
+        break-before: avoid !important;
+        page-break-before: avoid !important;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+
+    #projects .details-container.color-container:first-of-type {
+        break-before: avoid !important;
+        page-break-before: avoid !important;
+        margin-top: 0.5rem !important;
+    }
+
+    #projects h1.title {
+        margin-bottom: 1rem !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+    }
+
+    #projects .section__text__p1,
+    #projects .title {
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    #projects .experience-details-container {
+        break-before: avoid !important;
+        page-break-before: avoid !important;
+        margin-top: 0 !important;
+    }
+
+    #projects .details-container.color-container:first-of-type {
+        break-before: avoid !important;
+        page-break-before: avoid !important;
+        margin-top: 0 !important;
+    }
+
+    .flip-card-back>div>div[style*="margin-top: 6rem"] {
+        margin-top: 0 !important;
+    }
+
+    .flip-card-back img[alt="FLOAT Awards"] {
+        margin-top: 0.5rem !important;
+    }
+}
+
+.print-only-image {
+    display: none;
 }
 
 @media print {
 
-  @page {
-
-    size: A4;
-
-    margin: 0;
-
-
-
-  }
-
-
-
-  html,
-
-  body {
-
-    background-color: black !important;
-
-    color: white !important;
-
-    -webkit-print-color-adjust: exact !important;
-
-    print-color-adjust: exact !important;
-
-    width: 100% !important;
-
-    height: auto !important;
-
-    overflow: visible !important;
-
-  }
-
-
-
-  /* Navigation anzeigen */
-
-  #desktop-nav {
-
-    display: flex !important;
-
-    justify-content: space-around !important;
-
-    align-items: center !important;
-
-    height: 10vh !important;
-
-    background-color: black !important;
-
-    width: 100% !important;
-
-  }
-
-
-
-  /* Seitenumbruch für Sektionen, außer für die erste nach der Nav */
-
-  section {
-
-    break-before: page !important;
-
-    page-break-before: always !important;
-
-    display: flex !important;
-
-    flex-direction: column !important;
-
-    justify-content: center !important;
-
-    min-height: 100vh !important;
-
-    width: 100% !important;
-
-    margin: 0 !important;
-
-    padding: 2rem !important;
-
-    background-color: black !important;
-
-    box-sizing: border-box !important;
-
-  }
-
-
-
-  /* Verhindert Seitenumbruch vor der Profile-Sektion, damit Nav und Profile auf Seite 1 sind */
-
-  #profile {
-
-    break-before: avoid !important;
-
-    page-break-before: avoid !important;
-
-    min-height: 90vh !important;
-
-    /* Platz für Nav lassen */
-
-  }
-
-
-
-  /* Icons verkleinern (Socials & Contact) */
-
-  .icon,
-
-  .contact-icon,
-
-  .email-icon {
-
-    height: 1.2rem !important;
-
-    /* Deutlich kleiner */
-
-    width: auto !important;
-
-  }
-
-
-
-  #socials-container {
-
-    gap: 0.5rem !important;
-
-    margin-top: 0.5rem !important;
-
-  }
-
-
-
-  .contact-info-container {
-
-    margin: 0.5rem !important;
-
-    gap: 0.5rem !important;
-
-  }
-
-
-
-  /* Container-Anpassungen */
-
-  .details-container.color-container {
-
-    break-inside: avoid !important;
-
-    border: 0px solid white !important;
-
-    background-color: black !important;
-
-    margin: 1rem auto !important;
-
-    width: 90% !important;
-
-  }
-
-
-
-  .flip-card {
-
-    display: block !important;
-
-    height: auto !important;
-
-    background-color: black !important;
-
-  }
-
-
-
-  .flip-card-inner {
-
-    display: block !important;
-
-    height: auto !important;
-
-  }
-
-
-
-  .flip-card-front {
-
-    display: block !important;
-
-    position: relative !important;
-
-    opacity: 1 !important;
-
-    background-color: black !important;
-
-  }
-
-
-
-  .flip-card-back {
-
-    display: block !important;
-
-    position: relative !important;
-
-    opacity: 1 !important;
-
-
-
-    background-color: black !important;
-
-    color: white !important;
-
-    padding: 2rem !important;
-
-    width: 100% !important;
-
-    min-height: 100vh !important;
-
-  }
-
-
-
-  /* UI-Elemente ausblenden */
-
-  #hamburger-nav,
-  .btn.btn-color-2.project-btn.details-btn,
-  .toggleLanguage,
-  .cult-wrapper,
-  .flip-toggle-btn,
-
-  .exit-btn,
-
-  #language-switch,
-
-  .pooki-head-container,
-
-  .mercury-animation-wrapper,
-
-  footer {
-
-    display: none !important;
-
-  }
-
-
-
-  /* Medienoptimierung */
-
-  video,
-
-  img,
-
-  .blueprint-frame {
-
-    max-width: 100% !important;
-
-    height: auto !important;
-
-    border: 1px solid #3d3d3d !important;
-
-  }
-
-
-
-  h1,
-
-  h2,
-
-  h3,
-
-  p,
-
-  li,
-
-  span,
-
-  a {
-
-    color: white !important;
-
-  }
-
-  /* Stellt sicher, dass Links wie Buttons aussehen und keine Unterstriche haben */
-  a.btn,
-  .icon,
-  .contact-info-container a {
-    text-decoration: none !important;
-    display: inline-flex !important;
-    /* Wichtig für die Klickfläche */
+    .blueprint-frame,
+    iframe {
+        display: none !important;
+    }
+
+    .print-only-image {
+        display: block !important;
+        width: 100% !important;
+        max-width: 800px;
+        height: auto !important;
+        margin: 1rem auto !important;
+        border: 1px solid #3d3d3d !important;
+    }
+
+    .print-only-image {
+        display: block !important;
+        width: 16cm !important;
+        margin: 1rem auto !important;
+        aspect-ratio: 16 / 9 !important;
+        object-fit: contain !important;
+        border: 1px solid #3d3d3d !important;
+    }
+
+    .blueprint-frame {
+        display: none !important;
+    }
+
+    #pdfBtn,
+    .pdf-btn {
+        display: none !important;
+    }
+}
+
+#insights {
+    margin-bottom: 1rem !important;
+    padding-bottom: 2rem !important;
+}
+
+.car-on-btn {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-color);
+    pointer-events: none;
+}
+
+.car__body {
+    animation: shake 0.1s ease-in-out infinite alternate;
+}
+
+.car__line {
+    transform-origin: center right;
+    stroke-dasharray: 22;
+    animation: line 0.4s ease-in-out infinite;
+    animation-fill-mode: both;
+}
+
+.car__line--top {
+    animation-delay: 0s;
+}
+
+.car__line--middle {
+    animation-delay: 0.1s;
+}
+
+.car__line--bottom {
+    animation-delay: 0.2s;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateY(-1%);
+    }
+
+    100% {
+        transform: translateY(3%);
+    }
+}
+
+@keyframes line {
+    0% {
+        stroke-dashoffset: 22;
+    }
+
+    25% {
+        stroke-dashoffset: 22;
+    }
+
+    50% {
+        stroke-dashoffset: 0;
+    }
+
+    51% {
+        stroke-dashoffset: 0;
+    }
+
+    80% {
+        stroke-dashoffset: -22;
+    }
+
+    100% {
+        stroke-dashoffset: -22;
+    }
+}
+
+.car__wheel-spin {
+    transform-origin: 0px 0px;
+    animation: spin-wheel 0.3s linear infinite;
+}
+
+@keyframes spin-wheel {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.strike {
+    animation: strikes-svg linear infinite;
+}
+
+.strike1 {
+    animation-delay: 0.1s;
+    animation-duration: 0.25s;
+}
+
+.strike2 {
+    animation-delay: 0.02s;
+    animation-duration: 0.2s;
+}
+
+.strike3 {
+    animation-delay: 0.15s;
+    animation-duration: 0.3s;
+}
+
+.strike4 {
+    animation-delay: 0.08s;
+    animation-duration: 0.22s;
+}
+
+.strike5 {
+    animation-delay: 0.22s;
+    animation-duration: 0.28s;
+}
+
+@keyframes strikes-svg {
+    0% {
+        transform: translateX(27px);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+}
+
+.car-on-btn {
+    pointer-events: auto !important;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.spawn-animation {
+    animation: carPopIn 0.5s ease-out forwards !important;
+}
+
+.drive-off-animation {
+    animation: driveOffAndFall 0.7s linear forwards !important;
+}
+
+@keyframes carPopIn {
+    0% {
+        transform: translateX(-20%) scale(0.3);
+        opacity: 0;
+    }
+
+    60% {
+        transform: translateX(-20%) scale(1.15);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-20%) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes driveOffAndFall {
+    0% {
+        transform: translateX(-20%) translateY(0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+
+    20% {
+        transform: translateX(-45%) translateY(0) rotate(-5deg) scale(1.3);
+        opacity: 1;
+    }
+
+    45% {
+        transform: translateX(50%) translateY(0) rotate(20deg) scale(0.8);
+        opacity: 1;
+    }
+
+    70% {
+        transform: translateX(100%) translateY(30px) rotate(40deg) scale(0.6);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(200%) translateY(100px) rotate(75deg) scale(0.2);
+        opacity: 0;
+    }
+}
+
+.car-on-btn {
+    transition: color 0.3s ease;
+}
+
+.car-on-btn:hover {
+    color: goldenrod;
+}
+
+#language-switch,
+#theme-switch {
+    height: 3.125rem;
+    width: 3.125rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+#language-switch::after {
+    content: "🌸";
+    position: absolute;
+    top: -0.25rem;
+    right: -0.25rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    pointer-events: none;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-origin: center;
+}
+
+#language-switch:hover::after {
+    transform: scale(1.4) rotate(10deg);
+}
+
+@keyframes emojiPopIn {
+    0% {
+        transform: scale(0) rotate(-45deg);
+    }
+
+    80% {
+        transform: scale(1.3) rotate(15deg);
+    }
+
+    100% {
+        transform: scale(1.4) rotate(10deg);
+    }
+}
+
+#language-switch.respawn-emoji::after {
+    animation: emojiPopIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.falling-emoji {
+    position: fixed;
+    font-size: 1.25rem;
+    line-height: 1;
+    pointer-events: none;
+    z-index: 9999;
+    animation: fallSwingFade 2.5s linear forwards;
+    will-change: transform, opacity;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+}
+
+@keyframes fallSwingFade {
+    0% {
+        transform: translate(0, 0) rotate(var(--r-start)) scale(var(--s-start));
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(var(--tx-end), 250px) rotate(var(--r-end)) scale(var(--s-end));
+        opacity: 0;
+    }
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Cult carousel */
+.cult-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    /* passt sich vorhandenen video/elementen an */
+    margin: 0.75rem auto 0 auto;
+    user-select: none;
+    padding-bottom: 2rem;
+}
+
+.cult-carousel__viewport {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 3px solid #3d3d3d;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background: #0f0f0f;
+    height: auto;
+}
+
+.cult-carousel__slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0;
+    transform: scale(1.02);
+    transition: opacity 260ms ease, transform 260ms ease;
+    cursor: zoom-in;
+}
+
+/* active slide */
+.cult-carousel__slide.cult-active {
+    opacity: 1;
+    transform: scale(1);
+    position: relative;
+}
+
+/* arrows */
+.cult-carousel__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 30;
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  /* Klickbereich für Icons sicherstellen */
-  #socials-container a {
-    display: inline-block !important;
-    line-height: 0;
-  }
-
-  /* Mercury-Button komplett resetten für das PDF */
-  #mercury-itch-btn {
-    position: relative !important;
-    z-index: 9999 !important;
-    display: inline-flex !important;
-    /* Animationen und Transforms zerstören oft die Link-Koordinaten im PDF */
-    animation: none !important;
-    transform: none !important;
-    filter: none !important;
-    transition: none !important;
-    /* Sicherstellen, dass die Klickfläche nicht durch negative Margins verschoben ist */
-    top: 0 !important;
-    left: 0 !important;
-  }
-
-  /* Den Wrapper und alle Animations-Elemente komplett entfernen */
-  .mercury-animation-wrapper,
-  .mecha-fist,
-  .impact-spark,
-  .mercury-punch-group::after {
-    display: none !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-  }
-
-  /* Den umschließenden Container neutralisieren */
-  .mercury-punch-group {
-    position: relative !important;
-    display: inline-block !important;
-    transform: none !important;
-    z-index: 1 !important;
-  }
-
-  /* 1. Rahmen nur für große Medien (Videos & Blueprints) beibehalten */
-  video,
-  .blueprint-frame,
-  .article-container video {
-    max-width: 100% !important;
-    height: auto !important;
-    border: 1px solid #3d3d3d !important;
-    display: block !important;
-  }
-
-  /* 2. Rahmen von allen Bildern (Icons, PNGs) entfernen */
-  img {
-    max-width: 100% !important;
-    height: auto !important;
-    border: none !important;
-    /* Entfernt den Kasten */
-    box-shadow: none !important;
-    background: transparent !important;
-  }
-
-  /* 3. Spezifischer Reset für Icons in Buttons und Socials */
-  .icon,
-  .project-btn img,
-  #socials-container img,
-  .contact-icon {
-    border: none !important;
-    outline: none !important;
-    background: none !important;
-  }
-
-  #profile::after,
-  #projects::after,
-  #about::after,
-  #insights::after {
-    display: none !important;
-    content: none !important;
-  }
-
-  /* Verhindert den Seitenumbruch direkt nach der Sektions-Überschrift */
-  #projects .experience-details-container,
-  #projects .about-containers {
-    break-before: avoid !important;
-    page-break-before: avoid !important;
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-
-  /* Erzwingt, dass der erste Projekt-Container auf derselben Seite wie die Überschrift bleibt */
-  #projects .details-container.color-container:first-of-type {
-    break-before: avoid !important;
-    page-break-before: avoid !important;
-    margin-top: 0.5rem !important;
-  }
-
-  /* Optimiert den Platz der Überschriften in der Druckansicht */
-  #projects h1.title {
-    margin-bottom: 1rem !important;
-    page-break-after: avoid !important;
-    break-after: avoid !important;
-  }
-
-  /* Verhindert den Umbruch nach den einleitenden Texten */
-  #projects .section__text__p1,
-  #projects .title {
-    break-after: avoid !important;
-    page-break-after: avoid !important;
-    margin-bottom: 0.5rem !important;
-    /* Verkleinert den Abstand */
-  }
-
-  /* Zwingt den Hauptcontainer, direkt nach der Überschrift zu bleiben */
-  #projects .experience-details-container {
-    break-before: avoid !important;
-    page-break-before: avoid !important;
-    margin-top: 0 !important;
-  }
-
-  /* Stellt sicher, dass die erste Karte nicht auf eine neue Seite springt */
-  #projects .details-container.color-container:first-of-type {
-    break-before: avoid !important;
-    page-break-before: avoid !important;
-    margin-top: 0 !important;
-  }
-
-  /* Target das spezifische Div innerhalb der Karten-Rückseite */
-  .flip-card-back>div>div[style*="margin-top: 6rem"] {
-    margin-top: 0 !important;
-  }
-
-  /* Falls du die Abstände der Awards-Grafik auch anpassen willst */
-  .flip-card-back img[alt="FLOAT Awards"] {
-    margin-top: 0.5rem !important;
-  }
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 120ms;
+    backdrop-filter: blur(3px);
 }
 
-/* Standardmäßig das Druckbild im Browser verstecken */
-.print-only-image {
-  display: none;
+.cult-carousel__arrow:hover {
+    background: rgba(0, 0, 0, 0.6);
 }
 
-@media print {
+.cult-carousel__arrow--left {
+    left: 8px;
+}
 
-  /* Alle Blueprints / Iframes beim Drucken verstecken */
-  .blueprint-frame,
-  iframe {
-    display: none !important;
-  }
+.cult-carousel__arrow--right {
+    right: 8px;
+}
 
-  /* Das Ersatzbild beim Drucken anzeigen */
-  .print-only-image {
-    display: block !important;
-    width: 100% !important;
-    max-width: 800px;
-    /* Oder eine passende Breite für A4 */
-    height: auto !important;
-    margin: 1rem auto !important;
-    border: 1px solid #3d3d3d !important;
-  }
+/* dots */
+.cult-carousel__dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.75rem;
+}
 
-  .print-only-image {
-    display: block !important;
-    /* Exakte Breite für das A4-Format festlegen */
-    width: 16cm !important;
-    margin: 1rem auto !important;
+.cult-carousel__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #9a9a9a;
+    border: none;
+    cursor: pointer;
+    transition: transform 140ms, background 140ms;
+}
 
-    /* Seitenverhältnis erzwingen (z. B. 16:9 oder 4:3) */
-    aspect-ratio: 16 / 9 !important;
+.cult-carousel__dot.cult-dot-active {
+    background: var(--base-color, #d4af37);
+    transform: scale(1.25);
+}
 
-    /* Bildanpassung steuern */
-    object-fit: contain !important;
-    /* Das gesamte Bild wird ohne Beschnitt angezeigt */
-    border: 1px solid #3d3d3d !important;
-  }
+/* fullscreen modal (opened when clicking an image) */
+.cult-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    padding: 24px;
+}
 
-  /* Verstecken des Iframes im Druck */
-  .blueprint-frame {
-    display: none !important;
-  }
+.cult-modal__img {
+    max-height: 95vh;
+    max-width: 95vw;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    border-radius: 6px;
+    cursor: zoom-out;
+}
 
-  #pdfBtn,
-  .pdf-btn {
-    display: none !important;
-  }
+/* small screens tweak */
+@media (max-width: 520px) {
+    .cult-carousel__arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+
+    .cult-carousel {
+        max-width: 100%;
+    }
+}
+
+/* dot active color for small carousel */
+.cult-carousel__dot.cult-dot-active {
+    background: goldenrod;
+    /* changed to goldenrod */
+    transform: scale(1.25);
+}
+
+/* modal base */
+.cult-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    padding: 24px;
+    cursor: zoom-out;
+}
+
+.cult-modal__inner {
+    position: relative;
+    width: 95%;
+    max-width: 1100px;
+    max-height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.cult-modal__viewport {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.cult-modal__slide {
+    display: none;
+    max-width: 95%;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.cult-modal__slide--active {
+    display: block;
+}
+
+/* modal arrows */
+.cult-modal__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2000;
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    cursor: pointer;
+    transition: background 120ms;
+    backdrop-filter: blur(3px);
+}
+
+.cult-modal__arrow--left {
+    left: 8px;
+}
+
+.cult-modal__arrow--right {
+    right: 8px;
+}
+
+/* modal dots and active color */
+.cult-modal__dots {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 2100;
+}
+
+.cult-modal__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #9a9a9a;
+    border: none;
+    cursor: pointer;
+    transition: transform 140ms, background 140ms;
+}
+
+.cult-modal__dot--active {
+    background: goldenrod;
+    transform: scale(1.25);
+}
+
+.tutorial-link {
+    font-weight: bold;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.tutorial-link:hover {
+    color: goldenrod;
+    text-decoration: none;
+}
+
+.media-modal {
+    display: none;
+    /* Standardmäßig ausgeblendet */
+    position: fixed;
+    z-index: 10000;
+    /* Stellt sicher, dass es über allen anderen Elementen liegt */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+}
+
+.media-modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.media-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10001;
+}
+
+.media-modal-close:hover {
+    color: #bbb;
+}
+
+/* Zeigt dem Nutzer an, dass Bilder und Videos klickbar sind */
+img.zoomable,
+video.zoomable {
+    cursor: zoom-in;
+}
+
+@media (min-width: 43.75rem) {
+    .about-containers>.details-container.color-container {
+        max-width: min(50rem, calc(50% - 0.5rem)) !important;
+    }
+}
+
+/* Consolidated responsive rules previously loaded from mediaqueries.css. */
+@media screen and (max-width: 1400px) {
+    #profile {
+        height: 83vh;
+        margin-bottom: 6rem;
+    }
+
+    .about-containers {
+        flex-wrap: wrap;
+    }
+
+    #contact,
+    #projects {
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    #desktop-nav {
+        display: none;
+    }
+
+    #hamburger-nav {
+        display: flex;
+    }
+
+    #experience,
+    .experience-details-container {
+        margin-top: 2rem;
+    }
+
+    #profile,
+    .section-container {
+        display: block;
+    }
+
+    .arrow {
+        display: none;
+    }
+
+    section,
+    .section-container {
+        height: auto;
+    }
+
+    section {
+        margin: 0 5%;
+    }
+
+    .section__pic-container {
+        flex: 0 0 12.5rem;
+        width: 12.5rem;
+        height: 12.5rem;
+        margin: auto 0;
+    }
+
+    .about-containers {
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .details-container.color-container {
+        flex: 1 1 100%;
+        max-width: 100%;
+        min-height: 25rem;
+    }
+
+    .flip-card-front {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* 600px and 700px are equivalent to the consolidated 43.75rem mobile block. */
+
+
+
+
+
+@media (max-width: 43.75rem) {
+
+    #profile {
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 1rem !important;
+        padding-bottom: 3rem !important;
+        margin-bottom: 2rem !important;
+    }
+
+    .section__text {
+        align-self: center !important;
+        margin-bottom: 0 !important;
+    }
+
+    article {
+        font-size: 1rem;
+    }
+
+    footer nav {
+        height: auto;
+        margin-bottom: 2rem;
+    }
+
+    .about-containers,
+    .contact-info-upper-container,
+    .btn-container {
+        flex-wrap: wrap;
+    }
+
+    .contact-info-container {
+        margin: 0;
+    }
+
+    .contact-info-container p,
+    .nav-links li a {
+        font-size: 1rem;
+    }
+
+    .experience-sub-title {
+        font-size: 1.25rem;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .section__pic-container {
+        flex: 0 0 12.5rem;
+        width: 12.5rem;
+        height: 12.5rem;
+        margin: auto 0;
+    }
+
+    .section__text__p2 {
+        font-size: 1.25rem;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .text-container {
+        text-align: justify;
+    }
+
+    .resource-list-section {
+        margin-bottom: 2rem;
+    }
+
+    .resource-item {
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .resource-item img {
+        flex-basis: 4rem;
+        height: 4rem;
+        width: 4rem;
+    }
+
+    .resource-item h2 {
+        font-size: 1.15rem;
+    }
+
+    .filter-container {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: center;
+    }
+
+    .filter-group {
+        gap: 0.5rem;
+        justify-content: center;
+    }
+
+    .filter-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+
+
+    .float-problem-row {
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+        padding: 0
+    }
+
+    .float-problem-row h1,
+    .float-problem-row p {
+        margin-bottom: .5rem
+    }
+
+
+    .float-problem-row {
+        margin-top: 1rem;
+        margin-bottom: 1.5rem
+    }
+
+    .float-back-info-box {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0 1rem 1rem
+    }
+
+    .gif-spacer {
+        height: 0 !important
+    }
+
+
+    .flip-card-back {
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        text-align: center !important
+    }
+
+    .flip-card-back>div {
+        flex-direction: column !important;
+        gap: 1.2rem !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        width: 100% !important;
+        margin: 0 !important
+    }
+
+    .flip-card-back {
+        background-color: var(--base-color);
+        color: var(--text-color);
+        z-index: 1;
+        opacity: 0;
+        overflow-y: auto;
+        pointer-events: none;
+        padding: 1.2rem .5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        height: 100%;
+        min-height: 0;
+        box-sizing: border-box
+    }
+
+    .flip-card-back #P1,
+    .flip-card-back h1 {
+        margin-top: 0 !important
+    }
+
+    .flip-card-back .blueprint-frame {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        height: 15rem !important;
+        margin: 2.5rem auto 0 !important;
+        display: block;
+        padding-top: 2.5rem !important
+    }
+
+
+
+    .details-container.color-container,
+    .insights.container {
+        flex: 1 1 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        margin: .5rem !important
+    }
+
+    .flip-card-front .article-container {
+        aspect-ratio: 16/9;
+        min-height: 7.5rem
+    }
+
+    .flip-card.flipped .flip-card-back {
+        padding: 1.2rem 1rem 2rem !important;
+        box-sizing: border-box !important
+    }
+
+    .flip-card-back .flip-card-back-inner {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important
+    }
+
+
+    body .flip-card-back .blueprint-frame {
+        width: 25rem !important;
+        min-width: 18.75rem !important;
+        margin-top: 2rem !important;
+        padding-top: 0 !important
+    }
+
+    .about-containers,
+    .about-insights-containers {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        width: 100% !important
+    }
+
+    .details-container.color-container,
+    .insights.container {
+        flex: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+        margin-inline: 0 !important;
+        box-sizing: border-box;
+        flex: 1 1 clamp(22rem, 36vw, 30rem);
+        max-width: clamp(26rem, 40vw, 36rem);
+        margin: 1.5rem
+    }
+
+    .details-container.color-container {
+        height: auto !important
+    }
+
+    .flip-card,
+    .flip-card-back,
+    .flip-card-front,
+    .flip-card-inner {
+        height: auto !important;
+        min-height: 0 !important
+    }
+
+    .flip-card-front {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start
+    }
+
+
+    .flip-card {
+        display: block;
+        height: auto !important;
+        min-height: 0 !important
+    }
+
+    .flip-card-back,
+    .flip-card-front {
+        opacity: 1 !important;
+        pointer-events: auto !important
+    }
+
+    .flip-card-back,
+    .flip-card.flipped .flip-card-front {
+        display: none !important
+    }
+
+    .flip-card.flipped .flip-card-back {
+        display: block !important
+    }
+
+    .flip-card-back,
+    .flip-card-front,
+    .flip-card-inner {
+        position: static !important
+    }
+
+    .details-container.color-container,
+    .insights.container {
+        width: 100%;
+        max-width: 100%;
+        min-width: 100%;
+        margin: .75rem 0
+    }
+
+
+    .details-container.color-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 1 1 auto !important;
+        margin: 1rem 0 !important
+    }
+
+    .flip-card.flipped {
+        height: 100vh !important;
+        height: 100dvh !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        background-color: var(--base-color) !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        width: 100vw !important;
+        z-index: 9995 !important
+    }
+
+    .flip-card.flipped .flip-card-back {
+        height: 100% !important;
+        width: 100% !important;
+        background-color: var(--base-color) !important
+    }
+
+
 }

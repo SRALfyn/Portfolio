@@ -101,6 +101,22 @@ document.querySelectorAll('.flip-card').forEach(card => {
   mediaObserver.observe(card);
 });
 
+const showcaseVideoObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const video = entry.target;
+
+    if (entry.isIntersecting) {
+      video.play().catch(() => { });
+    } else {
+      video.pause();
+    }
+  });
+}, { threshold: 0.25 });
+
+document.querySelectorAll('video[data-autoplay-on-visible]').forEach(video => {
+  showcaseVideoObserver.observe(video);
+});
+
 function closeAllCards() {
   document.querySelectorAll('.flip-card.flipped').forEach(card => {
     pauseBackVideos(card);
