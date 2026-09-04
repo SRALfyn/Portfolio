@@ -303,6 +303,8 @@ requestAnimationFrame(animateEyes);
 function playBackVideos(card) {
   const videos = card.querySelectorAll('.flip-card-back video');
   videos.forEach(v => {
+    v.preload = 'metadata';
+    try { v.load(); } catch (e) { }
     v.currentTime = 0; // Immer von vorne starten
     v.play().catch(e => { /* Autoplay-Blocker vom Browser ignorieren */ });
   });

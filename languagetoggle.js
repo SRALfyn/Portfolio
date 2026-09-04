@@ -1,5 +1,7 @@
 const languageToggle = document.getElementById('language-switch');
 const originalMarkup = new Map();
+const japaneseDisclaimer = '※注記：この日本語の翻訳はサイトを読みやすくするためにツールを使用して作成されたものであり、私の現在の実際の日本語能力を反映するものではありません。';
+const englishDisclaimer = '*Note: The Japanese translation on this site was generated using tools to improve readability and does not reflect my actual current proficiency.';
 const dictionaryUrl = new URL('language.json', document.currentScript.src);
 const translationData = fetch(dictionaryUrl).then(response => {
     if (!response.ok) throw new Error(`Unable to load ${dictionaryUrl}`);
@@ -37,16 +39,23 @@ function restoreEnglish() {
     originalMarkup.forEach((markup, element) => {
         element.innerHTML = markup;
     });
+    const disclaimer = document.getElementById('language-disclaimer');
+    if (disclaimer) disclaimer.textContent = englishDisclaimer;
     localStorage.setItem('language', 'inactive');
 }
 
 function showDisclaimer() {
     const languageButton = document.getElementById('language-switch');
-    if (!languageButton || document.getElementById('language-disclaimer')) return;
+    const existingDisclaimer = document.getElementById('language-disclaimer');
+    if (!languageButton) return;
+    if (existingDisclaimer) {
+        existingDisclaimer.textContent = japaneseDisclaimer;
+        return;
+    }
 
     const disclaimer = document.createElement('div');
     disclaimer.id = 'language-disclaimer';
-    disclaimer.textContent = '※注記：この日本語の翻訳はサイトを読みやすくするためにツールを使用して作成されたものであり、私の現在の実際の日本語能力を反映するものではありません。';
+    disclaimer.textContent = japaneseDisclaimer;
     disclaimer.style.cssText = 'position:fixed;background:rgba(0,0,0,.8);color:#fff;padding:8px 12px;border-radius:4px;font-size:12px;line-height:1.4;white-space:normal;overflow-wrap:break-word;pointer-events:none;z-index:1000;opacity:0;transition:opacity .4s ease;';
     document.body.appendChild(disclaimer);
 
@@ -65,7 +74,10 @@ function showDisclaimer() {
 async function enableLanguage() {
     const dictionary = await translationData;
     applyDictionary(dictionary);
-    if (!sessionStorage.getItem('disclaimerShown')) {
+    const disclaimer = document.getElementById('language-disclaimer');
+    if (disclaimer) {
+        disclaimer.textContent = japaneseDisclaimer;
+    } else if (!sessionStorage.getItem('disclaimerShown')) {
         showDisclaimer();
         sessionStorage.setItem('disclaimerShown', 'true');
     }

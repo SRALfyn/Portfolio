@@ -1166,18 +1166,18 @@ a[href^="mailto:"]:hover {
     text-decoration-color: goldenrod !important
 }
 
-#socials-container img[src$="itch.png"],
-#socials-container img[src$="cv.png"],
-#socials-container img[src$="linkedin.png"] {
+#socials-container img[src$="itch.webp"],
+#socials-container img[src$="cv.webp"],
+#socials-container img[src$="linkedin.webp"] {
     transition: box-shadow .22s, transform .12s;
     border-radius: 50%;
     display: inline-block;
     box-sizing: border-box
 }
 
-#socials-container img[src$="itch.png"]:hover,
-#socials-container img[src$="cv.png"]:hover,
-#socials-container img[src$="linkedin.png"]:hover {
+#socials-container img[src$="itch.webp"]:hover,
+#socials-container img[src$="cv.webp"]:hover,
+#socials-container img[src$="linkedin.webp"]:hover {
     box-shadow: 0 0 0 .25rem #daa520;
     cursor: pointer
 }
@@ -2041,7 +2041,7 @@ video::-webkit-media-controls-time-remaining-display {
     #language-switch,
 
     #contact .contact-info-container:nth-child(3),
-    img[src*="cv.png"],
+    img[src*="cv.webp"],
     a[onclick*="CV.pdf"],
     a[href*="CV.pdf"],
 
