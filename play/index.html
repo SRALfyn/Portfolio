@@ -291,7 +291,24 @@
       const keys = { left: !1, right: !1 },
         playerSpeed = 8;
       let phoneTilt = 0,
+        orientationPermissionRequested = !1,
         renderQueue = [];
+      async function requestOrientationPermission() {
+        if (
+          orientationPermissionRequested ||
+          "undefined" == typeof DeviceOrientationEvent ||
+          "function" != typeof DeviceOrientationEvent.requestPermission
+        )
+          return;
+        orientationPermissionRequested = !0;
+        try {
+          const permission = await DeviceOrientationEvent.requestPermission();
+          if ("granted" !== permission) orientationPermissionRequested = !1;
+        } catch (error) {
+          orientationPermissionRequested = !1;
+          console.warn("Device orientation permission was not granted.", error);
+        }
+      }
       window.addEventListener("deviceorientation", (e) => {
         "number" == typeof e.gamma &&
           (phoneTilt = Math.max(-1, Math.min(1, e.gamma / 30)));
@@ -1123,9 +1140,7 @@
           "touchstart",
           (e) => {
             (e.preventDefault(),
-              "undefined" != typeof DeviceOrientationEvent &&
-                "function" == typeof DeviceOrientationEvent.requestPermission &&
-                DeviceOrientationEvent.requestPermission().catch(() => {}),
+              requestOrientationPermission(),
               !hasStarted || isGameOver ? startGame(!0) : player.jump());
           },
           { passive: !1 },
