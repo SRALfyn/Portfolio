@@ -24,8 +24,10 @@
       }
       #gameContainer {
         position: relative;
-        width: 100%;
+        width: min(100%, 1200px);
+        max-width: 1200px;
         height: 100%;
+        margin: 0 auto;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -59,6 +61,134 @@
         color: #d4af37;
         top: 27%;
       }
+      .game-ui {
+        position: absolute;
+        inset: 1rem;
+        z-index: 20;
+        pointer-events: none;
+      }
+      .game-button,
+      .modal button {
+        border: 1px solid #d4af37;
+        border-radius: 4px;
+        background: #17181c;
+        color: #f3f4f6;
+        cursor: pointer;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        padding: 0.65rem 0.85rem;
+      }
+      .game-button:hover,
+      .modal button:hover {
+        background: #d4af37;
+        color: #111214;
+      }
+      #leaderboardButton {
+        pointer-events: auto;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      #coinCounter {
+        background: rgba(23, 24, 28, 0.88);
+        border: 1px solid #d4af37;
+        color: #f3f4f6;
+        font-size: 13px;
+        font-weight: 700;
+        left: 0;
+        padding: 0.65rem 0.85rem;
+        position: absolute;
+        top: 0;
+      }
+      #gameOverActions {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+        margin-top: 0.75rem;
+        pointer-events: auto;
+      }
+      .modal {
+        align-items: center;
+        background: rgba(0, 0, 0, 0.78);
+        display: none;
+        inset: 0;
+        justify-content: center;
+        padding: 1rem;
+        pointer-events: auto;
+        position: absolute;
+        z-index: 30;
+      }
+      .modal.is-open {
+        display: flex;
+      }
+      .modal-panel {
+        background: #17181c;
+        border: 1px solid #4b4d55;
+        border-radius: 6px;
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5);
+        color: #f3f4f6;
+        max-width: 22rem;
+        padding: 1.25rem;
+        width: 100%;
+      }
+      .modal h2 {
+        color: #d4af37;
+        font-size: 1.1rem;
+        margin: 0 0 1rem;
+      }
+      .modal form {
+        display: grid;
+        gap: 0.75rem;
+      }
+      .modal label {
+        display: grid;
+        font-size: 0.8rem;
+        gap: 0.35rem;
+      }
+      .modal input {
+        background: #0e0f11;
+        border: 1px solid #4b4d55;
+        border-radius: 3px;
+        color: #fff;
+        font: inherit;
+        padding: 0.6rem;
+      }
+      .modal input:focus {
+        border-color: #d4af37;
+        outline: 2px solid rgba(212, 175, 55, 0.25);
+      }
+      .modal-error {
+        color: #f78b8b;
+        font-size: 0.8rem;
+        min-height: 1.2em;
+      }
+      .modal-footer {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: flex-end;
+        margin-top: 1rem;
+      }
+      .modal table {
+        border-collapse: collapse;
+        margin-bottom: 0.5rem;
+        width: 100%;
+      }
+      .modal th,
+      .modal td {
+        border-bottom: 1px solid #303238;
+        padding: 0.55rem 0.25rem;
+        text-align: left;
+      }
+      .modal th:last-child,
+      .modal td:last-child {
+        text-align: right;
+      }
+      .loading {
+        color: #b4b6bd;
+        text-align: center;
+      }
       @media (max-width: 500px) {
         .text {
           font-size: 20px;
@@ -81,9 +211,40 @@
           id="finalScore"
           style="font-size: 18px; font-weight: 400"
         ></span
-        ><br /><span style="font-size: 14px; font-weight: 400"
-          >Tap or wait 3s to Restart</span
-        >
+        ><br /><span style="font-size: 14px; font-weight: 400">Tap or wait 3s to Restart</span>
+        <div id="gameOverActions">
+          <button id="saveHighscoreButton" class="game-button" type="button">Save Highscore</button>
+          <button id="gameOverLeaderboardButton" class="game-button" type="button">View Leaderboard</button>
+        </div>
+      </div>
+      <div class="game-ui">
+        <div id="coinCounter" aria-live="polite">Coins: 0</div>
+        <button id="leaderboardButton" class="game-button" type="button">View Leaderboard</button>
+      </div>
+      <div id="authModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+        <div class="modal-panel">
+          <h2 id="authTitle">Save Highscore</h2>
+          <form id="authForm">
+            <label>Username <input id="usernameInput" name="username" required autocomplete="username" /></label>
+            <label>Password <input id="passwordInput" name="password" required type="password" autocomplete="current-password" /></label>
+            <div id="authError" class="modal-error" role="alert"></div>
+            <div class="modal-footer">
+              <button id="authCancelButton" type="button">Cancel</button>
+              <button type="submit">Submit Score</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div id="leaderboardModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="leaderboardTitle">
+        <div class="modal-panel">
+          <h2 id="leaderboardTitle">Leaderboard</h2>
+          <table>
+            <thead><tr><th scope="col">Player</th><th scope="col">Score</th></tr></thead>
+            <tbody id="leaderboardList"><tr><td colspan="2" class="loading">Loading...</td></tr></tbody>
+          </table>
+          <div id="leaderboardError" class="modal-error" role="alert"></div>
+          <div class="modal-footer"><button id="leaderboardCloseButton" type="button">Close</button></div>
+        </div>
       </div>
       <canvas id="gameCanvas" width="320" height="600"></canvas>
     </div>
@@ -93,15 +254,31 @@
         startText = document.getElementById("startText"),
         gameOverText = document.getElementById("gameOverText"),
         finalScore = document.getElementById("finalScore"),
+        saveHighscoreButton = document.getElementById("saveHighscoreButton"),
+        leaderboardButton = document.getElementById("leaderboardButton"),
+        gameOverLeaderboardButton = document.getElementById("gameOverLeaderboardButton"),
+        coinCounter = document.getElementById("coinCounter"),
+        authModal = document.getElementById("authModal"),
+        authForm = document.getElementById("authForm"),
+        usernameInput = document.getElementById("usernameInput"),
+        passwordInput = document.getElementById("passwordInput"),
+        authError = document.getElementById("authError"),
+        leaderboardModal = document.getElementById("leaderboardModal"),
+        leaderboardList = document.getElementById("leaderboardList"),
+        leaderboardError = document.getElementById("leaderboardError"),
         frameTime = 1e3 / 60,
         gameTimeScale = 1,
         camera = { x: 0, y: 250, z: -200, fov: 500 };
       let score = 0,
-        highscore = localStorage.getItem("geometryRunnerHighscore") || 0,
+        highscore = Number(localStorage.getItem("geometryRunnerHighscore")) || 0,
+        totalCoins = Number(localStorage.getItem("geometryRunnerTotalCoins")) || 0,
         gameSpeed = 20,
         runTime = 0,
+        sessionCoins = 0,
+        coinSpawnTimer = 0,
         isGameOver = !1,
         obstacles = [],
+        coins = [],
         particles = [],
         nextTimer = 0,
         hasStarted = !1,
@@ -110,6 +287,7 @@
         lastFrameTime = 0,
         frameScale = 1,
         gridZ = [];
+      coinCounter.textContent = `Coins: ${totalCoins}`;
       const keys = { left: !1, right: !1 },
         playerSpeed = 8;
       let phoneTilt = 0,
@@ -221,6 +399,17 @@
           alpha: s,
         });
       }
+      function pushCoin(e, t, a, r, i, s) {
+        renderQueue.push({
+          type: "coin",
+          cx: e,
+          cy: t,
+          cz: a,
+          r,
+          spin: i,
+          alpha: s,
+        });
+      }
       function drawBox(e) {
         if (e.alpha <= 0.01) return;
         let t = e.w / 2,
@@ -322,11 +511,166 @@
           ctx.stroke();
         }
       }
+      function drawCoin(e) {
+        if (e.alpha <= 0.01) return;
+        const projected = project(e.cx, e.cy, e.cz);
+        if (projected.s <= 0) return;
+        const radius = e.r * projected.s;
+        const width = Math.max(0.08, Math.abs(Math.cos(e.spin))) * radius;
+        ctx.fillStyle = "#d4af37";
+        ctx.strokeStyle = "#ffe28a";
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.ellipse(projected.x, projected.y, width, radius, 0, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+      }
+      const storageKeys = {
+        username: "geometryRunnerUsername",
+        token: "geometryRunnerToken",
+        highscore: "geometryRunnerHighscore",
+      };
+      function getSavedCredentials() {
+        const username = localStorage.getItem(storageKeys.username);
+        const token = localStorage.getItem(storageKeys.token);
+        return username && token ? { username, token } : null;
+      }
+      async function postJson(path, body) {
+        const response = await fetch(path, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        });
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(data.error || "Unable to save score.");
+        return data;
+      }
+      async function submitScoreInBackground() {
+        const credentials = getSavedCredentials();
+        if (!credentials || score <= highscore) return;
+        try {
+          await postJson("/api/submit-score", {
+            username: credentials.username,
+            token: credentials.token,
+            score,
+            coins: totalCoins,
+          });
+          highscore = score;
+          localStorage.setItem(storageKeys.highscore, String(highscore));
+        } catch (error) {
+          console.warn("Background highscore submission failed.", error);
+        }
+      }
+      function openAuthModal() {
+        restartTimeout && clearTimeout(restartTimeout);
+        authError.textContent = "";
+        authModal.classList.add("is-open");
+        usernameInput.focus();
+      }
+      function closeAuthModal() {
+        authModal.classList.remove("is-open");
+        authForm.reset();
+      }
+      async function saveHighscore() {
+        const credentials = getSavedCredentials();
+        if (credentials) {
+          if (score <= highscore) return;
+          try {
+            await postJson("/api/submit-score", {
+              username: credentials.username,
+              token: credentials.token,
+              score,
+              coins: totalCoins,
+            });
+            highscore = score;
+            localStorage.setItem(storageKeys.highscore, String(highscore));
+            finalScore.textContent = `Score: ${score} | Highscore: ${highscore}`;
+          } catch (error) {
+            openAuthModal();
+            authError.textContent = error.message;
+          }
+          return;
+        }
+        openAuthModal();
+      }
+      async function loadLeaderboard() {
+        leaderboardModal.classList.add("is-open");
+        leaderboardError.textContent = "";
+        leaderboardList.innerHTML = '<tr><td colspan="2" class="loading">Loading...</td></tr>';
+        try {
+          const response = await fetch("/api/leaderboard");
+          if (!response.ok) throw new Error("Unable to load leaderboard.");
+          const scores = await response.json();
+          leaderboardList.replaceChildren();
+          scores.slice(0, 10).forEach((entry) => {
+            const row = document.createElement("tr");
+            const username = document.createElement("td");
+            const playerScore = document.createElement("td");
+            username.textContent = entry.username;
+            playerScore.textContent = entry.highscore;
+            row.append(username, playerScore);
+            leaderboardList.appendChild(row);
+          });
+          if (!leaderboardList.children.length) {
+            leaderboardList.innerHTML = '<tr><td colspan="2" class="loading">No scores yet.</td></tr>';
+          }
+        } catch (error) {
+          leaderboardList.replaceChildren();
+          leaderboardError.textContent = error.message;
+        }
+      }
+      function closeLeaderboard() {
+        leaderboardModal.classList.remove("is-open");
+      }
+      saveHighscoreButton.addEventListener("click", saveHighscore);
+      leaderboardButton.addEventListener("click", loadLeaderboard);
+      gameOverLeaderboardButton.addEventListener("click", loadLeaderboard);
+      document.getElementById("authCancelButton").addEventListener("click", closeAuthModal);
+      document.getElementById("leaderboardCloseButton").addEventListener("click", closeLeaderboard);
+      authModal.addEventListener("click", (event) => event.target === authModal && closeAuthModal());
+      leaderboardModal.addEventListener("click", (event) => event.target === leaderboardModal && closeLeaderboard());
+      authForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        authError.textContent = "";
+        const submitButton = authForm.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+        try {
+          const data = await postJson("/api/auth-score", {
+            username: usernameInput.value.trim(),
+            password: passwordInput.value,
+            score,
+            coins: totalCoins,
+          });
+          localStorage.setItem(storageKeys.username, usernameInput.value.trim());
+          localStorage.setItem(storageKeys.token, data.token);
+          highscore = Number(data.highscore) || score;
+          localStorage.setItem(storageKeys.highscore, String(highscore));
+          const returnedCoins = data.coins ?? data.totalCoins;
+          if (Number.isFinite(Number(returnedCoins))) {
+            totalCoins = Number(returnedCoins);
+            localStorage.setItem("geometryRunnerTotalCoins", String(totalCoins));
+            coinCounter.textContent = `Coins: ${totalCoins}`;
+          }
+          finalScore.textContent = `Score: ${score} | Highscore: ${highscore}`;
+          closeAuthModal();
+        } catch (error) {
+          authError.textContent = error.message;
+        } finally {
+          submitButton.disabled = false;
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeAuthModal();
+          closeLeaderboard();
+        }
+      });
       function triggerGameOver() {
         isGameOver ||
           ((isGameOver = !0),
           (gameSpeed = 20),
           (runTime = 0),
+          (coinSpawnTimer = 0),
           (player.visible = !1),
           (particles = Array.from({ length: 25 }, () => {
             let e = Math.random() * Math.PI * 2,
@@ -347,7 +691,9 @@
               life: 40 + 20 * Math.random(),
             };
           })),
-          score > highscore &&
+          submitScoreInBackground(),
+          !getSavedCredentials() &&
+            score > highscore &&
             ((highscore = score),
             localStorage.setItem("geometryRunnerHighscore", highscore)),
           (finalScore.textContent = `Score: ${score} | Highscore: ${highscore}`),
@@ -361,6 +707,8 @@
         y: 15,
         z: 200,
         r: 15,
+        baseRadius: 15,
+        maxJumpHeight: 0,
         mat: [1, 0, 0, 0, 1, 0, 0, 0, 1],
         baseY: 15,
         vy: 0,
@@ -379,6 +727,7 @@
         },
         update() {
           if (!this.visible) return;
+          this.r += (this.baseRadius - this.r) * Math.min(1, 0.35 * frameScale);
           let e = this.x;
           if (this.falling)
             ((this.x += 8 * this.fallDirection * 0.75 * frameScale),
@@ -429,6 +778,8 @@
             ((this.vy = this.jumpStrength), (this.jumping = !0));
         },
       };
+      player.maxJumpHeight =
+        player.baseY + (player.jumpStrength * player.jumpStrength) / (2 * player.gravity);
       class Obstacle {
         constructor(e, t, a, r, i, s) {
           ((this.width = a),
@@ -436,7 +787,7 @@
             (this.height = r),
             (this.isUpsideDown = s),
             (this.color = s ? "#f2c14e" : "#9da3ad"),
-            (this.y = s ? 150 - this.height / 2 : this.height / 2),
+            (this.y = s ? player.maxJumpHeight : this.height / 2),
             (this.z = t),
             (this.x = e));
         }
@@ -460,15 +811,101 @@
           this.z -= gameSpeed * frameScale;
         }
       }
+      class Coin {
+        constructor(x, y, z, radius = 10) {
+          this.x = x;
+          this.y = y;
+          this.z = z;
+          this.radius = radius;
+          this.collected = false;
+          this.spin = Math.random() * Math.PI * 2;
+        }
+        draw() {
+          if (this.collected) return;
+          const fadeIn = Math.max(0, Math.min(1, (4e3 - this.z) / 1.5e3));
+          const fadeOut = Math.max(0, Math.min(1, (this.z - 50) / 100));
+          pushCoin(this.x, this.y, this.z, this.radius, this.spin, Math.min(fadeIn, fadeOut));
+        }
+        update() {
+          this.z -= gameSpeed * frameScale;
+          this.spin += 0.16 * frameScale;
+        }
+      }
+      const minDistanceBefore = 100;
+      const minDistanceAfter = 150;
+      const coinSpawnZ = 5e3;
+      function coinOverlapsObstacle(coin, obstacle) {
+        return (
+          Math.abs(coin.x - obstacle.x) < coin.radius + obstacle.width / 2 &&
+          Math.abs(coin.y - obstacle.y) < coin.radius + obstacle.height / 2 &&
+          Math.abs(coin.z - obstacle.z) < coin.radius + obstacle.depth / 2
+        );
+      }
+      function hasVerticalClearance(coin, obstacle) {
+        const coinBottom = coin.y - coin.radius;
+        const coinTop = coin.y + coin.radius;
+        const obstacleBottom = obstacle.y - obstacle.height / 2;
+        const obstacleTop = obstacle.y + obstacle.height / 2;
+        return obstacle.isUpsideDown
+          ? coinTop <= obstacleBottom
+          : coinBottom >= obstacleTop;
+      }
+      function isValidCoinPosition(coin) {
+        return !obstacles.some((obstacle) => {
+          if (coinOverlapsObstacle(coin, obstacle)) return true;
+          const sameVerticalTier = coin.y === player.baseY
+            ? !obstacle.isUpsideDown
+            : obstacle.isUpsideDown;
+          if (!sameVerticalTier) return false;
+          const obstacleLeft = obstacle.x - obstacle.width / 2;
+          const obstacleRight = obstacle.x + obstacle.width / 2;
+          const inHorizontalBlock =
+            coin.x >= obstacleLeft - minDistanceBefore &&
+            coin.x <= obstacleRight + minDistanceAfter;
+          return inHorizontalBlock && !hasVerticalClearance(coin, obstacle);
+        });
+      }
+      function spawnRandomCoin() {
+        const radius = 10;
+        for (let attempt = 0; attempt < 12; attempt++) {
+          const y = Math.random() < 0.55 ? player.baseY : player.maxJumpHeight;
+          const coin = new Coin(-110 + Math.random() * 220, y, coinSpawnZ, radius);
+          if (isValidCoinPosition(coin)) {
+            coins.push(coin);
+            return;
+          }
+        }
+      }
+      function collectCoins() {
+        for (let index = coins.length - 1; index >= 0; index--) {
+          const coin = coins[index];
+          const dx = player.x - coin.x;
+          const dy = player.y - coin.y;
+          const dz = player.z - coin.z;
+          const collisionDistance = player.r + coin.radius;
+          if (dx * dx + dy * dy + dz * dz <= collisionDistance * collisionDistance) {
+            coin.collected = true;
+            coins.splice(index, 1);
+            sessionCoins++;
+            totalCoins++;
+            localStorage.setItem("geometryRunnerTotalCoins", String(totalCoins));
+            coinCounter.textContent = `Coins: ${totalCoins}`;
+            player.r = player.baseRadius * 1.5;
+          }
+        }
+      }
       let activeTouch = !1,
         lastTouchX = 0,
         touchStartY = 0;
       function startGame(e = !1) {
         ((score = 0),
+          (sessionCoins = 0),
           (gameSpeed = 20),
           (runTime = 0),
+          (coinSpawnTimer = 0),
           (isGameOver = !1),
           (obstacles = []),
+          (coins = []),
           (nextTimer = 0),
           (particles = []),
           (keys.left = !1),
@@ -493,10 +930,12 @@
       function resetGame() {
         ((hasStarted = !1),
           (score = 0),
+          (sessionCoins = 0),
           (gameSpeed = 20),
           (runTime = 0),
           (isGameOver = !1),
           (obstacles = []),
+          (coins = []),
           (nextTimer = 0),
           (particles = []),
           (keys.left = !1),
@@ -601,15 +1040,22 @@
                       ? -120 + e / 2 + Math.random() * (240 - e)
                       : -120 + e / 2 + (s * (240 - e)) / (a - 1),
                     o = s === r ? 220 : 40 + 40 * Math.random();
-                  obstacles.push(new Obstacle(l, i, e, o, t, !1));
+                  const obstacle = new Obstacle(l, i, e, o, t, !1);
+                  obstacles.push(obstacle);
                 }
                 if (Math.random() < 0.35) {
                   let s = 60,
                     l = -120 + s / 2 + Math.random() * (240 - s);
-                  obstacles.push(new Obstacle(l, i, s, 45, s, !0));
+                  const upsideDownObstacle = new Obstacle(l, i, s, 45, s, !0);
+                  obstacles.push(upsideDownObstacle);
                 }
                 nextTimer = 35 + 25 * Math.random();
               } else nextTimer -= frameScale;
+              coinSpawnTimer -= frameScale;
+              if (coinSpawnTimer <= 0) {
+                spawnRandomCoin();
+                coinSpawnTimer = 45 + Math.random() * 55;
+              }
             }
             for (let e = obstacles.length - 1; e >= 0; e--) {
               let t = obstacles[e];
@@ -641,6 +1087,13 @@
                     Math.random() > 0.5) &&
                   score++);
             }
+            for (let e = coins.length - 1; e >= 0; e--) {
+              const coin = coins[e];
+              coin.update();
+              if (coin.z < -250) coins.splice(e, 1);
+              else coin.draw();
+            }
+            collectCoins();
           }
           renderQueue.sort((e, t) => t.cz - e.cz);
           for (let e of renderQueue)
@@ -649,7 +1102,9 @@
                 ? drawBox(box)
                 : "pyramid" === e.type
                   ? drawPyramid(e)
-                  : "sphere" === e.type && drawSphere(e));
+                  : "sphere" === e.type
+                    ? drawSphere(e)
+                    : "coin" === e.type && drawCoin(e));
           requestAnimationFrame(animate);
         }
       }
