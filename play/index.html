@@ -24,8 +24,8 @@
       }
       #gameContainer {
         position: relative;
-        width: min(100%, 1200px);
-        max-width: 1200px;
+        width: 100%;
+        max-width: 500px;
         height: 100%;
         margin: 0 auto;
         display: flex;
@@ -91,7 +91,7 @@
         right: 0;
         top: 0;
       }
-      #coinCounter {
+      #orbCounter {
         background: rgba(23, 24, 28, 0.88);
         border: 1px solid #d4af37;
         color: #f3f4f6;
@@ -218,7 +218,7 @@
         </div>
       </div>
       <div class="game-ui">
-        <div id="coinCounter" aria-live="polite">Coins: 0</div>
+        <div id="orbCounter" aria-live="polite">Orbs: 0</div>
         <button id="leaderboardButton" class="game-button" type="button">View Leaderboard</button>
       </div>
       <div id="authModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
@@ -257,7 +257,7 @@
         saveHighscoreButton = document.getElementById("saveHighscoreButton"),
         leaderboardButton = document.getElementById("leaderboardButton"),
         gameOverLeaderboardButton = document.getElementById("gameOverLeaderboardButton"),
-        coinCounter = document.getElementById("coinCounter"),
+        orbCounter = document.getElementById("orbCounter"),
         authModal = document.getElementById("authModal"),
         authForm = document.getElementById("authForm"),
         usernameInput = document.getElementById("usernameInput"),
@@ -271,14 +271,14 @@
         camera = { x: 0, y: 250, z: -200, fov: 500 };
       let score = 0,
         highscore = Number(localStorage.getItem("geometryRunnerHighscore")) || 0,
-        totalCoins = Number(localStorage.getItem("geometryRunnerTotalCoins")) || 0,
+        totalOrbs = Number(localStorage.getItem("geometryRunnerTotalCoins")) || 0,
         gameSpeed = 20,
         runTime = 0,
-        sessionCoins = 0,
-        coinSpawnTimer = 0,
+        globalDistance = 0,
+        orbSpawnTimer = 0,
         isGameOver = !1,
         obstacles = [],
-        coins = [],
+        orbs = [],
         particles = [],
         nextTimer = 0,
         hasStarted = !1,
@@ -287,43 +287,33 @@
         lastFrameTime = 0,
         frameScale = 1,
         gridZ = [];
-      coinCounter.textContent = `Coins: ${totalCoins}`;
+        
+      orbCounter.textContent = `Orbs: 0`;
       const keys = { left: !1, right: !1 },
         playerSpeed = 8;
       let phoneTilt = 0,
-        orientationPermissionRequested = !1,
         renderQueue = [];
-      async function requestOrientationPermission() {
-        if (
-          orientationPermissionRequested ||
-          "undefined" == typeof DeviceOrientationEvent ||
-          "function" != typeof DeviceOrientationEvent.requestPermission
-        )
-          return;
-        orientationPermissionRequested = !0;
-        try {
-          const permission = await DeviceOrientationEvent.requestPermission();
-          if ("granted" !== permission) orientationPermissionRequested = !1;
-        } catch (error) {
-          orientationPermissionRequested = !1;
-          console.warn("Device orientation permission was not granted.", error);
-        }
-      }
       window.addEventListener("deviceorientation", (e) => {
         "number" == typeof e.gamma &&
           (phoneTilt = Math.max(-1, Math.min(1, e.gamma / 30)));
       });
-      for (let e = -200; e <= 5e3; e += 200) gridZ.push(e);
+      for (let e = -200; e <= 6000; e += 200) gridZ.push(e);
+      
       function project(e, t, a) {
         let r = a - camera.z;
         r < 1 && (r = 1);
         let i = camera.fov / r;
+        
+        let curve = (Math.sin(globalDistance * 0.00005) + Math.sin(globalDistance * 0.00002) * 0.5) * 0.00002;
+        let dx = (r * r) * curve;
+
         return {
-          x: 160 + (e - camera.x) * i,
+          x: 160 + (e - camera.x + dx) * i,
           y: 220 - (t - camera.y) * i,
           s: i,
         };
       }
+      
       function multMat(e, t) {
         return [
           e[0] * t[0] + e[1] * t[3] + e[2] * t[6],
@@ -337,6 +327,7 @@
           e[6] * t[2] + e[7] * t[5] + e[8] * t[8],
         ];
       }
+      
       function getRotMat(e, t, a, r) {
         let i = Math.sqrt(e * e + t * t + a * a);
         i > 0 && ((e /= i), (t /= i), (a /= i));
@@ -355,203 +346,152 @@
           o * a * a + s,
         ];
       }
-      const boxFaces = [
-          [1, 2, 3, 0],
-          [4, 7, 6, 5],
-          [1, 5, 6, 2],
-          [4, 0, 3, 7],
-          [2, 6, 7, 3],
-          [0, 4, 5, 1],
-        ],
-        pyrFaces = [
-          [0, 3, 2, 1],
-          [1, 4, 0],
-          [2, 4, 1],
-          [3, 4, 2],
-          [0, 4, 3],
-        ],
+      
+      const boxFaces = [[1, 2, 3, 0], [4, 7, 6, 5], [1, 5, 6, 2], [4, 0, 3, 7], [2, 6, 7, 3], [0, 4, 5, 1]],
+        pyrFaces = [[0, 3, 2, 1], [1, 4, 0], [2, 4, 1], [3, 4, 2], [0, 4, 3]],
         baseSphereRings = [[], [], []],
         segs = 32;
+        
       for (let e = 0; e <= 32; e++) {
         let t = (e / 32) * Math.PI * 2;
         (baseSphereRings[0].push({ x: Math.cos(t), y: Math.sin(t), z: 0 }),
           baseSphereRings[1].push({ x: 0, y: Math.cos(t), z: Math.sin(t) }),
           baseSphereRings[2].push({ x: Math.cos(t), y: 0, z: Math.sin(t) }));
       }
+      
       function pushBox(e, t, a, r, i, s, l, o) {
-        renderQueue.push({
-          type: "box",
-          cx: e,
-          cy: t,
-          cz: a,
-          w: r,
-          h: i,
-          d: s,
-          rot: l,
-          alpha: o,
-        });
+        renderQueue.push({ type: "box", cx: e, cy: t, cz: a, w: r, h: i, d: s, rot: l, alpha: o });
       }
       function pushPyramid(e, t, a, r, i, s, l, o = !1, h = "#c7cbd1") {
-        renderQueue.push({
-          type: "pyramid",
-          cx: e,
-          cy: t,
-          cz: a,
-          w: r,
-          h: i,
-          d: s,
-          alpha: l,
-          upsideDown: o,
-          color: h,
-        });
+        renderQueue.push({ type: "pyramid", cx: e, cy: t, cz: a, w: r, h: i, d: s, alpha: l, upsideDown: o, color: h });
       }
       function pushSphere(e, t, a, r, i, s) {
-        renderQueue.push({
-          type: "sphere",
-          cx: e,
-          cy: t,
-          cz: a,
-          r: r,
-          mat: i,
-          alpha: s,
-        });
+        renderQueue.push({ type: "sphere", cx: e, cy: t, cz: a, r: r, mat: i, alpha: s });
       }
-      function pushCoin(e, t, a, r, i, s) {
-        renderQueue.push({
-          type: "coin",
-          cx: e,
-          cy: t,
-          cz: a,
-          r,
-          spin: i,
-          alpha: s,
-        });
+      function pushOrb(e, t, a, r, i, s) {
+        renderQueue.push({ type: "orb", cx: e, cy: t, cz: a, r: r, spin: i, alpha: s });
       }
+      
       function drawBox(e) {
         if (e.alpha <= 0.01) return;
-        let t = e.w / 2,
-          a = e.h / 2,
-          r = e.d / 2,
-          i = [
-            { x: -t, y: -a, z: -r },
-            { x: t, y: -a, z: -r },
-            { x: t, y: a, z: -r },
-            { x: -t, y: a, z: -r },
-            { x: -t, y: -a, z: r },
-            { x: t, y: -a, z: r },
-            { x: t, y: a, z: r },
-            { x: -t, y: a, z: r },
+        let t = e.w / 2, a = e.h / 2, r = e.d / 2, i = [
+            { x: -t, y: -a, z: -r }, { x: t, y: -a, z: -r }, { x: t, y: a, z: -r }, { x: -t, y: a, z: -r },
+            { x: -t, y: -a, z: r }, { x: t, y: -a, z: r }, { x: t, y: a, z: r }, { x: -t, y: a, z: r }
           ];
         if (0 !== e.rot) {
-          let t = Math.cos(e.rot),
-            a = Math.sin(e.rot);
+          let t = Math.cos(e.rot), a = Math.sin(e.rot);
           for (let e of i) {
-            let r = e.x * t - e.y * a,
-              i = e.x * a + e.y * t;
+            let r = e.x * t - e.y * a, i = e.x * a + e.y * t;
             ((e.x = r), (e.y = i));
           }
         }
         let s = i.map((t) => project(e.cx + t.x, e.cy + t.y, e.cz + t.z));
-        ((ctx.fillStyle = "#151619"),
-          (ctx.strokeStyle = `rgba(199,203,209,${e.alpha})`),
-          (ctx.lineWidth = 2),
-          (ctx.lineJoin = "round"));
+        ctx.strokeStyle = "#c7cbd1";
+        ctx.lineWidth = 2;
+        ctx.lineJoin = "round";
         for (let e of boxFaces) {
-          let t = s[e[0]],
-            a = s[e[1]],
-            r = s[e[2]];
+          let t = s[e[0]], a = s[e[1]], r = s[e[2]];
           if ((a.x - t.x) * (r.y - a.y) - (a.y - t.y) * (r.x - a.x) < 0) {
-            (ctx.beginPath(), ctx.moveTo(t.x, t.y));
+            ctx.beginPath();
+            ctx.moveTo(t.x, t.y);
             for (let t = 1; t < 4; t++) ctx.lineTo(s[e[t]].x, s[e[t]].y);
-            (ctx.closePath(), ctx.fill(), ctx.stroke());
-          }
-        }
-      }
-      function drawPyramid(e) {
-        if (e.alpha <= 0.01) return;
-        let t = e.w / 2,
-          a = e.h / 2,
-          r = e.d / 2,
-          i = e.upsideDown ? -1 : 1,
-          s = [
-            { x: -t, y: -a * i, z: -r },
-            { x: t, y: -a * i, z: -r },
-            { x: t, y: -a * i, z: r },
-            { x: -t, y: -a * i, z: r },
-            { x: 0, y: a * i, z: 0 },
-          ].map((t) => project(e.cx + t.x, e.cy + t.y, e.cz + t.z));
-        ((ctx.fillStyle = "#1b1c20"),
-          (ctx.globalAlpha = e.alpha),
-          (ctx.strokeStyle = e.color),
-          (ctx.lineWidth = 2),
-          (ctx.lineJoin = "round"));
-        for (let t of pyrFaces) {
-          let a = s[t[0]],
-            r = s[t[1]],
-            i = s[t[2]],
-            l = (r.x - a.x) * (i.y - r.y) - (r.y - a.y) * (i.x - r.x);
-          if (e.upsideDown ? l > 0 : l < 0) {
-            (ctx.beginPath(), ctx.moveTo(a.x, a.y));
-            for (let e = 1; e < t.length; e++) ctx.lineTo(s[t[e]].x, s[t[e]].y);
-            (ctx.closePath(), ctx.fill(), ctx.stroke());
+            ctx.closePath();
+            ctx.globalAlpha = 1;
+            ctx.fillStyle = "#111214";
+            ctx.fill();
+            ctx.globalAlpha = e.alpha;
+            ctx.stroke();
           }
         }
         ctx.globalAlpha = 1;
       }
+      
+      function drawPyramid(e) {
+        if (e.alpha <= 0.01) return;
+        let t = e.w / 2, a = e.h / 2, r = e.d / 2, i = e.upsideDown ? -1 : 1, s = [
+            { x: -t, y: -a * i, z: -r }, { x: t, y: -a * i, z: -r }, { x: t, y: -a * i, z: r },
+            { x: -t, y: -a * i, z: r }, { x: 0, y: a * i, z: 0 }
+          ].map((t) => project(e.cx + t.x, e.cy + t.y, e.cz + t.z));
+        ctx.strokeStyle = e.color;
+        ctx.lineWidth = 2;
+        ctx.lineJoin = "round";
+        for (let t of pyrFaces) {
+          let a = s[t[0]], r = s[t[1]], i = s[t[2]], l = (r.x - a.x) * (i.y - r.y) - (r.y - a.y) * (i.x - r.x);
+          if (e.upsideDown ? l > 0 : l < 0) {
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            for (let e = 1; e < t.length; e++) ctx.lineTo(s[t[e]].x, s[t[e]].y);
+            ctx.closePath();
+            ctx.globalAlpha = 1;
+            ctx.fillStyle = "#111214";
+            ctx.fill();
+            ctx.globalAlpha = e.alpha;
+            ctx.stroke();
+          }
+        }
+        ctx.globalAlpha = 1;
+      }
+      
       function drawSphere(e) {
         if (e.alpha <= 0.01) return;
         let t = project(e.cx, e.cy, e.cz);
         if (t.s <= 0) return;
-        ((ctx.fillStyle = "#151619"),
-          (ctx.strokeStyle = `rgba(224,226,230,${e.alpha})`),
-          (ctx.lineWidth = 2),
-          (ctx.lineJoin = "round"),
-          (ctx.lineCap = "round"));
+        ctx.lineWidth = 2;
+        ctx.lineJoin = "round";
+        ctx.lineCap = "round";
         let a = e.r * t.s;
-        (ctx.beginPath(),
-          ctx.arc(t.x, t.y, a, 0, 2 * Math.PI),
-          ctx.fill(),
-          ctx.stroke());
+        
+        ctx.beginPath();
+        ctx.arc(t.x, t.y, a, 0, 2 * Math.PI);
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = "#111214";
+        ctx.fill();
+        ctx.globalAlpha = e.alpha;
+        ctx.strokeStyle = "#e0e2e6";
+        ctx.stroke();
+        
         let r = e.mat;
         for (let e of baseSphereRings) {
           ctx.beginPath();
           let i = !1;
           for (let s of e) {
-            let e = s.x * r[0] + s.y * r[1] + s.z * r[2],
-              l = s.x * r[3] + s.y * r[4] + s.z * r[5];
+            let e = s.x * r[0] + s.y * r[1] + s.z * r[2], l = s.x * r[3] + s.y * r[4] + s.z * r[5];
             if (s.x * r[6] + s.y * r[7] + s.z * r[8] <= 0.05) {
-              let r = t.x + e * a,
-                s = t.y - l * a;
+              let r = t.x + e * a, s = t.y - l * a;
               i ? ctx.lineTo(r, s) : (ctx.moveTo(r, s), (i = !0));
             } else i = !1;
           }
           ctx.stroke();
         }
+        ctx.globalAlpha = 1;
       }
-      function drawCoin(e) {
+
+      function drawOrb(e) {
         if (e.alpha <= 0.01) return;
-        const projected = project(e.cx, e.cy, e.cz);
-        if (projected.s <= 0) return;
-        const radius = e.r * projected.s;
-        const width = Math.max(0.08, Math.abs(Math.cos(e.spin))) * radius;
-        ctx.fillStyle = "#d4af37";
-        ctx.strokeStyle = "#ffe28a";
-        ctx.lineWidth = 1.5;
+        let p = project(e.cx, e.cy, e.cz);
+        if (p.s <= 0) return;
+        let radius = e.r * p.s;
+        let width = Math.max(0.08, Math.abs(Math.cos(e.spin))) * radius;
+        ctx.globalAlpha = e.alpha;
+        ctx.fillStyle = "#ffe28a";
         ctx.beginPath();
-        ctx.ellipse(projected.x, projected.y, width, radius, 0, 0, 2 * Math.PI);
+        ctx.ellipse(p.x, p.y, width, radius, 0, 0, 2 * Math.PI);
         ctx.fill();
-        ctx.stroke();
+        ctx.globalAlpha = 1;
       }
+      
       const storageKeys = {
         username: "geometryRunnerUsername",
         token: "geometryRunnerToken",
         highscore: "geometryRunnerHighscore",
       };
+      
       function getSavedCredentials() {
         const username = localStorage.getItem(storageKeys.username);
         const token = localStorage.getItem(storageKeys.token);
         return username && token ? { username, token } : null;
       }
+      
       async function postJson(path, body) {
         const response = await fetch(path, {
           method: "POST",
@@ -562,6 +502,7 @@
         if (!response.ok) throw new Error(data.error || "Unable to save score.");
         return data;
       }
+      
       async function submitScoreInBackground() {
         const credentials = getSavedCredentials();
         if (!credentials || score <= highscore) return;
@@ -570,7 +511,7 @@
             username: credentials.username,
             token: credentials.token,
             score,
-            coins: totalCoins,
+            coins: totalOrbs,
           });
           highscore = score;
           localStorage.setItem(storageKeys.highscore, String(highscore));
@@ -578,6 +519,7 @@
           console.warn("Background highscore submission failed.", error);
         }
       }
+      
       function openAuthModal() {
         restartTimeout && clearTimeout(restartTimeout);
         authError.textContent = "";
@@ -588,6 +530,7 @@
         authModal.classList.remove("is-open");
         authForm.reset();
       }
+      
       async function saveHighscore() {
         const credentials = getSavedCredentials();
         if (credentials) {
@@ -597,7 +540,7 @@
               username: credentials.username,
               token: credentials.token,
               score,
-              coins: totalCoins,
+              coins: totalOrbs,
             });
             highscore = score;
             localStorage.setItem(storageKeys.highscore, String(highscore));
@@ -610,6 +553,7 @@
         }
         openAuthModal();
       }
+      
       async function loadLeaderboard() {
         leaderboardModal.classList.add("is-open");
         leaderboardError.textContent = "";
@@ -636,9 +580,11 @@
           leaderboardError.textContent = error.message;
         }
       }
+      
       function closeLeaderboard() {
         leaderboardModal.classList.remove("is-open");
       }
+      
       saveHighscoreButton.addEventListener("click", saveHighscore);
       leaderboardButton.addEventListener("click", loadLeaderboard);
       gameOverLeaderboardButton.addEventListener("click", loadLeaderboard);
@@ -646,6 +592,7 @@
       document.getElementById("leaderboardCloseButton").addEventListener("click", closeLeaderboard);
       authModal.addEventListener("click", (event) => event.target === authModal && closeAuthModal());
       leaderboardModal.addEventListener("click", (event) => event.target === leaderboardModal && closeLeaderboard());
+      
       authForm.addEventListener("submit", async (event) => {
         event.preventDefault();
         authError.textContent = "";
@@ -656,7 +603,7 @@
             username: usernameInput.value.trim(),
             password: passwordInput.value,
             score,
-            coins: totalCoins,
+            coins: totalOrbs,
           });
           localStorage.setItem(storageKeys.username, usernameInput.value.trim());
           localStorage.setItem(storageKeys.token, data.token);
@@ -664,9 +611,8 @@
           localStorage.setItem(storageKeys.highscore, String(highscore));
           const returnedCoins = data.coins ?? data.totalCoins;
           if (Number.isFinite(Number(returnedCoins))) {
-            totalCoins = Number(returnedCoins);
-            localStorage.setItem("geometryRunnerTotalCoins", String(totalCoins));
-            coinCounter.textContent = `Coins: ${totalCoins}`;
+            totalOrbs = Number(returnedCoins);
+            localStorage.setItem("geometryRunnerTotalCoins", String(totalOrbs));
           }
           finalScore.textContent = `Score: ${score} | Highscore: ${highscore}`;
           closeAuthModal();
@@ -676,49 +622,14 @@
           submitButton.disabled = false;
         }
       });
+      
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") {
           closeAuthModal();
           closeLeaderboard();
         }
       });
-      function triggerGameOver() {
-        isGameOver ||
-          ((isGameOver = !0),
-          (gameSpeed = 20),
-          (runTime = 0),
-          (coinSpawnTimer = 0),
-          (player.visible = !1),
-          (particles = Array.from({ length: 25 }, () => {
-            let e = Math.random() * Math.PI * 2,
-              t = 2 + 5 * Math.random();
-            return {
-              x: player.x,
-              y: Math.max(player.y, -50),
-              z: player.z,
-              vx: Math.cos(e) * t,
-              vy: 5 + 10 * Math.random(),
-              vz: Math.sin(e) * t,
-              mat: [1, 0, 0, 0, 1, 0, 0, 0, 1],
-              vAx: Math.random() - 0.5,
-              vAy: Math.random() - 0.5,
-              vAz: Math.random() - 0.5,
-              vAng: 0.2 * Math.random(),
-              size: 4 + 4 * Math.random(),
-              life: 40 + 20 * Math.random(),
-            };
-          })),
-          submitScoreInBackground(),
-          !getSavedCredentials() &&
-            score > highscore &&
-            ((highscore = score),
-            localStorage.setItem("geometryRunnerHighscore", highscore)),
-          (finalScore.textContent = `Score: ${score} | Highscore: ${highscore}`),
-          (gameOverText.style.display = "block"),
-          (restartTimeout = setTimeout(() => {
-            isGameOver && startGame(!0);
-          }, 3e3)));
-      }
+      
       const player = {
         x: 0,
         y: 15,
@@ -739,8 +650,7 @@
         visible: !0,
         falling: !1,
         draw() {
-          this.visible &&
-            pushSphere(this.x, this.y, this.z, this.r, this.mat, 1);
+          this.visible && pushSphere(this.x, this.y, this.z, this.r, this.mat, 1);
         },
         update() {
           if (!this.visible) return;
@@ -765,38 +675,27 @@
               (this.fallTime = 0),
               (this.fallDirection = Math.sign(this.x)));
           }
-          let t = this.x - e,
-            a = gameSpeed * frameScale;
-          this.jumping &&
-            !this.falling &&
+          let t = this.x - e, a = gameSpeed * frameScale;
+          this.jumping && !this.falling &&
             ((this.y += this.vy * frameScale),
             (this.vy -= this.gravity * frameScale),
-            this.x >= -120 &&
-              this.x <= 120 &&
-              this.y <= this.baseY &&
-              this.vy <= 0 &&
+            this.x >= -120 && this.x <= 120 && this.y <= this.baseY && this.vy <= 0 &&
               ((this.y = this.baseY), (this.jumping = !1), (this.vy = 0)));
           let r = Math.sqrt(t * t + a * a);
           if (r > 0.001) {
-            let e = -a,
-              i = 0,
-              s = t,
-              l = this.jumping ? 0.15 : 0.25,
-              o = (-r / this.r) * l;
+            let e = -a, i = 0, s = t, l = this.jumping ? 0.15 : 0.25, o = (-r / this.r) * l;
             this.mat = multMat(getRotMat(e, i, s, o), this.mat);
           }
         },
         jump() {
           let e = this.x >= -120 && this.x <= 120;
-          !this.jumping &&
-            !this.falling &&
-            this.visible &&
-            e &&
+          !this.jumping && !this.falling && this.visible && e &&
             ((this.vy = this.jumpStrength), (this.jumping = !0));
         },
       };
-      player.maxJumpHeight =
-        player.baseY + (player.jumpStrength * player.jumpStrength) / (2 * player.gravity);
+      
+      player.maxJumpHeight = player.baseY + (player.jumpStrength * player.jumpStrength) / (2 * player.gravity);
+
       class Obstacle {
         constructor(e, t, a, r, i, s) {
           ((this.width = a),
@@ -809,120 +708,114 @@
             (this.x = e));
         }
         draw() {
-          let e = Math.max(0, Math.min(1, (4e3 - this.z) / 1.5e3)),
+          let e = Math.max(0, Math.min(1, (6e3 - this.z) / 2000)),
             t = Math.max(0, Math.min(1, (this.z - 50) / 100)),
             a = Math.min(e, t);
-          pushPyramid(
-            this.x,
-            this.y,
-            this.z,
-            this.width,
-            this.height,
-            this.depth,
-            a,
-            this.isUpsideDown,
-            this.color,
-          );
+          pushPyramid(this.x, this.y, this.z, this.width, this.height, this.depth, a, this.isUpsideDown, this.color);
         }
         update() {
           this.z -= gameSpeed * frameScale;
         }
       }
-      class Coin {
-        constructor(x, y, z, radius = 10) {
+      
+      class Orb {
+        constructor(x, y, z, radius = 14) {
           this.x = x;
           this.y = y;
           this.z = z;
           this.radius = radius;
           this.collected = false;
           this.spin = Math.random() * Math.PI * 2;
+          this.spinSpeed = (0.05 + Math.random() * 0.15) * (Math.random() > 0.5 ? 1 : -1);
         }
         draw() {
           if (this.collected) return;
-          const fadeIn = Math.max(0, Math.min(1, (4e3 - this.z) / 1.5e3));
-          const fadeOut = Math.max(0, Math.min(1, (this.z - 50) / 100));
-          pushCoin(this.x, this.y, this.z, this.radius, this.spin, Math.min(fadeIn, fadeOut));
+          const fadeOutCamera = Math.max(0, Math.min(1, (this.z - 50) / 100));
+          const fadeOutDistance = Math.max(0, Math.min(1, (6e3 - this.z) / 2000));
+          pushOrb(this.x, this.y, this.z, this.radius, this.spin, fadeOutCamera * fadeOutDistance);
         }
         update() {
           this.z -= gameSpeed * frameScale;
-          this.spin += 0.16 * frameScale;
+          this.spin += this.spinSpeed * frameScale;
         }
       }
-      const minDistanceBefore = 100;
-      const minDistanceAfter = 150;
-      const coinSpawnZ = 5e3;
-      function coinOverlapsObstacle(coin, obstacle) {
-        return (
-          Math.abs(coin.x - obstacle.x) < coin.radius + obstacle.width / 2 &&
-          Math.abs(coin.y - obstacle.y) < coin.radius + obstacle.height / 2 &&
-          Math.abs(coin.z - obstacle.z) < coin.radius + obstacle.depth / 2
-        );
-      }
-      function hasVerticalClearance(coin, obstacle) {
-        const coinBottom = coin.y - coin.radius;
-        const coinTop = coin.y + coin.radius;
-        const obstacleBottom = obstacle.y - obstacle.height / 2;
-        const obstacleTop = obstacle.y + obstacle.height / 2;
-        return obstacle.isUpsideDown
-          ? coinTop <= obstacleBottom
-          : coinBottom >= obstacleTop;
-      }
-      function isValidCoinPosition(coin) {
-        return !obstacles.some((obstacle) => {
-          if (coinOverlapsObstacle(coin, obstacle)) return true;
-          const sameVerticalTier = coin.y === player.baseY
-            ? !obstacle.isUpsideDown
-            : obstacle.isUpsideDown;
-          if (!sameVerticalTier) return false;
-          const obstacleLeft = obstacle.x - obstacle.width / 2;
-          const obstacleRight = obstacle.x + obstacle.width / 2;
-          const inHorizontalBlock =
-            coin.x >= obstacleLeft - minDistanceBefore &&
-            coin.x <= obstacleRight + minDistanceAfter;
-          return inHorizontalBlock && !hasVerticalClearance(coin, obstacle);
-        });
-      }
-      function spawnRandomCoin() {
-        const radius = 10;
-        for (let attempt = 0; attempt < 12; attempt++) {
+      
+      function spawnRandomOrb() {
+        for (let attempt = 0; attempt < 10; attempt++) {
           const y = Math.random() < 0.55 ? player.baseY : player.maxJumpHeight;
-          const coin = new Coin(-110 + Math.random() * 220, y, coinSpawnZ, radius);
-          if (isValidCoinPosition(coin)) {
-            coins.push(coin);
-            return;
+          const x = -110 + Math.random() * 220;
+          const z = 6000;
+          let valid = true;
+          for (const obs of obstacles) {
+            if (Math.abs(obs.z - z) < 400 && Math.abs(x - obs.x) < (obs.width / 2 + 25)) {
+              valid = false;
+              break;
+            }
+          }
+          if (valid) {
+            orbs.push(new Orb(x, y, z));
+            break;
           }
         }
       }
-      function collectCoins() {
-        for (let index = coins.length - 1; index >= 0; index--) {
-          const coin = coins[index];
-          const dx = player.x - coin.x;
-          const dy = player.y - coin.y;
-          const dz = player.z - coin.z;
-          const collisionDistance = player.r + coin.radius;
+
+      function collectOrbs() {
+        for (let index = orbs.length - 1; index >= 0; index--) {
+          const orb = orbs[index];
+          const dx = player.x - orb.x;
+          const dy = player.y - orb.y;
+          const dz = player.z - orb.z;
+          const collisionDistance = player.r + orb.radius;
           if (dx * dx + dy * dy + dz * dz <= collisionDistance * collisionDistance) {
-            coin.collected = true;
-            coins.splice(index, 1);
-            sessionCoins++;
-            totalCoins++;
-            localStorage.setItem("geometryRunnerTotalCoins", String(totalCoins));
-            coinCounter.textContent = `Coins: ${totalCoins}`;
+            orb.collected = true;
+            orbs.splice(index, 1);
+            score++;
+            totalOrbs++;
+            localStorage.setItem("geometryRunnerTotalCoins", String(totalOrbs));
+            orbCounter.textContent = `Orbs: ${score}`;
             player.r = player.baseRadius * 1.5;
           }
         }
       }
-      let activeTouch = !1,
-        lastTouchX = 0,
-        touchStartY = 0;
-      function startGame(e = !1) {
-        ((score = 0),
-          (sessionCoins = 0),
+
+      function triggerGameOver() {
+        isGameOver ||
+          ((isGameOver = !0),
           (gameSpeed = 20),
           (runTime = 0),
-          (coinSpawnTimer = 0),
+          (orbSpawnTimer = 0),
+          (player.visible = !1),
+          (particles = Array.from({ length: 25 }, () => {
+            let e = Math.random() * Math.PI * 2, t = 2 + 5 * Math.random();
+            return {
+              x: player.x, y: Math.max(player.y, -50), z: player.z,
+              vx: Math.cos(e) * t, vy: 5 + 10 * Math.random(), vz: Math.sin(e) * t,
+              mat: [1, 0, 0, 0, 1, 0, 0, 0, 1],
+              vAx: Math.random() - 0.5, vAy: Math.random() - 0.5, vAz: Math.random() - 0.5,
+              vAng: 0.2 * Math.random(), size: 4 + 4 * Math.random(), life: 40 + 20 * Math.random(),
+            };
+          })),
+          submitScoreInBackground(),
+          !getSavedCredentials() && score > highscore &&
+            ((highscore = score), localStorage.setItem("geometryRunnerHighscore", highscore)),
+          (finalScore.textContent = `Score: ${score} | Highscore: ${highscore}`),
+          (gameOverText.style.display = "block"),
+          (restartTimeout = setTimeout(() => {
+            isGameOver && startGame(!0);
+          }, 3e3)));
+      }
+
+      let activeTouch = !1, lastTouchX = 0, touchStartY = 0;
+      function startGame(e = !1) {
+        ((score = 0),
+          (orbCounter.textContent = `Orbs: ${score}`),
+          (gameSpeed = 20),
+          (runTime = 0),
+          (globalDistance = 0),
+          (orbSpawnTimer = 0),
           (isGameOver = !1),
           (obstacles = []),
-          (coins = []),
+          (orbs = []),
           (nextTimer = 0),
           (particles = []),
           (keys.left = !1),
@@ -944,15 +837,17 @@
           (gameOverText.style.display = "none"),
           restartTimeout && clearTimeout(restartTimeout));
       }
+      
       function resetGame() {
         ((hasStarted = !1),
           (score = 0),
-          (sessionCoins = 0),
+          (orbCounter.textContent = `Orbs: ${score}`),
           (gameSpeed = 20),
           (runTime = 0),
+          (globalDistance = 0),
           (isGameOver = !1),
           (obstacles = []),
-          (coins = []),
+          (orbs = []),
           (nextTimer = 0),
           (particles = []),
           (keys.left = !1),
@@ -973,45 +868,49 @@
           (startText.style.display = "block"),
           restartTimeout && clearTimeout(restartTimeout));
       }
+      
       function drawEnvironment() {
-        let e = project(0, 0, 5e3),
+        let e = project(0, 0, 6e3),
           t = ctx.createLinearGradient(0, 600, 0, e.y);
         (t.addColorStop(0, "rgba(212,175,55,0.45)"),
-          t.addColorStop(0.8, "rgba(199,203,209,0.16)"),
+          t.addColorStop(0.7, "rgba(199,203,209,0.15)"),
           t.addColorStop(1, "rgba(199,203,209,0)"),
           (ctx.strokeStyle = t),
           (ctx.lineWidth = 1.5),
           (ctx.lineJoin = "round"),
+          
           gridZ.forEach((e, t) => {
             if (
               (!isGameOver && (gridZ[t] -= gameSpeed * frameScale),
-              gridZ[t] < -200 && (gridZ[t] += 5200),
+              gridZ[t] < -200 && (gridZ[t] += 6200),
               gridZ[t] > -190)
             ) {
-              let e = project(-120, 0, gridZ[t]),
-                a = project(120, 0, gridZ[t]);
-              e.s > 0 &&
-                (ctx.beginPath(),
-                ctx.moveTo(e.x, e.y),
-                ctx.lineTo(a.x, a.y),
-                ctx.stroke());
+              let p1 = project(-120, 0, gridZ[t]), p2 = project(120, 0, gridZ[t]);
+              p1.s > 0 &&
+                (ctx.beginPath(), ctx.moveTo(p1.x, p1.y), ctx.lineTo(p2.x, p2.y), ctx.stroke());
             }
           }));
-        for (let e of [-120, -60, 0, 60, 120]) {
-          let t = project(e, 0, -190),
-            a = project(e, 0, 5e3);
-          (ctx.beginPath(),
-            ctx.moveTo(t.x, t.y),
-            ctx.lineTo(a.x, a.y),
-            ctx.stroke());
+          
+        for (let laneX of [-120, -60, 0, 60, 120]) {
+          ctx.beginPath();
+          let started = false;
+          for (let z = -200; z <= 6000; z += 150) {
+            let p = project(laneX, 0, z);
+            if (!started) {
+                ctx.moveTo(p.x, p.y);
+                started = true;
+            } else {
+                ctx.lineTo(p.x, p.y);
+            }
+          }
+          ctx.stroke();
         }
       }
+      
       function animate(e = performance.now()) {
         if (isPageVisible) {
           if (
-            ((frameScale = lastFrameTime
-              ? 1 * Math.min((e - lastFrameTime) / frameTime, 2)
-              : 1),
+            ((frameScale = lastFrameTime ? 1 * Math.min((e - lastFrameTime) / frameTime, 2) : 1),
             (lastFrameTime = e),
             ctx.clearRect(0, 0, c.width, c.height),
             drawEnvironment(),
@@ -1025,103 +924,60 @@
                 (t.y += t.vy * frameScale),
                 (t.z += t.vz * frameScale),
                 (t.vy -= player.gravity * frameScale),
-                (t.mat = multMat(
-                  getRotMat(t.vAx, t.vAy, t.vAz, t.vAng * frameScale),
-                  t.mat,
-                )),
+                (t.mat = multMat(getRotMat(t.vAx, t.vAy, t.vAz, t.vAng * frameScale), t.mat)),
                 (t.life -= frameScale),
-                t.life <= 0
-                  ? particles.splice(e, 1)
-                  : pushSphere(
-                      t.x,
-                      t.y,
-                      t.z,
-                      t.size,
-                      t.mat,
-                      Math.max(0, t.life / 60),
-                    ));
+                t.life <= 0 ? particles.splice(e, 1) : pushSphere(t.x, t.y, t.z, t.size, t.mat, Math.max(0, t.life / 60)));
             }
           } else {
             if ((player.update(), player.draw(), hasStarted && !isGameOver)) {
               runTime += frameScale;
-              gameSpeed = Math.min(60, 20 + runTime / 100);
+              globalDistance += gameSpeed * frameScale;
+              gameSpeed = Math.min(60, 20 + runTime / 250);
               if (nextTimer <= 0) {
-                let e = 40 + 40 * Math.random(),
-                  t = e,
-                  a = Math.random() < 0.8 ? 1 : Math.random() < 0.9 ? 2 : 3,
-                  r = Math.random() < 0.2 ? Math.floor(a * Math.random()) : -1,
-                  i = 5e3;
+                let e = 40 + 40 * Math.random(), t = e, a = Math.random() < 0.8 ? 1 : Math.random() < 0.9 ? 2 : 3,
+                  r = Math.random() < 0.2 ? Math.floor(a * Math.random()) : -1, i = 6e3;
+                let highestGroundObs = 0;
                 for (let s = 0; s < a; s++) {
-                  let l =
-                    1 === a
-                      ? -120 + e / 2 + Math.random() * (240 - e)
-                      : -120 + e / 2 + (s * (240 - e)) / (a - 1),
+                  let l = 1 === a ? -120 + e / 2 + Math.random() * (240 - e) : -120 + e / 2 + (s * (240 - e)) / (a - 1),
                     o = s === r ? 220 : 40 + 40 * Math.random();
-                  const obstacle = new Obstacle(l, i, e, o, t, !1);
-                  obstacles.push(obstacle);
+                  obstacles.push(new Obstacle(l, i, e, o, t, !1));
+                  if (o > highestGroundObs) highestGroundObs = o;
                 }
-                if (Math.random() < 0.35) {
-                  let s = 60,
-                    l = -120 + s / 2 + Math.random() * (240 - s);
-                  const upsideDownObstacle = new Obstacle(l, i, s, 45, s, !0);
-                  obstacles.push(upsideDownObstacle);
+                if (Math.random() < 0.35 && highestGroundObs < 150) {
+                  let s = 60, l = -120 + s / 2 + Math.random() * (240 - s);
+                  obstacles.push(new Obstacle(l, i, s, 45, s, !0));
                 }
                 nextTimer = 35 + 25 * Math.random();
               } else nextTimer -= frameScale;
-              coinSpawnTimer -= frameScale;
-              if (coinSpawnTimer <= 0) {
-                spawnRandomCoin();
-                coinSpawnTimer = 45 + Math.random() * 55;
+              
+              orbSpawnTimer -= frameScale;
+              if (orbSpawnTimer <= 0) {
+                spawnRandomOrb();
+                orbSpawnTimer = 45 + Math.random() * 55;
               }
             }
             for (let e = obstacles.length - 1; e >= 0; e--) {
               let t = obstacles[e];
               (hasStarted && t.update(), t.draw());
-              let a = player.x - player.r,
-                r = player.x + player.r,
-                i = player.y - player.r,
-                s = player.y + player.r,
-                l = player.z - player.r,
-                o = player.z + player.r,
-                h = t.x - t.width / 2,
-                n = t.x + t.width / 2,
-                c = t.y - t.height / 2,
-                m = t.y + t.height / 2,
-                y = t.z - t.depth / 2,
-                p = t.z + t.depth / 2;
-              (hasStarted &&
-                !player.falling &&
-                a < n &&
-                r > h &&
-                i < m &&
-                s > c &&
-                l < p &&
-                o > y &&
-                triggerGameOver(),
-                hasStarted &&
-                  t.z < -200 &&
-                  (!obstacles.splice(e, 1)[0].isUpsideDown ||
-                    Math.random() > 0.5) &&
-                  score++);
+              let a = player.x - player.r, r = player.x + player.r, i = player.y - player.r,
+                s = player.y + player.r, l = player.z - player.r, o = player.z + player.r,
+                h = t.x - t.width / 2, n = t.x + t.width / 2, c = t.y - t.height / 2, m = t.y + t.height / 2,
+                y = t.z - t.depth / 2, p = t.z + t.depth / 2;
+              (hasStarted && !player.falling && a < n && r > h && i < m && s > c && l < p && o > y && triggerGameOver(),
+                hasStarted && t.z < -200 && (!obstacles.splice(e, 1)[0].isUpsideDown || Math.random() > 0.5));
             }
-            for (let e = coins.length - 1; e >= 0; e--) {
-              const coin = coins[e];
-              coin.update();
-              if (coin.z < -250) coins.splice(e, 1);
-              else coin.draw();
+            for (let e = orbs.length - 1; e >= 0; e--) {
+              const orb = orbs[e];
+              orb.update();
+              if (orb.z < -250) orbs.splice(e, 1);
+              else orb.draw();
             }
-            collectCoins();
+            collectOrbs();
           }
           renderQueue.sort((e, t) => t.cz - e.cz);
           for (let e of renderQueue)
             e.cz > -190 &&
-              ("box" === e.type
-                ? drawBox(box)
-                : "pyramid" === e.type
-                  ? drawPyramid(e)
-                  : "sphere" === e.type
-                    ? drawSphere(e)
-                    : "coin" === e.type && drawCoin(e));
+              ("box" === e.type ? drawBox(e) : "pyramid" === e.type ? drawPyramid(e) : "sphere" === e.type ? drawSphere(e) : "orb" === e.type && drawOrb(e));
           requestAnimationFrame(animate);
         }
       }
@@ -1133,22 +989,22 @@
       }),
         window.addEventListener("keyup", (e) => {
           (("KeyA" !== e.code && "ArrowLeft" !== e.code) || (keys.left = !1),
-            ("KeyD" !== e.code && "ArrowRight" !== e.code) ||
-              (keys.right = !1));
+            ("KeyD" !== e.code && "ArrowRight" !== e.code) || (keys.right = !1));
         }),
         c.addEventListener(
           "touchstart",
           (e) => {
             (e.preventDefault(),
-              requestOrientationPermission(),
+              "undefined" != typeof DeviceOrientationEvent &&
+                "function" == typeof DeviceOrientationEvent.requestPermission &&
+                DeviceOrientationEvent.requestPermission().catch(() => {}),
               !hasStarted || isGameOver ? startGame(!0) : player.jump());
           },
           { passive: !1 },
         ),
         document.addEventListener("visibilitychange", () => {
           ((isPageVisible = "visible" === document.visibilityState),
-            isPageVisible &&
-              ((lastFrameTime = 0), requestAnimationFrame(animate)));
+            isPageVisible && ((lastFrameTime = 0), requestAnimationFrame(animate)));
         }),
         resetGame(),
         animate());
