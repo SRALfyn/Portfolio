@@ -310,11 +310,35 @@
       const keys = { left: !1, right: !1 },
         playerSpeed = 8;
       let phoneTilt = 0,
-        renderQueue = [];
-      window.addEventListener("deviceorientation", (e) => {
-        "number" == typeof e.gamma &&
-          (phoneTilt = Math.max(-1, Math.min(1, e.gamma / 30)));
-      });
+        renderQueue = [],
+        orientationEnabled = !1;
+
+      function handleDeviceOrientation(e) {
+        if ("number" == typeof e.gamma) {
+          phoneTilt = Math.max(-1, Math.min(1, e.gamma / 30));
+        }
+      }
+
+      function enableDeviceOrientation() {
+        if (orientationEnabled) return;
+
+        if (
+          typeof DeviceOrientationEvent !== "undefined" &&
+          typeof DeviceOrientationEvent.requestPermission === "function"
+        ) {
+          DeviceOrientationEvent.requestPermission()
+            .then((permissionState) => {
+              if (permissionState === "granted") {
+                window.addEventListener("deviceorientation", handleDeviceOrientation);
+                orientationEnabled = !0;
+              }
+            })
+            .catch(() => {});
+        } else {
+          window.addEventListener("deviceorientation", handleDeviceOrientation);
+          orientationEnabled = !0;
+        }
+      }
       for (let e = -200; e <= 8000; e += 200) gridZ.push(e);
       
       function project(e, t, a) {
@@ -814,6 +838,7 @@
 
       let activeTouch = !1, lastTouchX = 0, touchStartY = 0;
       function startGame(e = !1) {
+        enableDeviceOrientation();
         ((score = 0),
           (orbCounter.textContent = `Orbs: ${score}`),
           (gameSpeed = 20),
@@ -1117,9 +1142,7 @@
           "touchstart",
           (e) => {
             (e.preventDefault(),
-              "undefined" != typeof DeviceOrientationEvent &&
-                "function" == typeof DeviceOrientationEvent.requestPermission &&
-                DeviceOrientationEvent.requestPermission().catch(() => {}),
+              enableDeviceOrientation(),
               !hasStarted || isGameOver ? startGame(!0) : player.jump());
           },
           { passive: !1 },
