@@ -71,6 +71,28 @@ function showDisclaimer() {
     }, 10000);
 }
 
+function animateLanguageFlower() {
+    if (!languageToggle) return;
+
+    languageToggle.classList.remove('respawn-emoji');
+    void languageToggle.offsetWidth;
+    languageToggle.classList.add('respawn-emoji');
+
+    const rect = languageToggle.getBoundingClientRect();
+    const flower = document.createElement('span');
+    flower.className = 'falling-emoji';
+    flower.textContent = '🌸';
+    flower.style.left = `${rect.right - 8}px`;
+    flower.style.top = `${rect.top - 4}px`;
+    flower.style.setProperty('--r-start', `${Math.random() * 30 - 15}deg`);
+    flower.style.setProperty('--r-end', `${Math.random() * 180 - 90}deg`);
+    flower.style.setProperty('--s-start', `${0.9 + Math.random() * 0.2}`);
+    flower.style.setProperty('--s-end', `${0.7 + Math.random() * 0.2}`);
+    flower.style.setProperty('--tx-end', `${Math.random() * 80 - 40}px`);
+    document.body.appendChild(flower);
+    flower.addEventListener('animationend', () => flower.remove(), { once: true });
+}
+
 async function enableLanguage() {
     const dictionary = await translationData;
     applyDictionary(dictionary);
@@ -86,6 +108,7 @@ async function enableLanguage() {
 if (localStorage.getItem('language') === 'active') enableLanguage();
 
 languageToggle?.addEventListener('click', async () => {
+    animateLanguageFlower();
     if (localStorage.getItem('language') === 'active') {
         restoreEnglish();
     } else {
