@@ -615,6 +615,16 @@ article {
     min-height: 3.75rem
 }
 
+.store-links-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    margin: 2rem 0
+}
+
 #contact {
     display: flex;
     justify-content: flex-start;
@@ -1368,6 +1378,41 @@ video::-webkit-media-controls-time-remaining-display {
     white-space: nowrap !important
 }
 
+@media (min-width: 43.75rem) {
+    .flip-card:not(.flipped) {
+        height: auto !important;
+        overflow: visible
+    }
+
+    .flip-card:not(.flipped) > .flip-card-inner {
+        height: auto !important
+    }
+
+    .flip-card:not(.flipped) .flip-card-front {
+        position: relative !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important
+    }
+
+    .flip-card-front > .project-title-container,
+    .flip-card-front > .btn-container {
+        flex: 0 0 auto !important
+    }
+
+    .flip-card-front > .btn-container {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        left: auto;
+        margin-top: 0
+    }
+
+    .cult-card .flip-card-front > .btn-container {
+        min-height: 3.75rem !important
+    }
+}
+
 .flip-card-front .btn img {
     width: 1.4rem !important;
     height: auto !important;
@@ -1671,12 +1716,13 @@ video::-webkit-media-controls-time-remaining-display {
 
 .cult-wrapper .project-btn {
     position: relative;
-    z-index: 10
+    z-index: 10;
+    background-color: var(--base-color)
 }
 
 .cultist-fan {
     position: absolute;
-    top: 5px;
+    top: -1px;
     width: 22px;
     height: 20px;
     background-color: #1b1b1b;
@@ -2874,6 +2920,15 @@ video.zoomable {
 
 
 @media (max-width: 43.75rem) {
+    .store-links-container {
+        flex-direction: column;
+        gap: 1rem
+    }
+
+    .store-links-container .all-games-btn {
+        box-sizing: border-box;
+        width: min(20rem, calc(100vw - 2rem))
+    }
 
     #profile {
         height: auto !important;
