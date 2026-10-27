@@ -754,7 +754,7 @@ footer p {
   margin-top: 0;
   padding-top: var(--section-heading-gap);
   margin-bottom: 0;
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
 }
 
 .experience-details-container {
@@ -1478,7 +1478,7 @@ a:hover .link-icon {
   margin-top: 0;
   padding-top: var(--section-heading-gap);
   margin-bottom: 0;
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
 }
 
 .experience-cards-grid {
