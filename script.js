@@ -1,30 +1,34 @@
 function toggleMenu() {
-  const menu = document.querySelector(".menu-links");
-  const icon = document.querySelector(".hamburger-icon");
-  menu.classList.toggle("open");
-  icon.classList.toggle("open");
+  const menu = document.querySelector('.menu-links');
+  const icon = document.querySelector('.hamburger-icon');
+  if (!menu || !icon) return;
+
+  const isOpen = menu.classList.toggle('open');
+  icon.classList.toggle('open', isOpen);
+  icon.setAttribute('aria-expanded', String(isOpen));
 }
 
 function lockScrollAtCurrentPosition() {
   if (document.body.style.position === 'fixed') return;
 
-  var scrollY = window.scrollY;
+  const scrollY = window.scrollY;
   document.body.style.position = 'fixed';
-  document.body.style.top = -scrollY + 'px';
+  document.body.style.top = `${-scrollY}px`;
   document.body.style.width = '100%';
   document.body.style.left = '0';
 }
 
 function unlockScrollFromLockedPosition() {
-  var top = document.body.style.top;
+  const top = document.body.style.top;
   document.body.style.position = '';
   document.body.style.top = '';
   document.body.style.width = '';
   document.body.style.left = '';
+
   if (top) {
-    requestAnimationFrame(function () {
+    requestAnimationFrame(() => {
       window.scrollTo({
-        top: -parseInt(top),
+        top: -parseInt(top, 10),
         left: 0,
         behavior: 'instant'
       });
@@ -32,60 +36,42 @@ function unlockScrollFromLockedPosition() {
   }
 }
 
+function setBackgroundInert(activeCard) {
+  const landmarkSelectors = ['#desktop-nav', '#hamburger-nav', '#profile', '#insights', '#contact', 'footer', '.store-links-container'];
+  landmarkSelectors.forEach(sel => {
+    document.querySelectorAll(sel).forEach(el => {
+      el.inert = Boolean(activeCard);
+    });
+  });
+
+  document.querySelectorAll('.flip-card').forEach(card => {
+    const container = card.closest('.details-container') || card;
+    container.inert = Boolean(activeCard && card !== activeCard);
+  });
+}
+
 function lazyLoadCardMedia(card) {
   if (!card || card.dataset.mediaLoaded === 'true') return;
 
-  const iframes = card.querySelectorAll('iframe[data-src]');
-  iframes.forEach(iframe => {
+  card.querySelectorAll('iframe[data-src]').forEach(iframe => {
     iframe.src = iframe.getAttribute('data-src');
     iframe.removeAttribute('data-src');
   });
 
-  const imgs = card.querySelectorAll('img[data-video-mp4], img[data-gif-src]');
-  imgs.forEach(img => {
-    const mp4 = img.getAttribute('data-video-mp4');
-    const webm = img.getAttribute('data-video-webm');
-    const poster = img.getAttribute('data-poster') || img.getAttribute('src') || '';
-
-    if (mp4 || webm) {
-      const video = document.createElement('video');
-      video.autoplay = false;
-      video.loop = true;
-      video.muted = true;
-      video.playsInline = true;
-      video.preload = 'auto';
-      if (poster) video.poster = poster;
-      video.className = img.className || '';
-      video.style.cssText = img.style.cssText || '';
-
-      const canPlayWebm = typeof video.canPlayType === 'function' && !!(video.canPlayType('video/webm; codecs="vp8, vorbis"') || video.canPlayType('video/webm'));
-
-      if (webm && mp4) {
-        if (canPlayWebm) {
-          addSource(video, webm, 'video/webm');
-          addSource(video, mp4, 'video/mp4');
-        } else {
-          addSource(video, mp4, 'video/mp4');
-          addSource(video, webm, 'video/webm');
-        }
-      } else if (webm) addSource(video, webm, 'video/webm');
-      else if (mp4) addSource(video, mp4, 'video/mp4');
-
-      img.replaceWith(video);
-      try { video.load(); } catch (e) { }
-    } else if (img.getAttribute('data-gif-src')) {
-      img.src = img.getAttribute('data-gif-src');
-      img.removeAttribute('data-gif-src');
-    }
-  });
   card.dataset.mediaLoaded = 'true';
 }
 
-function addSource(video, src, type) {
-  const source = document.createElement('source');
-  source.src = src;
-  source.type = type;
-  video.appendChild(source);
+function playBackVideos(card) {
+  card.querySelectorAll('.flip-card-back video').forEach(video => {
+    video.preload = 'metadata';
+    try { video.load(); } catch (e) { }
+    video.currentTime = 0;
+    video.play().catch(() => { });
+  });
+}
+
+function pauseBackVideos(card) {
+  card.querySelectorAll('.flip-card-back video').forEach(video => video.pause());
 }
 
 const mediaObserver = new IntersectionObserver((entries, observer) => {
@@ -104,7 +90,6 @@ document.querySelectorAll('.flip-card').forEach(card => {
 const showcaseVideoObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     const video = entry.target;
-
     if (entry.isIntersecting) {
       video.play().catch(() => { });
     } else {
@@ -117,81 +102,85 @@ document.querySelectorAll('video[data-autoplay-on-visible]').forEach(video => {
   showcaseVideoObserver.observe(video);
 });
 
+let lastActiveCardTrigger = null;
+
 function closeAllCards() {
   document.querySelectorAll('.flip-card.flipped').forEach(card => {
     pauseBackVideos(card);
     card.classList.remove('flipped');
   });
+
+  setBackgroundInert(null);
   unlockScrollFromLockedPosition();
   window._cardWasFlipped = false;
+
+  if (lastActiveCardTrigger) {
+    lastActiveCardTrigger.focus({ preventScroll: true });
+    lastActiveCardTrigger = null;
+  }
+
+  scheduleEyeAnimation();
 }
 
 function openCardByIndex(index) {
   const cards = document.querySelectorAll('.flip-card');
   const card = cards[index];
+  if (!card) return;
 
-  if (card) {
-    document.querySelectorAll('.flip-card.flipped').forEach(c => {
-      if (c !== card) {
-        pauseBackVideos(c);
-        c.classList.remove('flipped');
-      }
-    });
+  document.querySelectorAll('.flip-card.flipped').forEach(c => {
+    if (c !== card) {
+      pauseBackVideos(c);
+      c.classList.remove('flipped');
+    }
+  });
 
-    lazyLoadCardMedia(card);
-    card.classList.add('flipped');
+  lazyLoadCardMedia(card);
+  card.classList.add('flipped');
+  window.syncLanguageLayout?.();
+  setBackgroundInert(card);
+  playBackVideos(card);
+  window._cardWasFlipped = true;
 
-    playBackVideos(card);
-
-    window._cardWasFlipped = true;
-
-    setTimeout(lockScrollAtCurrentPosition, 10);
-  }
+  setTimeout(() => {
+    lockScrollAtCurrentPosition();
+    const exitBtn = card.querySelector('.exit-btn');
+    exitBtn?.focus({ preventScroll: true });
+  }, 10);
 }
 
 window.addEventListener('popstate', (event) => {
   if (event.state && event.state.cardOpen && event.state.cardIndex !== undefined) {
     openCardByIndex(event.state.cardIndex);
-  }
-  else {
+  } else {
     closeAllCards();
   }
 });
 
 document.querySelectorAll('.project-btn').forEach(btn => {
-  if (btn.id === 'allGamesBtn') return;
-
   const card = btn.closest('.flip-card');
   if (!card) return;
 
-  btn.addEventListener('mousedown', function () {
+  btn.addEventListener('mousedown', () => {
     lazyLoadCardMedia(card);
     window._lastScrollY = window.scrollY;
   });
 
-  btn.addEventListener('click', function (e) {
-    if (!btn.classList.contains('details-btn')) return;
-
-    const allCards = Array.from(document.querySelectorAll('.flip-card'));
-    const cardIndex = allCards.indexOf(card);
-
-    lazyLoadCardMedia(card);
-
-    history.pushState({ cardOpen: true, cardIndex: cardIndex }, "", null);
-
-    card.classList.add('flipped');
-
-    playBackVideos(card);
-
-    window._cardWasFlipped = true;
-    setTimeout(lockScrollAtCurrentPosition, 10);
-  });
+  if (btn.classList.contains('details-btn')) {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      lastActiveCardTrigger = btn;
+      const allCards = Array.from(document.querySelectorAll('.flip-card'));
+      const cardIndex = allCards.indexOf(card);
+      history.pushState({ cardOpen: true, cardIndex }, '', null);
+      openCardByIndex(cardIndex);
+    });
+  }
 });
 
 document.querySelectorAll('.exit-btn').forEach(btn => {
-  btn.addEventListener('click', function (e) {
+  btn.addEventListener('click', (e) => {
     e.preventDefault();
-
+    e.stopPropagation();
     if (history.state && history.state.cardOpen) {
       history.back();
     } else {
@@ -200,17 +189,109 @@ document.querySelectorAll('.exit-btn').forEach(btn => {
   });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
+// Pooki eye tracking (demand-driven & paused when off-screen)
+const EYE_MOVE_LIMIT = 6;
+const SMOOTH_FACTOR = 0.1;
+
+const eyeSockets = Array.from(document.querySelectorAll('.eye-socket')).map(socket => ({
+  socket,
+  pupil: socket.querySelector('.pupil'),
+  currX: 0,
+  currY: 0
+})).filter(item => item.pupil);
+
+const pookiState = {
+  mouseX: window.innerWidth / 2,
+  mouseY: window.innerHeight / 2,
+  isVisible: true,
+  rafId: 0
+};
+
+function animateEyes() {
+  pookiState.rafId = 0;
+  if (!eyeSockets.length || !pookiState.isVisible || window._cardWasFlipped) return;
+
+  let needsMoreFrames = false;
+
+  eyeSockets.forEach(item => {
+    const rect = item.socket.getBoundingClientRect();
+    const eyeCenterX = rect.left + rect.width / 2;
+    const eyeCenterY = rect.top + rect.height / 2;
+
+    const angle = Math.atan2(pookiState.mouseY - eyeCenterY, pookiState.mouseX - eyeCenterX);
+    const targetPupilX = Math.cos(angle) * EYE_MOVE_LIMIT;
+    const targetPupilY = Math.sin(angle) * EYE_MOVE_LIMIT;
+
+    item.currX += (targetPupilX - item.currX) * SMOOTH_FACTOR;
+    item.currY += (targetPupilY - item.currY) * SMOOTH_FACTOR;
+
+    item.pupil.style.transform = `translate(-50%, -50%) translate(${item.currX.toFixed(2)}px, ${item.currY.toFixed(2)}px)`;
+
+    if (Math.hypot(targetPupilX - item.currX, targetPupilY - item.currY) > 0.05) {
+      needsMoreFrames = true;
+    }
+  });
+
+  if (needsMoreFrames) {
+    pookiState.rafId = requestAnimationFrame(animateEyes);
+  }
+}
+
+function scheduleEyeAnimation() {
+  if (!eyeSockets.length || !pookiState.isVisible || window._cardWasFlipped || pookiState.rafId) return;
+  pookiState.rafId = requestAnimationFrame(animateEyes);
+}
+
+if (eyeSockets.length > 0) {
+  const updateTarget = (clientX, clientY) => {
+    pookiState.mouseX = clientX;
+    pookiState.mouseY = clientY;
+    scheduleEyeAnimation();
+  };
+
+  document.addEventListener('mousemove', (e) => updateTarget(e.clientX, e.clientY), { passive: true });
+  document.addEventListener('touchmove', (e) => {
+    const touch = e.touches[0];
+    if (touch) updateTarget(touch.clientX, touch.clientY);
+  }, { passive: true });
+  document.addEventListener('touchstart', (e) => {
+    const touch = e.touches[0];
+    if (touch) updateTarget(touch.clientX, touch.clientY);
+  }, { passive: true });
+
+  const pookiContainer = document.querySelector('.pooki-head-container');
+  if (pookiContainer) {
+    const eyeVisibilityObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        pookiState.isVisible = entry.isIntersecting;
+        if (pookiState.isVisible) {
+          scheduleEyeAnimation();
+        } else if (pookiState.rafId) {
+          cancelAnimationFrame(pookiState.rafId);
+          pookiState.rafId = 0;
+        }
+      });
+    }, { rootMargin: '100px' });
+
+    eyeVisibilityObserver.observe(pookiContainer);
+  }
+
+  scheduleEyeAnimation();
+}
+
+// Navigation, Hamburger menu & Car animation
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburgerBtn = document.querySelector('.hamburger-icon');
+  hamburgerBtn?.addEventListener('click', toggleMenu);
 
   const navLinks = document.querySelectorAll('.menu-links a, .nav-links a');
-
   navLinks.forEach(link => {
     link.addEventListener('click', function (e) {
-      e.preventDefault();
-
       const targetId = this.getAttribute('href');
-      const targetSection = document.querySelector(targetId);
+      if (!targetId || !targetId.startsWith('#')) return;
 
+      e.preventDefault();
+      const targetSection = document.querySelector(targetId);
       if (targetSection) {
         targetSection.scrollIntoView({
           behavior: 'smooth',
@@ -218,141 +299,44 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
 
-      const menu = document.querySelector(".menu-links");
-      const icon = document.querySelector(".hamburger-icon");
-
-      if (menu.classList.contains("open")) {
-        menu.classList.remove("open");
-        icon.classList.remove("open");
+      const menu = document.querySelector('.menu-links');
+      const icon = document.querySelector('.hamburger-icon');
+      if (menu?.classList.contains('open')) {
+        menu.classList.remove('open');
+        icon?.classList.remove('open');
+        icon?.setAttribute('aria-expanded', 'false');
       }
     });
   });
 
-});
-
-const EYE_MOVE_LIMIT = 6;
-const SMOOTH_FACTOR = 0.1;
-
-let pookiState = {
-  targetX: 0,
-  targetY: 0,
-  currentX: 0,
-  currentY: 0
-};
-
-function updateTarget(clientX, clientY) {
-  pookiState.mouseX = clientX;
-  pookiState.mouseY = clientY;
-}
-
-document.addEventListener('mousemove', (e) => updateTarget(e.clientX, e.clientY));
-
-document.addEventListener('touchmove', (e) => {
-  const touch = e.touches[0];
-  updateTarget(touch.clientX, touch.clientY);
-}, { passive: true });
-
-document.addEventListener('touchstart', (e) => {
-  const touch = e.touches[0];
-  updateTarget(touch.clientX, touch.clientY);
-}, { passive: true });
-
-
-function animateEyes() {
-  const eyes = document.querySelectorAll('.eye-socket');
-
-  eyes.forEach(eye => {
-    const pupil = eye.querySelector('.pupil');
-    if (!pupil) return;
-
-    const rect = eye.getBoundingClientRect();
-    const eyeCenterX = rect.left + rect.width / 2;
-    const eyeCenterY = rect.top + rect.height / 2;
-
-    const targetMouseX = pookiState.mouseX || window.innerWidth / 2;
-    const targetMouseY = pookiState.mouseY || window.innerHeight / 2;
-
-    const angle = Math.atan2(targetMouseY - eyeCenterY, targetMouseX - eyeCenterX);
-
-    const targetPupilX = Math.cos(angle) * EYE_MOVE_LIMIT;
-    const targetPupilY = Math.sin(angle) * EYE_MOVE_LIMIT;
-
-    if (!pupil.dataset.currentX) {
-      pupil.dataset.currentX = 0;
-      pupil.dataset.currentY = 0;
-    }
-
-    let currX = parseFloat(pupil.dataset.currentX);
-    let currY = parseFloat(pupil.dataset.currentY);
-
-    currX += (targetPupilX - currX) * SMOOTH_FACTOR;
-    currY += (targetPupilY - currY) * SMOOTH_FACTOR;
-
-    pupil.dataset.currentX = currX;
-    pupil.dataset.currentY = currY;
-
-    pupil.style.transform = `translate(-50%, -50%) translate(${currX}px, ${currY}px)`;
-  });
-
-  requestAnimationFrame(animateEyes);
-}
-
-requestAnimationFrame(animateEyes);
-
-// Hilfsfunktion: Videos auf der Rückseite starten & zurücksetzen
-function playBackVideos(card) {
-  const videos = card.querySelectorAll('.flip-card-back video');
-  videos.forEach(v => {
-    v.preload = 'metadata';
-    try { v.load(); } catch (e) { }
-    v.currentTime = 0; // Immer von vorne starten
-    v.play().catch(e => { /* Autoplay-Blocker vom Browser ignorieren */ });
-  });
-}
-
-// Hilfsfunktion: Videos auf der Rückseite pausieren
-function pauseBackVideos(card) {
-  const videos = card.querySelectorAll('.flip-card-back video');
-  videos.forEach(v => v.pause());
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  const carSvg = document.querySelector(".car-on-btn");
-
+  const carSvg = document.querySelector('.car-on-btn');
   if (carSvg) {
-    // Lässt das Auto direkt beim Laden der Seite spawnen
-    carSvg.classList.add("spawn-animation");
+    carSvg.classList.add('spawn-animation');
 
-    carSvg.addEventListener("click", (event) => {
+    carSvg.addEventListener('click', (event) => {
       event.stopPropagation();
       event.preventDefault();
 
-      if (carSvg.classList.contains("drive-off-animation")) return;
+      if (carSvg.classList.contains('drive-off-animation')) return;
 
-      // Entfernt den Spawn-Effekt und triggert den Fall
-      carSvg.classList.remove("spawn-animation");
-
-      // Kurzer Reflow-Hack, um sicherzustellen, dass die neue Animation sauber startet
+      carSvg.classList.remove('spawn-animation');
       void carSvg.offsetWidth;
-
-      carSvg.classList.add("drive-off-animation");
+      carSvg.classList.add('drive-off-animation');
 
       setTimeout(() => {
-        carSvg.style.visibility = "hidden";
+        carSvg.style.visibility = 'hidden';
       }, 700);
 
-      // Nach 3 Sekunden wird das Auto zurückgesetzt und die Spawn-Animation erneut abgespielt
       setTimeout(() => {
-        carSvg.classList.remove("drive-off-animation");
-        carSvg.style.visibility = "visible";
-        carSvg.classList.add("spawn-animation");
+        carSvg.classList.remove('drive-off-animation');
+        carSvg.style.visibility = 'visible';
+        carSvg.classList.add('spawn-animation');
       }, 2000);
     });
   }
 });
 
-
-// Cult carousel - robust fix for modal always opening last image
+// Cult carousel
 (function () {
   function qs(sel, ctx) { return (ctx || document).querySelector(sel); }
   function qsa(sel, ctx) { return Array.from((ctx || document).querySelectorAll(sel)); }
@@ -373,38 +357,33 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     setup() {
-      // make root focusable for keyboard nav
       this.root.tabIndex = 0;
 
-      // viewport click opens modal at the currently tracked index
       this.viewport.addEventListener('click', (e) => {
         e.stopPropagation();
         this.openModal(this.current);
       });
 
-      if (this.leftBtn) this.leftBtn.addEventListener('click', (e) => { e.stopPropagation(); this.prev(); });
-      if (this.rightBtn) this.rightBtn.addEventListener('click', (e) => { e.stopPropagation(); this.next(); });
+      this.leftBtn?.addEventListener('click', (e) => { e.stopPropagation(); this.prev(); });
+      this.rightBtn?.addEventListener('click', (e) => { e.stopPropagation(); this.next(); });
 
-      // dots in small (card) carousel
       this.dots = [];
       this.dotsContainer.innerHTML = '';
       this.slides.forEach((_, i) => {
         const d = document.createElement('button');
         d.className = 'cult-carousel__dot';
         d.type = 'button';
-        d.title = `Slide ${i + 1}`;
+        d.setAttribute('aria-label', `Slide ${i + 1}`);
         d.addEventListener('click', (ev) => { ev.stopPropagation(); this.show(i); });
         this.dotsContainer.appendChild(d);
         this.dots.push(d);
       });
 
-      // keyboard navigation while focus inside root
       this.root.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') { e.preventDefault(); this.prev(); }
         if (e.key === 'ArrowRight') { e.preventDefault(); this.next(); }
       });
 
-      // Touch swipe support for main carousel
       let startX = 0;
       this.viewport.addEventListener('touchstart', (e) => {
         startX = e.changedTouches[0].screenX;
@@ -416,7 +395,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (endX - startX > 50) this.prev();
       }, { passive: true });
 
-      // prevent flip/card click-through
       this.root.addEventListener('click', (e) => e.stopPropagation());
     }
 
@@ -430,11 +408,9 @@ document.addEventListener("DOMContentLoaded", () => {
     prev() { this.show(this.current - 1); }
     next() { this.show(this.current + 1); }
 
-    // open modal at clicked index; modal contains full carousel + dots + nav
     openModal(startIndex) {
       if (this.modal) return;
 
-      // ensure startIndex is a valid number within range; fallback to 0
       let idx = Number(startIndex);
       if (!Number.isFinite(idx) || this.slides.length === 0) idx = 0;
       const len = this.slides.length;
@@ -444,20 +420,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const modal = document.createElement('div');
       modal.className = 'cult-modal';
+      modal.setAttribute('role', 'dialog');
+      modal.setAttribute('aria-modal', 'true');
+      modal.setAttribute('aria-label', 'Carousel image viewer');
       modal.tabIndex = -1;
 
       const inner = document.createElement('div');
       inner.className = 'cult-modal__inner';
 
       const left = document.createElement('button');
+      left.type = 'button';
       left.className = 'cult-modal__arrow cult-modal__arrow--left';
-      left.title = 'Previous';
-      left.innerHTML = '‹';
+      left.setAttribute('aria-label', 'Previous slide');
+      left.textContent = '‹';
 
       const right = document.createElement('button');
+      right.type = 'button';
       right.className = 'cult-modal__arrow cult-modal__arrow--right';
-      right.title = 'Next';
-      right.innerHTML = '›';
+      right.setAttribute('aria-label', 'Next slide');
+      right.textContent = '›';
 
       const modalViewport = document.createElement('div');
       modalViewport.className = 'cult-modal__viewport';
@@ -478,13 +459,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const b = document.createElement('button');
         b.className = 'cult-modal__dot';
         b.type = 'button';
-        b.title = `Slide ${i + 1}`;
+        b.setAttribute('aria-label', `Slide ${i + 1}`);
         b.addEventListener('click', (ev) => { ev.stopPropagation(); showSlide(i); });
         modalDots.appendChild(b);
         return b;
       });
 
-      // append elements
       inner.appendChild(left);
       inner.appendChild(modalViewport);
       inner.appendChild(right);
@@ -492,30 +472,29 @@ document.addEventListener("DOMContentLoaded", () => {
       modal.appendChild(inner);
       document.body.appendChild(modal);
 
-      // showSlide function
       const showSlide = (newIndex) => {
         const n = modalSlides.length;
         idx = ((newIndex % n) + n) % n;
         modalSlides.forEach((s, i) => s.classList.toggle('cult-modal__slide--active', i === idx));
         modalDotButtons.forEach((d, i) => d.classList.toggle('cult-modal__dot--active', i === idx));
-
-        // Sync the underlying carousel
         this.show(idx);
       };
 
-      // attach arrow handlers (use showSlide closure)
       left.addEventListener('click', (e) => { e.stopPropagation(); showSlide(idx - 1); });
       right.addEventListener('click', (e) => { e.stopPropagation(); showSlide(idx + 1); });
 
-      // initial
       showSlide(idx);
 
-      // close handlers
-      const escHandler = (e) => { if (e.key === 'Escape') closeModal(); };
-      const backdropClick = () => { closeModal(); };
+      const escHandler = (e) => {
+        if (e.key === 'Escape') {
+          e.stopPropagation();
+          closeModal();
+        }
+      };
+      const backdropClick = () => closeModal();
 
       modal.addEventListener('click', backdropClick);
-      document.addEventListener('keydown', escHandler);
+      document.addEventListener('keydown', escHandler, true);
 
       modal.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') { e.preventDefault(); showSlide(idx - 1); }
@@ -525,14 +504,10 @@ document.addEventListener("DOMContentLoaded", () => {
       modal.addEventListener('wheel', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        if (e.deltaY > 0) {
-          showSlide(idx + 1);
-        } else if (e.deltaY < 0) {
-          showSlide(idx - 1);
-        }
-      });
+        if (e.deltaY > 0) showSlide(idx + 1);
+        else if (e.deltaY < 0) showSlide(idx - 1);
+      }, { passive: false });
 
-      // Touch swipe support for modal
       let modalStartX = 0;
       modal.addEventListener('touchstart', (e) => {
         modalStartX = e.changedTouches[0].screenX;
@@ -545,18 +520,18 @@ document.addEventListener("DOMContentLoaded", () => {
       }, { passive: true });
 
       const closeModal = () => {
-        document.removeEventListener('keydown', escHandler);
+        document.removeEventListener('keydown', escHandler, true);
         modal.removeEventListener('click', backdropClick);
         modal.remove();
         this.modal = null;
+        this.root.focus({ preventScroll: true });
       };
 
       this.modal = modal;
-      modal.focus();
+      modal.focus({ preventScroll: true });
     }
   }
 
-  // init on DOMContentLoaded or now
   function init() {
     qsa('.cult-carousel').forEach(root => new CultCarousel(root));
   }
@@ -565,66 +540,57 @@ document.addEventListener("DOMContentLoaded", () => {
   else init();
 })();
 
-document.addEventListener("DOMContentLoaded", () => {
-  const modal = document.getElementById("mediaModal");
-  const modalImg = document.getElementById("modalImg");
-  const modalVideo = document.getElementById("modalVideo");
-  const closeBtn = document.querySelector(".media-modal-close");
+// Global media lightbox modal & Escape key handling
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('mediaModal');
+  const modalImg = document.getElementById('modalImg');
+  const modalVideo = document.getElementById('modalVideo');
+  const closeBtn = document.querySelector('.media-modal-close');
 
-  // select page media, explicitly exclude modal elements;
-  // then filter out media that live inside .cult-carousel or inside any modal
-  const allMedia = Array.from(document.querySelectorAll("img:not(#modalImg), video:not(#modalVideo)"));
+  if (!modal || !modalImg || !modalVideo) return;
+
+  const allMedia = Array.from(document.querySelectorAll('img:not(#modalImg), video:not(#modalVideo)'));
   const mediaElements = allMedia.filter(el => {
-    if (el.closest('.resource-item a')) return false; // resource thumbnails should keep their links
-    if (el.closest('.cult-carousel')) return false; // exclude carousel media
-    if (el.closest('.cult-modal')) return false;    // exclude carousel's own modal (if present)
-    if (el.closest('#mediaModal')) return false;    // exclude the global modal itself
+    if (el.closest('.resource-item a')) return false;
+    if (el.closest('.cult-carousel')) return false;
+    if (el.closest('.cult-modal')) return false;
+    if (el.closest('#mediaModal')) return false;
     return true;
   });
 
-  // Open modal for each media element
   mediaElements.forEach(media => {
-    // Exclude explicit small UI icons / controls:
-    // - icons used for external links
-    // - items inside nav/menu/language controls
-    // - styled .btn / .project-btn icons (e.g. meta/itch icons)
-    // - everything inside the contact section (#contact)
-    if (media.classList.contains("link-icon")) return;
+    if (media.classList.contains('link-icon')) return;
     if (media.closest('.menu-links, .nav-links, .hamburger-icon, .languageswitch')) return;
     if (media.closest('.btn, .project-btn')) return;
     if (media.closest('#contact, .contact-info-container, .contact-icon')) return;
 
-    // Allow images even if they sit inside a <button> element,
-    // unless excluded above. Mark as zoomable for styling if needed.
-    media.classList.add("zoomable");
+    media.classList.add('zoomable');
 
-    media.addEventListener("click", (e) => {
+    media.addEventListener('click', (e) => {
       e.stopPropagation();
-      modal.style.display = "flex";
+      modal.style.display = 'flex';
 
-      if (media.tagName === "IMG") {
-        modalImg.style.display = "block";
-        modalVideo.style.display = "none";
+      if (media.tagName === 'IMG') {
+        modalImg.style.display = 'block';
+        modalVideo.style.display = 'none';
 
-        // Prefer high-res / large versions if provided on the image element
         const largeSrc = media.dataset.largeSrc || media.dataset.large || media.dataset.hires || media.getAttribute('data-large-src');
         modalImg.src = largeSrc || media.src;
-        modalImg.alt = media.alt || "";
-
-      } else if (media.tagName === "VIDEO") {
+        modalImg.alt = media.alt || '';
+      } else if (media.tagName === 'VIDEO') {
         const currentTime = Number.isFinite(media.currentTime) ? media.currentTime : 0;
         const wasPlaying = !media.paused;
         const playbackRate = media.playbackRate || 1;
 
-        modalImg.style.display = "none";
-        modalVideo.style.display = "block";
+        modalImg.style.display = 'none';
+        modalVideo.style.display = 'block';
 
-        const sourceEl = media.querySelector("source");
-        const src = sourceEl ? sourceEl.src : media.currentSrc || media.src || "";
+        const sourceEl = media.querySelector('source');
+        const src = sourceEl ? sourceEl.src : media.currentSrc || media.src || '';
 
         if (!modalVideo.src || modalVideo.src !== src) {
-          try { modalVideo.pause(); } catch (e) { }
-          modalVideo.removeAttribute("src");
+          try { modalVideo.pause(); } catch (err) { }
+          modalVideo.removeAttribute('src');
           modalVideo.load();
           modalVideo.src = src;
         }
@@ -638,51 +604,66 @@ document.addEventListener("DOMContentLoaded", () => {
           if (wasPlaying) {
             modalVideo.play().catch(() => { });
           } else {
-            try { modalVideo.pause(); } catch (e) { }
+            try { modalVideo.pause(); } catch (err) { }
           }
         };
 
         if (modalVideo.readyState >= 1 && isFinite(modalVideo.duration)) {
           applySync();
         } else {
-          modalVideo.addEventListener("loadedmetadata", function once() {
-            applySync();
-            modalVideo.removeEventListener("loadedmetadata", once);
-          }, { once: true });
+          modalVideo.addEventListener('loadedmetadata', applySync, { once: true });
         }
 
-        try { modalVideo.currentTime = currentTime; } catch (e) { }
+        try { modalVideo.currentTime = currentTime; } catch (err) { }
       }
     });
   });
 
-
   const closeModal = () => {
-    modal.style.display = "none";
-    modalImg.src = "";
+    modal.style.display = 'none';
+    modalImg.src = '';
     try { modalVideo.pause(); } catch (e) { }
     try { modalVideo.currentTime = 0; } catch (e) { }
-    modalVideo.removeAttribute("src");
+    modalVideo.removeAttribute('src');
     modalVideo.load();
   };
 
-  if (closeBtn) closeBtn.addEventListener("click", (e) => { e.stopPropagation(); closeModal(); });
+  closeBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeModal();
+  });
 
-  modal.addEventListener("click", (e) => {
+  modal.addEventListener('click', (e) => {
     if (e.target === modal) closeModal();
   });
 
-  modalImg.addEventListener("click", (e) => { e.stopPropagation(); closeModal(); });
-  modalVideo.addEventListener("click", (e) => { e.stopPropagation(); closeModal(); });
+  modalImg.addEventListener('click', (e) => { e.stopPropagation(); closeModal(); });
+  modalVideo.addEventListener('click', (e) => { e.stopPropagation(); closeModal(); });
 
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+
+    if (modal.style.display === 'flex') {
+      e.stopPropagation();
+      closeModal();
+      return;
+    }
+
+    if (document.querySelector('.flip-card.flipped') && !document.querySelector('.cult-modal')) {
+      if (history.state && history.state.cardOpen) {
+        history.back();
+      } else {
+        closeAllCards();
+      }
+    }
+  });
 });
 
+// Scroll passthrough over fixed controls
 document.querySelectorAll('.toggleLanguage, .exit-btn').forEach(button => {
   let startY = 0;
   let activeScrollArea = null;
 
-  // Cache the target on touch start
   button.addEventListener('touchstart', (event) => {
     startY = event.touches[0].clientY;
     activeScrollArea = document.querySelector('.flip-card.flipped .flip-card-back');
@@ -694,7 +675,6 @@ document.querySelectorAll('.toggleLanguage, .exit-btn').forEach(button => {
     const currentY = event.touches[0].clientY;
     const deltaY = startY - currentY;
 
-    // Use the cached variable instead of querying the DOM
     if (activeScrollArea) {
       activeScrollArea.scrollTop += deltaY;
     } else {
@@ -705,7 +685,6 @@ document.querySelectorAll('.toggleLanguage, .exit-btn').forEach(button => {
     startY = currentY;
   }, { passive: false });
 
-  // Cache the target when the mouse enters the button
   button.addEventListener('mouseenter', () => {
     activeScrollArea = document.querySelector('.flip-card.flipped .flip-card-back');
   });
@@ -720,14 +699,13 @@ document.querySelectorAll('.toggleLanguage, .exit-btn').forEach(button => {
       document.body.scrollTop += event.deltaY;
     }
   }, { passive: false });
-
 });
 
+// Resources page tag filtering
 document.addEventListener('DOMContentLoaded', () => {
-  const profileSection = document.getElementById('profile');
-  if (!profileSection) return;
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  if (!filterBtns.length) return;
 
-  const filterBtns = profileSection.querySelectorAll('.filter-btn');
   const allResourceItems = document.querySelectorAll('.resource-list-section .resource-item');
   const resourceSections = document.querySelectorAll('.resource-list-section');
   let selectedFilter = null;
@@ -735,10 +713,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const updateResources = () => {
     filterBtns.forEach(button => {
       const filterValue = button.getAttribute('data-filter');
-      button.classList.toggle(
-        'active',
-        filterValue === 'All' ? selectedFilter === null : selectedFilter === filterValue
-      );
+      const isActive = filterValue === 'All' ? selectedFilter === null : selectedFilter === filterValue;
+      button.classList.toggle('active', isActive);
+      button.setAttribute('aria-pressed', String(isActive));
     });
 
     allResourceItems.forEach(item => {
@@ -758,15 +735,11 @@ document.addEventListener('DOMContentLoaded', () => {
   filterBtns.forEach(button => {
     button.addEventListener('click', () => {
       const filterValue = button.getAttribute('data-filter');
-
-      if (filterValue === 'All') {
-        selectedFilter = null;
-      } else if (selectedFilter === filterValue) {
+      if (filterValue === 'All' || selectedFilter === filterValue) {
         selectedFilter = null;
       } else {
         selectedFilter = filterValue;
       }
-
       updateResources();
     });
   });

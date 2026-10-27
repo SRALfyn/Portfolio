@@ -3,796 +3,317 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lars Gohde | Digital Portfolio</title>
-  <meta name="description" content="Game and Shader Programmer | Driven by seeing players smile">
-  <meta property="og:image" content="https://lars-goh.de/assets/android-chrome-512x512.png">
-  <meta property="og:title" content="Lars Gohde | Digital Portfolio">
+  <meta name="description" content="Game and Shader Programmer | Driven by seeing players smile" />
+  <meta property="og:image" content="https://lars-goh.de/assets/android-chrome-512x512.png" />
+  <meta property="og:title" content="Lars Gohde | Digital Portfolio" />
+  <link rel="preload" href="./assets/fonts/poppins-v24-latin-regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="./assets/fonts/poppins-v24-latin-600.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="./assets/fonts/poppins-v24-latin-700.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="style.css" />
-  <style>
-    @font-face {
-      font-display: swap;
-      font-family: 'Poppins';
-      font-style: normal;
-      font-weight: 300;
-      src: url('./assets/fonts/poppins-v24-latin-300.woff2') format('woff2'), url('./assets/fonts/poppins-v24-latin-300.ttf') format('truetype');
-    }
-
-    @font-face {
-      font-display: swap;
-      font-family: 'Poppins';
-      font-style: normal;
-      font-weight: 400;
-      src: url('./assets/fonts/poppins-v24-latin-regular.woff2') format('woff2'), url('./assets/fonts/poppins-v24-latin-regular.ttf') format('truetype');
-    }
-
-    @font-face {
-      font-display: swap;
-      font-family: 'Poppins';
-      font-style: normal;
-      font-weight: 500;
-      src: url('./assets/fonts/poppins-v24-latin-500.woff2') format('woff2'), url('./assets/fonts/poppins-v24-latin-500.ttf') format('truetype');
-    }
-
-    @font-face {
-      font-display: swap;
-      font-family: 'Poppins';
-      font-style: normal;
-      font-weight: 600;
-      src: url('./assets/fonts/poppins-v24-latin-600.woff2') format('woff2'), url('./assets/fonts/poppins-v24-latin-600.ttf') format('truetype');
-    }
-
-    @font-face {
-      font-display: swap;
-      font-family: 'Poppins';
-      font-style: normal;
-      font-weight: 700;
-      src: url('./assets/fonts/poppins-v24-latin-700.woff2') format('woff2'), url('./assets/fonts/poppins-v24-latin-700.ttf') format('truetype');
-    }
-  </style>
-  <script type="text/javascript" src="languagetoggle.js" defer></script>
   <link rel="icon" type="image/png" href="https://lars-goh.de/assets/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="https://lars-goh.de/assets/favicon.svg" />
   <link rel="shortcut icon" href="https://lars-goh.de/assets/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="https://lars-goh.de/assets/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="Portfolio" />
   <link rel="manifest" href="https://lars-goh.de/assets/site.webmanifest" />
-  <link rel="preload" href="./assets/fonts/poppins-v24-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="./assets/fonts/poppins-v24-latin-600.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="./assets/fonts/poppins-v24-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <script src="languagetoggle.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 
 <body>
   <div class="toggleLanguage">
-    <button id="language-switch" class="languageswitch">
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
-        <path
-          d="m326-240-30-48q80-8 125-43t45-90q0-30-20.5-55T392-512q-23 57-54.5 102T268-332q3 12 6.5 24t7.5 24l-50 15q-3-10-5-17.5t-4-13.5q-26 14-49 21.5t-45 7.5q-32 0-52-21t-20-56q0-53 40-105t103-82q1-19 2-37.5t3-37.5q-28 1-59-.5T79-615l-1-53q26 5 56 6.5t77 1.5q2-18 4.5-35.5t.5-35.5l60 1q-7 17-10 34.5t-6 34.5q58-3 107-9t92-16l1 52q-53 8-103.5 13.5T255-612q-2 14-2.5 29t-2.5 29q28-8 54.5-11t52.5-1q3-10 4.5-20t2.5-20l57 14q-3 8-6.5 16t-6.5 19q51 14 81.5 52t30.5 85q0 70-51.5 117.5T326-240Zm-188-85q17 0 35-7t38-21q-7-38-10-69t-3-59q-38 24-63 59t-25 66q0 13 8.5 22t19.5 9Zm118-65q29-28 50.5-60.5T342-520q-23 0-46.5 4T248-504q-2 26 .5 54t7.5 60Zm446 56q28 0 54.5-13t48.5-37v-106q-23 3-42.5 7t-36.5 9q-45 14-67.5 35T636-390q0 26 18 41t48 15Zm-23 68q-57 0-90-32.5T556-387q0-52 33-85t106-53q23-6 50.5-11t59.5-9q-2-47-22-68.5T721-635q-26 0-51.5 9.5T604-592l-32-56q33-25 77.5-40.5T740-704q71 0 108 44t37 128v257h-67l-6-45q-28 25-61.5 39.5T679-266Z" />
-      </svg>
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFFFF">
+    <button id="language-switch" type="button" class="languageswitch" aria-label="Toggle Japanese translation"
+      aria-pressed="false">
+      <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+        fill="#FFFFFF">
         <path
           d="m326-240-30-48q80-8 125-43t45-90q0-30-20.5-55T392-512q-23 57-54.5 102T268-332q3 12 6.5 24t7.5 24l-50 15q-3-10-5-17.5t-4-13.5q-26 14-49 21.5t-45 7.5q-32 0-52-21t-20-56q0-53 40-105t103-82q1-19 2-37.5t3-37.5q-28 1-59-.5T79-615l-1-53q26 5 56 6.5t77 1.5q2-18 4.5-35.5t.5-35.5l60 1q-7 17-10 34.5t-6 34.5q58-3 107-9t92-16l1 52q-53 8-103.5 13.5T255-612q-2 14-2.5 29t-2.5 29q28-8 54.5-11t52.5-1q3-10 4.5-20t2.5-20l57 14q-3 8-6.5 16t-6.5 19q51 14 81.5 52t30.5 85q0 70-51.5 117.5T326-240Zm-188-85q17 0 35-7t38-21q-7-38-10-69t-3-59q-38 24-63 59t-25 66q0 13 8.5 22t19.5 9Zm118-65q29-28 50.5-60.5T342-520q-23 0-46.5 4T248-504q-2 26 .5 54t7.5 60Zm446 56q28 0 54.5-13t48.5-37v-106q-23 3-42.5 7t-36.5 9q-45 14-67.5 35T636-390q0 26 18 41t48 15Zm-23 68q-57 0-90-32.5T556-387q0-52 33-85t106-53q23-6 50.5-11t59.5-9q-2-47-22-68.5T721-635q-26 0-51.5 9.5T604-592l-32-56q33-25 77.5-40.5T740-704q71 0 108 44t37 128v257h-67l-6-45q-28 25-61.5 39.5T679-266Z" />
       </svg>
     </button>
   </div>
-  <nav id="desktop-nav">
-    <div class="logo"></div>
-    <div>
-      <ul class="nav-links">
-        <li><a id="projectsS" href="#projects">Projects</a></li>
-        <li><a id="insightsS" href="#insights">Performance Guide</a></li>
-        <li><a id="contactT" href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
 
-  <nav id="hamburger-nav">
-    <div class="logo"></div>
-    <div class="hamburger-menu">
-      <div class="hamburger-icon" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
+  <header>
+    <nav id="desktop-nav" aria-label="Primary">
+      <div class="logo"></div>
+      <div>
+        <ul class="nav-links">
+          <li><a id="projectsS" data-i18n="nav.projects" href="#projects">Projects</a></li>
+          <li><a id="insightsS" data-i18n="nav.insights" href="#insights">Performance Guide</a></li>
+          <li><a id="contactT" data-i18n="nav.contact" href="#contact">Contact</a></li>
+        </ul>
       </div>
-      <ul class="menu-links">
-        <li><a id="projectsSS" href="#projects">Projects</a></li>
-        <li><a id="insightsSS" href="#insights">Performance Guide</a></li>
-        <li><a id="contactTT" href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-  <section id="profile">
+    </nav>
 
-    <div class="section__text">
+    <nav id="hamburger-nav" aria-label="Mobile">
+      <div class="logo"></div>
+      <div class="hamburger-menu">
+        <button type="button" class="hamburger-icon" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="menu-links">
+          <li><a id="projectsSS" data-i18n="nav.projects" href="#projects">Projects</a></li>
+          <li><a id="insightsSS" data-i18n="nav.insights" href="#insights">Performance Guide</a></li>
+          <li><a id="contactTT" data-i18n="nav.contact" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
-      <h1 style="margin-top: 2rem;" id="Name" class="title">Lars Gohde</h1>
-      <p id="Developer" class="section__text__p2">Game and Shader Programmer </p>
-    </div>
-  </section>
+  <main>
+    <section id="profile">
+      <div class="section__text">
+        <h1 id="Name" class="title">Lars Gohde</h1>
+        <p id="Developer" class="section__text__p2">Game and Shader Programmer</p>
+      </div>
+    </section>
 
-  <section id="projects">
-    <p id="Browse" class="section__text__p1">Browse My</p>
-    <h1 id="Projects" class="title">Recent Projects</h1>
-    <div class="experience-details-container">
-      <div class="about-containers">
+    <section id="projects">
+      <p id="Browse" class="section__text__p1">Browse My</p>
+      <h2 id="Projects" class="title">Recent Projects</h2>
+      <div class="experience-details-container">
+        <div class="about-containers">
 
-
-        <!-- Float Karte -->
-        <div class="details-container color-container">
-          <div class="flip-card">
-            <button class="flip-toggle-btn exit-btn">
-              X
-            </button>
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="article-container">
-                  <video loop muted playsinline preload="metadata" disablepictureinpicture data-autoplay-on-visible
-                    poster="./assets/FLOAT_Poster.webp"
-                    style="width: 100%; max-width: 560px; height: auto; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; display: block; margin: 0 auto;">
-
-                    <source src="./assets/FLOAT_Showcase.webm" type="video/webm">
-                    <source src="./assets/FLOAT_Showcase.mp4" type="video/mp4">
-
-                    Your browser does not support videos.
-                  </video>
-                </div>
-                <div class="project-title-container" style="flex-direction: column; padding-bottom: 0;">
-                  <h2 style="font-size: 2.5rem; margin: 0;">
-                    <span style="display: block;">
-                      FLOAT
-                    </span>
-                  </h2>
-                  <h2 id="floattitle" class="experience-sub-title project-title" style="margin: 0.5rem 0 0 0;">
-                    <span style="display: block; line-height: 1.1;">
-                      Award-winning MR for prosthesis research
-                    </span>
-                  </h2>
-                </div>
-                <div class="btn-container">
-                  <a href="https://www.meta.com/de-de/experiences/float-a-mixed-reality-experience/24099813506309823/"
-                    target="_blank" rel="noopener noreferrer" class="btn btn-color-2 project-btn"
-                    style="text-decoration: none; display: inline-flex; align-items: center;">
-                    <img src="./assets/meta.webp" alt="Meta" loading="lazy"
-                      style="width: 1.2rem; height: auto; margin-right: 0.5rem; vertical-align: middle;">
-                    Meta
-                  </a>
-                  <button id="floatDetailsBtn" class="btn btn-color-2 project-btn details-btn"
-                    onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
-                    Details
-                  </button>
-                </div>
-                <div class="pooki-head-container">
-                  <div class="pooki-head">
-                    <div class="antenna-leaf">
-                      <div class="leaf-vein"></div>
-                    </div>
-
-                    <div class="eye-socket left">
-                      <div class="pupil"></div>
-                    </div>
-                    <div class="eye-socket right">
-                      <div class="pupil"></div>
-                    </div>
-
-                    <div class="mouth"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="flip-card-back">
-                <div
-                  style="display: flex; flex-direction: column; width: 100%; max-width: 700px; margin: 0 auto 0 auto; gap: 0; align-items: stretch; justify-content: flex-start; padding-top: 0;">
-                  <div
-                    style="flex: 2 1 0; text-align: left; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; margin-top: 0; width: 100%; margin-top: 6rem;">
-                    <div style="width: 100%; display: flex; justify-content: center;">
-                      <img src="assets/FLOAT_Awards.webp" alt="FLOAT Awards" loading="lazy"
-                        style="max-width: 100%; height: auto; margin-top: 0;">
-                    </div>
-                    <div class="float-back-info-box">
-                      <div class="float-back-info-col">
-                        <h1 id="P1">Project Scope</h1>
-                        <ul style="margin-left: 1rem;" id="P2">
-                          <li>6 Months</li>
-                          <li>Team of 6 People</li>
-                        </ul>
-                      </div>
-                      <div class="float-back-info-col">
-                        <h1 id="RoleTitle">My Core Role</h1>
-                        <ul style="margin-left: 1rem;" id="RoleDescription">
-                          <li>Main Programmer</li>
-                          <li>Shader</li>
-                          <li>Effects</li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div class="float-problem-section" style="margin-bottom: 3rem !important;">
-                      <h1 id="FloatDescribtionTitle">Description</h1>
-                      <p id="FloatDescription"
-                        style="word-break: break-word; white-space: pre-line; padding-bottom: 5rem;">
-                        FLOAT is a Mixed Reality serious game that gamifies medical data collection. Using only hand
-                        gestures, players interact with a fractured world to help the little Pookis, while the system
-                        records muscle movement, contributing to the development of AI-trained prosthetics.
-                      </p>
-                    </div>
-
-
-                    <div class="float-problem-section" style="max-width: 700px; margin: 0 auto; text-align: left;">
-                      <h1 id="EmbedTitle1">The Context of the Code</h1>
-                      <p id="EmbedDesc1" style="word-break: break-word; white-space: pre-line;"> All obstacles in the
-                        game inherit from a core class, exposing parameters that the Game Designer can adjust in the
-                        editor. Each obstacle is designed to handle multiple Pookis. </p>
-                      <div
-                        style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column; margin-top: 1rem; margin-bottom: 2rem;">
-                        <video loop muted playsinline preload="none" poster="./assets/FLOAT_Obstacles_Poster.webp"
-                          style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;">
-                          <source src="./assets/FLOAT_Obstacles.webm" type="video/webm">
-                          <source src="./assets/FLOAT_Obstacles.mp4" type="video/mp4">
-                          Your browser does not support videos.
-                        </video>
-                      </div>
-                    </div>
-
-
-                    <div class="float-problem-section" style="max-width: 700px; margin: 0 auto; text-align: left;">
-                      <h1 id="EmbedTitle">The Context of the Code</h1>
-                      <p id="EmbedDesc" style="word-break: break-word; white-space: pre-line;"> To create different
-                        types of
-                        obstacles in the game we decided to use Water. It had various requirements that needed to be
-                        met,
-                        like a form of interaction with the player.</p>
-                      <div
-                        style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
-                        <video loop muted playsinline preload="none" poster="./assets/float_solution2_poster.webp"
-                          style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:1.5rem; margin-bottom:0rem;">
-                          <source src="./assets/FLOAT_Solution2.webm" type="video/webm">
-                          <source src="./assets/FLOAT_Solution2.mp4" type="video/mp4">
-                          Your browser does not support videos.
-                        </video>
-                      </div>
-                      <div style="width: 100%; display: flex; justify-content: center;">
-                        <iframe src="about:blank" data-src="https://blueprintue.com/render/7z-pe5n_/"
-                          class="blueprint-frame" scrolling="no" height="300" style="margin-top:0;" allowfullscreen>
-                        </iframe>
-                        <img src="./assets/float_bp_2.webp" class="print-only-image" alt="Blueprint Logic" loading="lazy">
-                      </div>
-                    </div>
-
-                    <div class="float-problem-section">
-                      <h1 id="ProblemTitle">The Context of the Code</h1>
-                      <p id="ProblemDesc" style="word-break: break-word; white-space: pre-line;"> We needed to place the
-                        Foliage as Instance Static Meshes and our Game Designer asked me if there is a way so he doesn't
-                        have to manipulate each mesh individually. So I build him a simple Editor Utility Widget.
-                      </p>
-                    </div>
-                  </div>
-                  <div
-                    style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
-                    <video loop muted playsinline preload="none" poster="./assets/float_solution_poster.webp"
-                      style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;">
-                      <source src="./assets/FLOAT_Solution.webm" type="video/webm">
-                      <source src="./assets/FLOAT_Solution.mp4" type="video/mp4">
+          <!-- FLOAT Card -->
+          <div class="details-container color-container">
+            <div class="flip-card">
+              <button type="button" class="flip-toggle-btn exit-btn" aria-label="Close project details">
+                X
+              </button>
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="article-container">
+                    <video class="showcase-video" loop muted playsinline preload="metadata" disablepictureinpicture
+                      data-autoplay-on-visible poster="./assets/FLOAT_Poster.webp">
+                      <source src="./assets/FLOAT_Showcase.webm" type="video/webm" />
+                      <source src="./assets/FLOAT_Showcase.mp4" type="video/mp4" />
                       Your browser does not support videos.
                     </video>
                   </div>
-                  <div style="width: 100%; display: flex; justify-content: center;">
-                    <iframe src="about:blank" data-src="https://blueprintue.com/render/zp_ydxfg/"
-                      class="blueprint-frame" scrolling="no" height="300" style="margin-top:0;" allowfullscreen>
-                    </iframe>
-                    <img src="./assets/float_bp_1.webp" class="print-only-image" alt="Blueprint Logic" loading="lazy">
+                  <div class="project-title-container">
+                    <h3 class="project-heading">
+                      <span>FLOAT</span>
+                    </h3>
+                    <p id="floattitle" class="experience-sub-title project-title">
+                      <span class="project-subtitle-text">
+                        Award-winning MR for prosthesis research
+                      </span>
+                    </p>
                   </div>
-                </div>
-
-
-                <div class="btn-container"
-                  style="margin-bottom: 2rem; min-height: 6rem; display: flex; justify-content: center;">
-                  <button id="post_mortem" class="btn btn-color-2 pdf-btn"
-                    onclick="window.open('./assets/Gohde_Lars_FLOAT_PostMortem.pdf', '_blank');">
-                    View Post-Mortem (Only English)
-                  </button>
-                </div>
-
-                <div class="float-problem-section"
-                  style="max-width:700px; margin: 1rem auto 0 auto; text-align:left; margin-top: auto;">
-                  <h1 id="AchievementsTitle">Achievements</h1>
-                  <div id="AchievementsDesc" style="word-break: break-word; margin-left: 1rem;">
-                    <ul>
-                      <li>
-                        <a href="https://www.mb21.de/wettbewerbsjahr_2025.html?articles=float" target="_blank"
-                          rel="noopener noreferrer">
-                          Winner: Deutscher Multimediapreis mb21
-                          <img src="./assets/hyperlink_icon.webp" alt="Link" class="link-icon" />
-                        </a>
-                      </li>
-
-                      <li>
-                        <a href="https://www.studentgamesfestival.com/2025-winners" target="_blank"
-                          rel="noopener noreferrer">
-                          Winner: Best Student Games Award | Meaningful Game
-                          <img src="./assets/hyperlink_icon.webp" alt="Link" class="link-icon" />
-                        </a>
-                      </li>
-
-                      <li>
-                        <a href="https://www.bvdw.org/events/digital-responsibility-award/" target="_blank"
-                          rel="noopener noreferrer">
-                          Winner: Digital Responsibility Award 2026 | Digital well-being & inclusion
-                          <img src="./assets/hyperlink_icon.webp" alt="Link" class="link-icon" />
-                        </a>
-                      </li>
-
-                      <li>
-                        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7334126257871175680/"
-                          target="_blank" rel="noopener noreferrer">
-                          Winner: Varjo Academic Giveaway Campaign
-                          <img src="./assets/hyperlink_icon.webp" alt="Link" class="link-icon" />
-                        </a>
-                      </li>
-
-                      <li>Winner: HNU Werkschau | Best Game-Award</li>
-
-                      <li style="margin-top: 20px;">
-                        <a href="https://nextrealitycontest.de/de/nominierte/nominierte-2025/" target="_blank"
-                          rel="noopener noreferrer">
-                          Nominee: XRC25 | Young Talent
-                          <img src="./assets/hyperlink_icon.webp" alt="Link" class="link-icon" />
-                        </a>
-                      </li>
-
-                      <li>
-                        <a href="https://nextrealitycontest.de/de/nominierte/nominierte-2025/" target="_blank"
-                          rel="noopener noreferrer">
-                          Nominee: XRC25 | Community Award
-                          <img src="./assets/hyperlink_icon.webp" alt="Link" class="link-icon" />
-                        </a>
-                      </li>
-
-                      <li style="margin-top: 20px;">
-                        <a href="https://www.games-bavaria.com/gamescom-2025/" target="_blank"
-                          rel="noopener noreferrer">
-                          Exhibitor: Gamescom 2025 | Business Area
-                          <img src="./assets/hyperlink_icon.webp" alt="Link" class="link-icon" />
-                        </a>
-                      </li>
-
-                      <li>
-                        <a href="https://rawtalentbooth.com" target="_blank" rel="noopener noreferrer">
-                          Exhibitor: Gamescom 2025 | Entertainment Area
-                          <img src="./assets/hyperlink_icon.webp" alt="Link" class="link-icon" />
-                        </a>
-                      </li>
-
-                      <li>
-                        <a href="https://germandevdays.com/exhibitors" target="_blank" rel="noopener noreferrer">
-                          Exhibitor: GermanDevDays 2025
-                          <img src="./assets/hyperlink_icon.webp" alt="Link" class="link-icon" />
-                        </a>
-                      </li>
-
-                      <li>
-                        <a href="https://play-con.de/ausstellerinnen-2025-neuulm/" target="_blank"
-                          rel="noopener noreferrer">
-                          Exhibitor: Play! Con 2025
-                          <img src="./assets/hyperlink_icon.webp" alt="Link" class="link-icon" />
-                        </a>
-                      </li>
-
-                      <li>Exhibitor: Hackerkiste Augsburg 2025</li>
-                      <li>Exhibitor: TINCON 2025</li>
-
-                      <li style="margin-top: 20px;">Member: Meta Horizon Start Community</li>
-                    </ul>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mercury Karte -->
-        <div class="details-container color-container">
-          <div class="flip-card allow-overflow">
-            <button class="flip-toggle-btn exit-btn">
-              X
-            </button>
-            <div class="flip-card-inner allow-overflow">
-              <div class="flip-card-front allow-overflow">
-                <div class="article-container">
-                  <video loop muted playsinline preload="metadata" disablepictureinpicture data-autoplay-on-visible
-                    poster="./assets/MERCURY_Poster.webp"
-                    style="width: 100%; max-width: 560px; height: auto; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; display: block; margin: 0 auto;">
-
-                    <source src="./assets/MERCURY_Showcase.webm" type="video/webm">
-                    <source src="./assets/MERCURY_Showcase.mp4" type="video/mp4">
-
-                    Your browser does not support videos.
-                  </video>
-                </div>
-                <div class="project-title-container" style="flex-direction: column; padding-bottom: 0;">
-                  <h2 style="font-size: 2.5rem; margin: 0;">
-                    <span style="display: block;">
-                      MERCURY
-                    </span>
-                  </h2>
-                  <h2 id="mercurytitle" class="experience-sub-title project-title" style="margin: 0.5rem 0 0 0;">
-                    <span style="display: block; line-height: 1.1;">
-                      World's first fast-paced hand-tracking brawler
-                    </span>
-                  </h2>
-                </div>
-                <div class="btn-container">
-
-                  <div class="mercury-punch-group" style="position: relative;">
-
-                    <a id="mercury-itch-btn"
-                      href="https://www.meta.com/de-de/experiences/mercury-tech-showcase/26112223728394256/"
-                      target="_blank" rel="noopener noreferrer" class="btn btn-color-2 project-btn"
-                      style="text-decoration: none; display: inline-flex; align-items: center;">
-                      <img src="./assets/meta.webp" alt="Meta" loading="lazy"
-                        style="width: 1.2rem; height: auto; margin-right: 0.5rem; vertical-align: middle;">
+                  <div class="btn-container">
+                    <a href="https://www.meta.com/de-de/experiences/float-a-mixed-reality-experience/24099813506309823/"
+                      target="_blank" rel="noopener noreferrer" class="btn btn-color-2 project-btn">
+                      <img src="./assets/meta.webp" alt="" class="btn-icon" loading="lazy" />
                       Meta
                     </a>
-
-                    <div class="mercury-animation-wrapper">
-                      <div class="mecha-fist">
-                        <div class="knuckles"></div>
-                        <div class="thumb"></div>
-                      </div>
-                      <div class="impact-spark"></div>
-                    </div>
-
-                  </div>
-                  <button id="mercuryDetailsBtn" class="btn btn-color-2 project-btn details-btn"
-                    onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
-                    Details
-                  </button>
-                </div>
-              </div>
-              <div class="flip-card-back">
-                <div
-                  style="display: flex; flex-direction: column; width: 100%; max-width: 700px; margin: 0 auto 0 auto; gap: 0; align-items: stretch; justify-content: flex-start; padding-top: 0;">
-                  <div
-                    style="flex: 2 1 0; text-align: left; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; margin-top: 0; width: 100%;">
-                    <div class="float-back-info-box">
-                      <div class="float-back-info-col">
-                        <h1 id="mercuryScopeTitle">Project Scope</h1>
-                        <ul style="margin-left: 1rem;" id="mercuryScopeDesc">
-                          <li>2 Months</li>
-                          <li>Team of 6 People</li>
-                        </ul>
-                      </div>
-                      <div class="float-back-info-col">
-                        <h1 id="mercuryRoleTitle">My Core Role</h1>
-                        <ul style="margin-left: 1rem;" id="mercuryRoleDesc">
-                          <li>Player Mechanics</li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div class="float-problem-section" style="margin-bottom: 3rem !important;">
-                      <h1 id="mercuryDescribtionTitle">Description</h1>
-                      <p id="mercuryDescription"
-                        style="word-break: break-word; white-space: pre-line; padding-bottom: 5rem;">
-                        MERCURY is the first controller-free VR mecha brawler. Players use physical movements to climb
-                        through a city and engage in fast-paced arena combat. The game relies entirely on hand tracking
-                        for both navigation and fighting.
-
-                      </p>
-                    </div>
-                  </div>
-                  <div
-                    style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
-                    <video loop muted playsinline preload="none" poster="./assets/mercury_solution_poster.webp"
-                      style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:2rem;">
-                      <source src="./assets/MERCURY_Solution.webm" type="video/webm">
-                      <source src="./assets/MERCURY_Solution.mp4" type="video/mp4">
-                      Your browser does not support videos.
-                    </video>
-                  </div>
-                </div>
-                <div
-                  style="display: flex; flex-direction: column; width: 100%; max-width: 700px; margin: 0 auto 0 auto; gap: 0; align-items: stretch; justify-content: flex-start; padding-top: 0;">
-                  <div
-                    style="flex: 2 1 0; text-align: left; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; margin-top: 0; width: 100%;">
-                    <div class="float-problem-section">
-                      <h1 id="mercuryProblemTitle" style="margin-bottom: 20px;">Gorilla Locomotion System</h1>
-
-                      <div id="mercuryProblemDesc">
-
-                        <h3 style="margin-bottom: 2px; font-size: 1.1em;">Hand-Surface Interaction</h3>
-                        <p style="margin-top: 0; margin-bottom: 15px;">
-                          Linetraces position the mecha hands directly on surfaces for consistent contact and clear
-                          player feedback
-                        </p>
-
-                        <h3 style="margin-bottom: 2px; margin-top: 15px; font-size: 1.1em;">Grab Recognition</h3>
-                        <ul style="margin-top: 0; margin-bottom: 15px; padding-left: 20px;">
-                          <li>Pose-based detection with safeguards against unintended grabs/releases</li>
-                          <li>Context-aware checks for floors vs. vertical surfaces</li>
-                        </ul>
-                      </div>
-
-                      <div
-                        style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
-                        <video loop muted playsinline preload="none"
-                          poster="./assets/MERCURY_Movement_Debug_Poster.webp"
-                          style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;">
-                          <source src="./assets/MERCURY_Movement_Debug.webm" type="video/webm">
-                          <source src="./assets/MERCURY_Movement_Debug.mp4" type="video/mp4">
-                          Your browser does not support videos.
-                        </video>
-                      </div>
-
-                      <div id="mercuryProblemDesc2">
-
-                        <h3 style="margin-bottom: 2px; margin-top: 15px; font-size: 1.1em;">Surface Validation</h3>
-                        <p style="margin-top: 0; margin-bottom: 15px;">
-                          Sphere traces identify grab components and validate intent through hand-direction vs.
-                          surface-normal alignment
-                        </p>
-
-                        <h3 style="margin-bottom: 2px; margin-top: 15px; font-size: 1.1em;">Climbing & Movement Response
-                        </h3>
-                        <ul style="margin-top: 0; margin-bottom: 15px; padding-left: 20px;">
-                          <li>Player movement is derived from relative hand motion with weighted recent input for high
-                            responsiveness</li>
-                          <li>Adaptive transitions handle gravity, capsule scaling, and movement offsets during grabs
-                          </li>
-                        </ul>
-
-                        <h3 style="margin-bottom: 2px; font-size: 1.1em;">Release Dynamics</h3>
-                        <ul style="margin-top: 0; margin-bottom: 0; padding-left: 20px;">
-                          <li>Final launch velocity blends camera aim, movement intent, and surface type.</li>
-                          <li>Short lockouts prevent accidental re-grabs and maintain fluid momentum.</li>
-                        </ul>
-
-                      </div>
-
-                    </div>
-                    <div
-                      style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
-                      <video loop muted playsinline preload="none" poster="./assets/mercury_solution_poster.webp"
-                        style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:0rem;">
-                        <source src="./assets/MERCURY_Approaches.webm" type="video/webm">
-                        <source src="./assets/MERCURY_Approaches.mp4" type="video/mp4">
-                        Your browser does not support videos.
-                      </video>
-                    </div>
-
-                    <div id="mercuryApproaches">
-                      <h3 style="margin-top: 1rem; margin-bottom: 2px; font-size: 1.1em;">Different Movement Approaches
-                      </h3>
-                      <p style="margin-top: 0; margin-bottom: 15px;">
-                        As we were looking at multiple ideas on the movement system, I created
-                        prototypes for each of them in Unity.
-                      </p>
-                    </div>
-
-                    <div class="btn-container"
-                      style="margin-bottom: 2rem; min-height: 6rem; display: flex; justify-content: center;">
-                      <button id="post_mortem3" class="btn btn-color-2 pdf-btn"
-                        onclick="window.open('./assets/Gohde_Lars_MERCURY_PostMortem.pdf', '_blank');">
-                        View Post-Mortem (Only English)
-                      </button>
-                    </div>
-
-                    <div class="float-problem-section" style="margin-bottom: 3rem !important;">
-                      <h1 id="mercuryLearningTitle">Store Release</h1>
-                      <p id="mercuryLearningText"
-                        style="word-break: break-word; white-space: pre-line; padding-bottom: 5rem;">
-                        MERCURY was well received at exhibitions where we were able to explain how the movement system
-                        worked. Once players understood how to move, the feedback was very positive. Unfortunately, this
-                        did not work as intended when players played alone at home, which led to player frustration.
-                        Concentrating on how to better communicate core mechanics is a key learning I took away from
-                        this project.
-
-                      </p>
-                    </div>
-
-                    <div class="float-problem-section"
-                      style="max-width:700px; margin: 1rem auto 0 auto; text-align:left; margin-top: auto;">
-
-                      <h1 id="MercuryAchTitle">Achievements</h1>
-
-                      <div id="MercuryAchDesc" style="word-break: break-word; margin-left: 1rem;">
-                        <ul>
-                          <li>
-                            <a href="https://devpost.com/software/mercury-05i6ty" target="_blank"
-                              rel="noopener noreferrer">
-                              Participant: Meta Horizon Start Developer Competition
-                              <img src="./assets/hyperlink_icon.webp" alt="Link" class="link-icon" />
-                            </a>
-                          </li>
-                          <li>Winner: HNU Werkschau | Best Mechanics-Award</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- GOD OF A CULT Karte -->
-        <div class="details-container color-container">
-          <div class="flip-card cult-card">
-            <button class="flip-toggle-btn exit-btn">
-              X
-            </button>
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <div class="article-container">
-                  <video loop muted playsinline preload="metadata" disablepictureinpicture data-autoplay-on-visible
-                    poster="./assets/God_Of_A_Cult_Poster.webp"
-                    style="width: 100%; max-width: 560px; height: auto; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; display: block; margin: 0 auto;">
-
-                    <source src="./assets/God_Of_A_Cult_Showcase.webm" type="video/webm">
-                    <source src="./assets/God_Of_A_Cult_Showcase.mp4" type="video/mp4">
-
-                    Your browser does not support videos.
-                  </video>
-                </div>
-
-                <div class="project-title-container"
-                  style="flex-direction: column; justify-content: flex-start; padding-top: 1rem; margin-bottom: clamp(0rem, 4vw, 3rem);">
-                  <h2 style="font-size: 2.5rem; margin: 0;">
-                    <span style="display: block;">
-                      God of a Cult
-                    </span>
-                  </h2>
-                  <h2 id="godofaculttitle" class="experience-sub-title project-title" style="margin: 0.5rem 0 0 0;">
-                    <span style="display: block; line-height: 1.1;">
-                      Expandable comedic point-and-click
-                    </span>
-                  </h2>
-                </div>
-
-                <div class="btn-container">
-
-
-                  <a href="https://gohde-games.itch.io/god-of-a-cult" target="_blank" rel="noopener noreferrer"
-                    class="btn btn-color-2 project-btn"
-                    style="text-decoration: none; display: inline-flex; align-items: center;">
-                    <img src="./assets/itch_red.webp" alt="Itch.io" loading="lazy"
-                      style="width: 1.2rem; height: auto; margin-right: 0.5rem; vertical-align: middle;">
-                    Itch.io
-                  </a>
-                  <div class="cult-wrapper" style="position: relative; display: inline-block;">
-
-                    <div class="cultist-fan c1"></div>
-                    <div class="cultist-fan c2"></div>
-                    <div class="cultist-fan c3"></div>
-                    <button id="cultDetailsBtn" class="btn btn-color-2 project-btn details-btn"
-                      onclick="event.stopPropagation(); this.closest('.flip-card').classList.toggle('flipped');">
+                    <button id="floatDetailsBtn" type="button" data-i18n="btn.details"
+                      class="btn btn-color-2 project-btn details-btn" aria-label="Details for FLOAT">
                       Details
                     </button>
                   </div>
+                  <div class="pooki-head-container" aria-hidden="true">
+                    <div class="pooki-head">
+                      <div class="antenna-leaf">
+                        <div class="leaf-vein"></div>
+                      </div>
+                      <div class="eye-socket left">
+                        <div class="pupil"></div>
+                      </div>
+                      <div class="eye-socket right">
+                        <div class="pupil"></div>
+                      </div>
+                      <div class="mouth"></div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="flip-card-back">
-                <div
-                  style="display: flex; flex-direction: column; width: 100%; max-width: 700px; margin: 0 auto 0 auto; gap: 0; align-items: stretch; justify-content: flex-start; padding-top: 0;">
-                  <div
-                    style="flex: 2 1 0; text-align: left; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; margin-top: 0; width: 100%;">
-                    <div class="float-back-info-box">
-                      <div class="float-back-info-col">
-                        <h1 id="cultScopeTitle">Project Scope</h1>
-                        <style>
-                          #cultScopeDesc a:hover {
-                            text-decoration: underline;
-                            text-decoration-color: rgb(218, 165, 32);
-                            text-underline-offset: 3px;
-                            text-decoration-thickness: 1px;
-                          }
-                        </style>
 
-                        <ul style="margin-left: 1rem;" id="cultScopeDesc">
-                          <li>2nd Semester Project</li>
-                          <li>
-                            <a href="https://www.filmmakers.eu/en/actors/thorben-gohde" target="_blank"
-                              rel="noopener noreferrer">
-                              Voiced by Thorben Gohde
-                              <img src="./assets/hyperlink_icon.webp" alt="External link" class="link-icon" />
-                            </a>
-                          </li>
-                        </ul>
+                <div class="flip-card-back">
+                  <div class="back-section-inner">
+                    <div class="back-content-col back-content-col--spaced">
+                      <div class="awards-banner-wrapper">
+                        <img src="assets/FLOAT_Awards.webp" alt="FLOAT Awards" class="awards-banner" loading="lazy" />
                       </div>
-                      <div class="float-back-info-col">
-                        <h1 id="cultRoleTitle">My Core Role</h1>
-                        <ul style="margin-left: 1rem;" id="cultRoleDesc">
-                          <li>Solo Project</li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div class="float-problem-section" style="margin-bottom: 3rem !important;">
-                      <h1 id="gofofacultDescribtionTitle">Description</h1>
-                      <p id="gofofacultDescription"
-                        style="word-break: break-word; white-space: pre-line; padding-bottom: 5rem;">
-                        God of a Cult is a comedic point-and-click adventure. Players solve puzzles to help the
-                        protagonist become the next incarnation of the God of Time and find his missing sister. The game
-                        is fully voiced and includes translated text and a scalable save system.
-                      </p>
-                    </div>
-
-                    <!-- === Carousel: replace the single image in the God of a Cult back side with this === -->
-                    <div class="cult-carousel" aria-label="God of a Cult images" onclick="event.stopPropagation()">
-                      <button class="cult-carousel__arrow cult-carousel__arrow--left" aria-label="previous">‹</button>
-
-                      <div class="cult-carousel__viewport">
-                        <!-- Add / remove images as needed. Keep the class cult-carousel__slide -->
-                        <img class="cult-carousel__slide" src="./assets/GodOfACult_Carousel_01.webp" loading="lazy"
-                          alt="God of a Cult - Interactions" />
-                        <img class="cult-carousel__slide" src="./assets/GodOfACult_Carousel_02.webp" loading="lazy"
-                          alt="God of a Cult - Sensitive Cursor" />
-                        <img class="cult-carousel__slide" src="./assets/GodOfACult_Carousel_03.webp" loading="lazy"
-                          alt="God of a Cult - Expendable" />
-                        <img class="cult-carousel__slide" src="./assets/GodOfACult_Carousel_04.webp" loading="lazy"
-                          alt="God of a Cult - Dialogue Code Snippet" />
-                        <img class="cult-carousel__slide" src="./assets/GodOfACult_Carousel_05.webp" loading="lazy"
-                          alt="God of a Cult - Overview Code Snippet" />
+                      <div class="float-back-info-box">
+                        <div class="float-back-info-col">
+                          <h3 id="P1" data-i18n="card.scopeTitle">Project Scope</h3>
+                          <ul id="P2">
+                            <li>6 Months</li>
+                            <li>Team of 6 People</li>
+                          </ul>
+                        </div>
+                        <div class="float-back-info-col">
+                          <h3 id="RoleTitle" data-i18n="card.roleTitle">My Core Role</h3>
+                          <ul id="RoleDescription">
+                            <li>Main Programmer</li>
+                            <li>Shader</li>
+                            <li>Effects</li>
+                          </ul>
+                        </div>
                       </div>
 
-                      <button class="cult-carousel__arrow cult-carousel__arrow--right" aria-label="next">›</button>
+                      <div class="float-problem-section float-problem-section--spaced">
+                        <h3 id="FloatDescribtionTitle" data-i18n="card.descTitle">Description</h3>
+                        <p id="FloatDescription" class="description-text">
+                          FLOAT is a Mixed Reality serious game that gamifies medical data collection. Using only hand
+                          gestures, players interact with a fractured world to help the little Pookis, while the system
+                          records muscle movement, contributing to the development of AI-trained prosthetics.
+                        </p>
+                      </div>
 
-                      <div class="cult-carousel__dots" aria-hidden="false"></div>
+                      <div class="float-problem-section">
+                        <h3 id="EmbedTitle1" data-i18n="card.codeContextTitle">The Context of the Code</h3>
+                        <p id="EmbedDesc1">
+                          All obstacles in the game inherit from a core class, exposing parameters that the Game
+                          Designer can adjust in the editor. Each obstacle is designed to handle multiple Pookis.
+                        </p>
+                        <div class="back-video-wrapper back-video-wrapper--spaced">
+                          <video class="back-video" loop muted playsinline preload="none"
+                            poster="./assets/FLOAT_Obstacles_Poster.webp">
+                            <source src="./assets/FLOAT_Obstacles.webm" type="video/webm" />
+                            <source src="./assets/FLOAT_Obstacles.mp4" type="video/mp4" />
+                            Your browser does not support videos.
+                          </video>
+                        </div>
+                      </div>
+
+                      <div class="float-problem-section">
+                        <h3 id="EmbedTitle" data-i18n="card.codeContextTitle">The Context of the Code</h3>
+                        <p id="EmbedDesc">
+                          To create different types of obstacles in the game we decided to use Water. It had various
+                          requirements that needed to be met, like a form of interaction with the player.
+                        </p>
+                        <div class="back-video-wrapper">
+                          <video class="back-video back-video--top-spaced" loop muted playsinline preload="none"
+                            poster="./assets/float_solution2_poster.webp">
+                            <source src="./assets/FLOAT_Solution2.webm" type="video/webm" />
+                            <source src="./assets/FLOAT_Solution2.mp4" type="video/mp4" />
+                            Your browser does not support videos.
+                          </video>
+                        </div>
+                        <div class="blueprint-wrapper">
+                          <iframe src="about:blank" data-src="https://blueprintue.com/render/7z-pe5n_/"
+                            title="Unreal Engine Blueprint: Water Obstacle Logic" class="blueprint-frame" scrolling="no"
+                            height="300" allowfullscreen>
+                          </iframe>
+                          <img src="./assets/float_bp_2.webp" class="print-only-image" alt="Blueprint Logic"
+                            loading="lazy" />
+                        </div>
+                      </div>
+
+                      <div class="float-problem-section">
+                        <h3 id="ProblemTitle" data-i18n="card.codeContextTitle">The Context of the Code</h3>
+                        <p id="ProblemDesc">
+                          We needed to place the Foliage as Instance Static Meshes and our Game Designer asked me if
+                          there is a way so he doesn't have to manipulate each mesh individually. So I build him a
+                          simple Editor Utility Widget.
+                        </p>
+                      </div>
                     </div>
 
-
-                    <div class="float-problem-section">
-                      <h1 id="cultProblemTitle">The Context of the Code</h1>
-                      <p id="cultProblemDesc" style="word-break: break-word; white-space: pre-line;">To create levels as
-                        fast as possible, I developed a system that relies entirely on Data Tables. The game is fully
-                        voiced and breaks the fourth wall through dialogues, real-time clocks, and revealing that the
-                        player in front of the screen is the God of Time.</p>
+                    <div class="back-video-wrapper">
+                      <video class="back-video" loop muted playsinline preload="none"
+                        poster="./assets/float_solution_poster.webp">
+                        <source src="./assets/FLOAT_Solution.webm" type="video/webm" />
+                        <source src="./assets/FLOAT_Solution.mp4" type="video/mp4" />
+                        Your browser does not support videos.
+                      </video>
+                    </div>
+                    <div class="blueprint-wrapper">
+                      <iframe src="about:blank" data-src="https://blueprintue.com/render/zp_ydxfg/"
+                        title="Unreal Engine Blueprint: Foliage Editor Utility Widget" class="blueprint-frame"
+                        scrolling="no" height="300" allowfullscreen>
+                      </iframe>
+                      <img src="./assets/float_bp_1.webp" class="print-only-image" alt="Blueprint Logic"
+                        loading="lazy" />
                     </div>
                   </div>
-                  <div
-                    style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
-                    <video loop muted playsinline preload="none" poster="./assets/godofacult_solution_poster.webp"
-                      style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:2rem;">
-                      <source src="./assets/GodOfACult_Camera.webm" type="video/webm">
-                      <source src="./assets/GodOfACult_Camera.mp4" type="video/mp4">
-                      Your browser does not support videos.
-                    </video>
-                  </div>
 
-                  <div class="float-problem-section">
-                    <h1 id="cultProblemTitle2">Creation of a Tutorial Series</h1>
-                    <p id="cultProblemDesc2" style="word-break: break-word; white-space: pre-line;">To help others, I
-                      recorded a 7+ hour series explaining how to build the required core systems in Unreal Engine 5. It
-                      can be viewed <a href="https://www.youtube.com/playlist?list=PLSStU8YtITKfY5ivtE77u5DZma00sIdtf"
-                        target="_blank" rel="noopener noreferrer" class="tutorial-link">here</a>.</p>
-                  </div>
-
-                  <div
-                    style="flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column;">
-                    <video loop muted playsinline preload="none" poster="./assets/godofacult_solution_poster.webp"
-                      style="max-width:500px; border-radius:1rem; box-shadow:0 2px 8px rgba(0,0,0,0.1); border: 3px solid #3d3d3d; vertical-align:top; margin-left:auto; margin-right:auto; margin-top:0; margin-bottom:2rem;">
-                      <source src="./assets/GodOfACult_Youtube.mp4" type="video/webm">
-                      <source src="./assets/GodOfACult_Youtube.mp4" type="video/mp4">
-                      Your browser does not support videos.
-                    </video>
-                  </div>
-
-
-                  <div class="btn-container"
-                    style="margin-bottom: 2rem; min-height: 6rem; display: flex; justify-content: center;">
-                    <button id="post_mortem2" class="btn btn-color-2 pdf-btn"
-                      onclick="window.open('./assets/Gohde_Lars_GodOfACult_PostMortem.pdf', '_blank');">
+                  <div class="btn-container post-mortem-container">
+                    <a id="post_mortem" data-i18n="btn.postMortem" href="./assets/Gohde_Lars_FLOAT_PostMortem.pdf"
+                      target="_blank" rel="noopener noreferrer" class="btn btn-color-2 pdf-btn">
                       View Post-Mortem (Only English)
-                    </button>
+                    </a>
                   </div>
-                  <!-- God Of a Cult Achievements (aligned like other cards) -->
-                  <div class="float-problem-section"
-                    style="max-width:700px; margin: 1rem auto 0 auto; text-align:left; margin-top: auto;">
-                    <h1 id="CultAchievementsTitle">Achievements</h1>
-                    <div id="CultAchievementsDesc" style="word-break: break-word; margin-left: 1rem;">
+
+                  <div class="float-problem-section achievements-section">
+                    <h3 id="AchievementsTitle" data-i18n="card.achievementsTitle">Achievements</h3>
+                    <div id="AchievementsDesc" class="achievements-list">
                       <ul>
-                        <li>Exhibitor: HNU Werkschau</li>
-                        <li>Showcase project for new semester</li>
+                        <li>
+                          <a href="https://www.mb21.de/wettbewerbsjahr_2025.html?articles=float" target="_blank"
+                            rel="noopener noreferrer">
+                            Winner: Deutscher Multimediapreis mb21
+                            <img src="./assets/hyperlink_icon.webp" alt="" class="link-icon" loading="lazy" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://www.studentgamesfestival.com/2025-winners" target="_blank"
+                            rel="noopener noreferrer">
+                            Winner: Best Student Games Award | Meaningful Game
+                            <img src="./assets/hyperlink_icon.webp" alt="" class="link-icon" loading="lazy" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://www.bvdw.org/events/digital-responsibility-award/" target="_blank"
+                            rel="noopener noreferrer">
+                            Winner: Digital Responsibility Award 2026 | Digital well-being &amp; inclusion
+                            <img src="./assets/hyperlink_icon.webp" alt="" class="link-icon" loading="lazy" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7334126257871175680/"
+                            target="_blank" rel="noopener noreferrer">
+                            Winner: Varjo Academic Giveaway Campaign
+                            <img src="./assets/hyperlink_icon.webp" alt="" class="link-icon" loading="lazy" />
+                          </a>
+                        </li>
+                        <li>Winner: HNU Werkschau | Best Game-Award</li>
+                        <li class="achievement-group-start">
+                          <a href="https://nextrealitycontest.de/de/nominierte/nominierte-2025/" target="_blank"
+                            rel="noopener noreferrer">
+                            Nominee: XRC25 | Young Talent
+                            <img src="./assets/hyperlink_icon.webp" alt="" class="link-icon" loading="lazy" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://nextrealitycontest.de/de/nominierte/nominierte-2025/" target="_blank"
+                            rel="noopener noreferrer">
+                            Nominee: XRC25 | Community Award
+                            <img src="./assets/hyperlink_icon.webp" alt="" class="link-icon" loading="lazy" />
+                          </a>
+                        </li>
+                        <li class="achievement-group-start">
+                          <a href="https://www.games-bavaria.com/gamescom-2025/" target="_blank"
+                            rel="noopener noreferrer">
+                            Exhibitor: Gamescom 2025 | Business Area
+                            <img src="./assets/hyperlink_icon.webp" alt="" class="link-icon" loading="lazy" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://rawtalentbooth.com" target="_blank" rel="noopener noreferrer">
+                            Exhibitor: Gamescom 2025 | Entertainment Area
+                            <img src="./assets/hyperlink_icon.webp" alt="" class="link-icon" loading="lazy" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://germandevdays.com/exhibitors" target="_blank" rel="noopener noreferrer">
+                            Exhibitor: GermanDevDays 2025
+                            <img src="./assets/hyperlink_icon.webp" alt="" class="link-icon" loading="lazy" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="https://play-con.de/ausstellerinnen-2025-neuulm/" target="_blank"
+                            rel="noopener noreferrer">
+                            Exhibitor: Play! Con 2025
+                            <img src="./assets/hyperlink_icon.webp" alt="" class="link-icon" loading="lazy" />
+                          </a>
+                        </li>
+                        <li>Exhibitor: Hackerkiste Augsburg 2025</li>
+                        <li>Exhibitor: TINCON 2025</li>
+                        <li class="achievement-group-start">Member: Meta Horizon Start Community</li>
                       </ul>
                     </div>
                   </div>
@@ -800,189 +321,513 @@
               </div>
             </div>
           </div>
+
+          <!-- MERCURY Card -->
+          <div class="details-container color-container">
+            <div class="flip-card allow-overflow">
+              <button type="button" class="flip-toggle-btn exit-btn" aria-label="Close project details">
+                X
+              </button>
+              <div class="flip-card-inner allow-overflow">
+                <div class="flip-card-front allow-overflow">
+                  <div class="article-container">
+                    <video class="showcase-video" loop muted playsinline preload="metadata" disablepictureinpicture
+                      data-autoplay-on-visible poster="./assets/MERCURY_Poster.webp">
+                      <source src="./assets/MERCURY_Showcase.webm" type="video/webm" />
+                      <source src="./assets/MERCURY_Showcase.mp4" type="video/mp4" />
+                      Your browser does not support videos.
+                    </video>
+                  </div>
+                  <div class="project-title-container">
+                    <h3 class="project-heading">
+                      <span>MERCURY</span>
+                    </h3>
+                    <p id="mercurytitle" class="experience-sub-title project-title">
+                      <span class="project-subtitle-text">
+                        World's first fast-paced hand-tracking brawler
+                      </span>
+                    </p>
+                  </div>
+                  <div class="btn-container">
+                    <div class="mercury-punch-group">
+                      <a id="mercury-itch-btn"
+                        href="https://www.meta.com/de-de/experiences/mercury-tech-showcase/26112223728394256/"
+                        target="_blank" rel="noopener noreferrer" class="btn btn-color-2 project-btn">
+                        <img src="./assets/meta.webp" alt="" class="btn-icon" loading="lazy" />
+                        Meta
+                      </a>
+                      <div class="mercury-animation-wrapper" aria-hidden="true">
+                        <div class="mecha-fist">
+                          <div class="knuckles"></div>
+                          <div class="thumb"></div>
+                        </div>
+                        <div class="impact-spark"></div>
+                      </div>
+                    </div>
+                    <button id="mercuryDetailsBtn" type="button" data-i18n="btn.details"
+                      class="btn btn-color-2 project-btn details-btn" aria-label="Details for MERCURY">
+                      Details
+                    </button>
+                  </div>
+                </div>
+
+                <div class="flip-card-back">
+                  <div class="back-section-inner">
+                    <div class="back-content-col">
+                      <div class="float-back-info-box">
+                        <div class="float-back-info-col">
+                          <h3 id="mercuryScopeTitle" data-i18n="card.scopeTitle">Project Scope</h3>
+                          <ul id="mercuryScopeDesc">
+                            <li>2 Months</li>
+                            <li>Team of 6 People</li>
+                          </ul>
+                        </div>
+                        <div class="float-back-info-col">
+                          <h3 id="mercuryRoleTitle" data-i18n="card.roleTitle">My Core Role</h3>
+                          <ul id="mercuryRoleDesc">
+                            <li>Player Mechanics</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div class="float-problem-section float-problem-section--spaced">
+                        <h3 id="mercuryDescribtionTitle" data-i18n="card.descTitle">Description</h3>
+                        <p id="mercuryDescription" class="description-text">
+                          MERCURY is the first controller-free VR mecha brawler. Players use physical movements to climb
+                          through a city and engage in fast-paced arena combat. The game relies entirely on hand
+                          tracking for both navigation and fighting.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="back-video-wrapper">
+                      <video class="back-video back-video--bottom-spaced" loop muted playsinline preload="none"
+                        poster="./assets/mercury_solution_poster.webp">
+                        <source src="./assets/MERCURY_Solution.webm" type="video/webm" />
+                        <source src="./assets/MERCURY_Solution.mp4" type="video/mp4" />
+                        Your browser does not support videos.
+                      </video>
+                    </div>
+                  </div>
+
+                  <div class="back-section-inner">
+                    <div class="back-content-col">
+                      <div class="float-problem-section">
+                        <h3 id="mercuryProblemTitle">Gorilla Locomotion System</h3>
+
+                        <div id="mercuryProblemDesc">
+                          <h4 class="sub-heading sub-heading--first">Hand-Surface Interaction</h4>
+                          <p class="sub-text">
+                            Linetraces position the mecha hands directly on surfaces for consistent contact and clear
+                            player feedback
+                          </p>
+
+                          <h4 class="sub-heading">Grab Recognition</h4>
+                          <ul class="sub-list">
+                            <li>Pose-based detection with safeguards against unintended grabs/releases</li>
+                            <li>Context-aware checks for floors vs. vertical surfaces</li>
+                          </ul>
+                        </div>
+
+                        <div class="back-video-wrapper">
+                          <video class="back-video" loop muted playsinline preload="none"
+                            poster="./assets/MERCURY_Movement_Debug_Poster.webp">
+                            <source src="./assets/MERCURY_Movement_Debug.webm" type="video/webm" />
+                            <source src="./assets/MERCURY_Movement_Debug.mp4" type="video/mp4" />
+                            Your browser does not support videos.
+                          </video>
+                        </div>
+
+                        <div id="mercuryProblemDesc2">
+                          <h4 class="sub-heading">Surface Validation</h4>
+                          <p class="sub-text">
+                            Sphere traces identify grab components and validate intent through hand-direction vs.
+                            surface-normal alignment
+                          </p>
+
+                          <h4 class="sub-heading">Climbing &amp; Movement Response</h4>
+                          <ul class="sub-list">
+                            <li>Player movement is derived from relative hand motion with weighted recent input for high
+                              responsiveness</li>
+                            <li>Adaptive transitions handle gravity, capsule scaling, and movement offsets during grabs
+                            </li>
+                          </ul>
+
+                          <h4 class="sub-heading">Release Dynamics</h4>
+                          <ul class="sub-list sub-list--last">
+                            <li>Final launch velocity blends camera aim, movement intent, and surface type.</li>
+                            <li>Short lockouts prevent accidental re-grabs and maintain fluid momentum.</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div class="back-video-wrapper">
+                        <video class="back-video" loop muted playsinline preload="none"
+                          poster="./assets/mercury_solution_poster.webp">
+                          <source src="./assets/MERCURY_Approaches.webm" type="video/webm" />
+                          <source src="./assets/MERCURY_Approaches.mp4" type="video/mp4" />
+                          Your browser does not support videos.
+                        </video>
+                      </div>
+
+                      <div id="mercuryApproaches">
+                        <h4 class="sub-heading">Different Movement Approaches</h4>
+                        <p class="sub-text">
+                          As we were looking at multiple ideas on the movement system, I created
+                          prototypes for each of them in Unity.
+                        </p>
+                      </div>
+
+                      <div class="btn-container post-mortem-container">
+                        <a id="post_mortem3" data-i18n="btn.postMortem" href="./assets/Gohde_Lars_MERCURY_PostMortem.pdf"
+                          target="_blank" rel="noopener noreferrer" class="btn btn-color-2 pdf-btn">
+                          View Post-Mortem (Only English)
+                        </a>
+                      </div>
+
+                      <div class="float-problem-section float-problem-section--spaced">
+                        <h3 id="mercuryLearningTitle">Store Release</h3>
+                        <p id="mercuryLearningText" class="description-text">
+                          MERCURY was well received at exhibitions where we were able to explain how the movement system
+                          worked. Once players understood how to move, the feedback was very positive. Unfortunately,
+                          this did not work as intended when players played alone at home, which led to player
+                          frustration. Concentrating on how to better communicate core mechanics is a key learning I
+                          took away from this project.
+                        </p>
+                      </div>
+
+                      <div class="float-problem-section achievements-section">
+                        <h3 id="MercuryAchTitle" data-i18n="card.achievementsTitle">Achievements</h3>
+                        <div id="MercuryAchDesc" class="achievements-list">
+                          <ul>
+                            <li>
+                              <a href="https://devpost.com/software/mercury-05i6ty" target="_blank"
+                                rel="noopener noreferrer">
+                                Participant: Meta Horizon Start Developer Competition
+                                <img src="./assets/hyperlink_icon.webp" alt="" class="link-icon" loading="lazy" />
+                              </a>
+                            </li>
+                            <li>Winner: HNU Werkschau | Best Mechanics-Award</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- GOD OF A CULT Card -->
+          <div class="details-container color-container">
+            <div class="flip-card cult-card">
+              <button type="button" class="flip-toggle-btn exit-btn" aria-label="Close project details">
+                X
+              </button>
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="article-container">
+                    <video class="showcase-video" loop muted playsinline preload="metadata" disablepictureinpicture
+                      data-autoplay-on-visible poster="./assets/God_Of_A_Cult_Poster.webp">
+                      <source src="./assets/God_Of_A_Cult_Showcase.webm" type="video/webm" />
+                      <source src="./assets/God_Of_A_Cult_Showcase.mp4" type="video/mp4" />
+                      Your browser does not support videos.
+                    </video>
+                  </div>
+
+                  <div class="project-title-container">
+                    <h3 class="project-heading">
+                      <span>God of a Cult</span>
+                    </h3>
+                    <p id="godofaculttitle" class="experience-sub-title project-title">
+                      <span class="project-subtitle-text">
+                        Expandable comedic point-and-click
+                      </span>
+                    </p>
+                  </div>
+
+                  <div class="btn-container">
+                    <a href="https://gohde-games.itch.io/god-of-a-cult" target="_blank" rel="noopener noreferrer"
+                      class="btn btn-color-2 project-btn">
+                      <img src="./assets/itch_red.webp" alt="" class="btn-icon" loading="lazy" />
+                      Itch.io
+                    </a>
+                    <div class="cult-wrapper">
+                      <div class="cultist-fan c1" aria-hidden="true"></div>
+                      <div class="cultist-fan c2" aria-hidden="true"></div>
+                      <div class="cultist-fan c3" aria-hidden="true"></div>
+                      <button id="cultDetailsBtn" type="button" data-i18n="btn.details"
+                        class="btn btn-color-2 project-btn details-btn" aria-label="Details for God of a Cult">
+                        Details
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flip-card-back">
+                  <div class="back-section-inner">
+                    <div class="back-content-col">
+                      <div class="float-back-info-box">
+                        <div class="float-back-info-col">
+                          <h3 id="cultScopeTitle" data-i18n="card.scopeTitle">Project Scope</h3>
+                          <ul id="cultScopeDesc">
+                            <li>2nd Semester Project</li>
+                            <li>
+                              <a href="https://www.filmmakers.eu/en/actors/thorben-gohde" target="_blank"
+                                rel="noopener noreferrer">
+                                Voiced by Thorben Gohde
+                                <img src="./assets/hyperlink_icon.webp" alt="" class="link-icon" loading="lazy" />
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="float-back-info-col">
+                          <h3 id="cultRoleTitle" data-i18n="card.roleTitle">My Core Role</h3>
+                          <ul id="cultRoleDesc">
+                            <li>Solo Project</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div class="float-problem-section float-problem-section--spaced">
+                        <h3 id="gofofacultDescribtionTitle" data-i18n="card.descTitle">Description</h3>
+                        <p id="gofofacultDescription" class="description-text">
+                          God of a Cult is a comedic point-and-click adventure. Players solve puzzles to help the
+                          protagonist become the next incarnation of the God of Time and find his missing sister. The
+                          game is fully voiced and includes translated text and a scalable save system.
+                        </p>
+                      </div>
+
+                      <div class="cult-carousel" role="region" aria-label="God of a Cult screenshots">
+                        <button type="button" class="cult-carousel__arrow cult-carousel__arrow--left"
+                          aria-label="Previous slide">‹</button>
+
+                        <div class="cult-carousel__viewport">
+                          <img class="cult-carousel__slide" src="./assets/GodOfACult_Carousel_01.webp" loading="lazy"
+                            alt="God of a Cult - Interactions" />
+                          <img class="cult-carousel__slide" src="./assets/GodOfACult_Carousel_02.webp" loading="lazy"
+                            alt="God of a Cult - Sensitive Cursor" />
+                          <img class="cult-carousel__slide" src="./assets/GodOfACult_Carousel_03.webp" loading="lazy"
+                            alt="God of a Cult - Expandable" />
+                          <img class="cult-carousel__slide" src="./assets/GodOfACult_Carousel_04.webp" loading="lazy"
+                            alt="God of a Cult - Dialogue Code Snippet" />
+                          <img class="cult-carousel__slide" src="./assets/GodOfACult_Carousel_05.webp" loading="lazy"
+                            alt="God of a Cult - Overview Code Snippet" />
+                        </div>
+
+                        <button type="button" class="cult-carousel__arrow cult-carousel__arrow--right"
+                          aria-label="Next slide">›</button>
+
+                        <div class="cult-carousel__dots"></div>
+                      </div>
+
+                      <div class="float-problem-section">
+                        <h3 id="cultProblemTitle" data-i18n="card.codeContextTitle">The Context of the Code</h3>
+                        <p id="cultProblemDesc">
+                          To create levels as fast as possible, I developed a system that relies entirely on Data
+                          Tables. The game is fully voiced and breaks the fourth wall through dialogues, real-time
+                          clocks, and revealing that the player in front of the screen is the God of Time.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="back-video-wrapper">
+                      <video class="back-video back-video--bottom-spaced" loop muted playsinline preload="none"
+                        poster="./assets/godofacult_solution_poster.webp">
+                        <source src="./assets/GodOfACult_Camera.webm" type="video/webm" />
+                        <source src="./assets/GodOfACult_Camera.mp4" type="video/mp4" />
+                        Your browser does not support videos.
+                      </video>
+                    </div>
+
+                    <div class="float-problem-section">
+                      <h3 id="cultProblemTitle2">Creation of a Tutorial Series</h3>
+                      <p id="cultProblemDesc2">
+                        To help others, I recorded a 7+ hour series explaining how to build the required core systems in
+                        Unreal Engine 5. It can be viewed <a
+                          href="https://www.youtube.com/playlist?list=PLSStU8YtITKfY5ivtE77u5DZma00sIdtf"
+                          target="_blank" rel="noopener noreferrer" class="tutorial-link">here</a>.
+                      </p>
+                    </div>
+
+                    <div class="back-video-wrapper">
+                      <video class="back-video back-video--bottom-spaced" loop muted playsinline preload="none"
+                        poster="./assets/godofacult_solution_poster.webp">
+                        <source src="./assets/GodOfACult_Youtube.mp4" type="video/mp4" />
+                        Your browser does not support videos.
+                      </video>
+                    </div>
+
+                    <div class="btn-container post-mortem-container">
+                      <a id="post_mortem2" data-i18n="btn.postMortem"
+                        href="./assets/Gohde_Lars_GodOfACult_PostMortem.pdf" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-color-2 pdf-btn">
+                        View Post-Mortem (Only English)
+                      </a>
+                    </div>
+
+                    <div class="float-problem-section achievements-section">
+                      <h3 id="CultAchievementsTitle" data-i18n="card.achievementsTitle">Achievements</h3>
+                      <div id="CultAchievementsDesc" class="achievements-list">
+                        <ul>
+                          <li>Exhibitor: HNU Werkschau</li>
+                          <li>Showcase project for new semester</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
-      </div>
 
-      <div class="store-links-container">
-        <a id="AllSteamBtn" href="https://store.steampowered.com/app/4331360/UMBRA/" target="_blank"
-          rel="noopener noreferrer" class="btn btn-color-2 all-games-btn"
-          style="font-size:1.2rem;min-width:200px;text-align:center;">
-          <img src="./assets/steam.webp" alt="steam_logo" loading="lazy"
-            style="width: 1.2rem; height: auto; margin-right: 0.5rem; vertical-align: middle;">
-          Steam Release
-        </a>
-        <a id="PlayStoreBtn"
-          href="https://play.google.com/store/apps/details?id=com.GohdeInteractive.TonariRun" target="_blank"
-          rel="noopener noreferrer" class="btn btn-color-2 all-games-btn"
-          style="font-size:1.2rem;min-width:200px;text-align:center;">
-          <img src="./assets/playstore.png" alt="Google Play" loading="lazy"
-            style="width: 1.2rem; height: auto; margin-right: 0.5rem; vertical-align: middle;">
-          Play Store Release
-        </a>
-        <a id="allGamesBtn" href="https://gohde-games.itch.io" target="_blank" rel="noopener noreferrer"
-          class="btn btn-color-2 all-games-btn" style="font-size:1.2rem;min-width:200px;text-align:center;">
-          <img src="./assets/itch_red.webp" alt="steam_logo" loading="lazy"
-            style="width: 1.2rem; height: auto; margin-right: 0.5rem; vertical-align: middle;">
-          Itch.io Releases
-        </a>
-      </div>
-  </section>
-
-
-  <section id="insights">
-    <p id="InsightsSubtitle" class="section__text__p1">Technical Methodology</p>
-    <h1 id="InsightsTitle" class="title">Performance Guide</h1>
-
-    <div class="experience-details-container">
-
-      <div class="about-insights-containers"
-        style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; width: 100%;">
-
-        <div class="insights container" style="flex: 1; min-width: 300px; text-align: left; padding: 2rem;">
-          <h3 id="cpuTitle" style="text-align: center; margin-bottom: 1rem;">Profiling & CPU</h3>
-          <ul id="cpuList" style="padding-left: 1.5rem; line-height: 1.6;">
-            <li style="margin-bottom: 0.5rem;"><strong>Profiling:</strong> Bottleneck-analysis using <em>stat unit</em>,
-              <em>stat scenerendering</em>, Unreal Insights
-            </li>
-            <li style="margin-bottom: 0.5rem;"><strong>Threads:</strong> Distinguishing Game Thread, Render Thread, and
-              GPU time</li>
-            <li style="margin-bottom: 0.5rem;"><strong>Ticks:</strong> Conditional ticking and reduced update rates</li>
-            <li style="margin-bottom: 0.5rem;"><strong>Logic:</strong> Simplified logic flow; high-frequency operations
-              moved to C++</li>
-            <li style="margin-bottom: 0.5rem;"><strong>Pooling:</strong> Reuse of frequently spawned objects</li>
-          </ul>
-        </div>
-
-        <div class="insights container" style="flex: 1; min-width: 300px; text-align: left; padding: 2rem;">
-          <h3 id="gpuTitle" style="text-align: center; margin-bottom: 1rem;">GPU & Rendering</h3>
-          <ul id="gpuList" style="padding-left: 1.5rem; line-height: 1.6;">
-            <li style="margin-bottom: 0.5rem;"><strong>Draw Calls:</strong> Instancing (ISM/HISM) and Hierarchical LODs
-              (HLOD)</li>
-            <li style="margin-bottom: 0.5rem;"><strong>Materials:</strong> Minimal slots, master-material workflow,
-              reduced shader cost</li>
-            <li style="margin-bottom: 0.5rem;"><strong>Lighting:</strong> Controlled dynamic lights, shadow settings,
-              attenuation</li>
-            <li style="margin-bottom: 0.5rem;"><strong>VFX:</strong> GPU simulations with fixed bounds and pooled
-              effects</li>
-            <li style="margin-bottom: 0.5rem;"><strong>VR:</strong> Instanced Stereo, Multi-View, efficient forward
-              rendering</li>
-          </ul>
-        </div>
-
-        <div class="insights container" style="flex: 1; min-width: 300px; text-align: left; padding: 2rem;">
-          <h3 id="memTitle" style="text-align: center; margin-bottom: 1rem;">Workflow & Memory</h3>
-          <ul id="memList" style="padding-left: 1.5rem; line-height: 1.6;">
-            <li style="margin-bottom: 0.5rem;"><strong>References:</strong> Use of soft references and async loading
-            </li>
-            <li style="margin-bottom: 0.5rem;"><strong>Build Size:</strong> Removal of unused plugins; selective map
-              inclusion</li>
-            <li style="margin-bottom: 0.5rem;"><strong>Planning:</strong> Early performance planning in game design</li>
-            <li style="margin-bottom: 0.5rem;"><strong>Maintenance:</strong> Continuous profiling and documenting global
-              changes</li>
-          </ul>
-        </div>
-
-      </div>
-
-
-
-
-
-      <div class="btn-container" style="margin-top: 3rem; display: flex; justify-content: center;">
-        <div style="position: relative; display: inline-flex; justify-content: center;">
-
-          <button id="pdfBtn" class="btn btn-color-2 pdf-btn"
-            onclick="window.open('./assets/Gohde_Lars_Performance_Guide.pdf', '_blank');">
-            View Full PDF Guide (Only English)
-          </button>
-
-          <svg class="car-on-btn"
-            style="position: absolute; top: -28px; left: 50%; transform: translateX(-20%); z-index: 10;" width="125"
-            height="31" viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg">
-            <g transform="translate(30 1)" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round"
-              stroke-linejoin="round">
-
-              <g class="car__body">
-                <path d="M32,10 C48,8 60,8 70,12 L90,20 C98,23 100,28 100,32 L25,32 L25,22 Q25,10 32,10"
-                  stroke-width="3" />
-                <g stroke-width="2" transform="translate(-10, -6) rotate(8, 50, 20)">
-                </g>
-              </g>
-
-              <g transform="translate(40, 30)">
-                <g class="car__wheel-spin">
-                  <circle cx="0" cy="0" r="6.5" fill="var(--base-color)" stroke-width="1.5" />
-                  <line x1="0" y1="-6.5" x2="0" y2="6.5" stroke-width="1.5" />
-                  <line x1="-6.5" y1="0" x2="6.5" y2="0" stroke-width="1.5" />
-                  <circle cx="0" cy="0" r="1.5" fill="currentColor" stroke="none" />
-                </g>
-              </g>
-
-              <g transform="translate(85, 30)">
-                <g class="car__wheel-spin">
-                  <circle cx="0" cy="0" r="6.5" fill="var(--base-color)" stroke-width="1.5" />
-                  <line x1="0" y1="-6.5" x2="0" y2="6.5" stroke-width="1.5" />
-                  <line x1="-6.5" y1="0" x2="6.5" y2="0" stroke-width="1.5" />
-                  <circle cx="0" cy="0" r="1.5" fill="currentColor" stroke="none" />
-                </g>
-              </g>
-
-              <line class="strike strike1" x1="-16" y1="12" x2="0" y2="12" stroke-width="1.5" />
-              <line class="strike strike2" x1="-8" y1="16" x2="0" y2="16" stroke-width="1" />
-              <line class="strike strike3" x1="-22" y1="20" x2="0" y2="20" stroke-width="2" />
-              <line class="strike strike4" x1="-12" y1="24" x2="0" y2="24" stroke-width="1.2" />
-              <line class="strike strike5" x1="-18" y1="28" x2="0" y2="28" stroke-width="1.5" />
-
-            </g>
-          </svg>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="contact">
-    <h1 id="Contact" class="title">Contact Me</h1>
-    <div class="contact-info-upper-container">
-      <div class="contact-info-container">
-        <img src="./assets/email.webp" alt="Email icon" class="icon contact-icon email-icon" />
-        <p>
-          <a href="mailto:gohde.lars@outlook.com" target="_blank">
-            gohde.lars@outlook.com
+        <div class="store-links-container">
+          <a id="AllSteamBtn" href="https://store.steampowered.com/app/4331360/UMBRA/" target="_blank"
+            rel="noopener noreferrer" class="btn btn-color-2 all-games-btn">
+            <img src="./assets/steam.webp" alt="" class="btn-icon" loading="lazy" />
+            Steam Release
           </a>
-        </p>
-      </div>
-      <div class="contact-info-container">
-        <img src="./assets/linkedin.webp" alt="LinkedIn icon" class="icon contact-icon" />
-        <p>
-          <a href="https://www.linkedin.com/in/lars-gohde" target="_blank">
-            LinkedIn
+          <a id="PlayStoreBtn" href="https://play.google.com/store/apps/details?id=com.GohdeInteractive.TonariRun"
+            target="_blank" rel="noopener noreferrer" class="btn btn-color-2 all-games-btn">
+            <img src="./assets/playstore.png" alt="" class="btn-icon" loading="lazy" />
+            Play Store Release
           </a>
-        </p>
+          <a id="allGamesBtn" href="https://gohde-games.itch.io" target="_blank" rel="noopener noreferrer"
+            class="btn btn-color-2 all-games-btn">
+            <img src="./assets/itch_red.webp" alt="" class="btn-icon" loading="lazy" />
+            Itch.io Releases
+          </a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section id="insights">
+      <p id="InsightsSubtitle" class="section__text__p1">Technical Methodology</p>
+      <h2 id="InsightsTitle" class="title">Performance Guide</h2>
+
+      <div class="experience-details-container">
+        <div class="about-insights-containers">
+          <div class="insights container">
+            <h3 id="cpuTitle">Profiling &amp; CPU</h3>
+            <ul id="cpuList" class="insights-list">
+              <li><strong>Profiling:</strong> Bottleneck-analysis using <em>stat unit</em>,
+                <em>stat scenerendering</em>, Unreal Insights
+              </li>
+              <li><strong>Threads:</strong> Distinguishing Game Thread, Render Thread, and GPU time</li>
+              <li><strong>Ticks:</strong> Conditional ticking and reduced update rates</li>
+              <li><strong>Logic:</strong> Simplified logic flow; high-frequency operations moved to C++</li>
+              <li><strong>Pooling:</strong> Reuse of frequently spawned objects</li>
+            </ul>
+          </div>
+
+          <div class="insights container">
+            <h3 id="gpuTitle">GPU &amp; Rendering</h3>
+            <ul id="gpuList" class="insights-list">
+              <li><strong>Draw Calls:</strong> Instancing (ISM/HISM) and Hierarchical LODs (HLOD)</li>
+              <li><strong>Materials:</strong> Minimal slots, master-material workflow, reduced shader cost</li>
+              <li><strong>Lighting:</strong> Controlled dynamic lights, shadow settings, attenuation</li>
+              <li><strong>VFX:</strong> GPU simulations with fixed bounds and pooled effects</li>
+              <li><strong>VR:</strong> Instanced Stereo, Multi-View, efficient forward rendering</li>
+            </ul>
+          </div>
+
+          <div class="insights container">
+            <h3 id="memTitle">Workflow &amp; Memory</h3>
+            <ul id="memList" class="insights-list">
+              <li><strong>References:</strong> Use of soft references and async loading</li>
+              <li><strong>Build Size:</strong> Removal of unused plugins; selective map inclusion</li>
+              <li><strong>Planning:</strong> Early performance planning in game design</li>
+              <li><strong>Maintenance:</strong> Continuous profiling and documenting global changes</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="btn-container pdf-guide-container">
+          <div class="car-btn-wrapper">
+            <a id="pdfBtn" href="./assets/Gohde_Lars_Performance_Guide.pdf" target="_blank" rel="noopener noreferrer"
+              class="btn btn-color-2 pdf-btn">
+              View Full PDF Guide (Only English)
+            </a>
+
+            <svg class="car-on-btn" aria-hidden="true" width="125" height="31" viewBox="0 0 140 40"
+              xmlns="http://www.w3.org/2000/svg">
+              <g transform="translate(30 1)" stroke="currentColor" fill="none" fill-rule="evenodd"
+                stroke-linecap="round" stroke-linejoin="round">
+                <g class="car__body">
+                  <path d="M32,10 C48,8 60,8 70,12 L90,20 C98,23 100,28 100,32 L25,32 L25,22 Q25,10 32,10"
+                    stroke-width="3" />
+                </g>
+                <g transform="translate(40, 30)">
+                  <g class="car__wheel-spin">
+                    <circle cx="0" cy="0" r="6.5" fill="var(--base-color)" stroke-width="1.5" />
+                    <line x1="0" y1="-6.5" x2="0" y2="6.5" stroke-width="1.5" />
+                    <line x1="-6.5" y1="0" x2="6.5" y2="0" stroke-width="1.5" />
+                    <circle cx="0" cy="0" r="1.5" fill="currentColor" stroke="none" />
+                  </g>
+                </g>
+                <g transform="translate(85, 30)">
+                  <g class="car__wheel-spin">
+                    <circle cx="0" cy="0" r="6.5" fill="var(--base-color)" stroke-width="1.5" />
+                    <line x1="0" y1="-6.5" x2="0" y2="6.5" stroke-width="1.5" />
+                    <line x1="-6.5" y1="0" x2="6.5" y2="0" stroke-width="1.5" />
+                    <circle cx="0" cy="0" r="1.5" fill="currentColor" stroke="none" />
+                  </g>
+                </g>
+                <line class="strike strike1" x1="-16" y1="12" x2="0" y2="12" stroke-width="1.5" />
+                <line class="strike strike2" x1="-8" y1="16" x2="0" y2="16" stroke-width="1" />
+                <line class="strike strike3" x1="-22" y1="20" x2="0" y2="20" stroke-width="2" />
+                <line class="strike strike4" x1="-12" y1="24" x2="0" y2="24" stroke-width="1.2" />
+                <line class="strike strike5" x1="-18" y1="28" x2="0" y2="28" stroke-width="1.5" />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 id="Contact" class="title">Contact Me</h2>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img src="./assets/email.webp" alt="" class="icon contact-icon email-icon" loading="lazy" />
+          <p>
+            <a href="mailto:gohde.lars@outlook.com">
+              gohde.lars@outlook.com
+            </a>
+          </p>
+        </div>
+        <div class="contact-info-container">
+          <img src="./assets/linkedin.webp" alt="" class="icon contact-icon" loading="lazy" />
+          <p>
+            <a href="https://www.linkedin.com/in/lars-gohde" target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <footer>
-    <nav>
+    <nav aria-label="Footer">
       <div class="nav-links-container">
         <ul class="nav-links">
-          <li><a id="projects3" href="#projects">Projects</a></li>
-          <li><a id="insights3" href="#insights">Performance Guide</a></li>
-          <li><a id="contact3" href="#contact">Contact</a></li>
+          <li><a id="projects3" data-i18n="nav.projects" href="#projects">Projects</a></li>
+          <li><a id="insights3" data-i18n="nav.insights" href="#insights">Performance Guide</a></li>
+          <li><a id="contact3" data-i18n="nav.contact" href="#contact">Contact</a></li>
         </ul>
       </div>
     </nav>
     <p>© 2026 by Lars Gohde. All rights reserved.</p>
   </footer>
-  <script src="script.js" defer></script>
 
-  <div id="mediaModal" class="media-modal">
-    <span class="media-modal-close">&times;</span>
-    <img class="media-modal-content" id="modalImg" style="display: none;">
+  <div id="mediaModal" class="media-modal" role="dialog" aria-modal="true" aria-label="Media preview">
+    <button type="button" class="media-modal-close" aria-label="Close media preview">&times;</button>
+    <img class="media-modal-content" id="modalImg" alt="" style="display: none;" />
     <video loop muted class="media-modal-content" id="modalVideo" style="display: none;"></video>
   </div>
-
 </body>
 
 </html>
