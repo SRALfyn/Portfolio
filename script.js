@@ -37,7 +37,7 @@ function unlockScrollFromLockedPosition() {
 }
 
 function setBackgroundInert(activeCard) {
-  const landmarkSelectors = ['#desktop-nav', '#hamburger-nav', '#profile', '#insights', '#contact', 'footer', '.store-links-container'];
+  const landmarkSelectors = ['#desktop-nav', '#hamburger-nav', '#profile', '#tools', '#insights', '#experience', '#contact', 'footer', '.store-links-container'];
   landmarkSelectors.forEach(sel => {
     document.querySelectorAll(sel).forEach(el => {
       el.inert = Boolean(activeCard);
@@ -562,7 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (media.classList.contains('link-icon')) return;
     if (media.closest('.menu-links, .nav-links, .hamburger-icon, .languageswitch')) return;
     if (media.closest('.btn, .project-btn')) return;
-    if (media.closest('#profile, #contact, .contact-info-container, .contact-icon')) return;
+    if (media.closest('#profile, #experience, #contact, .contact-info-container, .contact-icon')) return;
 
     media.classList.add('zoomable');
 
@@ -745,4 +745,102 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   updateResources();
+});
+
+// Bot-Protected Contact Form (XOR-obfuscated destination + honeypot + human interaction guard)
+document.addEventListener('DOMContentLoaded', () => {
+  const contactForm = document.getElementById('contactForm');
+  const formStatus = document.getElementById('contactFormStatus');
+  const submitBtn = document.getElementById('contactSubmitBtn');
+
+  if (!contactForm) return;
+
+  // XOR-encoded char codes (key = 21) so the address never appears in HTML or plain-text JS source
+  const encodedBytes = [114, 122, 125, 113, 112, 59, 121, 116, 103, 102, 85, 122, 96, 97, 121, 122, 122, 126, 59, 118, 122, 120];
+  const decodeRecipient = () => String.fromCharCode(...encodedBytes.map(b => b ^ 21));
+
+  let hasHumanInteraction = false;
+  let firstInteractionTime = 0;
+
+  const markInteraction = () => {
+    if (!hasHumanInteraction) {
+      hasHumanInteraction = true;
+      firstInteractionTime = performance.now();
+    }
+  };
+
+  contactForm.addEventListener('focusin', markInteraction, { once: true });
+  contactForm.addEventListener('pointerdown', markInteraction, { once: true });
+  contactForm.addEventListener('keydown', markInteraction, { once: true });
+
+  const isJapanese = () =>
+    document.documentElement.lang === 'ja' || localStorage.getItem('language') === 'active';
+
+  const renderStatus = () => {
+    if (!formStatus) return;
+    const enText = formStatus.dataset.statusEn || '';
+    const jaText = formStatus.dataset.statusJa || '';
+    formStatus.textContent = isJapanese() ? jaText : enText;
+  };
+
+  const setStatus = (enText, jaText, type = 'info') => {
+    if (!formStatus) return;
+    formStatus.dataset.statusEn = enText;
+    formStatus.dataset.statusJa = jaText;
+    formStatus.dataset.statusType = type;
+    renderStatus();
+  };
+
+  const langObserver = new MutationObserver(renderStatus);
+  langObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['lang']
+  });
+
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(contactForm);
+    // Block bots that fill the hidden honeypot or submit without real human interaction
+    if (formData.get('_honey') || !hasHumanInteraction || (performance.now() - firstInteractionTime) < 1200) {
+      return;
+    }
+
+    if (submitBtn) submitBtn.disabled = true;
+    setStatus('Sending message...', '送信中...', 'info');
+
+    try {
+      const recipient = decodeRecipient();
+      const response = await fetch(`https://formsubmit.co/ajax/${recipient}`, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formData
+      });
+
+      if (!response.ok) throw new Error('Submission failed');
+
+      contactForm.reset();
+      setStatus(
+        'Thank you! Your message has been sent successfully.',
+        'ありがとうございます！メッセージが正常に送信されました。',
+        'success'
+      );
+    } catch (err) {
+      const recipient = decodeRecipient();
+      const subject = encodeURIComponent(String(formData.get('_subject') || 'Portfolio Contact'));
+      const body = encodeURIComponent(
+        `Name: ${formData.get('name') || ''}\nEmail: ${formData.get('email') || ''}\n\n${formData.get('message') || ''}`
+      );
+      window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+      setStatus(
+        'Opened your email client to send the message directly.',
+        'メールクライアントを開きました。直接送信してください。',
+        'info'
+      );
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+    }
+  });
 });

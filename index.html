@@ -33,13 +33,17 @@
 
   <header>
     <nav id="desktop-nav" aria-label="Primary">
-      <div class="logo"></div>
-      <div>
-        <ul class="nav-links">
-          <li><a id="projectsS" data-i18n="nav.projects" href="#projects">Projects</a></li>
-          <li><a id="insightsS" data-i18n="nav.insights" href="#insights">Performance Guide</a></li>
-          <li><a id="contactT" data-i18n="nav.contact" href="#contact">Contact</a></li>
-        </ul>
+      <div class="desktop-nav-inner">
+        <div class="logo"></div>
+        <div>
+          <ul class="nav-links">
+            <li><a id="projectsS" data-i18n="nav.projects" href="#projects">Projects</a></li>
+            <li><a id="toolsS" data-i18n="nav.tools" href="#tools">Tools</a></li>
+            <li><a id="insightsS" data-i18n="nav.insights" href="#insights">Performance Guide</a></li>
+            <li><a id="experienceS" data-i18n="nav.experience" href="#experience">Experience</a></li>
+            <li><a id="contactT" data-i18n="nav.contact" href="#contact">Contact</a></li>
+          </ul>
+        </div>
       </div>
     </nav>
 
@@ -53,7 +57,9 @@
         </button>
         <ul class="menu-links">
           <li><a id="projectsSS" data-i18n="nav.projects" href="#projects">Projects</a></li>
+          <li><a id="toolsSS" data-i18n="nav.tools" href="#tools">Tools</a></li>
           <li><a id="insightsSS" data-i18n="nav.insights" href="#insights">Performance Guide</a></li>
+          <li><a id="experienceSS" data-i18n="nav.experience" href="#experience">Experience</a></li>
           <li><a id="contactTT" data-i18n="nav.contact" href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -64,7 +70,13 @@
     <section id="profile">
       <div class="profile-layout">
         <div class="profile-left">
-          <h1 id="Name" class="title profile-name">Lars Gohde</h1>
+          <div class="profile-name-row">
+            <h1 id="Name" class="title profile-name">Lars Gohde</h1>
+            <a href="https://www.linkedin.com/in/lars-gohde" target="_blank" rel="noopener noreferrer"
+              class="profile-linkedin-link" aria-label="LinkedIn">
+              <img src="./assets/linkedin.webp" alt="LinkedIn" class="profile-linkedin-icon" />
+            </a>
+          </div>
           <p id="Developer" class="section__text__p2 profile-role">Game and Tools Programmer | Graphics</p>
         </div>
         <div class="profile-right">
@@ -108,7 +120,7 @@
         <div class="about-containers">
 
           <!-- FLOAT Card -->
-          <div class="details-container color-container">
+          <div class="details-container color-container float-card">
             <div class="flip-card">
               <button type="button" class="flip-toggle-btn exit-btn" aria-label="Close project details">
                 X
@@ -124,13 +136,16 @@
                     </video>
                   </div>
                   <div class="card-front-content">
+                    <p class="project-award-badge" data-i18n="project.awardWinning">
+                      Award-Winning Project
+                    </p>
                     <div class="project-title-container">
                       <h3 class="project-heading">
                         <span>FLOAT</span>
                       </h3>
                       <p id="floattitle" class="experience-sub-title project-title">
                         <span class="project-subtitle-text">
-                          Award-winning MR for prosthesis research
+                          Mixed Reality for Prosthesis Research
                         </span>
                       </p>
                     </div>
@@ -167,6 +182,7 @@
                 </div>
 
                 <div class="flip-card-back">
+                  <div class="back-content-frame">
                   <div class="back-section-inner">
                     <div class="back-content-col back-content-col--spaced">
                       <div class="awards-banner-wrapper">
@@ -353,6 +369,7 @@
                       </ul>
                     </div>
                   </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -414,6 +431,7 @@
                 </div>
 
                 <div class="flip-card-back">
+                  <div class="back-content-frame">
                   <div class="back-section-inner">
                     <div class="back-content-col">
                       <div class="float-back-info-box">
@@ -555,6 +573,7 @@
                       </div>
                     </div>
                   </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -614,6 +633,7 @@
                 </div>
 
                 <div class="flip-card-back">
+                  <div class="back-content-frame">
                   <div class="back-section-inner">
                     <div class="back-content-col">
                       <div class="float-back-info-box">
@@ -725,6 +745,7 @@
                       </div>
                     </div>
                   </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -748,6 +769,87 @@
             <img src="./assets/itch_red.webp" alt="" class="btn-icon" loading="lazy" />
             Itch.io Releases
           </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="tools">
+      <p id="ToolsSubtitle" class="section__text__p1">Workflow &amp; Automation</p>
+      <h2 id="ToolsTitle" class="title">Tools</h2>
+
+      <div class="experience-details-container">
+        <div class="about-containers">
+
+          <!-- Tool Card 1 -->
+          <div class="details-container color-container">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="article-container">
+                    <img src="./assets/float_bp_1.webp" alt="Tool 1 Preview" class="showcase-image" loading="lazy" />
+                  </div>
+                  <div class="card-front-content">
+                    <div class="project-title-container">
+                      <h3 class="project-heading">
+                        <span id="tool1Title">Tool Title 1</span>
+                      </h3>
+                      <p id="tool1Headline" class="experience-sub-title project-title">
+                        <span class="project-subtitle-text">
+                          Placeholder headline for custom editor tool
+                        </span>
+                      </p>
+                    </div>
+                    <p id="tool1Desc" class="card-front-desc">
+                      Placeholder description for the first tool. Describe the workflow problem it solves, how designers
+                      or developers interact with it in the editor, and how it improves iteration speed.
+                    </p>
+                    <div class="btn-container">
+                      <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-color-2 project-btn">
+                        <img src="./assets/github.png" alt="" class="btn-icon" loading="lazy" />
+                        GitHub
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tool Card 2 -->
+          <div class="details-container color-container">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="article-container">
+                    <img src="./assets/float_bp_2.webp" alt="Tool 2 Preview" class="showcase-image" loading="lazy" />
+                  </div>
+                  <div class="card-front-content">
+                    <div class="project-title-container">
+                      <h3 class="project-heading">
+                        <span id="tool2Title">Tool Title 2</span>
+                      </h3>
+                      <p id="tool2Headline" class="experience-sub-title project-title">
+                        <span class="project-subtitle-text">
+                          Placeholder headline for pipeline utility
+                        </span>
+                      </p>
+                    </div>
+                    <p id="tool2Desc" class="card-front-desc">
+                      Placeholder description for the second tool. Highlight the automation, asset validation, or
+                      debugging capabilities built to support production teams.
+                    </p>
+                    <div class="btn-container">
+                      <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-color-2 project-btn">
+                        <img src="./assets/github.png" alt="" class="btn-icon" loading="lazy" />
+                        GitHub
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -816,24 +918,118 @@
       </div>
     </section>
 
+    <section id="experience">
+      <p id="ExperienceSubtitle" class="section__text__p1">Career &amp; Academic Journey</p>
+      <h2 id="ExperienceTitle" class="title">Experience &amp; Education</h2>
+
+      <div class="experience-details-container">
+        <div class="experience-cards-grid">
+
+          <!-- Country Card 1: Japan -->
+          <div class="experience-country-card">
+            <div class="country-card-header">
+              <svg aria-hidden="true" class="country-card-icon" xmlns="http://www.w3.org/2000/svg" width="22"
+                height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <h3 id="countryJapan" class="country-card-title">Japan</h3>
+            </div>
+            <div class="country-entries">
+
+              <div class="experience-entry">
+                <span id="exp1Date" class="experience-entry-date">AUG 2026 – FEB 2027</span>
+                <h4 id="exp1Role" class="experience-entry-role">Game Development Intern</h4>
+                <p id="exp1Org" class="experience-entry-org">Stage Games</p>
+                <p id="exp1Desc" class="experience-entry-desc">Yokohama · Professional game development experience</p>
+              </div>
+
+              <div class="experience-entry">
+                <span id="exp2Date" class="experience-entry-date">MAR – AUG 2026</span>
+                <h4 id="exp2Role" class="experience-entry-role">Exchange Semester</h4>
+                <p id="exp2Org" class="experience-entry-org">Kanagawa University</p>
+                <p id="exp2Desc" class="experience-entry-desc">Yokohama · International academic experience</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Country Card 2: Germany -->
+          <div class="experience-country-card">
+            <div class="country-card-header">
+              <svg aria-hidden="true" class="country-card-icon" xmlns="http://www.w3.org/2000/svg" width="22"
+                height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <h3 id="countryGermany" class="country-card-title">Germany</h3>
+            </div>
+            <div class="country-entries">
+
+              <div class="experience-entry">
+                <span id="exp3Date" class="experience-entry-date">OCT 2024 – FEB 2026</span>
+                <h4 id="exp3Role" class="experience-entry-role">Programming Tutor</h4>
+                <p id="exp3Org" class="experience-entry-org">Hochschule Neu-Ulm</p>
+                <p id="exp3Desc" class="experience-entry-desc">Programming fundamentals, debugging and student support</p>
+              </div>
+
+              <div class="experience-entry">
+                <span id="exp4Date" class="experience-entry-date">MAR 2024 – FEB 2026</span>
+                <h4 id="exp4Role" class="experience-entry-role">VR Developer</h4>
+                <p id="exp4Org" class="experience-entry-org">University TechLab</p>
+                <p id="exp4Desc" class="experience-entry-desc">Development of an interactive VR application</p>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
     <section id="contact">
       <h2 id="Contact" class="title">Contact Me</h2>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img src="./assets/email.webp" alt="" class="icon contact-icon email-icon" loading="lazy" />
-          <p>
-            <a href="mailto:gohde.lars@outlook.com">
-              gohde.lars@outlook.com
-            </a>
-          </p>
-        </div>
-        <div class="contact-info-container">
-          <img src="./assets/linkedin.webp" alt="" class="icon contact-icon" loading="lazy" />
-          <p>
-            <a href="https://www.linkedin.com/in/lars-gohde" target="_blank" rel="noopener noreferrer">
-              LinkedIn
-            </a>
-          </p>
+
+      <div class="contact-form-wrapper">
+        <div class="contact-form-card">
+          <form id="contactForm" class="contact-form" method="POST">
+            <input type="text" name="_honey" class="visually-hidden" tabindex="-1" autocomplete="off"
+              aria-hidden="true" />
+            <input type="hidden" name="_captcha" value="false" />
+
+            <div class="contact-form-row">
+              <div class="form-group">
+                <label for="contactName" data-i18n="contact.nameLabel">Name</label>
+                <input id="contactName" name="name" type="text" autocomplete="name" required />
+              </div>
+
+              <div class="form-group">
+                <label for="contactEmail" data-i18n="contact.emailLabel">Email</label>
+                <input id="contactEmail" name="email" type="email" autocomplete="email" autocorrect="off"
+                  autocapitalize="off" spellcheck="false" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contactSubject" data-i18n="contact.subjectLabel">Subject</label>
+              <input id="contactSubject" name="_subject" type="text" required />
+            </div>
+
+            <div class="form-group">
+              <label for="contactMessage" data-i18n="contact.messageLabel">Message</label>
+              <textarea id="contactMessage" name="message" rows="5" required></textarea>
+            </div>
+
+            <div class="contact-form-footer">
+              <p id="contactFormStatus" class="contact-form-status" role="status" aria-live="polite"></p>
+              <button id="contactSubmitBtn" type="submit" class="btn btn-color-2 contact-submit-btn"
+                data-i18n="contact.sendBtn">
+                Send Email
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </section>
@@ -844,7 +1040,9 @@
       <div class="nav-links-container">
         <ul class="nav-links">
           <li><a id="projects3" data-i18n="nav.projects" href="#projects">Projects</a></li>
+          <li><a id="tools3" data-i18n="nav.tools" href="#tools">Tools</a></li>
           <li><a id="insights3" data-i18n="nav.insights" href="#insights">Performance Guide</a></li>
+          <li><a id="experience3" data-i18n="nav.experience" href="#experience">Experience</a></li>
           <li><a id="contact3" data-i18n="nav.contact" href="#contact">Contact</a></li>
         </ul>
       </div>

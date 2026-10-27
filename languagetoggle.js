@@ -61,6 +61,36 @@ function writeEnglishDom() {
   });
 }
 
+const CONTAINER_LOCK_SELECTOR = [
+  'section',
+  '.profile-layout',
+  '.details-container.color-container',
+  '.flip-card-front',
+  '.card-front-content',
+  '.insights.container',
+  '.insights-text-content',
+  '.experience-country-card',
+  '.experience-entry',
+  '.contact-form-card',
+  '.store-links-container',
+  '.float-back-info-box',
+  '.float-problem-section',
+  '.resource-item'
+].join(', ');
+
+function resetLockedDimensions() {
+  originalMarkup.forEach((_, el) => {
+    measuredElements.delete(el);
+    el.style.minHeight = '';
+    el.style.minWidth = '';
+  });
+  document.querySelectorAll(`.profile-left, .profile-right, ${CONTAINER_LOCK_SELECTOR}`).forEach(el => {
+    measuredElements.delete(el);
+    el.style.minHeight = '';
+    el.style.minWidth = '';
+  });
+}
+
 function lockTranslatableDimensions(dictionary) {
   collectTranslatableElements(dictionary);
 
@@ -72,6 +102,9 @@ function lockTranslatableDimensions(dictionary) {
   const targets = [];
   originalMarkup.forEach((_, el) => {
     if (measuredElements.has(el)) return;
+    // Project buttons have an intentionally shared fixed footprint in CSS.
+    // Translation measurement must not add inline minimum dimensions to them.
+    if (el.classList.contains('project-btn')) return;
     if (el.closest('.flip-card:not(.flipped) .flip-card-back')) return;
     if (el.getClientRects().length === 0) return;
     targets.push(el);
@@ -83,57 +116,93 @@ function lockTranslatableDimensions(dictionary) {
     }
   });
 
-  if (!targets.length) return;
+  const containers = [];
+  document.querySelectorAll(CONTAINER_LOCK_SELECTOR).forEach(el => {
+    if (measuredElements.has(el)) return;
+    if (el.closest('.flip-card:not(.flipped) .flip-card-back')) return;
+    if (activeScrollBack && !el.closest('.flip-card.flipped .flip-card-back')) return;
+    if (el.getClientRects().length === 0) return;
+    containers.push(el);
+  });
+
+  if (!targets.length && !containers.length) return;
 
   targets.forEach(el => {
     el.style.minHeight = '';
     el.style.minWidth = '';
+    if (el.closest('.nav-links')) {
+      el.style.display = 'inline-block';
+      el.style.textAlign = 'center';
+    }
+  });
+  containers.forEach(el => {
+    el.style.minHeight = '';
   });
 
-  const firstPass = targets.map(el => {
+  writeEnglishDom();
+  document.documentElement.lang = 'en';
+
+  const enTargetRects = targets.map(el => {
     const rect = el.getBoundingClientRect();
     const display = window.getComputedStyle(el).display;
-    return { el, widthA: rect.width, heightA: rect.height, display };
+    return { el, widthEN: rect.width, heightEN: rect.height, display };
   });
 
-  if (isJapaneseActive) {
-    writeEnglishDom();
-  } else {
-    writeJapaneseDom(dictionary);
-  }
+  writeJapaneseDom(dictionary);
+  document.documentElement.lang = 'ja';
 
-  const secondPass = firstPass.map(item => {
+  const targetPass = enTargetRects.map(item => {
     const rect = item.el.getBoundingClientRect();
     return {
       ...item,
-      widthB: rect.width,
-      heightB: rect.height
+      widthJA: rect.width,
+      heightJA: rect.height
     };
   });
 
-  if (isJapaneseActive) {
-    writeJapaneseDom(dictionary);
-  } else {
-    writeEnglishDom();
-  }
+  targetPass.forEach(({ el, widthEN, heightEN, widthJA, heightJA, display }) => {
+    const maxW = Math.ceil(Math.max(widthEN, widthJA));
+    const maxH = Math.ceil(Math.max(heightEN, heightJA));
 
-  secondPass.forEach(({ el, widthA, heightA, widthB, heightB, display }) => {
-    const maxW = Math.ceil(Math.max(widthA, widthB));
-    const maxH = Math.ceil(Math.max(heightA, heightB));
+    const needsWidthLock =
+      el.classList.contains('btn') ||
+      el.classList.contains('filter-btn') ||
+      el.getAttribute('data-i18n') === 'profile.releasesOn' ||
+      Boolean(el.closest('.nav-links'));
 
-    if (el.classList.contains('profile-left') || el.classList.contains('profile-right')) {
+    if (needsWidthLock) {
       if (maxW > 0) el.style.minWidth = `${maxW}px`;
       if (maxH > 0) el.style.minHeight = `${maxH}px`;
-    } else if (el.closest('.nav-links')) {
-      el.style.display = 'inline-block';
-      el.style.textAlign = 'center';
-      if (maxW > 0) el.style.minWidth = `${maxW}px`;
     } else if (display !== 'inline') {
       if (maxH > 0) el.style.minHeight = `${maxH}px`;
     }
 
     measuredElements.add(el);
   });
+
+  if (containers.length) {
+    writeEnglishDom();
+    document.documentElement.lang = 'en';
+    const enContainerHeights = containers.map(el => el.getBoundingClientRect().height);
+
+    writeJapaneseDom(dictionary);
+    document.documentElement.lang = 'ja';
+    const jaContainerHeights = containers.map(el => el.getBoundingClientRect().height);
+
+    containers.forEach((el, idx) => {
+      const maxH = Math.ceil(Math.max(enContainerHeights[idx], jaContainerHeights[idx]));
+      if (maxH > 0) el.style.minHeight = `${maxH}px`;
+      measuredElements.add(el);
+    });
+  }
+
+  if (isJapaneseActive) {
+    writeJapaneseDom(dictionary);
+    document.documentElement.lang = 'ja';
+  } else {
+    writeEnglishDom();
+    document.documentElement.lang = 'en';
+  }
 
   if (activeScrollBack) {
     activeScrollBack.scrollTop = savedCardScroll;
@@ -268,26 +337,25 @@ let lastViewportWidth = window.innerWidth;
 window.addEventListener('resize', () => {
   if (window.innerWidth === lastViewportWidth) return;
   lastViewportWidth = window.innerWidth;
-  originalMarkup.forEach((_, el) => {
-    measuredElements.delete(el);
-    el.style.minHeight = '';
-    el.style.minWidth = '';
-  });
-  document.querySelectorAll('.profile-left, .profile-right').forEach(el => {
-    measuredElements.delete(el);
-    el.style.minHeight = '';
-    el.style.minWidth = '';
-  });
+  resetLockedDimensions();
   window.syncLanguageLayout();
 });
 
 if (localStorage.getItem('language') === 'active') {
   enableLanguage();
-} else {
-  window.addEventListener('load', () => {
-    window.syncLanguageLayout();
-  }, { once: true });
 }
+
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(() => {
+    resetLockedDimensions();
+    window.syncLanguageLayout();
+  });
+}
+
+window.addEventListener('load', () => {
+  resetLockedDimensions();
+  window.syncLanguageLayout();
+}, { once: true });
 
 languageToggle?.addEventListener('click', async () => {
   animateLanguageFlower();
