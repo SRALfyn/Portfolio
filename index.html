@@ -5,12 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lars Gohde | Digital Portfolio</title>
-  <meta name="description" content="Game and Shader Programmer | Driven by seeing players smile" />
+  <meta name="description" content="Game and Tools Programmer | Graphics | Driven by seeing players smile" />
   <meta property="og:image" content="https://lars-goh.de/assets/android-chrome-512x512.png" />
   <meta property="og:title" content="Lars Gohde | Digital Portfolio" />
-  <link rel="preload" href="./assets/fonts/poppins-v24-latin-regular.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="./assets/fonts/poppins-v24-latin-600.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="./assets/fonts/poppins-v24-latin-700.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="https://lars-goh.de/assets/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="https://lars-goh.de/assets/favicon.svg" />
@@ -65,9 +62,42 @@
 
   <main>
     <section id="profile">
-      <div class="section__text">
-        <h1 id="Name" class="title">Lars Gohde</h1>
-        <p id="Developer" class="section__text__p2">Game and Shader Programmer</p>
+      <div class="profile-layout">
+        <div class="profile-left">
+          <h1 id="Name" class="title profile-name">Lars Gohde</h1>
+          <p id="Developer" class="section__text__p2 profile-role">Game and Tools Programmer | Graphics</p>
+        </div>
+        <div class="profile-right">
+          <div class="profile-platforms">
+            <span id="ReleasesOn" data-i18n="profile.releasesOn" class="profile-platforms-label">Releases on</span>
+            <div class="profile-platform-icons">
+              <img src="./assets/meta.webp" alt="Meta" class="platform-icon" />
+              <img src="./assets/steam.webp" alt="Steam" class="platform-icon" />
+              <img src="./assets/playstore.png" alt="Google Play" class="platform-icon" />
+              <img src="./assets/itch_red.webp" alt="Itch.io" class="platform-icon" />
+            </div>
+          </div>
+          <div class="profile-info-box">
+            <p class="profile-info-item">
+              <svg aria-hidden="true" class="profile-meta-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"
+                fill="currentColor">
+                <path
+                  d="M160-120q-33 0-56.5-23.5T80-200v-440q0-33 23.5-56.5T160-720h160v-80q0-33 23.5-56.5T400-880h160q33 0 56.5 23.5T640-800v80h160q33 0 56.5 23.5T880-640v440q0 33-23.5 56.5T800-120H160Zm240-600h160v-80H400v80Z" />
+              </svg>
+              <span id="ProfileIntern">Intern at <a href="https://stage-games.com/" target="_blank"
+                  rel="noopener noreferrer" class="profile-link">Stage Games<img src="./assets/hyperlink_icon.webp"
+                    alt="" class="link-icon" loading="lazy" /></a></span>
+            </p>
+            <p class="profile-info-item">
+              <svg aria-hidden="true" class="profile-meta-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"
+                fill="currentColor">
+                <path
+                  d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 400Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Z" />
+              </svg>
+              <span id="ProfileLocation">Living in Yokohama</span>
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -93,26 +123,32 @@
                       Your browser does not support videos.
                     </video>
                   </div>
-                  <div class="project-title-container">
-                    <h3 class="project-heading">
-                      <span>FLOAT</span>
-                    </h3>
-                    <p id="floattitle" class="experience-sub-title project-title">
-                      <span class="project-subtitle-text">
-                        Award-winning MR for prosthesis research
-                      </span>
+                  <div class="card-front-content">
+                    <div class="project-title-container">
+                      <h3 class="project-heading">
+                        <span>FLOAT</span>
+                      </h3>
+                      <p id="floattitle" class="experience-sub-title project-title">
+                        <span class="project-subtitle-text">
+                          Award-winning MR for prosthesis research
+                        </span>
+                      </p>
+                    </div>
+                    <p id="floatFrontDesc" class="card-front-desc">
+                      A Mixed Reality serious game that gamifies medical data collection. Using hand gestures, players
+                      help the little Pookis while recording muscle movement for AI-trained prosthetics.
                     </p>
-                  </div>
-                  <div class="btn-container">
-                    <a href="https://www.meta.com/de-de/experiences/float-a-mixed-reality-experience/24099813506309823/"
-                      target="_blank" rel="noopener noreferrer" class="btn btn-color-2 project-btn">
-                      <img src="./assets/meta.webp" alt="" class="btn-icon" loading="lazy" />
-                      Meta
-                    </a>
-                    <button id="floatDetailsBtn" type="button" data-i18n="btn.details"
-                      class="btn btn-color-2 project-btn details-btn" aria-label="Details for FLOAT">
-                      Details
-                    </button>
+                    <div class="btn-container">
+                      <a href="https://www.meta.com/de-de/experiences/float-a-mixed-reality-experience/24099813506309823/"
+                        target="_blank" rel="noopener noreferrer" class="btn btn-color-2 project-btn">
+                        <img src="./assets/meta.webp" alt="" class="btn-icon" loading="lazy" />
+                        Meta
+                      </a>
+                      <button id="floatDetailsBtn" type="button" data-i18n="btn.details"
+                        class="btn btn-color-2 project-btn details-btn" aria-label="Details for FLOAT">
+                        Details
+                      </button>
+                    </div>
                   </div>
                   <div class="pooki-head-container" aria-hidden="true">
                     <div class="pooki-head">
@@ -338,36 +374,42 @@
                       Your browser does not support videos.
                     </video>
                   </div>
-                  <div class="project-title-container">
-                    <h3 class="project-heading">
-                      <span>MERCURY</span>
-                    </h3>
-                    <p id="mercurytitle" class="experience-sub-title project-title">
-                      <span class="project-subtitle-text">
-                        World's first fast-paced hand-tracking brawler
-                      </span>
-                    </p>
-                  </div>
-                  <div class="btn-container">
-                    <div class="mercury-punch-group">
-                      <a id="mercury-itch-btn"
-                        href="https://www.meta.com/de-de/experiences/mercury-tech-showcase/26112223728394256/"
-                        target="_blank" rel="noopener noreferrer" class="btn btn-color-2 project-btn">
-                        <img src="./assets/meta.webp" alt="" class="btn-icon" loading="lazy" />
-                        Meta
-                      </a>
-                      <div class="mercury-animation-wrapper" aria-hidden="true">
-                        <div class="mecha-fist">
-                          <div class="knuckles"></div>
-                          <div class="thumb"></div>
-                        </div>
-                        <div class="impact-spark"></div>
-                      </div>
+                  <div class="card-front-content">
+                    <div class="project-title-container">
+                      <h3 class="project-heading">
+                        <span>MERCURY</span>
+                      </h3>
+                      <p id="mercurytitle" class="experience-sub-title project-title">
+                        <span class="project-subtitle-text">
+                          World's first fast-paced hand-tracking brawler
+                        </span>
+                      </p>
                     </div>
-                    <button id="mercuryDetailsBtn" type="button" data-i18n="btn.details"
-                      class="btn btn-color-2 project-btn details-btn" aria-label="Details for MERCURY">
-                      Details
-                    </button>
+                    <p id="mercuryFrontDesc" class="card-front-desc">
+                      The first controller-free VR mecha brawler. Players use physical movements to climb through a city
+                      and engage in fast-paced arena combat using only hand tracking.
+                    </p>
+                    <div class="btn-container">
+                      <div class="mercury-punch-group">
+                        <a id="mercury-itch-btn"
+                          href="https://www.meta.com/de-de/experiences/mercury-tech-showcase/26112223728394256/"
+                          target="_blank" rel="noopener noreferrer" class="btn btn-color-2 project-btn">
+                          <img src="./assets/meta.webp" alt="" class="btn-icon" loading="lazy" />
+                          Meta
+                        </a>
+                        <div class="mercury-animation-wrapper" aria-hidden="true">
+                          <div class="mecha-fist">
+                            <div class="knuckles"></div>
+                            <div class="thumb"></div>
+                          </div>
+                          <div class="impact-spark"></div>
+                        </div>
+                      </div>
+                      <button id="mercuryDetailsBtn" type="button" data-i18n="btn.details"
+                        class="btn btn-color-2 project-btn details-btn" aria-label="Details for MERCURY">
+                        Details
+                      </button>
+                    </div>
                   </div>
                 </div>
 
@@ -535,31 +577,38 @@
                     </video>
                   </div>
 
-                  <div class="project-title-container">
-                    <h3 class="project-heading">
-                      <span>God of a Cult</span>
-                    </h3>
-                    <p id="godofaculttitle" class="experience-sub-title project-title">
-                      <span class="project-subtitle-text">
-                        Expandable comedic point-and-click
-                      </span>
-                    </p>
-                  </div>
+                  <div class="card-front-content">
+                    <div class="project-title-container">
+                      <h3 class="project-heading">
+                        <span>God of a Cult</span>
+                      </h3>
+                      <p id="godofaculttitle" class="experience-sub-title project-title">
+                        <span class="project-subtitle-text">
+                          Expandable comedic point-and-click
+                        </span>
+                      </p>
+                    </div>
 
-                  <div class="btn-container">
-                    <a href="https://gohde-games.itch.io/god-of-a-cult" target="_blank" rel="noopener noreferrer"
-                      class="btn btn-color-2 project-btn">
-                      <img src="./assets/itch_red.webp" alt="" class="btn-icon" loading="lazy" />
-                      Itch.io
-                    </a>
-                    <div class="cult-wrapper">
-                      <div class="cultist-fan c1" aria-hidden="true"></div>
-                      <div class="cultist-fan c2" aria-hidden="true"></div>
-                      <div class="cultist-fan c3" aria-hidden="true"></div>
-                      <button id="cultDetailsBtn" type="button" data-i18n="btn.details"
-                        class="btn btn-color-2 project-btn details-btn" aria-label="Details for God of a Cult">
-                        Details
-                      </button>
+                    <p id="cultFrontDesc" class="card-front-desc">
+                      A comedic point-and-click adventure where players solve puzzles to become the next incarnation of
+                      the God of Time and find their missing sister. Fully voiced with a scalable save system.
+                    </p>
+
+                    <div class="btn-container">
+                      <a href="https://gohde-games.itch.io/god-of-a-cult" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-color-2 project-btn">
+                        <img src="./assets/itch_red.webp" alt="" class="btn-icon" loading="lazy" />
+                        Itch.io
+                      </a>
+                      <div class="cult-wrapper">
+                        <div class="cultist-fan c1" aria-hidden="true"></div>
+                        <div class="cultist-fan c2" aria-hidden="true"></div>
+                        <div class="cultist-fan c3" aria-hidden="true"></div>
+                        <button id="cultDetailsBtn" type="button" data-i18n="btn.details"
+                          class="btn btn-color-2 project-btn details-btn" aria-label="Details for God of a Cult">
+                          Details
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -710,78 +759,58 @@
       <div class="experience-details-container">
         <div class="about-insights-containers">
           <div class="insights container">
-            <h3 id="cpuTitle">Profiling &amp; CPU</h3>
-            <ul id="cpuList" class="insights-list">
-              <li><strong>Profiling:</strong> Bottleneck-analysis using <em>stat unit</em>,
-                <em>stat scenerendering</em>, Unreal Insights
-              </li>
-              <li><strong>Threads:</strong> Distinguishing Game Thread, Render Thread, and GPU time</li>
-              <li><strong>Ticks:</strong> Conditional ticking and reduced update rates</li>
-              <li><strong>Logic:</strong> Simplified logic flow; high-frequency operations moved to C++</li>
-              <li><strong>Pooling:</strong> Reuse of frequently spawned objects</li>
-            </ul>
-          </div>
+            <div class="insights-text-content">
+              <p id="insightsDesc1" class="insights-paragraph">
+                During my Unreal Engine projects, I became increasingly interested in understanding how different
+                systems affect performance, especially on hardware-constrained platforms such as VR/MR.
+              </p>
+              <p id="insightsDesc2" class="insights-paragraph">
+                I created this guide to collect, structure, and deepen my knowledge of profiling, rendering, gameplay
+                optimization, and memory management. It serves as a personal reference and documents my ongoing learning
+                process.
+              </p>
+            </div>
 
-          <div class="insights container">
-            <h3 id="gpuTitle">GPU &amp; Rendering</h3>
-            <ul id="gpuList" class="insights-list">
-              <li><strong>Draw Calls:</strong> Instancing (ISM/HISM) and Hierarchical LODs (HLOD)</li>
-              <li><strong>Materials:</strong> Minimal slots, master-material workflow, reduced shader cost</li>
-              <li><strong>Lighting:</strong> Controlled dynamic lights, shadow settings, attenuation</li>
-              <li><strong>VFX:</strong> GPU simulations with fixed bounds and pooled effects</li>
-              <li><strong>VR:</strong> Instanced Stereo, Multi-View, efficient forward rendering</li>
-            </ul>
-          </div>
+            <div class="btn-container pdf-guide-container">
+              <div class="car-btn-wrapper">
+                <a id="pdfBtn" href="./assets/Gohde_Lars_Performance_Guide.pdf" target="_blank"
+                  rel="noopener noreferrer" class="btn btn-color-2 pdf-btn">
+                  View Full PDF Guide (Only English)
+                </a>
 
-          <div class="insights container">
-            <h3 id="memTitle">Workflow &amp; Memory</h3>
-            <ul id="memList" class="insights-list">
-              <li><strong>References:</strong> Use of soft references and async loading</li>
-              <li><strong>Build Size:</strong> Removal of unused plugins; selective map inclusion</li>
-              <li><strong>Planning:</strong> Early performance planning in game design</li>
-              <li><strong>Maintenance:</strong> Continuous profiling and documenting global changes</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="btn-container pdf-guide-container">
-          <div class="car-btn-wrapper">
-            <a id="pdfBtn" href="./assets/Gohde_Lars_Performance_Guide.pdf" target="_blank" rel="noopener noreferrer"
-              class="btn btn-color-2 pdf-btn">
-              View Full PDF Guide (Only English)
-            </a>
-
-            <svg class="car-on-btn" aria-hidden="true" width="125" height="31" viewBox="0 0 140 40"
-              xmlns="http://www.w3.org/2000/svg">
-              <g transform="translate(30 1)" stroke="currentColor" fill="none" fill-rule="evenodd"
-                stroke-linecap="round" stroke-linejoin="round">
-                <g class="car__body">
-                  <path d="M32,10 C48,8 60,8 70,12 L90,20 C98,23 100,28 100,32 L25,32 L25,22 Q25,10 32,10"
-                    stroke-width="3" />
-                </g>
-                <g transform="translate(40, 30)">
-                  <g class="car__wheel-spin">
-                    <circle cx="0" cy="0" r="6.5" fill="var(--base-color)" stroke-width="1.5" />
-                    <line x1="0" y1="-6.5" x2="0" y2="6.5" stroke-width="1.5" />
-                    <line x1="-6.5" y1="0" x2="6.5" y2="0" stroke-width="1.5" />
-                    <circle cx="0" cy="0" r="1.5" fill="currentColor" stroke="none" />
+                <svg class="car-on-btn" aria-hidden="true" width="125" height="31" viewBox="0 0 140 40"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <g transform="translate(30 1)" stroke="currentColor" fill="none" fill-rule="evenodd"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <g class="car__body">
+                      <path d="M32,10 C48,8 60,8 70,12 L90,20 C98,23 100,28 100,32 L25,32 L25,22 Q25,10 32,10"
+                        stroke-width="3" />
+                    </g>
+                    <g transform="translate(40, 30)">
+                      <g class="car__wheel-spin">
+                        <circle cx="0" cy="0" r="6.5" fill="var(--base-color)" stroke-width="1.5" />
+                        <line x1="0" y1="-6.5" x2="0" y2="6.5" stroke-width="1.5" />
+                        <line x1="-6.5" y1="0" x2="6.5" y2="0" stroke-width="1.5" />
+                        <circle cx="0" cy="0" r="1.5" fill="currentColor" stroke="none" />
+                      </g>
+                    </g>
+                    <g transform="translate(85, 30)">
+                      <g class="car__wheel-spin">
+                        <circle cx="0" cy="0" r="6.5" fill="var(--base-color)" stroke-width="1.5" />
+                        <line x1="0" y1="-6.5" x2="0" y2="6.5" stroke-width="1.5" />
+                        <line x1="-6.5" y1="0" x2="6.5" y2="0" stroke-width="1.5" />
+                        <circle cx="0" cy="0" r="1.5" fill="currentColor" stroke="none" />
+                      </g>
+                    </g>
+                    <line class="strike strike1" x1="-16" y1="12" x2="0" y2="12" stroke-width="1.5" />
+                    <line class="strike strike2" x1="-8" y1="16" x2="0" y2="16" stroke-width="1" />
+                    <line class="strike strike3" x1="-22" y1="20" x2="0" y2="20" stroke-width="2" />
+                    <line class="strike strike4" x1="-12" y1="24" x2="0" y2="24" stroke-width="1.2" />
+                    <line class="strike strike5" x1="-18" y1="28" x2="0" y2="28" stroke-width="1.5" />
                   </g>
-                </g>
-                <g transform="translate(85, 30)">
-                  <g class="car__wheel-spin">
-                    <circle cx="0" cy="0" r="6.5" fill="var(--base-color)" stroke-width="1.5" />
-                    <line x1="0" y1="-6.5" x2="0" y2="6.5" stroke-width="1.5" />
-                    <line x1="-6.5" y1="0" x2="6.5" y2="0" stroke-width="1.5" />
-                    <circle cx="0" cy="0" r="1.5" fill="currentColor" stroke="none" />
-                  </g>
-                </g>
-                <line class="strike strike1" x1="-16" y1="12" x2="0" y2="12" stroke-width="1.5" />
-                <line class="strike strike2" x1="-8" y1="16" x2="0" y2="16" stroke-width="1" />
-                <line class="strike strike3" x1="-22" y1="20" x2="0" y2="20" stroke-width="2" />
-                <line class="strike strike4" x1="-12" y1="24" x2="0" y2="24" stroke-width="1.2" />
-                <line class="strike strike5" x1="-18" y1="28" x2="0" y2="28" stroke-width="1.5" />
-              </g>
-            </svg>
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
       </div>

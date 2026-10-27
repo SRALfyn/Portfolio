@@ -77,6 +77,12 @@ function lockTranslatableDimensions(dictionary) {
     targets.push(el);
   });
 
+  document.querySelectorAll('.profile-left, .profile-right').forEach(el => {
+    if (!measuredElements.has(el) && el.getClientRects().length > 0) {
+      targets.push(el);
+    }
+  });
+
   if (!targets.length) return;
 
   targets.forEach(el => {
@@ -115,7 +121,10 @@ function lockTranslatableDimensions(dictionary) {
     const maxW = Math.ceil(Math.max(widthA, widthB));
     const maxH = Math.ceil(Math.max(heightA, heightB));
 
-    if (el.closest('.nav-links')) {
+    if (el.classList.contains('profile-left') || el.classList.contains('profile-right')) {
+      if (maxW > 0) el.style.minWidth = `${maxW}px`;
+      if (maxH > 0) el.style.minHeight = `${maxH}px`;
+    } else if (el.closest('.nav-links')) {
       el.style.display = 'inline-block';
       el.style.textAlign = 'center';
       if (maxW > 0) el.style.minWidth = `${maxW}px`;
@@ -260,6 +269,11 @@ window.addEventListener('resize', () => {
   if (window.innerWidth === lastViewportWidth) return;
   lastViewportWidth = window.innerWidth;
   originalMarkup.forEach((_, el) => {
+    measuredElements.delete(el);
+    el.style.minHeight = '';
+    el.style.minWidth = '';
+  });
+  document.querySelectorAll('.profile-left, .profile-right').forEach(el => {
     measuredElements.delete(el);
     el.style.minHeight = '';
     el.style.minWidth = '';

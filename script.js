@@ -562,7 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (media.classList.contains('link-icon')) return;
     if (media.closest('.menu-links, .nav-links, .hamburger-icon, .languageswitch')) return;
     if (media.closest('.btn, .project-btn')) return;
-    if (media.closest('#contact, .contact-info-container, .contact-icon')) return;
+    if (media.closest('#profile, #contact, .contact-info-container, .contact-icon')) return;
 
     media.classList.add('zoomable');
 
