@@ -62,8 +62,6 @@ function writeEnglishDom() {
 }
 
 const CONTAINER_LOCK_SELECTOR = [
-  'section',
-  '.profile-layout',
   '.details-container.color-container',
   '.flip-card-front',
   '.card-front-content',
@@ -84,7 +82,7 @@ function resetLockedDimensions() {
     el.style.minHeight = '';
     el.style.minWidth = '';
   });
-  document.querySelectorAll(`.profile-left, .profile-right, ${CONTAINER_LOCK_SELECTOR}`).forEach(el => {
+  document.querySelectorAll(`section, .profile-layout, .profile-left, .profile-right, ${CONTAINER_LOCK_SELECTOR}`).forEach(el => {
     measuredElements.delete(el);
     el.style.minHeight = '';
     el.style.minWidth = '';
