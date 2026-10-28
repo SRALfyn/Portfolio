@@ -2725,6 +2725,7 @@ video::-webkit-media-controls-time-remaining-display {
 
   .float-card .card-front-content {
     justify-content: flex-end;
+    padding-top: 3rem;
   }
 
   .float-card .project-award-badge {
@@ -2843,10 +2844,14 @@ video::-webkit-media-controls-time-remaining-display {
     max-width: none;
   }
 
-  .project-award-badge {
+  .float-card .project-award-badge {
     position: static;
     align-self: center;
     margin-inline: auto;
+  }
+
+  .float-card .card-front-content {
+    padding-top: 0;
   }
 
   .profile-layout,
