@@ -153,11 +153,22 @@ a,
   text-decoration: none;
 }
 
+/* General text links (non-button links) */
+a:not(.btn):not(.project-btn):not(.pdf-btn):not(.all-games-btn):not(.details-btn):not(.contact-submit-btn):not(.flip-toggle-btn):not(.profile-linkedin-link) {
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:not(.btn):not(.project-btn):not(.pdf-btn):not(.all-games-btn):not(.details-btn):not(.contact-submit-btn):not(.flip-toggle-btn):not(.profile-linkedin-link):hover {
+  color: var(--award-gold);
+  text-decoration: none;
+}
+
 .nav-links a,
 .menu-links a {
   color: var(--text-nav);
   text-decoration: none;
-  text-decoration-color: var(--base-color);
+  transition: color 0.2s ease;
 }
 
 #language-switch:hover,
@@ -166,14 +177,15 @@ a,
 }
 
 .nav-links a:hover,
+.menu-links a:hover,
 .contact-info-container a:hover,
 a[href*="linkedin"]:hover,
 a[href="#contact"]:hover,
 a[href="#projects"]:hover,
 a[href="#insights"]:hover,
 a[href^="mailto:"]:hover {
-  color: var(--text-heading);
-  text-decoration-color: var(--award-gold);
+  color: var(--award-gold);
+  text-decoration: none;
 }
 
 /* Language Toggle & Disclaimer */
@@ -619,11 +631,13 @@ footer p {
   display: block;
 }
 
+.profile-link {
+  transition: color 0.2s ease;
+}
+
 .profile-link:hover {
-  text-decoration: underline;
-  text-decoration-color: var(--accent-color);
-  text-underline-offset: 0.1875rem;
-  text-decoration-thickness: 0.0625rem;
+  color: var(--award-gold);
+  text-decoration: none;
 }
 
 .title {
@@ -1309,7 +1323,7 @@ body:has(.flip-card.flipped) > .toggleLanguage {
 #AchievementsTitle,
 #MercuryAchTitle,
 #CultAchievementsTitle {
-  color: var(--award-gold);
+  color: var(--text-heading);
 }
 
 .achievements-list {
@@ -1325,37 +1339,32 @@ body:has(.flip-card.flipped) > .toggleLanguage {
   margin-top: 20px;
 }
 
+#cultScopeDesc a,
+#AchievementsDesc a,
+#MercuryAchDesc a,
+#CultAchievementsDesc a,
+.achievements-list a {
+  color: var(--text-heading);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
 #cultScopeDesc a:hover,
 #AchievementsDesc a:hover,
 #MercuryAchDesc a:hover,
 #CultAchievementsDesc a:hover,
 .achievements-list a:hover {
-  text-decoration: underline;
-  text-decoration-color: var(--award-gold);
-  text-underline-offset: 0.1875rem;
-  text-decoration-thickness: 0.0625rem;
-  color: var(--award-gold-hover);
-  opacity: 1;
-}
-
-#AchievementsDesc a,
-#MercuryAchDesc a,
-#CultAchievementsDesc a,
-.achievements-list a {
   color: var(--award-gold);
   text-decoration: none;
-  transition: opacity 0.2s, color 0.2s;
 }
 
 #AchievementsTitle,
+#MercuryAchTitle,
+#CultAchievementsTitle,
 #AchievementsDesc li,
-#AchievementsDesc a,
-#AchievementsDesc a:hover {
+#MercuryAchDesc li,
+#CultAchievementsDesc li {
   color: var(--text-heading);
-}
-
-#AchievementsDesc a:hover {
-  text-decoration-color: var(--border-subtle);
 }
 
 .link-icon {
@@ -1375,12 +1384,13 @@ a:hover .link-icon {
 
 .tutorial-link {
   font-weight: bold;
-  text-decoration: underline;
-  transition: color 0.3s ease;
+  text-decoration: none;
+  color: var(--text-heading);
+  transition: color 0.2s ease;
 }
 
 .tutorial-link:hover {
-  color: var(--accent-color);
+  color: var(--award-gold);
   text-decoration: none;
 }
 

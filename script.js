@@ -755,7 +755,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!contactForm) return;
 
-  // XOR-encoded char codes (key = 21) so the address never appears in HTML or plain-text JS source
+  // FormSubmit token (replaces raw email address)
+  const FORMSUBMIT_TOKEN = '5bbece4d250857c27e5f718181856e68';
+  // XOR-encoded char codes (key = 21) for mailto fallback so the address never appears in plain text
   const encodedBytes = [114, 122, 125, 113, 112, 59, 121, 116, 103, 102, 85, 122, 96, 97, 121, 122, 122, 126, 59, 118, 122, 120];
   const decodeRecipient = () => String.fromCharCode(...encodedBytes.map(b => b ^ 21));
 
@@ -810,8 +812,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setStatus('Sending message...', '送信中...', 'info');
 
     try {
-      const recipient = decodeRecipient();
-      const response = await fetch(`https://formsubmit.co/ajax/${recipient}`, {
+      const response = await fetch(`https://formsubmit.co/ajax/${FORMSUBMIT_TOKEN}`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json'
