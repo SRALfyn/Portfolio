@@ -756,7 +756,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!contactForm) return;
 
   // FormSubmit token (replaces raw email address)
-  const FORMSUBMIT_TOKEN = '5bbece4d250857c27e5f718181856e68';
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xeaazejp';
   // XOR-encoded char codes (key = 21) for mailto fallback so the address never appears in plain text
   const encodedBytes = [114, 122, 125, 113, 112, 59, 121, 116, 103, 102, 85, 122, 96, 97, 121, 122, 122, 126, 59, 118, 122, 120];
   const decodeRecipient = () => String.fromCharCode(...encodedBytes.map(b => b ^ 21));
@@ -804,7 +804,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const formData = new FormData(contactForm);
     // Block bots that fill the hidden honeypot or submit without real human interaction
-    if (formData.get('_honey') || !hasHumanInteraction || (performance.now() - firstInteractionTime) < 1200) {
+    if (formData.get('_gotcha') || !hasHumanInteraction || (performance.now() - firstInteractionTime) < 1200) {
       return;
     }
 
@@ -812,7 +812,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setStatus('Sending message...', '送信中...', 'info');
 
     try {
-      const response = await fetch(`https://formsubmit.co/ajax/${FORMSUBMIT_TOKEN}`, {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
         headers: {
           'Accept': 'application/json'
@@ -820,7 +820,10 @@ document.addEventListener('DOMContentLoaded', () => {
         body: formData
       });
 
-      if (!response.ok) throw new Error('Submission failed');
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => null);
+        throw new Error((errorData && (errorData.error || (errorData.errors && errorData.errors.map(e => e.message).join(', ')))) || 'Submission failed');
+      }
 
       contactForm.reset();
       setStatus(
@@ -829,6 +832,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'success'
       );
     } catch (err) {
+      console.error('Contact form submission error:', err);
       const recipient = decodeRecipient();
       const subject = encodeURIComponent(String(formData.get('_subject') || 'Portfolio Contact'));
       const body = encodeURIComponent(
