@@ -2755,9 +2755,6 @@ video::-webkit-media-controls-time-remaining-display {
     justify-content: flex-start;
   }
 
-  .pooki-head-container {
-    display: none;
-  }
 }
 
 @media (min-width: 64rem) {
